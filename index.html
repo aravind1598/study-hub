@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,37 +7,32 @@
 <title>11th Study Hub 📚</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+input,textarea{user-select:text}
+
 :root{
-  --blue:#2563eb;--blue2:#1d4ed8;--blue-s:#eff6ff;
-  --green:#16a34a;--green-s:#f0fdf4;
-  --red:#dc2626;--red-s:#fff5f5;
-  --orange:#ea580c;--orange-s:#fff7ed;
-  --purple:#7c3aed;--purple-s:#f5f3ff;
+  --blue:#2563eb;--blue-s:#eff6ff;--green:#16a34a;--green-s:#f0fdf4;
   --bg:#f1f5f9;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;
-  --sp:#0d0d1a;--sc:#161629;--spink:#ff69b4;--spurple:#9333ea;--stext:#f0e6ff;
+  --sp:#0a0a18;--sc:#12122a;--sb:#1a1a35;
+  --pk:#ff4da6;--pk2:#e91e8c;--pu:#9333ea;--pu2:#7c3aed;
+  --st:#f0e6ff;--sm:#9ca3af;
 }
+
 body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color:var(--text);overflow-x:hidden}
 
-/* TOPBAR */
+/* ══ STUDY APP ══ */
 .topbar{background:var(--blue);color:#fff;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 2px 16px rgba(37,99,235,.35)}
 .topbar h1{font-size:16px;font-weight:900}
 .topbar small{font-size:10px;opacity:.7;display:block}
 .badge{background:rgba(255,255,255,.2);border-radius:20px;padding:3px 10px;font-size:10px;font-weight:800}
-
-/* SUBJECT TABS */
 .stabs{display:flex;background:#fff;border-bottom:2px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:52px;z-index:40}
 .stabs::-webkit-scrollbar{display:none}
 .stab{padding:9px 14px;font-size:11px;font-weight:800;color:var(--muted);border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:.2s;flex-shrink:0}
 .stab.on{color:var(--blue);border-bottom-color:var(--blue)}
-
-/* PANELS */
 .panel{display:none;padding:12px;max-width:720px;margin:0 auto;padding-bottom:60px}
 .panel.on{display:block}
-
-/* CHAPTER CARD */
 .chap{background:var(--card);border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.07);border:1px solid var(--border)}
-.chap-hd{padding:12px 14px;display:flex;align-items:center;gap:11px;cursor:pointer;user-select:none}
+.chap-hd{padding:12px 14px;display:flex;align-items:center;gap:11px;cursor:pointer}
 .chap-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
 .chap-hd h3{font-size:13px;font-weight:800;line-height:1.3}
 .chap-hd p{font-size:10px;color:var(--muted);margin-top:2px}
@@ -44,662 +40,106 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 .chap-hd.open .chev{transform:rotate(180deg)}
 .chap-bd{display:none;padding:0 14px 14px}
 .chap-bd.open{display:block}
-
 .topic{display:flex;gap:9px;padding:8px 0;border-bottom:1px dashed var(--border)}
 .topic:last-child{border-bottom:none}
 .tnum{width:22px;height:22px;border-radius:50%;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.tn-b{background:var(--blue-s);color:var(--blue)}
-.tn-g{background:var(--green-s);color:var(--green)}
-.tn-r{background:var(--red-s);color:var(--red)}
-.tn-o{background:var(--orange-s);color:var(--orange)}
-.tn-p{background:var(--purple-s);color:var(--purple)}
+.tn-b{background:var(--blue-s);color:var(--blue)}.tn-g{background:var(--green-s);color:var(--green)}
 .topic-body b{font-size:13px;font-weight:800;display:block}
 .topic-body p{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.55}
-
 .fbox{border-radius:0 8px 8px 0;padding:8px 11px;margin:7px 0;font-family:'Fira Code',monospace;font-size:11.5px;line-height:1.75}
 .fb-b{background:var(--blue-s);border-left:3px solid var(--blue);color:#1e3a8a}
 .fb-g{background:var(--green-s);border-left:3px solid var(--green);color:#14532d}
-.fb-r{background:var(--red-s);border-left:3px solid var(--red);color:#7f1d1d}
-.fb-o{background:var(--orange-s);border-left:3px solid var(--orange);color:#7c2d12}
-.fb-p{background:var(--purple-s);border-left:3px solid var(--purple);color:#3b0764}
-
-.tag{display:inline-block;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:800;margin-top:4px}
-.tag-y{background:#fef9c3;color:#854d0e}
-.tag-r{background:#fee2e2;color:#991b1b}
-
-.ans{background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-top:8px;font-size:12px;line-height:1.7;color:var(--text)}
+.ans{background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-top:8px;font-size:12px;line-height:1.7}
 .ans b{color:var(--blue);display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
-
-.sec-head{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:16px 0 8px;padding-left:2px}
-
+.tag{display:inline-block;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:800;margin-top:4px}
+.tag-y{background:#fef9c3;color:#854d0e}.tag-r{background:#fee2e2;color:#991b1b}
+.sec-head{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:16px 0 8px}
 .hero{background:linear-gradient(135deg,var(--blue),#818cf8);border-radius:16px;padding:18px;color:#fff;margin-bottom:14px}
 .hero h2{font-size:21px;font-weight:900}
 .hero p{font-size:12px;opacity:.8;margin-top:4px}
 .subj-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-.subj-box{background:rgba(255,255,255,.15);border-radius:10px;padding:10px;backdrop-filter:blur(4px)}
+.subj-box{background:rgba(255,255,255,.15);border-radius:10px;padding:10px}
 .subj-box .ico{font-size:22px}
 .subj-box b{font-size:12px;display:block;margin-top:4px}
 .subj-box small{font-size:10px;opacity:.7}
+.tt-slot{background:var(--card);border-radius:8px;padding:8px 12px;margin-bottom:6px;border-left:4px solid var(--blue)}
+.tt-slot b{font-size:12px;display:block}.tt-slot small{font-size:10px;color:var(--muted)}
 
-.tt-day{font-weight:800;font-size:12px;color:var(--blue);margin:12px 0 6px}
-.tt-slot{background:var(--card);border-radius:8px;padding:8px 12px;margin-bottom:6px;border-left:4px solid var(--blue);box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.tt-slot.g{border-color:var(--green)}.tt-slot.r{border-color:var(--red)}.tt-slot.o{border-color:var(--orange)}.tt-slot.p{border-color:var(--purple)}
-.tt-slot b{font-size:12px;display:block}
-.tt-slot small{font-size:10px;color:var(--muted)}
+/* ══ SECRET DOT ══ */
+.sdot{position:fixed;bottom:18px;right:18px;width:8px;height:8px;border-radius:50%;background:rgba(120,120,150,.15);border:none;cursor:pointer;z-index:300}
 
-/* SECRET DOT — invisible tiny dot */
-.sdot{position:fixed;bottom:16px;right:16px;width:9px;height:9px;border-radius:50%;background:rgba(130,130,160,.18);border:none;cursor:pointer;z-index:200}
+/* ══ PIN SCREEN ══ */
+#pinScr{display:none;position:fixed;inset:0;z-index:800;background:var(--sp);flex-direction:column;align-items:center;justify-content:center;gap:16px}
+#pinScr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(147,51,234,.15) 0%,transparent 60%);pointer-events:none}
+.plock{font-size:40px;animation:bob .8s ease-in-out infinite alternate;position:relative;z-index:1}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+.ptitle{color:var(--st);font-size:22px;font-weight:900;position:relative;z-index:1}
+.pdots{display:flex;gap:14px;position:relative;z-index:1}
+.pdot{width:13px;height:13px;border-radius:50%;border:2px solid rgba(255,77,166,.3);background:transparent;transition:.2s}
+.pdot.on{background:var(--pk);border-color:var(--pk);box-shadow:0 0 10px var(--pk)}
+.perr{color:#f87171;font-size:12px;display:none;position:relative;z-index:1}
+.ppad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:216px;position:relative;z-index:1}
+.pkey{height:58px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,77,166,.12);color:var(--st);font-size:20px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.pkey:active{transform:scale(.88);background:rgba(255,77,166,.2)}
 
-/* PIN */
-#pinScr{display:none;position:fixed;inset:0;z-index:800;background:var(--sp);flex-direction:column;align-items:center;justify-content:center;gap:18px}
-.plock{font-size:38px;animation:bob .7s ease-in-out infinite alternate}
-@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-8px)}}
-.ptitle{color:var(--stext);font-size:20px;font-weight:900}
-.pdots{display:flex;gap:12px}
-.pdot{width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,105,180,.35);background:transparent;transition:.2s}
-.pdot.on{background:var(--spink);border-color:var(--spink);box-shadow:0 0 8px var(--spink)}
-.perr{color:#f87171;font-size:12px;display:none}
-.ppad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:210px}
-.pkey{height:56px;border-radius:50%;background:var(--sc);border:1px solid rgba(255,105,180,.15);color:var(--stext);font-size:19px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center}
-.pkey:active{transform:scale(.88);background:rgba(255,105,180,.25)}
+/* ══ MESSENGER SHELL ══ */
+#msg{display:none;position:fixed;inset:0;z-index:900;background:var(--sp);flex-direction:column;overflow:hidden}
 
-/* MESSENGER */
-#msg{display:none;position:fixed;inset:0;z-index:900;background:var(--sp);flex-direction:column}
-#msg::before{content:'';position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff 0%,transparent 100%),radial-gradient(1px 1px at 78% 9%,#fff 0%,transparent 100%),radial-gradient(1px 1px at 44% 52%,#fff 0%,transparent 100%),radial-gradient(2px 2px at 88% 72%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 22% 85%,#fff 0%,transparent 100%),radial-gradient(1px 1px at 63% 33%,rgba(255,255,255,.6) 0%,transparent 100%);pointer-events:none;opacity:.4}
+/* Animated bg */
+.msg-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.msg-bg::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(147,51,234,.08) 0%,transparent 70%);top:-50px;right:-80px;animation:drift1 8s ease-in-out infinite alternate}
+.msg-bg::after{content:'';position:absolute;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,166,.06) 0%,transparent 70%);bottom:100px;left:-60px;animation:drift2 10s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate(0,0)}to{transform:translate(-30px,40px)}}
+@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(40px,-30px)}}
 
-.mhd{background:rgba(22,22,41,.96);backdrop-filter:blur(14px);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,105,180,.18);position:relative;z-index:1}
-.mav{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--spink),var(--spurple));display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 10px rgba(255,105,180,.3)}
-.mname{font-size:14px;font-weight:800;color:var(--stext)}
-.mstat{font-size:10px;color:rgba(240,230,255,.38);margin-top:1px}
-.online{display:inline-block;width:6px;height:6px;background:#4ade80;border-radius:50%;margin-left:5px;animation:blink 2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.backbtn{background:rgba(255,255,255,.08);border:none;border-radius:20px;color:var(--stext);font-family:'Nunito',sans-serif;padding:5px 12px;font-size:11px;cursor:pointer}
+/* Stars */
+.stars{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d,3s) ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:var(--o1,.2)}50%{opacity:var(--o2,.8)}}
 
-/* DB status */
-.db-status{background:rgba(22,22,41,.9);border-bottom:1px solid rgba(255,105,180,.1);padding:5px 14px;font-size:10px;color:rgba(240,230,255,.4);display:flex;align-items:center;gap:6px;position:relative;z-index:1}
-.db-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:blink 2s infinite}
-.db-dot.err{background:#f87171;animation:none}
+/* ══ HEADER ══ */
+.mhd{background:rgba(18,18,42,.95);backdrop-filter:blur(20px);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,77,166,.12);position:relative;z-index:2;flex-shrink:0}
+.mhd-left{display:flex;align-items:center;gap:10px}
+.mav-wrap{position:relative}
+.mav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--pk),var(--pu));display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 0 14px rgba(255,77,166,.35)}
+.mav-ring{position:absolute;inset:-2px;border-radius:50%;border:2px solid transparent;background:linear-gradient(135deg,var(--pk),var(--pu)) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;animation:spin 4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mname{font-size:14px;font-weight:900;color:var(--st)}
+.mstat-row{display:flex;align-items:center;gap:5px;margin-top:2px}
+.online{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse2 2s infinite}
+@keyframes pulse2{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.mstat{font-size:10px;color:rgba(240,230,255,.38)}
+.backbtn{background:rgba(255,255,255,.07);border:1px solid rgba(255,77,166,.15);border-radius:20px;color:var(--st);font-family:'Nunito',sans-serif;padding:5px 13px;font-size:11px;cursor:pointer;transition:.2s}
+.backbtn:active{background:rgba(255,77,166,.2)}
 
-.msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:7px;position:relative;z-index:1}
+/* ══ STORIES BAR ══ */
+.stories{display:flex;gap:10px;padding:10px 14px;overflow-x:auto;scrollbar-width:none;background:rgba(18,18,42,.6);border-bottom:1px solid rgba(255,77,166,.08);position:relative;z-index:2;flex-shrink:0}
+.stories::-webkit-scrollbar{display:none}
+.story-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;flex-shrink:0}
+.story-ring{width:46px;height:46px;border-radius:50%;padding:2px;background:linear-gradient(135deg,var(--pk),var(--pu),#06b6d4);animation:storyRing 3s linear infinite}
+@keyframes storyRing{to{filter:hue-rotate(360deg)}}
+.story-inner{width:100%;height:100%;border-radius:50%;background:var(--sc);display:flex;align-items:center;justify-content:center;font-size:20px;border:2px solid var(--sp)}
+.story-seen .story-ring{background:rgba(255,255,255,.12)!important;animation:none}
+.story-label{font-size:9px;color:rgba(240,230,255,.4);font-weight:700;max-width:46px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.add-story .story-ring{background:rgba(255,77,166,.2)!important;animation:none}
+
+/* ══ DB STATUS ══ */
+.dbbar{padding:4px 14px;font-size:10px;display:flex;align-items:center;gap:6px;background:rgba(10,10,24,.8);position:relative;z-index:2;flex-shrink:0}
+.dbd{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:pulse2 2s infinite}
+.dbd.err{background:#f87171;animation:none}
+
+/* ══ MESSAGES ══ */
+.msgs{flex:1;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px;position:relative;z-index:1}
 .msgs::-webkit-scrollbar{width:3px}
-.msgs::-webkit-scrollbar-thumb{background:rgba(255,105,180,.2);border-radius:2px}
+.msgs::-webkit-scrollbar-thumb{background:rgba(255,77,166,.2);border-radius:2px}
 
-.bub{max-width:74%;padding:9px 13px;border-radius:18px;font-size:13px;line-height:1.5;animation:pop .22s ease}
-@keyframes pop{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
-.bub.out{align-self:flex-end;background:linear-gradient(135deg,#e91e8c,#9333ea);color:#fff;border-bottom-right-radius:4px;box-shadow:0 3px 12px rgba(233,30,140,.3)}
-.bub.in{align-self:flex-start;background:var(--sc);color:var(--stext);border:1px solid rgba(255,105,180,.13);border-bottom-left-radius:4px}
-.bt{font-size:10px;opacity:.45;margin-top:3px}
-.bub.out .bt{text-align:right}
+/* Date divider */
+.mdiv{text-align:center;font-size:10px;color:rgba(240,230,255,.2);margin:6px 0;position:relative}
+.mdiv::before,.mdiv::after{content:'';position:absolute;top:50%;width:28%;height:1px;background:rgba(255,77,166,.08)}
+.mdiv::before{left:4%}.mdiv::after{right:4%}
 
-.rbub{align-self:flex-end;max-width:74%;background:var(--sc);border:1px solid rgba(255,105,180,.2);border-radius:14px;overflow:hidden;animation:pop .22s ease}
-.rtop{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,105,180,.05)}
-.rico2{width:40px;height:40px;border-radius:9px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);display:flex;align-items:center;justify-content:center;font-size:18px}
-.rlbl{font-size:12px;font-weight:800;color:var(--stext)}
-.rsrc{font-size:10px;color:rgba(240,230,255,.38);margin-top:2px}
-.rcap{padding:6px 12px 10px;font-size:12px;color:rgba(240,230,255,.55)}
+/* Bubbles */
+.bub{max-width:78%;border-radius:20px;font-size:13px;line-height:1.5;position:relative;animation:popIn .25s cubic-bezier(.34,1.56,.64,1)}
+@keyframes
 
-.div{text-align:center;font-size:10px;color:rgba(240,230,255,.22);margin:4px 0;position:relative}
-.div::before,.div::after{content:'';position:absolute;top:50%;width:27%;height:1px;background:rgba(255,105,180,.1)}
-.div::before{left:4%}.div::after{right:4%}
-
-/* typing indicator */
-.typing{align-self:flex-start;padding:8px 13px;background:var(--sc);border:1px solid rgba(255,105,180,.13);border-radius:18px;border-bottom-left-radius:4px;display:none}
-.typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(240,230,255,.4);animation:td 1.2s infinite}
-.typing span:nth-child(2){animation-delay:.2s}
-.typing span:nth-child(3){animation-delay:.4s}
-@keyframes td{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-
-.minp-wrap{padding:9px 12px;background:rgba(13,13,26,.97);border-top:1px solid rgba(255,105,180,.1);display:flex;gap:7px;align-items:flex-end;position:relative;z-index:1}
-.minp{flex:1;background:var(--sc);border:1px solid rgba(255,105,180,.18);border-radius:20px;padding:9px 14px;color:var(--stext);font-family:'Nunito',sans-serif;font-size:13px;outline:none;resize:none;max-height:88px;min-height:38px;line-height:1.4}
-.minp::placeholder{color:rgba(240,230,255,.22)}
-.minp:focus{border-color:rgba(255,105,180,.38)}
-.ibtn{width:37px;height:37px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:.15s;flex-shrink:0}
-.ibtn:active{transform:scale(.88)}
-.sbtn{background:linear-gradient(135deg,#e91e8c,#9333ea);color:#fff;box-shadow:0 3px 10px rgba(233,30,140,.3)}
-.rbtn{background:var(--sc);border:1px solid rgba(255,105,180,.18);color:var(--stext)}
-
-/* Delete msg on long press */
-.bub.selected,.rbub.selected{opacity:.6;outline:2px solid var(--spink)}
-.del-bar{display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(220,38,38,.9);color:#fff;border:none;border-radius:20px;padding:8px 20px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;z-index:999;backdrop-filter:blur(8px)}
-
-.hf{position:fixed;pointer-events:none;z-index:9999;font-size:17px;animation:rise 1.3s ease forwards}
-@keyframes rise{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-65px) scale(.4)}}
-
-/* Loading */
-.loading{text-align:center;color:rgba(240,230,255,.3);font-size:12px;padding:20px}
-</style>
-</head>
-<body>
-
-<!-- ██ STUDY APP ██ -->
-<div id="studyApp">
-<div class="topbar">
-  <div><h1>📖 11th Study Hub</h1><small>CS · Maths · Physics · Chemistry · Tamil · English</small></div>
-  <div class="badge">CS Maths Group</div>
-</div>
-
-<div class="stabs">
-  <div class="stab on" onclick="sw('home',this)">🏠 Home</div>
-  <div class="stab" onclick="sw('cs',this)">💻 CS</div>
-  <div class="stab" onclick="sw('maths',this)">📐 Maths</div>
-  <div class="stab" onclick="sw('physics',this)">⚡ Physics</div>
-  <div class="stab" onclick="sw('chem',this)">🧪 Chem</div>
-  <div class="stab" onclick="sw('tamil',this)">📜 Tamil</div>
-  <div class="stab" onclick="sw('english',this)">🔤 English</div>
-  <div class="stab" onclick="sw('tt',this)">🗓 Timetable</div>
-</div>
-
-<!-- HOME -->
-<div class="panel on" id="p-home">
-  <div class="hero">
-    <h2>11th Standard 🎓</h2>
-    <p>Tamil Nadu State Board — CS + Maths Group</p>
-    <div class="subj-grid">
-      <div class="subj-box"><div class="ico">💻</div><b>Computer Science</b><small>12 Chapters</small></div>
-      <div class="subj-box"><div class="ico">📐</div><b>Mathematics</b><small>11 Chapters</small></div>
-      <div class="subj-box"><div class="ico">⚡</div><b>Physics</b><small>10 Chapters</small></div>
-      <div class="subj-box"><div class="ico">🧪</div><b>Chemistry</b><small>14 Chapters</small></div>
-      <div class="subj-box"><div class="ico">📜</div><b>Tamil</b><small>Prose + Poetry</small></div>
-      <div class="subj-box"><div class="ico">🔤</div><b>English</b><small>Prose + Grammar</small></div>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">⭐</div><div><h3>Exam Mark Weightage — TN Board</h3><p>150 marks pattern</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-b">1 Mark  (MCQ)    — 15 Qs = 15 Marks<br>2 Mark  (Short)  —  6 Qs = 12 Marks<br>3 Mark  (Brief)  —  9 Qs = 27 Marks<br>5 Mark  (Para)   —  5 Qs = 25 Marks<br>10 Mark (Essay)  —  3 Qs = 30 Marks<br>Practical / Record — 41 Marks (CS)<br>─────────────────<br>Total Theory = 90 Marks (CS) / 150 Marks (Maths)</div>
-    </div>
-  </div>
-</div>
-
-<!-- CS -->
-<div class="panel" id="p-cs">
-  <div class="sec-head">💻 Computer Science — All Chapters</div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">🖥️</div><div><h3>Ch 1 — Introduction to Computers</h3><p>History, Generations, I/O, Memory</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="topic"><div class="tnum tn-b">1</div><div class="topic-body"><b>Computer Generations</b><p>1st: Vacuum Tubes | 2nd: Transistors | 3rd: IC | 4th: VLSI/Microprocessor | 5th: AI/ULSI</p><span class="tag tag-y">⭐ 2 Mark</span></div></div>
-      <div class="ans"><b>Q: Define Computer</b>A computer is an electronic device that accepts data (input), processes it using a program, produces results (output), and can store data for future use.</div>
-      <div class="topic"><div class="tnum tn-b">2</div><div class="topic-body"><b>Input Devices</b><p>Keyboard, Mouse, Scanner, Joystick, Touchscreen, Barcode reader, OMR, OCR, MICR, Webcam, Mic</p><span class="tag tag-y">⭐ 5 Mark</span></div></div>
-      <div class="topic"><div class="tnum tn-b">3</div><div class="topic-body"><b>Output Devices</b><p>Monitor (CRT/LCD/LED), Printer (Dot matrix / Inkjet / Laser), Plotter, Speaker, Projector</p></div></div>
-      <div class="topic"><div class="tnum tn-b">4</div><div class="topic-body"><b>Memory Units</b></div></div>
-      <div class="fbox fb-b">Bit → Byte → KB(1024B) → MB(1024KB) → GB(1024MB) → TB(1024GB) → PB(1024TB)</div>
-      <div class="ans"><b>Q: RAM vs ROM</b>RAM – Volatile, Read & Write, stores running programs, lost on power off.<br>ROM – Non-volatile, Read Only, stores BIOS/boot instructions, permanent.</div>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">🔢</div><div><h3>Ch 2 — Number Systems</h3><p>Binary, Octal, Hex, Conversions, Complement</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-b">Decimal→Binary: Divide by 2, remainders bottom-up<br>Example: 13 → 1101₂ (13÷2=6R1, 6÷2=3R0, 3÷2=1R1, 1÷2=0R1)<br><br>Binary→Octal: Group 3 bits from right<br>Binary→Hex: Group 4 bits from right<br>Hex digits: A=10,B=11,C=12,D=13,E=14,F=15<br><br>1's Complement: Flip all bits (0→1, 1→0)<br>2's Complement: 1's complement + 1<br><br>Binary Addition: 0+0=0, 0+1=1, 1+1=10(carry)</div>
-      <div class="ans"><b>Q: Convert 45 to Binary, Octal, Hex</b>45 ÷ 2 repeatedly → Binary = 101101₂<br>101 101 → Octal = 55₈<br>0010 1101 → Hex = 2D₁₆</div>
-      <span class="tag tag-r">⭐ 5 Mark — always comes</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">⚡</div><div><h3>Ch 3 — Boolean Algebra & Logic Gates</h3><p>Gates, Truth Tables, Laws, De Morgan</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="topic"><div class="tnum tn-b">1</div><div class="topic-body"><b>Basic Gates: AND, OR, NOT</b><p>AND: output=1 only when ALL inputs=1<br>OR: output=1 when ANY input=1<br>NOT: Inverts — 0→1, 1→0</p><span class="tag tag-r">⭐ Must draw diagrams</span></div></div>
-      <div class="topic"><div class="tnum tn-b">2</div><div class="topic-body"><b>Universal Gates: NAND, NOR</b><p>NAND = NOT+AND | NOR = NOT+OR<br>Can implement any gate → called Universal</p><span class="tag tag-r">⭐ 5 Mark</span></div></div>
-      <div class="fbox fb-b">Boolean Laws:<br>A+0=A | A·1=A | A+1=1 | A·0=0<br>A+A=A | A·A=A | A+A'=1 | A·A'=0<br>De Morgan: (A·B)'=A'+B' | (A+B)'=A'·B'<br>Complement law: (A')'=A</div>
-      <div class="ans"><b>Q: Prove De Morgan's (A·B)'=A'+B'</b>A=0,B=0: (0·0)'=1, 0'+0'=1 ✓<br>A=0,B=1: (0·1)'=1, 0'+1'=1 ✓<br>A=1,B=0: (1·0)'=1, 1'+0'=1 ✓<br>A=1,B=1: (1·1)'=0, 1'+1'=0 ✓ → Proved!</div>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">🖱️</div><div><h3>Ch 4 — Operating System</h3><p>Types, Functions, Memory Mgmt</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="topic"><div class="tnum tn-b">1</div><div class="topic-body"><b>Functions of OS</b><p>1. Process Management  2. Memory Management  3. File Management  4. Device Management  5. Security  6. User Interface</p><span class="tag tag-r">⭐ 5 Mark Essay</span></div></div>
-      <div class="topic"><div class="tnum tn-b">2</div><div class="topic-body"><b>Types of OS</b><p>Batch, Time-sharing, Real-time, Distributed, Network, Mobile, Embedded</p></div></div>
-      <div class="ans"><b>Q: What is Multiprogramming?</b>Multiple programs reside in memory simultaneously. When one program waits for I/O, CPU executes another. Increases CPU utilization.</div>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">🌐</div><div><h3>Ch 5 — Networking & Internet</h3><p>LAN/WAN, Protocols, Devices</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-b">Network Types:<br>PAN – Personal (Bluetooth, few meters)<br>LAN – Local (building/campus)<br>MAN – Metropolitan (city)<br>WAN – Wide (global, e.g. Internet)<br><br>Devices: Hub(broadcast all) | Switch(specific) | Router(connects networks) | Modem(analog↔digital)<br><br>Protocols:<br>HTTP/HTTPS – Web | FTP – Files | SMTP – Email send<br>POP3/IMAP – Email receive | TCP/IP – Internet<br>DNS – Domain→IP | IP: IPv4(32bit) IPv6(128bit)</div>
-      <span class="tag tag-y">⭐ 5 Mark</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">⌨️</div><div><h3>Ch 7–9 — C++ Programming</h3><p>Data types, Control structures, Programs</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-b">Data Types: int(4B) float(4B) double(8B) char(1B) bool string<br><br>Control: if | if-else | switch | for | while | do-while<br><br>Operators: Arithmetic(+,-,*,/,%) | Relational(==,!=,&lt;,&gt;)<br>Logical(&amp;&amp;,||,!) | Assignment(=,+=,-=) | Increment(++,--)</div>
-      <div class="ans"><b>Program: Prime Number Check</b>#include&lt;iostream&gt;<br>using namespace std;<br>int main(){<br>  int n,f=1; cin&gt;&gt;n;<br>  for(int i=2;i&lt;=n/2;i++)<br>    if(n%i==0){f=0;break;}<br>  cout&lt;&lt;(f?"Prime":"Not Prime");<br>}</div>
-      <div class="ans"><b>Program: Fibonacci Series</b>int a=0,b=1,c;<br>cout&lt;&lt;a&lt;&lt;" "&lt;&lt;b&lt;&lt;" ";<br>for(int i=2;i&lt;n;i++){<br>  c=a+b; cout&lt;&lt;c&lt;&lt;" ";<br>  a=b; b=c;<br>}</div>
-      <span class="tag tag-r">⭐ 10 Mark programs</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">📋</div><div><h3>Ch 10 — Arrays & Strings</h3><p>1D/2D Arrays, String functions, Sorting</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-b">Array: int a[5]={10,20,30,40,50};<br>Access: a[0] to a[4]<br>2D: int mat[3][3]; → mat[row][col]<br><br>String functions (cstring):<br>strlen(s)  – length<br>strcpy(d,s) – copy<br>strcat(s1,s2) – concatenate<br>strcmp(s1,s2) – compare (0=equal)<br>strupr(s) – uppercase | strlwr(s) – lowercase</div>
-      <div class="ans"><b>Program: Bubble Sort</b>for(i=0;i&lt;n-1;i++)<br>  for(j=0;j&lt;n-i-1;j++)<br>    if(a[j]&gt;a[j+1])<br>      swap(a[j],a[j+1]);</div>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">🏗️</div><div><h3>Ch 11–12 — Functions & OOP</h3><p>Functions, Class, Inheritance, Polymorphism</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-b">Call by Value: copy passed, original safe<br>Call by Reference: address passed, original changes<br>Default arguments: void show(int x=10)<br>Function overloading: same name, different params<br><br>OOP Pillars:<br>Encapsulation – data hiding (private/public)<br>Abstraction – hide complexity<br>Inheritance – reuse base class<br>Polymorphism – many forms (overloading/overriding)</div>
-      <div class="ans"><b>Class Example</b>class Student{<br>  private: int roll; string name;<br>  public:<br>    void set(int r,string n){roll=r;name=n;}<br>    void show(){cout&lt;&lt;roll&lt;&lt;" "&lt;&lt;name;}<br>};<br>int main(){<br>  Student s; s.set(1,"Anbu"); s.show();<br>}</div>
-      <div class="topic"><div class="tnum tn-b">⭐</div><div class="topic-body"><b>Types of Inheritance</b><p>Single | Multiple | Multilevel | Hierarchical | Hybrid<br>Syntax: class Child : public Parent { };</p><span class="tag tag-r">⭐ 5–10 Mark</span></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- MATHS -->
-<div class="panel" id="p-maths">
-  <div class="sec-head">📐 Mathematics — All Units</div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">🔢</div><div><h3>Ch 1 — Sets, Relations & Functions</h3><p>Set operations, Types of functions</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-g">n(A∪B) = n(A)+n(B)-n(A∩B)<br>n(A∪B∪C) = n(A)+n(B)+n(C)-n(A∩B)-n(B∩C)-n(A∩C)+n(A∩B∩C)<br>De Morgan: (A∪B)'=A'∩B' | (A∩B)'=A'∪B'<br>Power set: n(P(A))=2ⁿ where n=n(A)</div>
-      <div class="ans"><b>Q: 40 students, 25 cricket, 20 football, 10 both. Find neither.</b>n(C∪F)=25+20-10=35. Neither=40-35=5</div>
-      <div class="topic"><div class="tnum tn-g">★</div><div class="topic-body"><b>Types of Functions</b><p>One-one (Injective): f(a)=f(b)⟹a=b<br>Onto (Surjective): range=codomain<br>Bijective: one-one + onto (inverse exists)</p><span class="tag tag-r">⭐ 10 Mark</span></div></div>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">➕</div><div><h3>Ch 2 — Basic Algebra</h3><p>Quadratic, Logarithm, Partial Fractions</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-g">Quadratic: ax²+bx+c=0<br>x = [-b ± √(b²-4ac)] / 2a<br>α+β = -b/a | αβ = c/a<br>D=b²-4ac: &gt;0 real distinct | =0 equal | &lt;0 complex<br><br>Logarithm:<br>log(mn)=logm+logn | log(m/n)=logm-logn<br>log(mⁿ)=n·logm | log_b(a)=log(a)/log(b)<br>log_a(a)=1 | log_a(1)=0<br><br>Partial Fractions types:<br>Linear distinct: A/(x-a)+B/(x-b)<br>Repeated: A/(x-a)+B/(x-a)²<br>Quadratic: (Ax+B)/(x²+bx+c)</div>
-      <div class="ans"><b>Q: Solve x²-5x+6=0</b>x=[5±√(25-24)]/2=[5±1]/2 → x=3 or x=2<br>α+β=5=5/1✓  αβ=6=6/1✓</div>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">📐</div><div><h3>Ch 3 — Trigonometry</h3><p>Identities, Compound, Multiple angles, Inverse</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-g">Fundamental:<br>sin²θ+cos²θ=1 | 1+tan²θ=sec²θ | 1+cot²θ=cosec²θ<br><br>Compound Angles:<br>sin(A±B)=sinAcosB±cosAsinB<br>cos(A±B)=cosAcosB∓sinAsinB<br>tan(A+B)=(tanA+tanB)/(1-tanAtanB)<br><br>Double Angle:<br>sin2A=2sinAcosA<br>cos2A=cos²A-sin²A=1-2sin²A=2cos²A-1<br>tan2A=2tanA/(1-tan²A)<br><br>Triple Angle:<br>sin3A=3sinA-4sin³A<br>cos3A=4cos³A-3cosA<br><br>Inverse:<br>sin⁻¹x+cos⁻¹x=π/2<br>tan⁻¹x+tan⁻¹y=tan⁻¹[(x+y)/(1-xy)] [xy&lt;1]</div>
-      <span class="tag tag-r">⭐ Very Important — Memorize all!</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">📊</div><div><h3>Ch 4 — Combinatorics & Probability</h3><p>Permutation, Combination, Binomial, Probability</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-g">nPr = n!/(n-r)!  [arrangement matters]<br>nCr = n!/(r!(n-r)!)  [selection only]<br>nCr = nC(n-r) | nCr+nC(r-1)=(n+1)Cr<br><br>Binomial Theorem:<br>(a+b)ⁿ = Σ nCr·aⁿ⁻ʳ·bʳ<br>T(r+1) = nCr·aⁿ⁻ʳ·bʳ  ← General Term<br>Middle term: n even→T(n/2+1) | n odd→T((n+1)/2)&T((n+3)/2)<br><br>Probability:<br>P(A)=n(A)/n(S) | 0≤P(A)≤1 | P(A')=1-P(A)<br>P(A∪B)=P(A)+P(B)-P(A∩B)</div>
-      <div class="ans"><b>Q: In how many ways can 5 books be arranged?</b>5P5 = 5! = 120 ways</div>
-      <span class="tag tag-r">⭐ 10 Mark — Binomial derivation</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">∞</div><div><h3>Ch 5 — Differential Calculus</h3><p>Limits, Derivatives, Applications</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-g">Standard Limits:<br>lim(x→0) sinx/x=1 | lim(x→0) tanx/x=1<br>lim(x→∞)(1+1/x)ˣ=e | lim(x→a)(xⁿ-aⁿ)/(x-a)=naⁿ⁻¹<br><br>Derivatives:<br>d/dx(xⁿ)=nxⁿ⁻¹ | d/dx(c)=0<br>d/dx(sinx)=cosx | d/dx(cosx)=-sinx<br>d/dx(tanx)=sec²x | d/dx(cotx)=-cosec²x<br>d/dx(eˣ)=eˣ | d/dx(lnx)=1/x<br><br>Rules:<br>Product: (uv)'=u'v+uv'<br>Quotient: (u/v)'=(u'v-uv')/v²<br>Chain: d/dx[f(g(x))]=f'(g(x))·g'(x)<br><br>Applications:<br>Tangent: y-y₀=m(x-x₀) where m=dy/dx<br>Normal: y-y₀=(-1/m)(x-x₀)<br>f'(x)&gt;0→increasing | f'(x)&lt;0→decreasing<br>f'(x)=0→critical | f''&lt;0→max | f''&gt;0→min</div>
-      <div class="ans"><b>Q: Differentiate y=x³sinx</b>Product rule: dy/dx = 3x²·sinx + x³·cosx</div>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">∫</div><div><h3>Ch 6 — Integral Calculus</h3><p>Integration formulas, Methods</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-g">∫xⁿdx=xⁿ⁺¹/(n+1)+C | ∫(1/x)dx=ln|x|+C<br>∫eˣdx=eˣ+C | ∫sinx dx=-cosx+C<br>∫cosx dx=sinx+C | ∫sec²x dx=tanx+C<br><br>Integration by Parts: ∫u·dv=uv-∫v·du<br>ILATE: Inverse | Log | Algebraic | Trig | Exponential<br><br>Definite integral: ∫[a to b]f(x)dx = F(b)-F(a)</div>
-      <span class="tag tag-r">⭐ 10 Mark</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">📉</div><div><h3>Ch 9 — Statistics</h3><p>Mean, Variance, SD, Correlation</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-g">Mean x̄ = Σx/n<br>Variance σ² = Σ(x-x̄)²/n<br>Standard Deviation σ = √Variance<br>CV = (σ/x̄)×100  ← Coefficient of Variation<br><br>Correlation coefficient r = Σ(x-x̄)(y-ȳ) / √[Σ(x-x̄)²·Σ(y-ȳ)²]<br>-1 ≤ r ≤ 1<br>r=+1 perfect positive | r=-1 perfect negative | r=0 no correlation</div>
-      <span class="tag tag-y">⭐ 5 Mark calculations</span>
-    </div>
-  </div>
-</div>
-
-<!-- PHYSICS -->
-<div class="panel" id="p-physics">
-  <div class="sec-head">⚡ Physics — All Chapters</div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">📏</div><div><h3>Ch 1 — Measurement & Units</h3><p>SI Units, Dimensions, Errors</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-o">7 Base SI Units:<br>Length–metre(m) | Mass–kilogram(kg) | Time–second(s)<br>Current–ampere(A) | Temp–kelvin(K) | Amount–mole(mol) | Luminosity–candela(cd)<br><br>Dimensions:<br>Force [MLT⁻²] | Energy [ML²T⁻²] | Power [ML²T⁻³]<br>Pressure [ML⁻¹T⁻²] | Velocity [LT⁻¹]</div>
-      <span class="tag tag-y">⭐ 3 Mark</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">🚀</div><div><h3>Ch 2 — Kinematics</h3><p>Equations of motion, Projectile</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-o">Equations of Motion:<br>v = u + at<br>s = ut + ½at²<br>v² = u² + 2as<br>sₙ = u + a(2n-1)/2  (nth second)<br><br>Projectile Motion:<br>Range R = u²sin2θ/g<br>Max Height H = u²sin²θ/2g<br>Time of flight T = 2usinθ/g<br>Max range at θ=45°: R_max = u²/g</div>
-      <div class="ans"><b>Q: Ball thrown at 20m/s at 30°. Find range.</b>R = u²sin2θ/g = 400×sin60°/10 = 400×0.866/10 = 34.64 m</div>
-      <span class="tag tag-r">⭐ 10 Mark derivation</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">⚖️</div><div><h3>Ch 3 — Newton's Laws & Friction</h3><p>3 Laws, Momentum, Impulse, Friction</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="topic"><div class="tnum tn-o">1</div><div class="topic-body"><b>Newton's 3 Laws</b><p>1st: Law of Inertia — body continues its state unless external force acts<br>2nd: F=ma — acceleration ∝ net force<br>3rd: Every action has equal & opposite reaction</p><span class="tag tag-r">⭐ 5 Mark each</span></div></div>
-      <div class="fbox fb-o">Momentum p = mv (kg·m/s)<br>Impulse J = F·t = Δp = m(v-u)<br>Friction f = μN<br>μₛ (static) &gt; μₖ (kinetic)<br>Angle of friction φ: tanφ=μ</div>
-      <div class="ans"><b>Q: 5kg object accelerates 2→8 m/s in 3s. Find force.</b>F=m(v-u)/t = 5×(8-2)/3 = 10 N</div>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">💥</div><div><h3>Ch 4 — Work, Energy & Power</h3><p>WE theorem, Conservation, Collisions</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-o">W = Fs cosθ (Joules)<br>KE = ½mv² | PE = mgh<br>Power P = W/t = Fv (Watts) | 1HP = 746W<br>Work-Energy theorem: W_net = ΔKE<br>Conservation: KE+PE = constant (isolated system)<br><br>Collision:<br>Elastic: both KE & momentum conserved<br>Inelastic: only momentum conserved (KE lost)</div>
-      <span class="tag tag-r">⭐ 10 Mark</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">🌀</div><div><h3>Ch 5 — Gravitation</h3><p>Newton's law, g variation, Satellites</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-o">F = Gm₁m₂/r² | G=6.674×10⁻¹¹ Nm²kg⁻²<br>g = GM/R² = 9.8 m/s²<br><br>Variation of g:<br>Height h: gₕ = g(1-2h/R)<br>Depth d: g_d = g(1-d/R)<br>Poles: g_max | Equator: g_min<br><br>Escape velocity: vₑ = √(2gR) = 11.2 km/s<br>Orbital velocity: v₀ = √(gR) = 7.9 km/s<br>Time period: T = 2π√(r³/GM)</div>
-      <span class="tag tag-r">⭐ 10 Mark derivation must</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">🌊</div><div><h3>Ch 10 — Waves & Sound</h3><p>Wave equation, Doppler, Beats</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-o">v = fλ | T = 1/f | Speed of sound=340 m/s<br><br>Doppler Effect:<br>f' = f·(v+v₀)/(v-vₛ) — observer approaches, source approaches<br>f' = f·(v-v₀)/(v+vₛ) — both receding<br><br>Beats: n = f₁-f₂ (beats per second)<br><br>Standing waves: nodes (zero displacement) & antinodes (max)</div>
-      <span class="tag tag-y">⭐ 5 Mark</span>
-    </div>
-  </div>
-</div>
-
-<!-- CHEMISTRY -->
-<div class="panel" id="p-chem">
-  <div class="sec-head">🧪 Chemistry — All Chapters</div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f5f3ff">⚛️</div><div><h3>Ch 2 — Quantum Mechanical Model</h3><p>Atomic structure, Orbitals, Electronic config</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-p">Bohr: Eₙ = -13.6/n² eV<br>Rydberg: 1/λ = R(1/n₁²-1/n₂²) | R=1.097×10⁷ m⁻¹<br><br>Quantum Numbers:<br>n (principal): 1,2,3... (shell)<br>l (azimuthal): 0 to n-1 (s=0,p=1,d=2,f=3)<br>m (magnetic): -l to +l<br>s (spin): +½ or -½<br><br>Aufbau order: 1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p...<br>Hund's rule: fill singly before pairing<br>Pauli: max 2e per orbital, opposite spins</div>
-      <span class="tag tag-y">⭐ 5 Mark</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f5f3ff">📋</div><div><h3>Ch 3 — Periodic Table & Properties</h3><p>Trends, Periodicity</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-p">118 elements | 7 periods | 18 groups | s,p,d,f blocks<br><br>Periodic Trends (→=across period, ↓=down group):<br>Atomic radius: decreases→ increases↓<br>Ionization energy: increases→ decreases↓<br>Electron affinity: increases→<br>Electronegativity: increases→ (F highest=4.0)<br>Metallic character: decreases→ increases↓</div>
-      <span class="tag tag-r">⭐ 5 Mark trends diagram</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f5f3ff">⚗️</div><div><h3>Ch 7 — Thermodynamics</h3><p>Laws, Enthalpy, Entropy, Gibbs energy</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-p">1st Law: ΔU = q + w | w = -PΔV<br>Enthalpy: ΔH = ΔU + ΔnRT<br>Hess's Law: ΔH = sum of ΔH of steps<br>Bond enthalpy: ΔH = Σ(bonds broken) - Σ(bonds formed)<br><br>Entropy: ΔS&gt;0 → disorder increases<br>Gibbs energy: ΔG = ΔH - TΔS<br>ΔG&lt;0 → spontaneous | ΔG&gt;0 → non-spontaneous<br>ΔG=0 → equilibrium</div>
-      <span class="tag tag-r">⭐ 10 Mark</span>
-    </div>
-  </div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f5f3ff">⚖️</div><div><h3>Ch 8 — Equilibrium & pH</h3><p>Le Chatelier, Kc, Kp, Acids & Bases</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-p">Kc = [C]ᶜ[D]ᵈ / [A]ᵃ[B]ᵇ<br>Kp = Kc(RT)^Δn<br><br>Le Chatelier: System shifts to oppose change<br><br>pH = -log[H⁺] | pOH = -log[OH⁻]<br>pH + pOH = 14 (25°C)<br>Acids: pH&lt;7 | Neutral: pH=7 | Base: pH&gt;7<br><br>Strong acid: HCl, HNO₃, H₂SO₄<br>Strong base: NaOH, KOH, Ca(OH)₂<br>Buffer: resists pH change</div>
-      <span class="tag tag-r">⭐ 5 Mark calculations</span>
-    </div>
-  </div>
-</div>
-
-<!-- TAMIL -->
-<div class="panel" id="p-tamil">
-  <div class="sec-head">📜 Tamil — முக்கிய பாடங்கள்</div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff5f5">📖</div><div><h3>உரைநடை & கவிதை — Key Answers</h3><p>முக்கிய கேள்வி பதில்கள்</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="ans"><b>கேள்வி: தமிழின் சிறப்பு யாது?</b>தமிழ் உலகின் தொன்மையான செம்மொழிகளில் ஒன்று. 2000 ஆண்டுகளுக்கு மேலான இலக்கிய வரலாற்றை உடையது. திருக்குறள், சங்க இலக்கியம், தொல்காப்பியம் என பல சிறந்த நூல்களைக் கொண்டது.</div>
-      <div class="ans"><b>கேள்வி: திருக்குறளின் சிறப்பு</b>திருவள்ளுவர் இயற்றிய திருக்குறள் 1330 குறட்பாக்களைக் கொண்டது. அறம்(380), பொருள்(700), இன்பம்(250) என முப்பால் பகுப்பில் உள்ளது. உலகின் பல மொழிகளில் மொழிபெயர்க்கப்பட்டுள்ளது.</div>
-      <div class="topic"><div class="tnum tn-r">★</div><div class="topic-body"><b>இலக்கணம் — எழுத்துகள்</b><p>உயிர்: 12 (அ,ஆ,இ,ஈ,உ,ஊ,எ,ஏ,ஐ,ஒ,ஓ,ஔ)<br>மெய்: 18 | உயிர்மெய்: 216 | ஆய்தம்: 1 | மொத்தம்: 247</p><span class="tag tag-y">⭐ 2 மதிப்பெண்</span></div></div>
-      <div class="topic"><div class="tnum tn-r">★</div><div class="topic-body"><b>திணை & பால்</b><p>உயர்திணை (மக்கள்+கடவுள்) | அஃறிணை (மற்றவை)<br>ஆண்பால், பெண்பால், பலர்பால், ஒன்றன்பால், பலவின்பால்</p><span class="tag tag-y">⭐ 3 மதிப்பெண்</span></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ENGLISH -->
-<div class="panel" id="p-english">
-  <div class="sec-head">🔤 English — Grammar & Writing</div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">📝</div><div><h3>Grammar — Complete Reference</h3><p>Tenses, Voice, Speech, Conditionals</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="fbox fb-g">12 Tenses:<br>Present: Simple|Continuous|Perfect|Perfect Continuous<br>Past: Simple|Continuous|Perfect|Perfect Continuous<br>Future: Simple|Continuous|Perfect|Perfect Continuous<br><br>Key forms:<br>Simple Present: V1/V1+s<br>Present Continuous: is/am/are + V-ing<br>Simple Past: V2<br>Future: will/shall + V1<br><br>Active → Passive:<br>Simple Present: is/am/are + V3<br>Simple Past: was/were + V3<br>Future: will be + V3<br><br>Direct → Indirect Speech:<br>say/says → said/told<br>Present tense → Past tense<br>today→that day | now→then | here→there<br>tomorrow→next day | yesterday→previous day<br><br>Conditionals:<br>Type 0: If+present, present (general truth)<br>Type 1: If+present, will+V1 (real future)<br>Type 2: If+past, would+V1 (imaginary)<br>Type 3: If+past perfect, would have+V3 (impossible past)</div>
-      <div class="ans"><b>Active→Passive: "She writes a letter"</b>"A letter is written by her."</div>
-      <div class="ans"><b>Formal Letter Format</b>Sender's Address | Date | Receiver's Address | Subject | Salutation (Dear Sir/Madam) | Body (3 paragraphs) | Closing (Yours faithfully) | Signature</div>
-    </div>
-  </div>
-</div>
-
-<!-- TIMETABLE -->
-<div class="panel" id="p-tt">
-  <div class="sec-head">🗓 Weekly Study Plan</div>
-  <div class="chap">
-    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">📅</div><div><h3>Full Week Schedule</h3><p>Morning + Evening sessions</p></div><span class="chev">▼</span></div>
-    <div class="chap-bd">
-      <div class="tt-day">Monday</div>
-      <div class="tt-slot"><b>💻 CS Theory (Ch 1–5)</b><small>6:00–7:30 AM</small></div>
-      <div class="tt-slot g"><b>📐 Maths — Trigonometry</b><small>7:00–8:30 PM</small></div>
-      <div class="tt-day">Tuesday</div>
-      <div class="tt-slot o"><b>⚡ Physics — Kinematics + Newton</b><small>6:00–7:30 AM</small></div>
-      <div class="tt-slot"><b>💻 CS — C++ Programs practice</b><small>7:30–9:00 PM</small></div>
-      <div class="tt-day">Wednesday</div>
-      <div class="tt-slot g"><b>📐 Maths — Calculus (Diff + Int)</b><small>6:00–7:30 AM</small></div>
-      <div class="tt-slot p"><b>🧪 Chemistry — Thermo + Equilibrium</b><small>7:30–9:00 PM</small></div>
-      <div class="tt-day">Thursday</div>
-      <div class="tt-slot"><b>💻 CS — OOP + Arrays + Functions</b><small>6:00–8:00 AM</small></div>
-      <div class="tt-slot g"><b>📐 Maths — Algebra + Prob</b><small>7:30–9:00 PM</small></div>
-      <div class="tt-day">Friday</div>
-      <div class="tt-slot o"><b>⚡ Physics — Gravitation + Waves</b><small>6:00–7:30 AM</small></div>
-      <div class="tt-slot"><b>📜 Tamil + 🔤 English Grammar</b><small>7:30–9:00 PM</small></div>
-      <div class="tt-day">Saturday</div>
-      <div class="tt-slot"><b>💻 CS Full Revision</b><small>9 AM–12 PM</small></div>
-      <div class="tt-slot g"><b>📐 Maths Full Revision</b><small>4–7 PM</small></div>
-      <div class="tt-day">Sunday</div>
-      <div class="tt-slot r"><b>📝 Self Test — All Subjects</b><small>10 AM–1 PM</small></div>
-      <div class="tt-slot g"><b>✅ Previous Year Papers</b><small>4–6 PM</small></div>
-    </div>
-  </div>
-</div>
-
-</div><!-- end studyApp -->
-
-<!-- SECRET DOT -->
-<button class="sdot" id="sdot"></button>
-<button class="del-bar" id="delBar" onclick="deleteSelected()">🗑 Delete Message</button>
-
-<!-- PIN SCREEN -->
-<div id="pinScr">
-  <div class="plock">🔒</div>
-  <div class="ptitle">Enter PIN</div>
-  <p style="font-size:11px;color:rgba(240,230,255,.3);margin-top:-10px">Default: 1234</p>
-  <div class="pdots">
-    <div class="pdot" id="pd1"></div><div class="pdot" id="pd2"></div>
-    <div class="pdot" id="pd3"></div><div class="pdot" id="pd4"></div>
-  </div>
-  <p class="perr" id="perr">❌ Wrong PIN!</p>
-  <div class="ppad">
-    <button class="pkey" onclick="kp('1')">1</button><button class="pkey" onclick="kp('2')">2</button><button class="pkey" onclick="kp('3')">3</button>
-    <button class="pkey" onclick="kp('4')">4</button><button class="pkey" onclick="kp('5')">5</button><button class="pkey" onclick="kp('6')">6</button>
-    <button class="pkey" onclick="kp('7')">7</button><button class="pkey" onclick="kp('8')">8</button><button class="pkey" onclick="kp('9')">9</button>
-    <button class="pkey" onclick="kp('*')">✳</button><button class="pkey" onclick="kp('0')">0</button><button class="pkey" onclick="kp('del')">⌫</button>
-  </div>
-</div>
-
-<!-- MESSENGER -->
-<div id="msg">
-  <div class="mhd">
-    <div style="display:flex;align-items:center;gap:10px">
-      <div class="mav">💕</div>
-      <div><div class="mname">My Love <span class="online"></span></div><div class="mstat">Always in my heart ✨</div></div>
-    </div>
-    <button class="backbtn" onclick="closeM()">📚 Notes</button>
-  </div>
-  <div class="db-status" id="dbStatus">
-    <div class="db-dot" id="dbDot"></div>
-    <span id="dbText">Connecting to database...</span>
-  </div>
-  <div class="msgs" id="msgs">
-    <div class="loading" id="loadingMsg">Loading messages... 💕</div>
-  </div>
-  <div class="minp-wrap">
-    <button class="ibtn rbtn" onclick="sendReel()">🎬</button>
-    <textarea class="minp" id="minp" placeholder="Type a message..." rows="1" onkeydown="hk(event)" oninput="ah(this)"></textarea>
-    <button class="ibtn sbtn" onclick="sendMsg()">➤</button>
-  </div>
-</div>
-
-<!-- Firebase SDK -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, push, onValue, remove, query, limitToLast } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-
-// ═══════════════════════════════════════
-// 🔥 YOUR FIREBASE CONFIG — from your project
-// ═══════════════════════════════════════
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "moviesda-a9268.firebaseapp.com",
-  databaseURL: "https://moviesda-a9268-default-rtdb.firebaseio.com",
-  projectId: "moviesda-a9268",
-  storageBucket: "moviesda-a9268.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const msgsRef = ref(db, 'lovemsgs');
-
-// Update DB status
-function setStatus(ok, text) {
-  document.getElementById('dbDot').className = 'db-dot' + (ok ? '' : ' err');
-  document.getElementById('dbText').textContent = text;
-}
-
-// Listen for messages in real-time
-const q = query(msgsRef, limitToLast(100));
-onValue(q, (snapshot) => {
-  const box = document.getElementById('msgs');
-  box.innerHTML = '<div class="div">Messages 💕</div>';
-  if (!snapshot.exists()) {
-    box.innerHTML += '<div class="loading">No messages yet... say hi! 💕</div>';
-    setStatus(true, '🟢 Connected — Firebase Database');
-    return;
-  }
-  setStatus(true, '🟢 Connected — Firebase Database');
-  document.getElementById('loadingMsg')?.remove();
-
-  snapshot.forEach((child) => {
-    const d = child.val();
-    const key = child.key;
-    if (d.type === 'reel') {
-      const el = document.createElement('div');
-      el.className = 'rbub';
-      el.dataset.key = key;
-      el.innerHTML = `<div class="rtop"><div class="rico2">🎬</div><div><div class="rlbl">Reel Share</div><div class="rsrc">Instagram · ${d.time}</div></div></div><div class="rcap">${d.text}</div>`;
-      addLongPress(el, key);
-      box.appendChild(el);
-    } else {
-      const el = document.createElement('div');
-      el.className = 'bub ' + (d.dir || 'out');
-      el.dataset.key = key;
-      el.innerHTML = `${d.text}<div class="bt">${d.time}</div>`;
-      addLongPress(el, key);
-      box.appendChild(el);
-    }
-  });
-  box.scrollTop = box.scrollHeight;
-}, (error) => {
-  setStatus(false, '❌ DB Error — Check API key in code');
-  console.error(error);
-});
-
-// Send message to Firebase
-window.firebaseSend = function(data) {
-  push(msgsRef, data).catch(e => {
-    setStatus(false, '❌ Send failed');
-  });
-};
-
-// Delete message from Firebase
-window.firebaseDelete = function(key) {
-  const mRef = ref(db, 'lovemsgs/' + key);
-  remove(mRef);
-};
-
-// Long press to select & delete
-let selectedKey = null;
-function addLongPress(el, key) {
-  let timer;
-  el.addEventListener('touchstart', () => {
-    timer = setTimeout(() => {
-      if (selectedKey && selectedKey !== key) {
-        document.querySelector(`[data-key="${selectedKey}"]`)?.classList.remove('selected');
-      }
-      el.classList.toggle('selected');
-      selectedKey = el.classList.contains('selected') ? key : null;
-      document.getElementById('delBar').style.display = selectedKey ? 'block' : 'none';
-    }, 600);
-  });
-  el.addEventListener('touchend', () => clearTimeout(timer));
-  el.addEventListener('touchmove', () => clearTimeout(timer));
-}
-
-window.deleteSelected = function() {
-  if (selectedKey) {
-    window.firebaseDelete(selectedKey);
-    selectedKey = null;
-    document.getElementById('delBar').style.display = 'none';
-  }
-};
-</script>
-
-<script>
-// Tab switch
-function sw(id,el){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('on'));
-  document.getElementById('p-'+id).classList.add('on');
-  el.classList.add('on');
-  window.scrollTo(0,0);
-}
-
-// Chapter accordion
-function tog(hd){
-  hd.classList.toggle('open');
-  hd.nextElementSibling.classList.toggle('open');
-}
-
-// PIN
-const MYPIN='1234'; // ← Change your PIN!
-let pin='';
-document.getElementById('sdot').onclick=()=>{
-  pin='';upd();
-  document.getElementById('perr').style.display='none';
-  document.getElementById('pinScr').style.display='flex';
-};
-function kp(k){
-  if(k==='del'){pin=pin.slice(0,-1);upd();return;}
-  if(pin.length>=4)return;
-  pin+=k;upd();
-  if(pin.length===4)setTimeout(chk,300);
-}
-function upd(){for(let i=1;i<=4;i++)document.getElementById('pd'+i).classList.toggle('on',i<=pin.length);}
-function chk(){
-  if(pin===MYPIN){
-    document.getElementById('pinScr').style.display='none';
-    document.getElementById('msg').style.display='flex';
-    setTimeout(()=>{const m=document.getElementById('msgs');m.scrollTop=m.scrollHeight;},500);
-  } else {
-    const e=document.getElementById('perr');e.style.display='block';
-    setTimeout(()=>{e.style.display='none';pin='';upd();},1200);
-  }
-}
-function closeM(){document.getElementById('msg').style.display='none';}
-
-// Messenger
-function gt(){const d=new Date(),h=d.getHours(),m=d.getMinutes(),ap=h>=12?'PM':'AM';return`${h%12||12}:${String(m).padStart(2,'0')} ${ap}`;}
-
-function sendMsg(){
-  const i=document.getElementById('minp'),t=i.value.trim();
-  if(!t)return;
-  window.firebaseSend({type:'text',text:t,dir:'out',time:gt(),ts:Date.now()});
-  i.value='';i.style.height='auto';heart();
-}
-
-function sendReel(){
-  const caps=['😂 Un kooda feel da!','🥺 Itha pathuttu un kanava...','💜 Accurate ah iruku!','😭 Un maela than!','🎵 Un kooda kaekanum!','🥰 Un kooda irukanum!'];
-  const c=caps[Math.floor(Math.random()*caps.length)];
-  window.firebaseSend({type:'reel',text:c,time:gt(),ts:Date.now()});
-}
-
-function hk(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
-function ah(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,88)+'px';}
-function heart(){
-  const e=['💗','💕','💖','✨','💜','🌸','😘'],el=document.createElement('div');
-  el.className='hf';el.textContent=e[Math.floor(Math.random()*e.length)];
-  el.style.cssText=`left:${Math.random()*60+20}%;bottom:65px;`;
-  document.body.appendChild(el);setTimeout(()=>el.remove(),1300);
-}
-</script>
-</body>
-</html>
+Sources
