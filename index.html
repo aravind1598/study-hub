@@ -1,624 +1,704 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MoviesDa 2024 - Tamil HD Movies Download</title>
-<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>11th Study Hub 📚</title>
 <style>
-:root {
-  --orange:#ff6600; --orange2:#ff4400; --yellow:#ffcc00;
-  --bg:#0a0a0a; --bg2:#111; --bg3:#1a1a1a; --border:#2a2a2a;
-  --text:#ddd; --muted:#888; --green:#00cc44;
-  --rose:#e8506a; --blush:#f9c5ce; --deep:#08000d;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --blue:#2563eb;--blue2:#1d4ed8;--blue-s:#eff6ff;
+  --green:#16a34a;--green-s:#f0fdf4;
+  --red:#dc2626;--red-s:#fff5f5;
+  --orange:#ea580c;--orange-s:#fff7ed;
+  --purple:#7c3aed;--purple-s:#f5f3ff;
+  --bg:#f1f5f9;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;
+  --sp:#0d0d1a;--sc:#161629;--spink:#ff69b4;--spurple:#9333ea;--stext:#f0e6ff;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font-size:14px;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color:var(--text);overflow-x:hidden}
 
-/* TICKER */
-.ticker{background:var(--orange2);padding:5px 0;overflow:hidden;white-space:nowrap;font-size:12px;font-weight:600;}
-.ticker-inner{display:inline-block;animation:tick 35s linear infinite;}
-@keyframes tick{0%{transform:translateX(100vw);}100%{transform:translateX(-100%);}}
+/* TOPBAR */
+.topbar{background:var(--blue);color:#fff;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 2px 16px rgba(37,99,235,.35)}
+.topbar h1{font-size:16px;font-weight:900}
+.topbar small{font-size:10px;opacity:.7;display:block}
+.badge{background:rgba(255,255,255,.2);border-radius:20px;padding:3px 10px;font-size:10px;font-weight:800}
 
-/* HEADER */
-header{background:linear-gradient(180deg,#0d0d0d,#111);border-bottom:3px solid var(--orange);padding:0 12px;}
-.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:10px 0 6px;flex-wrap:wrap;gap:8px;}
-.logo{font-family:'Teko',sans-serif;font-size:2.2rem;font-weight:700;color:var(--orange);letter-spacing:.05em;line-height:1;}
-.logo span{color:var(--yellow);}
-.srch{display:flex;gap:6px;}
-.srch input{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:6px 12px;color:var(--text);font-size:13px;font-family:'Barlow',sans-serif;outline:none;width:200px;}
-.srch input::placeholder{color:var(--muted);}
-.srch button{background:var(--orange);border:none;border-radius:4px;padding:6px 14px;color:white;font-weight:600;cursor:pointer;font-size:13px;}
-.nav-bar{display:flex;overflow-x:auto;scrollbar-width:none;}
-.nav-bar::-webkit-scrollbar{display:none;}
-.nav-item{padding:8px 14px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
-.nav-item:hover,.nav-item.active{color:var(--orange);border-bottom-color:var(--orange);}
+/* SUBJECT TABS */
+.stabs{display:flex;background:#fff;border-bottom:2px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:52px;z-index:40}
+.stabs::-webkit-scrollbar{display:none}
+.stab{padding:9px 14px;font-size:11px;font-weight:800;color:var(--muted);border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:.2s;flex-shrink:0}
+.stab.on{color:var(--blue);border-bottom-color:var(--blue)}
 
-/* AD */
-.ad{background:repeating-linear-gradient(45deg,#111 0,#111 10px,#0d0d0d 10px,#0d0d0d 20px);border:1px dashed #333;border-radius:4px;margin:10px 12px;padding:12px;text-align:center;font-size:11px;color:#555;letter-spacing:.1em;}
+/* PANELS */
+.panel{display:none;padding:12px;max-width:720px;margin:0 auto;padding-bottom:60px}
+.panel.on{display:block}
 
-/* LAYOUT */
-.main-wrap{display:grid;grid-template-columns:1fr 220px;gap:10px;padding:10px 12px;max-width:1200px;margin:0 auto;}
-@media(max-width:700px){.main-wrap{grid-template-columns:1fr;}.sidebar{display:none;}}
-.sec-head{background:linear-gradient(90deg,var(--orange) 0%,transparent 100%);padding:5px 12px 5px 10px;font-family:'Teko',sans-serif;font-size:1.15rem;font-weight:600;letter-spacing:.05em;margin-bottom:10px;border-left:4px solid var(--yellow);}
+/* CHAPTER CARD */
+.chap{background:var(--card);border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.07);border:1px solid var(--border)}
+.chap-hd{padding:12px 14px;display:flex;align-items:center;gap:11px;cursor:pointer;user-select:none}
+.chap-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.chap-hd h3{font-size:13px;font-weight:800;line-height:1.3}
+.chap-hd p{font-size:10px;color:var(--muted);margin-top:2px}
+.chev{margin-left:auto;font-size:11px;color:var(--muted);transition:.3s;flex-shrink:0}
+.chap-hd.open .chev{transform:rotate(180deg)}
+.chap-bd{display:none;padding:0 14px 14px}
+.chap-bd.open{display:block}
 
-/* MOVIE GRID */
-.movie-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:16px;}
-.movie-card{background:var(--bg3);border:1px solid var(--border);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s;}
-.movie-card:hover{transform:translateY(-3px);border-color:var(--orange);}
-.movie-thumb{width:100%;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden;}
-.movie-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,transparent 50%);}
-.qtag{position:absolute;top:5px;right:5px;background:var(--orange);color:white;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;z-index:1;letter-spacing:.05em;}
-.ntag{position:absolute;top:5px;left:5px;background:var(--green);color:white;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;z-index:1;}
-.movie-info{padding:6px 7px 8px;}
-.movie-name{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#eee;margin-bottom:3px;}
-.movie-meta{font-size:10px;color:var(--muted);}
-.movie-meta .lang{color:var(--orange);font-weight:600;}
+.topic{display:flex;gap:9px;padding:8px 0;border-bottom:1px dashed var(--border)}
+.topic:last-child{border-bottom:none}
+.tnum{width:22px;height:22px;border-radius:50%;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.tn-b{background:var(--blue-s);color:var(--blue)}
+.tn-g{background:var(--green-s);color:var(--green)}
+.tn-r{background:var(--red-s);color:var(--red)}
+.tn-o{background:var(--orange-s);color:var(--orange)}
+.tn-p{background:var(--purple-s);color:var(--purple)}
+.topic-body b{font-size:13px;font-weight:800;display:block}
+.topic-body p{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.55}
 
-/* ── VIDEO PLAYER PAGE ── */
-#player-page{display:none;}
-.back-btn{background:var(--orange2);border:none;color:white;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;margin:10px 12px 8px;display:inline-block;font-family:'Barlow',sans-serif;}
+.fbox{border-radius:0 8px 8px 0;padding:8px 11px;margin:7px 0;font-family:'Fira Code',monospace;font-size:11.5px;line-height:1.75}
+.fb-b{background:var(--blue-s);border-left:3px solid var(--blue);color:#1e3a8a}
+.fb-g{background:var(--green-s);border-left:3px solid var(--green);color:#14532d}
+.fb-r{background:var(--red-s);border-left:3px solid var(--red);color:#7f1d1d}
+.fb-o{background:var(--orange-s);border-left:3px solid var(--orange);color:#7c2d12}
+.fb-p{background:var(--purple-s);border-left:3px solid var(--purple);color:#3b0764}
 
-.player-wrap{padding:0 12px 12px;}
-.player-title{font-family:'Teko',sans-serif;font-size:1.6rem;color:var(--orange);margin-bottom:8px;letter-spacing:.05em;}
+.tag{display:inline-block;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:800;margin-top:4px}
+.tag-y{background:#fef9c3;color:#854d0e}
+.tag-r{background:#fee2e2;color:#991b1b}
 
-/* YouTube embed */
-.yt-frame-wrap{width:100%;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden;margin-bottom:10px;border:2px solid var(--border);}
-.yt-frame-wrap iframe{width:100%;height:100%;border:none;}
+.ans{background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-top:8px;font-size:12px;line-height:1.7;color:var(--text)}
+.ans b{color:var(--blue);display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
 
-/* Scene player */
-.scene-section{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:10px;}
-.scene-head{font-family:'Teko',sans-serif;font-size:1.1rem;color:var(--yellow);border-left:3px solid var(--orange);padding-left:8px;margin-bottom:10px;}
-.scene-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
-.scene-item{background:var(--bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
-.scene-item video{width:100%;max-height:300px;display:block;background:#000;}
-.scene-label{padding:5px 10px;font-size:11px;color:var(--muted);font-style:italic;}
-.no-scenes{color:var(--muted);font-size:12px;text-align:center;padding:16px;font-style:italic;}
+.sec-head{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:16px 0 8px;padding-left:2px}
 
-/* upload scenes */
-.upload-scene-label{display:flex;align-items:center;justify-content:center;gap:6px;padding:9px;background:rgba(255,102,0,.06);border:1px dashed rgba(255,102,0,.3);border-radius:8px;color:var(--orange);cursor:pointer;font-size:12px;transition:all .2s;}
-.upload-scene-label:hover{background:rgba(255,102,0,.12);border-style:solid;}
+.hero{background:linear-gradient(135deg,var(--blue),#818cf8);border-radius:16px;padding:18px;color:#fff;margin-bottom:14px}
+.hero h2{font-size:21px;font-weight:900}
+.hero p{font-size:12px;opacity:.8;margin-top:4px}
+.subj-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.subj-box{background:rgba(255,255,255,.15);border-radius:10px;padding:10px;backdrop-filter:blur(4px)}
+.subj-box .ico{font-size:22px}
+.subj-box b{font-size:12px;display:block;margin-top:4px}
+.subj-box small{font-size:10px;opacity:.7}
 
-/* download table */
-.dl-table-head{font-family:'Teko',sans-serif;font-size:1.1rem;color:var(--yellow);margin-bottom:8px;border-left:3px solid var(--orange);padding-left:8px;}
-.dl-table{width:100%;border-collapse:collapse;margin-bottom:12px;}
-.dl-table th{background:var(--orange2);color:white;padding:7px 10px;font-size:11px;text-align:left;letter-spacing:.05em;}
-.dl-table td{padding:8px 10px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle;}
-.dl-table tr:nth-child(even) td{background:rgba(255,255,255,.02);}
-.dl-table tr:hover td{background:rgba(255,102,0,.08);}
-.dl-link{display:inline-flex;align-items:center;gap:5px;background:var(--green);color:white;border:none;border-radius:4px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.05em;font-family:'Barlow',sans-serif;transition:background .2s,transform .1s;}
-.dl-link:hover{background:#00aa33;transform:scale(1.03);}
-.dl-link.secret-dl{background:linear-gradient(90deg,#e8506a,#c0396e)!important;animation:glow 2s ease-in-out infinite;}
-@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(232,80,106,.4);}50%{box-shadow:0 0 12px 4px rgba(232,80,106,.3);}}
-.size-badge{background:#222;border:1px solid #333;border-radius:3px;padding:2px 6px;font-size:10px;color:#999;}
-.warn-box{background:rgba(255,100,0,.08);border:1px solid rgba(255,100,0,.2);border-radius:4px;padding:8px 12px;font-size:11px;color:#aa7755;margin-bottom:10px;}
+.tt-day{font-weight:800;font-size:12px;color:var(--blue);margin:12px 0 6px}
+.tt-slot{background:var(--card);border-radius:8px;padding:8px 12px;margin-bottom:6px;border-left:4px solid var(--blue);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.tt-slot.g{border-color:var(--green)}.tt-slot.r{border-color:var(--red)}.tt-slot.o{border-color:var(--orange)}.tt-slot.p{border-color:var(--purple)}
+.tt-slot b{font-size:12px;display:block}
+.tt-slot small{font-size:10px;color:var(--muted)}
 
-/* SIDEBAR */
-.sidebar{display:flex;flex-direction:column;gap:10px;}
-.sidebar-card{background:var(--bg3);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
-.sidebar-head{background:var(--orange2);padding:6px 10px;font-family:'Teko',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.05em;}
-.sidebar-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;}
-.sidebar-item:last-child{border-bottom:none;}
-.sidebar-item:hover{background:rgba(255,102,0,.08);}
-.si-thumb{width:40px;height:55px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
-.si-name{font-size:11px;font-weight:600;color:#ddd;line-height:1.3;}
-.si-meta{font-size:10px;color:var(--muted);}
-.cat-grid{display:flex;flex-wrap:wrap;gap:5px;padding:8px;}
-.cat-btn{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:3px 8px;font-size:11px;color:var(--muted);cursor:pointer;transition:all .15s;}
-.cat-btn:hover{border-color:var(--orange);color:var(--orange);}
+/* SECRET DOT — invisible tiny dot */
+.sdot{position:fixed;bottom:16px;right:16px;width:9px;height:9px;border-radius:50%;background:rgba(130,130,160,.18);border:none;cursor:pointer;z-index:200}
 
-/* ── PIN ── */
-.pin-overlay{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;}
-.pin-overlay.open{display:flex;}
-.pin-box{background:radial-gradient(ellipse at top,#150020 0%,#080010 100%);border:1px solid rgba(232,80,106,.3);border-radius:20px;padding:2.2rem 1.8rem;width:min(340px,90vw);text-align:center;animation:popIn .3s ease;}
-@keyframes popIn{from{opacity:0;transform:scale(.88) translateY(16px);}to{opacity:1;transform:scale(1) translateY(0);}}
-.pin-icon{font-size:2.8rem;margin-bottom:.8rem;animation:flt 3s ease-in-out infinite;}
-@keyframes flt{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
-.pin-title{font-family:'Teko',sans-serif;font-size:1.8rem;letter-spacing:.08em;color:var(--blush);margin-bottom:.2rem;}
-.pin-sub{font-size:11px;color:#604050;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.8rem;}
-.pdots{display:flex;gap:12px;justify-content:center;margin-bottom:1.8rem;}
-.pdot{width:13px;height:13px;border-radius:50%;border:2px solid var(--rose);transition:all .2s;}
-.pdot.on{background:var(--rose);box-shadow:0 0 10px var(--rose);}
-.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.nb{background:rgba(255,255,255,.04);border:1px solid rgba(232,80,106,.18);border-radius:10px;padding:12px;font-size:1.2rem;font-family:'Teko',sans-serif;color:var(--text);cursor:pointer;transition:all .15s;}
-.nb:hover,.nb:active{background:rgba(232,80,106,.18);border-color:var(--rose);transform:scale(.93);}
-.nb.del{color:var(--rose);font-size:.85rem;font-family:'Barlow',sans-serif;}
-.perr{margin-top:12px;color:var(--rose);font-size:12px;opacity:0;transition:opacity .3s;min-height:18px;}
-.perr.show{opacity:1;}
-.pcancel{margin-top:12px;background:none;border:none;color:#604050;font-size:11px;cursor:pointer;font-family:'Barlow',sans-serif;}
-.pcancel:hover{color:var(--muted);}
-@keyframes shake{0%,100%{transform:translateX(0);}20%,60%{transform:translateX(-8px);}40%,80%{transform:translateX(8px);}}
-.shake{animation:shake .4s ease;}
+/* PIN */
+#pinScr{display:none;position:fixed;inset:0;z-index:800;background:var(--sp);flex-direction:column;align-items:center;justify-content:center;gap:18px}
+.plock{font-size:38px;animation:bob .7s ease-in-out infinite alternate}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-8px)}}
+.ptitle{color:var(--stext);font-size:20px;font-weight:900}
+.pdots{display:flex;gap:12px}
+.pdot{width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,105,180,.35);background:transparent;transition:.2s}
+.pdot.on{background:var(--spink);border-color:var(--spink);box-shadow:0 0 8px var(--spink)}
+.perr{color:#f87171;font-size:12px;display:none}
+.ppad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:210px}
+.pkey{height:56px;border-radius:50%;background:var(--sc);border:1px solid rgba(255,105,180,.15);color:var(--stext);font-size:19px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center}
+.pkey:active{transform:scale(.88);background:rgba(255,105,180,.25)}
 
-/* ── LOVE PANEL ── */
-.love-panel{position:fixed;inset:0;z-index:1000;background:var(--deep);display:none;flex-direction:column;}
-.love-panel.open{display:flex;}
-.lp-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 15% 0%,rgba(232,80,106,.1) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 85% 100%,rgba(80,20,50,.15) 0%,transparent 60%);}
-.lp-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid rgba(232,80,106,.15);background:rgba(8,0,13,.85);backdrop-filter:blur(8px);position:relative;z-index:2;flex-shrink:0;}
-.lp-logo{font-family:'Teko',sans-serif;font-size:1.4rem;color:var(--rose);letter-spacing:.08em;}
-.lp-lock{background:none;border:1px solid rgba(232,80,106,.25);border-radius:6px;padding:4px 10px;color:#604050;cursor:pointer;font-size:11px;font-family:'Barlow',sans-serif;transition:all .2s;}
-.lp-lock:hover{color:var(--rose);border-color:var(--rose);}
-.lp-tabs{display:flex;border-bottom:1px solid rgba(232,80,106,.12);background:rgba(8,0,13,.7);flex-shrink:0;position:relative;z-index:2;}
-.lpt{flex:1;padding:9px;text-align:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:#503040;border-bottom:2px solid transparent;transition:all .2s;}
-.lpt.active{color:var(--rose);border-bottom-color:var(--rose);}
-#lp-chat,#lp-reels{display:none;flex:1;flex-direction:column;overflow:hidden;position:relative;z-index:1;}
-#lp-chat.show,#lp-reels.show{display:flex;}
-.msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:6px;}
-.msgs::-webkit-scrollbar{width:2px;}
-.msgs::-webkit-scrollbar-thumb{background:rgba(232,80,106,.2);}
-.msg-sep{text-align:center;font-size:10px;color:#503040;padding:4px 0;}
-.msg{max-width:75%;padding:8px 11px;border-radius:14px;font-size:13px;line-height:1.5;animation:mi .2s ease;}
-@keyframes mi{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
-.msg.sent{align-self:flex-end;background:linear-gradient(135deg,#c0396e,var(--rose));color:#fff;border-bottom-right-radius:3px;}
-.msg.recv{align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(232,80,106,.15);color:#d8b8c4;border-bottom-left-radius:3px;}
-.mt{font-size:9px;opacity:.45;display:block;margin-top:3px;text-align:right;}
-.msg.recv .mt{text-align:left;}
-.chat-row{padding:8px 12px;border-top:1px solid rgba(232,80,106,.1);background:rgba(8,0,13,.7);display:flex;gap:8px;align-items:flex-end;flex-shrink:0;}
-.cinp{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(232,80,106,.18);border-radius:16px;padding:8px 12px;color:#f0d8e0;font-size:13px;font-family:'Barlow',sans-serif;resize:none;outline:none;max-height:80px;transition:border-color .2s;}
-.cinp:focus{border-color:var(--rose);}
-.cinp::placeholder{color:#503040;}
-.csend{width:36px;height:36px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--rose),#c0396e);border:none;cursor:pointer;color:white;font-size:13px;display:flex;align-items:center;justify-content:center;transition:transform .15s,box-shadow .15s;}
-.csend:hover{transform:scale(1.08);box-shadow:0 0 12px rgba(232,80,106,.5);}
-#lp-reels{overflow-y:auto;}
-.reel-feed{display:flex;flex-direction:column;}
-.reel-item{border-bottom:1px solid rgba(232,80,106,.08);}
-.reel-item img,.reel-item video{width:100%;max-height:60vh;object-fit:contain;display:block;background:#050008;}
-.reel-cap{padding:6px 12px;font-size:12px;color:#b090a0;font-style:italic;}
-.reel-ts{padding:0 12px 8px;font-size:10px;color:#503040;}
-.reels-mt{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem;text-align:center;color:#503040;}
-.reels-mt .bi{font-size:2.5rem;margin-bottom:10px;}
-.up-zone{padding:8px 12px;border-top:1px solid rgba(232,80,106,.1);background:rgba(8,0,13,.7);flex-shrink:0;}
-.up-label{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:9px;background:rgba(232,80,106,.06);border:1px dashed rgba(232,80,106,.22);border-radius:10px;color:var(--rose);cursor:pointer;font-size:12px;transition:all .2s;}
-.up-label:hover{background:rgba(232,80,106,.12);border-style:solid;}
-.pend-wrap{padding:8px 12px;border-top:1px solid rgba(232,80,106,.1);background:rgba(8,0,13,.7);flex-shrink:0;}
-.pv{max-width:100%;max-height:160px;border-radius:8px;margin-bottom:6px;}
-.cap-row{display:flex;gap:6px;}
-.cap-in{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(232,80,106,.18);border-radius:8px;padding:7px 10px;color:#f0d8e0;font-size:12px;font-family:'Barlow',sans-serif;outline:none;}
-.cap-in::placeholder{color:#503040;}
-.pbtn{padding:7px 14px;border-radius:8px;background:var(--rose);border:none;color:white;font-size:12px;cursor:pointer;font-family:'Barlow',sans-serif;}
-.hrt{position:fixed;pointer-events:none;z-index:9999;font-size:1rem;animation:hr 1.4s ease forwards;}
-@keyframes hr{0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-65px) scale(.3);}}
-.g1{background:linear-gradient(135deg,#200a00,#3d1a00);}
-.g2{background:linear-gradient(135deg,#001a2a,#0a001a);}
-.g3{background:linear-gradient(135deg,#1a1a00,#1a0010);}
-.g4{background:linear-gradient(135deg,#0a001a,#001a10);}
-.g5{background:linear-gradient(135deg,#1a000a,#001a1a);}
-.g6{background:linear-gradient(135deg,#1a0a00,#000a1a);}
-.g7{background:linear-gradient(135deg,#0d001a,#1a0a00);}
-.g8{background:linear-gradient(135deg,#001a0a,#1a001a);}
+/* MESSENGER */
+#msg{display:none;position:fixed;inset:0;z-index:900;background:var(--sp);flex-direction:column}
+#msg::before{content:'';position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff 0%,transparent 100%),radial-gradient(1px 1px at 78% 9%,#fff 0%,transparent 100%),radial-gradient(1px 1px at 44% 52%,#fff 0%,transparent 100%),radial-gradient(2px 2px at 88% 72%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 22% 85%,#fff 0%,transparent 100%),radial-gradient(1px 1px at 63% 33%,rgba(255,255,255,.6) 0%,transparent 100%);pointer-events:none;opacity:.4}
+
+.mhd{background:rgba(22,22,41,.96);backdrop-filter:blur(14px);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,105,180,.18);position:relative;z-index:1}
+.mav{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--spink),var(--spurple));display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 10px rgba(255,105,180,.3)}
+.mname{font-size:14px;font-weight:800;color:var(--stext)}
+.mstat{font-size:10px;color:rgba(240,230,255,.38);margin-top:1px}
+.online{display:inline-block;width:6px;height:6px;background:#4ade80;border-radius:50%;margin-left:5px;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.backbtn{background:rgba(255,255,255,.08);border:none;border-radius:20px;color:var(--stext);font-family:'Nunito',sans-serif;padding:5px 12px;font-size:11px;cursor:pointer}
+
+/* DB status */
+.db-status{background:rgba(22,22,41,.9);border-bottom:1px solid rgba(255,105,180,.1);padding:5px 14px;font-size:10px;color:rgba(240,230,255,.4);display:flex;align-items:center;gap:6px;position:relative;z-index:1}
+.db-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:blink 2s infinite}
+.db-dot.err{background:#f87171;animation:none}
+
+.msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:7px;position:relative;z-index:1}
+.msgs::-webkit-scrollbar{width:3px}
+.msgs::-webkit-scrollbar-thumb{background:rgba(255,105,180,.2);border-radius:2px}
+
+.bub{max-width:74%;padding:9px 13px;border-radius:18px;font-size:13px;line-height:1.5;animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+.bub.out{align-self:flex-end;background:linear-gradient(135deg,#e91e8c,#9333ea);color:#fff;border-bottom-right-radius:4px;box-shadow:0 3px 12px rgba(233,30,140,.3)}
+.bub.in{align-self:flex-start;background:var(--sc);color:var(--stext);border:1px solid rgba(255,105,180,.13);border-bottom-left-radius:4px}
+.bt{font-size:10px;opacity:.45;margin-top:3px}
+.bub.out .bt{text-align:right}
+
+.rbub{align-self:flex-end;max-width:74%;background:var(--sc);border:1px solid rgba(255,105,180,.2);border-radius:14px;overflow:hidden;animation:pop .22s ease}
+.rtop{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,105,180,.05)}
+.rico2{width:40px;height:40px;border-radius:9px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);display:flex;align-items:center;justify-content:center;font-size:18px}
+.rlbl{font-size:12px;font-weight:800;color:var(--stext)}
+.rsrc{font-size:10px;color:rgba(240,230,255,.38);margin-top:2px}
+.rcap{padding:6px 12px 10px;font-size:12px;color:rgba(240,230,255,.55)}
+
+.div{text-align:center;font-size:10px;color:rgba(240,230,255,.22);margin:4px 0;position:relative}
+.div::before,.div::after{content:'';position:absolute;top:50%;width:27%;height:1px;background:rgba(255,105,180,.1)}
+.div::before{left:4%}.div::after{right:4%}
+
+/* typing indicator */
+.typing{align-self:flex-start;padding:8px 13px;background:var(--sc);border:1px solid rgba(255,105,180,.13);border-radius:18px;border-bottom-left-radius:4px;display:none}
+.typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(240,230,255,.4);animation:td 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+
+.minp-wrap{padding:9px 12px;background:rgba(13,13,26,.97);border-top:1px solid rgba(255,105,180,.1);display:flex;gap:7px;align-items:flex-end;position:relative;z-index:1}
+.minp{flex:1;background:var(--sc);border:1px solid rgba(255,105,180,.18);border-radius:20px;padding:9px 14px;color:var(--stext);font-family:'Nunito',sans-serif;font-size:13px;outline:none;resize:none;max-height:88px;min-height:38px;line-height:1.4}
+.minp::placeholder{color:rgba(240,230,255,.22)}
+.minp:focus{border-color:rgba(255,105,180,.38)}
+.ibtn{width:37px;height:37px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:.15s;flex-shrink:0}
+.ibtn:active{transform:scale(.88)}
+.sbtn{background:linear-gradient(135deg,#e91e8c,#9333ea);color:#fff;box-shadow:0 3px 10px rgba(233,30,140,.3)}
+.rbtn{background:var(--sc);border:1px solid rgba(255,105,180,.18);color:var(--stext)}
+
+/* Delete msg on long press */
+.bub.selected,.rbub.selected{opacity:.6;outline:2px solid var(--spink)}
+.del-bar{display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(220,38,38,.9);color:#fff;border:none;border-radius:20px;padding:8px 20px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;z-index:999;backdrop-filter:blur(8px)}
+
+.hf{position:fixed;pointer-events:none;z-index:9999;font-size:17px;animation:rise 1.3s ease forwards}
+@keyframes rise{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-65px) scale(.4)}}
+
+/* Loading */
+.loading{text-align:center;color:rgba(240,230,255,.3);font-size:12px;padding:20px}
 </style>
 </head>
 <body>
 
-<div class="ticker"><span class="ticker-inner">🎬 LATEST: Amaran (2024) Tamil 4K HDRip | Leo Director's Cut | Jailer Extended | KGF Chapter 3 Teaser | Kalki 2898 AD BluRay | Vikram Vedha Remastered &nbsp;&nbsp;&nbsp; 🔥 NEW: 1080p Movies Added Daily | Fast Download Links | No Ads | Tamil Telugu Hindi English &nbsp;&nbsp;&nbsp;</span></div>
+<!-- ██ STUDY APP ██ -->
+<div id="studyApp">
+<div class="topbar">
+  <div><h1>📖 11th Study Hub</h1><small>CS · Maths · Physics · Chemistry · Tamil · English</small></div>
+  <div class="badge">CS Maths Group</div>
+</div>
 
-<header>
-  <div class="hdr-top">
-    <div class="logo">Movies<span>Da</span></div>
-    <div class="srch">
-      <input type="text" placeholder="Search movies...">
-      <button>🔍 Search</button>
+<div class="stabs">
+  <div class="stab on" onclick="sw('home',this)">🏠 Home</div>
+  <div class="stab" onclick="sw('cs',this)">💻 CS</div>
+  <div class="stab" onclick="sw('maths',this)">📐 Maths</div>
+  <div class="stab" onclick="sw('physics',this)">⚡ Physics</div>
+  <div class="stab" onclick="sw('chem',this)">🧪 Chem</div>
+  <div class="stab" onclick="sw('tamil',this)">📜 Tamil</div>
+  <div class="stab" onclick="sw('english',this)">🔤 English</div>
+  <div class="stab" onclick="sw('tt',this)">🗓 Timetable</div>
+</div>
+
+<!-- HOME -->
+<div class="panel on" id="p-home">
+  <div class="hero">
+    <h2>11th Standard 🎓</h2>
+    <p>Tamil Nadu State Board — CS + Maths Group</p>
+    <div class="subj-grid">
+      <div class="subj-box"><div class="ico">💻</div><b>Computer Science</b><small>12 Chapters</small></div>
+      <div class="subj-box"><div class="ico">📐</div><b>Mathematics</b><small>11 Chapters</small></div>
+      <div class="subj-box"><div class="ico">⚡</div><b>Physics</b><small>10 Chapters</small></div>
+      <div class="subj-box"><div class="ico">🧪</div><b>Chemistry</b><small>14 Chapters</small></div>
+      <div class="subj-box"><div class="ico">📜</div><b>Tamil</b><small>Prose + Poetry</small></div>
+      <div class="subj-box"><div class="ico">🔤</div><b>English</b><small>Prose + Grammar</small></div>
     </div>
   </div>
-  <div class="nav-bar">
-    <div class="nav-item active">Home</div>
-    <div class="nav-item">Tamil</div>
-    <div class="nav-item">Telugu</div>
-    <div class="nav-item">Hindi</div>
-    <div class="nav-item">Malayalam</div>
-    <div class="nav-item">English</div>
-    <div class="nav-item">Web Series</div>
-    <div class="nav-item">Dubbed</div>
-  </div>
-</header>
-
-<div class="ad">📢 ADVERTISEMENT — Download MoviesDa App for Faster Downloads</div>
-
-<!-- HOME PAGE -->
-<div id="home-page">
-  <div class="main-wrap">
-    <div>
-      <div class="sec-head">🔥 Latest Tamil Movies 2024</div>
-      <div class="movie-grid" id="tamil-grid"></div>
-      <div class="sec-head">⭐ Telugu HD Movies</div>
-      <div class="movie-grid" id="telugu-grid"></div>
-      <div class="sec-head">🎭 Hindi Dubbed Collection</div>
-      <div class="movie-grid" id="hindi-grid"></div>
-    </div>
-    <div class="sidebar">
-      <div class="sidebar-card">
-        <div class="sidebar-head">🔥 Trending Today</div>
-        <div id="trend-side"></div>
-      </div>
-      <div class="sidebar-card">
-        <div class="sidebar-head">📂 Categories</div>
-        <div class="cat-grid">
-          <div class="cat-btn">Action</div><div class="cat-btn">Romance</div>
-          <div class="cat-btn">Comedy</div><div class="cat-btn">Thriller</div>
-          <div class="cat-btn">Drama</div><div class="cat-btn">4K</div>
-          <div class="cat-btn">1080p</div><div class="cat-btn">720p</div>
-        </div>
-      </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">⭐</div><div><h3>Exam Mark Weightage — TN Board</h3><p>150 marks pattern</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-b">1 Mark  (MCQ)    — 15 Qs = 15 Marks<br>2 Mark  (Short)  —  6 Qs = 12 Marks<br>3 Mark  (Brief)  —  9 Qs = 27 Marks<br>5 Mark  (Para)   —  5 Qs = 25 Marks<br>10 Mark (Essay)  —  3 Qs = 30 Marks<br>Practical / Record — 41 Marks (CS)<br>─────────────────<br>Total Theory = 90 Marks (CS) / 150 Marks (Maths)</div>
     </div>
   </div>
 </div>
 
-<!-- PLAYER PAGE -->
-<div id="player-page">
-  <button class="back-btn" onclick="goHome()">← Back to Home</button>
-  <div class="player-wrap">
-    <div class="main-wrap" style="padding:0;">
-      <div>
-        <div class="player-title" id="player-title"></div>
-
-        <!-- YouTube Section -->
-        <div class="scene-section" style="margin-bottom:10px;">
-          <div class="scene-head">▶ Watch on YouTube</div>
-          <div class="yt-frame-wrap" id="yt-wrap">
-            <iframe id="yt-frame" allowfullscreen allow="autoplay; encrypted-media"></iframe>
-          </div>
-          <!-- Edit YT link -->
-          <div style="display:flex;gap:6px;margin-top:8px;">
-            <input id="yt-input" type="text" placeholder="Paste YouTube link or video ID here..."
-              style="flex:1;background:#111;border:1px solid #333;border-radius:6px;padding:7px 10px;color:#ddd;font-size:12px;font-family:'Barlow',sans-serif;outline:none;">
-            <button onclick="setYT()" style="background:var(--orange);border:none;border-radius:6px;padding:7px 14px;color:white;font-size:12px;cursor:pointer;font-family:'Barlow',sans-serif;font-weight:600;">Set Link</button>
-          </div>
-          <div style="font-size:10px;color:#555;margin-top:5px;">Paste full YouTube URL or just the video ID (e.g. dQw4w9WgXcQ)</div>
-        </div>
-
-        <!-- Scenes Section -->
-        <div class="scene-section">
-          <div class="scene-head">🎬 Movie Scenes / Clips</div>
-          <div class="scene-list" id="scene-list">
-            <div class="no-scenes" id="no-scenes-msg">No scenes uploaded yet. Upload below 👇</div>
-          </div>
-          <label class="upload-scene-label">
-            📎 Upload Scene / Clip (Video)
-            <input type="file" accept="video/*" multiple style="display:none" onchange="uploadScene(event)">
-          </label>
-        </div>
-
-        <!-- Download table -->
-        <div style="margin-top:10px;">
-          <div class="dl-table-head">📥 Download Links</div>
-          <table class="dl-table" id="dl-table"></table>
-        </div>
-        <div class="warn-box">⚠️ Use VPN for safe downloading. We are not responsible for misuse of links.</div>
-      </div>
-
-      <div class="sidebar">
-        <div class="sidebar-card">
-          <div class="sidebar-head">📽️ Related Movies</div>
-          <div id="rel-side"></div>
-        </div>
-      </div>
+<!-- CS -->
+<div class="panel" id="p-cs">
+  <div class="sec-head">💻 Computer Science — All Chapters</div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">🖥️</div><div><h3>Ch 1 — Introduction to Computers</h3><p>History, Generations, I/O, Memory</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="topic"><div class="tnum tn-b">1</div><div class="topic-body"><b>Computer Generations</b><p>1st: Vacuum Tubes | 2nd: Transistors | 3rd: IC | 4th: VLSI/Microprocessor | 5th: AI/ULSI</p><span class="tag tag-y">⭐ 2 Mark</span></div></div>
+      <div class="ans"><b>Q: Define Computer</b>A computer is an electronic device that accepts data (input), processes it using a program, produces results (output), and can store data for future use.</div>
+      <div class="topic"><div class="tnum tn-b">2</div><div class="topic-body"><b>Input Devices</b><p>Keyboard, Mouse, Scanner, Joystick, Touchscreen, Barcode reader, OMR, OCR, MICR, Webcam, Mic</p><span class="tag tag-y">⭐ 5 Mark</span></div></div>
+      <div class="topic"><div class="tnum tn-b">3</div><div class="topic-body"><b>Output Devices</b><p>Monitor (CRT/LCD/LED), Printer (Dot matrix / Inkjet / Laser), Plotter, Speaker, Projector</p></div></div>
+      <div class="topic"><div class="tnum tn-b">4</div><div class="topic-body"><b>Memory Units</b></div></div>
+      <div class="fbox fb-b">Bit → Byte → KB(1024B) → MB(1024KB) → GB(1024MB) → TB(1024GB) → PB(1024TB)</div>
+      <div class="ans"><b>Q: RAM vs ROM</b>RAM – Volatile, Read & Write, stores running programs, lost on power off.<br>ROM – Non-volatile, Read Only, stores BIOS/boot instructions, permanent.</div>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">🔢</div><div><h3>Ch 2 — Number Systems</h3><p>Binary, Octal, Hex, Conversions, Complement</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-b">Decimal→Binary: Divide by 2, remainders bottom-up<br>Example: 13 → 1101₂ (13÷2=6R1, 6÷2=3R0, 3÷2=1R1, 1÷2=0R1)<br><br>Binary→Octal: Group 3 bits from right<br>Binary→Hex: Group 4 bits from right<br>Hex digits: A=10,B=11,C=12,D=13,E=14,F=15<br><br>1's Complement: Flip all bits (0→1, 1→0)<br>2's Complement: 1's complement + 1<br><br>Binary Addition: 0+0=0, 0+1=1, 1+1=10(carry)</div>
+      <div class="ans"><b>Q: Convert 45 to Binary, Octal, Hex</b>45 ÷ 2 repeatedly → Binary = 101101₂<br>101 101 → Octal = 55₈<br>0010 1101 → Hex = 2D₁₆</div>
+      <span class="tag tag-r">⭐ 5 Mark — always comes</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">⚡</div><div><h3>Ch 3 — Boolean Algebra & Logic Gates</h3><p>Gates, Truth Tables, Laws, De Morgan</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="topic"><div class="tnum tn-b">1</div><div class="topic-body"><b>Basic Gates: AND, OR, NOT</b><p>AND: output=1 only when ALL inputs=1<br>OR: output=1 when ANY input=1<br>NOT: Inverts — 0→1, 1→0</p><span class="tag tag-r">⭐ Must draw diagrams</span></div></div>
+      <div class="topic"><div class="tnum tn-b">2</div><div class="topic-body"><b>Universal Gates: NAND, NOR</b><p>NAND = NOT+AND | NOR = NOT+OR<br>Can implement any gate → called Universal</p><span class="tag tag-r">⭐ 5 Mark</span></div></div>
+      <div class="fbox fb-b">Boolean Laws:<br>A+0=A | A·1=A | A+1=1 | A·0=0<br>A+A=A | A·A=A | A+A'=1 | A·A'=0<br>De Morgan: (A·B)'=A'+B' | (A+B)'=A'·B'<br>Complement law: (A')'=A</div>
+      <div class="ans"><b>Q: Prove De Morgan's (A·B)'=A'+B'</b>A=0,B=0: (0·0)'=1, 0'+0'=1 ✓<br>A=0,B=1: (0·1)'=1, 0'+1'=1 ✓<br>A=1,B=0: (1·0)'=1, 1'+0'=1 ✓<br>A=1,B=1: (1·1)'=0, 1'+1'=0 ✓ → Proved!</div>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">🖱️</div><div><h3>Ch 4 — Operating System</h3><p>Types, Functions, Memory Mgmt</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="topic"><div class="tnum tn-b">1</div><div class="topic-body"><b>Functions of OS</b><p>1. Process Management  2. Memory Management  3. File Management  4. Device Management  5. Security  6. User Interface</p><span class="tag tag-r">⭐ 5 Mark Essay</span></div></div>
+      <div class="topic"><div class="tnum tn-b">2</div><div class="topic-body"><b>Types of OS</b><p>Batch, Time-sharing, Real-time, Distributed, Network, Mobile, Embedded</p></div></div>
+      <div class="ans"><b>Q: What is Multiprogramming?</b>Multiple programs reside in memory simultaneously. When one program waits for I/O, CPU executes another. Increases CPU utilization.</div>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">🌐</div><div><h3>Ch 5 — Networking & Internet</h3><p>LAN/WAN, Protocols, Devices</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-b">Network Types:<br>PAN – Personal (Bluetooth, few meters)<br>LAN – Local (building/campus)<br>MAN – Metropolitan (city)<br>WAN – Wide (global, e.g. Internet)<br><br>Devices: Hub(broadcast all) | Switch(specific) | Router(connects networks) | Modem(analog↔digital)<br><br>Protocols:<br>HTTP/HTTPS – Web | FTP – Files | SMTP – Email send<br>POP3/IMAP – Email receive | TCP/IP – Internet<br>DNS – Domain→IP | IP: IPv4(32bit) IPv6(128bit)</div>
+      <span class="tag tag-y">⭐ 5 Mark</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">⌨️</div><div><h3>Ch 7–9 — C++ Programming</h3><p>Data types, Control structures, Programs</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-b">Data Types: int(4B) float(4B) double(8B) char(1B) bool string<br><br>Control: if | if-else | switch | for | while | do-while<br><br>Operators: Arithmetic(+,-,*,/,%) | Relational(==,!=,&lt;,&gt;)<br>Logical(&amp;&amp;,||,!) | Assignment(=,+=,-=) | Increment(++,--)</div>
+      <div class="ans"><b>Program: Prime Number Check</b>#include&lt;iostream&gt;<br>using namespace std;<br>int main(){<br>  int n,f=1; cin&gt;&gt;n;<br>  for(int i=2;i&lt;=n/2;i++)<br>    if(n%i==0){f=0;break;}<br>  cout&lt;&lt;(f?"Prime":"Not Prime");<br>}</div>
+      <div class="ans"><b>Program: Fibonacci Series</b>int a=0,b=1,c;<br>cout&lt;&lt;a&lt;&lt;" "&lt;&lt;b&lt;&lt;" ";<br>for(int i=2;i&lt;n;i++){<br>  c=a+b; cout&lt;&lt;c&lt;&lt;" ";<br>  a=b; b=c;<br>}</div>
+      <span class="tag tag-r">⭐ 10 Mark programs</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">📋</div><div><h3>Ch 10 — Arrays & Strings</h3><p>1D/2D Arrays, String functions, Sorting</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-b">Array: int a[5]={10,20,30,40,50};<br>Access: a[0] to a[4]<br>2D: int mat[3][3]; → mat[row][col]<br><br>String functions (cstring):<br>strlen(s)  – length<br>strcpy(d,s) – copy<br>strcat(s1,s2) – concatenate<br>strcmp(s1,s2) – compare (0=equal)<br>strupr(s) – uppercase | strlwr(s) – lowercase</div>
+      <div class="ans"><b>Program: Bubble Sort</b>for(i=0;i&lt;n-1;i++)<br>  for(j=0;j&lt;n-i-1;j++)<br>    if(a[j]&gt;a[j+1])<br>      swap(a[j],a[j+1]);</div>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">🏗️</div><div><h3>Ch 11–12 — Functions & OOP</h3><p>Functions, Class, Inheritance, Polymorphism</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-b">Call by Value: copy passed, original safe<br>Call by Reference: address passed, original changes<br>Default arguments: void show(int x=10)<br>Function overloading: same name, different params<br><br>OOP Pillars:<br>Encapsulation – data hiding (private/public)<br>Abstraction – hide complexity<br>Inheritance – reuse base class<br>Polymorphism – many forms (overloading/overriding)</div>
+      <div class="ans"><b>Class Example</b>class Student{<br>  private: int roll; string name;<br>  public:<br>    void set(int r,string n){roll=r;name=n;}<br>    void show(){cout&lt;&lt;roll&lt;&lt;" "&lt;&lt;name;}<br>};<br>int main(){<br>  Student s; s.set(1,"Anbu"); s.show();<br>}</div>
+      <div class="topic"><div class="tnum tn-b">⭐</div><div class="topic-body"><b>Types of Inheritance</b><p>Single | Multiple | Multilevel | Hierarchical | Hybrid<br>Syntax: class Child : public Parent { };</p><span class="tag tag-r">⭐ 5–10 Mark</span></div></div>
     </div>
   </div>
 </div>
 
-<!-- PIN -->
-<div class="pin-overlay" id="pin-ov">
-  <div class="pin-box" id="pin-bx">
-    <div class="pin-icon">🔐</div>
-    <div class="pin-title">SECRET LINK</div>
-    <div class="pin-sub">Enter your private code</div>
-    <div class="pdots">
-      <div class="pdot" id="d0"></div><div class="pdot" id="d1"></div>
-      <div class="pdot" id="d2"></div><div class="pdot" id="d3"></div>
+<!-- MATHS -->
+<div class="panel" id="p-maths">
+  <div class="sec-head">📐 Mathematics — All Units</div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">🔢</div><div><h3>Ch 1 — Sets, Relations & Functions</h3><p>Set operations, Types of functions</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-g">n(A∪B) = n(A)+n(B)-n(A∩B)<br>n(A∪B∪C) = n(A)+n(B)+n(C)-n(A∩B)-n(B∩C)-n(A∩C)+n(A∩B∩C)<br>De Morgan: (A∪B)'=A'∩B' | (A∩B)'=A'∪B'<br>Power set: n(P(A))=2ⁿ where n=n(A)</div>
+      <div class="ans"><b>Q: 40 students, 25 cricket, 20 football, 10 both. Find neither.</b>n(C∪F)=25+20-10=35. Neither=40-35=5</div>
+      <div class="topic"><div class="tnum tn-g">★</div><div class="topic-body"><b>Types of Functions</b><p>One-one (Injective): f(a)=f(b)⟹a=b<br>Onto (Surjective): range=codomain<br>Bijective: one-one + onto (inverse exists)</p><span class="tag tag-r">⭐ 10 Mark</span></div></div>
     </div>
-    <div class="numpad">
-      <button class="nb" onclick="pp('1')">1</button><button class="nb" onclick="pp('2')">2</button><button class="nb" onclick="pp('3')">3</button>
-      <button class="nb" onclick="pp('4')">4</button><button class="nb" onclick="pp('5')">5</button><button class="nb" onclick="pp('6')">6</button>
-      <button class="nb" onclick="pp('7')">7</button><button class="nb" onclick="pp('8')">8</button><button class="nb" onclick="pp('9')">9</button>
-      <button class="nb" onclick="pp('*')">✦</button><button class="nb" onclick="pp('0')">0</button><button class="nb del" onclick="pd()">⌫</button>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">➕</div><div><h3>Ch 2 — Basic Algebra</h3><p>Quadratic, Logarithm, Partial Fractions</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-g">Quadratic: ax²+bx+c=0<br>x = [-b ± √(b²-4ac)] / 2a<br>α+β = -b/a | αβ = c/a<br>D=b²-4ac: &gt;0 real distinct | =0 equal | &lt;0 complex<br><br>Logarithm:<br>log(mn)=logm+logn | log(m/n)=logm-logn<br>log(mⁿ)=n·logm | log_b(a)=log(a)/log(b)<br>log_a(a)=1 | log_a(1)=0<br><br>Partial Fractions types:<br>Linear distinct: A/(x-a)+B/(x-b)<br>Repeated: A/(x-a)+B/(x-a)²<br>Quadratic: (Ax+B)/(x²+bx+c)</div>
+      <div class="ans"><b>Q: Solve x²-5x+6=0</b>x=[5±√(25-24)]/2=[5±1]/2 → x=3 or x=2<br>α+β=5=5/1✓  αβ=6=6/1✓</div>
     </div>
-    <div class="perr" id="perr">Wrong code 💔</div>
-    <button class="pcancel" onclick="closePin()">✕ Cancel</button>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">📐</div><div><h3>Ch 3 — Trigonometry</h3><p>Identities, Compound, Multiple angles, Inverse</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-g">Fundamental:<br>sin²θ+cos²θ=1 | 1+tan²θ=sec²θ | 1+cot²θ=cosec²θ<br><br>Compound Angles:<br>sin(A±B)=sinAcosB±cosAsinB<br>cos(A±B)=cosAcosB∓sinAsinB<br>tan(A+B)=(tanA+tanB)/(1-tanAtanB)<br><br>Double Angle:<br>sin2A=2sinAcosA<br>cos2A=cos²A-sin²A=1-2sin²A=2cos²A-1<br>tan2A=2tanA/(1-tan²A)<br><br>Triple Angle:<br>sin3A=3sinA-4sin³A<br>cos3A=4cos³A-3cosA<br><br>Inverse:<br>sin⁻¹x+cos⁻¹x=π/2<br>tan⁻¹x+tan⁻¹y=tan⁻¹[(x+y)/(1-xy)] [xy&lt;1]</div>
+      <span class="tag tag-r">⭐ Very Important — Memorize all!</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">📊</div><div><h3>Ch 4 — Combinatorics & Probability</h3><p>Permutation, Combination, Binomial, Probability</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-g">nPr = n!/(n-r)!  [arrangement matters]<br>nCr = n!/(r!(n-r)!)  [selection only]<br>nCr = nC(n-r) | nCr+nC(r-1)=(n+1)Cr<br><br>Binomial Theorem:<br>(a+b)ⁿ = Σ nCr·aⁿ⁻ʳ·bʳ<br>T(r+1) = nCr·aⁿ⁻ʳ·bʳ  ← General Term<br>Middle term: n even→T(n/2+1) | n odd→T((n+1)/2)&T((n+3)/2)<br><br>Probability:<br>P(A)=n(A)/n(S) | 0≤P(A)≤1 | P(A')=1-P(A)<br>P(A∪B)=P(A)+P(B)-P(A∩B)</div>
+      <div class="ans"><b>Q: In how many ways can 5 books be arranged?</b>5P5 = 5! = 120 ways</div>
+      <span class="tag tag-r">⭐ 10 Mark — Binomial derivation</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">∞</div><div><h3>Ch 5 — Differential Calculus</h3><p>Limits, Derivatives, Applications</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-g">Standard Limits:<br>lim(x→0) sinx/x=1 | lim(x→0) tanx/x=1<br>lim(x→∞)(1+1/x)ˣ=e | lim(x→a)(xⁿ-aⁿ)/(x-a)=naⁿ⁻¹<br><br>Derivatives:<br>d/dx(xⁿ)=nxⁿ⁻¹ | d/dx(c)=0<br>d/dx(sinx)=cosx | d/dx(cosx)=-sinx<br>d/dx(tanx)=sec²x | d/dx(cotx)=-cosec²x<br>d/dx(eˣ)=eˣ | d/dx(lnx)=1/x<br><br>Rules:<br>Product: (uv)'=u'v+uv'<br>Quotient: (u/v)'=(u'v-uv')/v²<br>Chain: d/dx[f(g(x))]=f'(g(x))·g'(x)<br><br>Applications:<br>Tangent: y-y₀=m(x-x₀) where m=dy/dx<br>Normal: y-y₀=(-1/m)(x-x₀)<br>f'(x)&gt;0→increasing | f'(x)&lt;0→decreasing<br>f'(x)=0→critical | f''&lt;0→max | f''&gt;0→min</div>
+      <div class="ans"><b>Q: Differentiate y=x³sinx</b>Product rule: dy/dx = 3x²·sinx + x³·cosx</div>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">∫</div><div><h3>Ch 6 — Integral Calculus</h3><p>Integration formulas, Methods</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-g">∫xⁿdx=xⁿ⁺¹/(n+1)+C | ∫(1/x)dx=ln|x|+C<br>∫eˣdx=eˣ+C | ∫sinx dx=-cosx+C<br>∫cosx dx=sinx+C | ∫sec²x dx=tanx+C<br><br>Integration by Parts: ∫u·dv=uv-∫v·du<br>ILATE: Inverse | Log | Algebraic | Trig | Exponential<br><br>Definite integral: ∫[a to b]f(x)dx = F(b)-F(a)</div>
+      <span class="tag tag-r">⭐ 10 Mark</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">📉</div><div><h3>Ch 9 — Statistics</h3><p>Mean, Variance, SD, Correlation</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-g">Mean x̄ = Σx/n<br>Variance σ² = Σ(x-x̄)²/n<br>Standard Deviation σ = √Variance<br>CV = (σ/x̄)×100  ← Coefficient of Variation<br><br>Correlation coefficient r = Σ(x-x̄)(y-ȳ) / √[Σ(x-x̄)²·Σ(y-ȳ)²]<br>-1 ≤ r ≤ 1<br>r=+1 perfect positive | r=-1 perfect negative | r=0 no correlation</div>
+      <span class="tag tag-y">⭐ 5 Mark calculations</span>
+    </div>
   </div>
 </div>
 
-<!-- LOVE PANEL -->
-<div class="love-panel" id="love-panel">
-  <div class="lp-bg"></div>
-  <div class="lp-header">
-    <div class="lp-logo">✦ Our Space</div>
-    <button class="lp-lock" onclick="lockLove()">🔒 Lock</button>
-  </div>
-  <div class="lp-tabs">
-    <div class="lpt active" id="lt-chat" onclick="lsw('chat')">💬 Messages</div>
-    <div class="lpt" id="lt-reels" onclick="lsw('reels')">📸 Reels</div>
-  </div>
-  <div id="lp-chat" class="show">
-    <div class="msgs" id="msgs"><div class="msg-sep">✦ Our Conversations ✦</div></div>
-    <div class="chat-row">
-      <textarea class="cinp" id="cinp" placeholder="Type your message..." rows="1" onkeydown="ck(event)" oninput="cr(this)"></textarea>
-      <button class="csend" onclick="sendMsg()">➤</button>
+<!-- PHYSICS -->
+<div class="panel" id="p-physics">
+  <div class="sec-head">⚡ Physics — All Chapters</div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">📏</div><div><h3>Ch 1 — Measurement & Units</h3><p>SI Units, Dimensions, Errors</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-o">7 Base SI Units:<br>Length–metre(m) | Mass–kilogram(kg) | Time–second(s)<br>Current–ampere(A) | Temp–kelvin(K) | Amount–mole(mol) | Luminosity–candela(cd)<br><br>Dimensions:<br>Force [MLT⁻²] | Energy [ML²T⁻²] | Power [ML²T⁻³]<br>Pressure [ML⁻¹T⁻²] | Velocity [LT⁻¹]</div>
+      <span class="tag tag-y">⭐ 3 Mark</span>
     </div>
   </div>
-  <div id="lp-reels">
-    <div class="reel-feed" id="reel-feed">
-      <div class="reels-mt" id="reels-mt"><div class="bi">🌹</div><div style="font-size:13px;">No reels yet</div></div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">🚀</div><div><h3>Ch 2 — Kinematics</h3><p>Equations of motion, Projectile</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-o">Equations of Motion:<br>v = u + at<br>s = ut + ½at²<br>v² = u² + 2as<br>sₙ = u + a(2n-1)/2  (nth second)<br><br>Projectile Motion:<br>Range R = u²sin2θ/g<br>Max Height H = u²sin²θ/2g<br>Time of flight T = 2usinθ/g<br>Max range at θ=45°: R_max = u²/g</div>
+      <div class="ans"><b>Q: Ball thrown at 20m/s at 30°. Find range.</b>R = u²sin2θ/g = 400×sin60°/10 = 400×0.866/10 = 34.64 m</div>
+      <span class="tag tag-r">⭐ 10 Mark derivation</span>
     </div>
-    <div id="pend-wrap" style="display:none;" class="pend-wrap">
-      <img id="pv-img" class="pv" style="display:none;">
-      <video id="pv-vid" class="pv" style="display:none;" controls playsinline></video>
-      <div class="cap-row">
-        <input class="cap-in" id="cap-in" placeholder="Add a caption... 💕">
-        <button class="pbtn" onclick="postReel()">Post</button>
-      </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">⚖️</div><div><h3>Ch 3 — Newton's Laws & Friction</h3><p>3 Laws, Momentum, Impulse, Friction</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="topic"><div class="tnum tn-o">1</div><div class="topic-body"><b>Newton's 3 Laws</b><p>1st: Law of Inertia — body continues its state unless external force acts<br>2nd: F=ma — acceleration ∝ net force<br>3rd: Every action has equal & opposite reaction</p><span class="tag tag-r">⭐ 5 Mark each</span></div></div>
+      <div class="fbox fb-o">Momentum p = mv (kg·m/s)<br>Impulse J = F·t = Δp = m(v-u)<br>Friction f = μN<br>μₛ (static) &gt; μₖ (kinetic)<br>Angle of friction φ: tanφ=μ</div>
+      <div class="ans"><b>Q: 5kg object accelerates 2→8 m/s in 3s. Find force.</b>F=m(v-u)/t = 5×(8-2)/3 = 10 N</div>
     </div>
-    <div class="up-zone">
-      <label class="up-label">📎 Upload Photo / Video<input type="file" accept="image/*,video/*" style="display:none" onchange="handleUp(event)"></label>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">💥</div><div><h3>Ch 4 — Work, Energy & Power</h3><p>WE theorem, Conservation, Collisions</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-o">W = Fs cosθ (Joules)<br>KE = ½mv² | PE = mgh<br>Power P = W/t = Fv (Watts) | 1HP = 746W<br>Work-Energy theorem: W_net = ΔKE<br>Conservation: KE+PE = constant (isolated system)<br><br>Collision:<br>Elastic: both KE & momentum conserved<br>Inelastic: only momentum conserved (KE lost)</div>
+      <span class="tag tag-r">⭐ 10 Mark</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">🌀</div><div><h3>Ch 5 — Gravitation</h3><p>Newton's law, g variation, Satellites</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-o">F = Gm₁m₂/r² | G=6.674×10⁻¹¹ Nm²kg⁻²<br>g = GM/R² = 9.8 m/s²<br><br>Variation of g:<br>Height h: gₕ = g(1-2h/R)<br>Depth d: g_d = g(1-d/R)<br>Poles: g_max | Equator: g_min<br><br>Escape velocity: vₑ = √(2gR) = 11.2 km/s<br>Orbital velocity: v₀ = √(gR) = 7.9 km/s<br>Time period: T = 2π√(r³/GM)</div>
+      <span class="tag tag-r">⭐ 10 Mark derivation must</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff7ed">🌊</div><div><h3>Ch 10 — Waves & Sound</h3><p>Wave equation, Doppler, Beats</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-o">v = fλ | T = 1/f | Speed of sound=340 m/s<br><br>Doppler Effect:<br>f' = f·(v+v₀)/(v-vₛ) — observer approaches, source approaches<br>f' = f·(v-v₀)/(v+vₛ) — both receding<br><br>Beats: n = f₁-f₂ (beats per second)<br><br>Standing waves: nodes (zero displacement) & antinodes (max)</div>
+      <span class="tag tag-y">⭐ 5 Mark</span>
     </div>
   </div>
 </div>
 
-<script>
-// ════════════════════════════════
-// MOVIES DATA
-// ════════════════════════════════
-const MOVIES = [
-  {id:1,e:'🦁',g:'g1',name:'Amaran',year:2024,lang:'Tamil',quality:'4K HDR',genre:'Action Drama',size:'6.8 GB',rating:'9.1',desc:'Based on the true story of Major Mukund Varadarajan, a decorated officer of the Indian Army.',cat:'tamil',isNew:true,ytId:''},
-  {id:2,e:'🔱',g:'g2',name:'Kalki 2898 AD',year:2024,lang:'Tamil',quality:'1080p',genre:'Sci-Fi Action',size:'4.2 GB',rating:'8.3',desc:'A mythological sci-fi epic set in the future, blending ancient Indian mythology with futurism.',cat:'tamil',isNew:true,ytId:''},
-  {id:3,e:'🐯',g:'g3',name:'Vikram',year:2022,lang:'Tamil',quality:'4K',genre:'Action',size:'5.1 GB',rating:'8.4',desc:'A special agent hunts down a gang of masked criminals. Old scores are settled.',cat:'tamil',ytId:''},
-  {id:4,e:'👑',g:'g4',name:'Leo',year:2023,lang:'Tamil',quality:'1080p',genre:'Action Thriller',size:'3.8 GB',rating:'7.8',desc:'A café owner is forced to reveal his dark past when his family is threatened.',cat:'tamil',ytId:''},
-  {id:5,e:'⚡',g:'g5',name:'Jailer',year:2023,lang:'Tamil',quality:'BluRay',genre:'Action',size:'4.5 GB',rating:'7.5',desc:'A retired jailer searches for his missing son and fights a drug lord.',cat:'tamil',ytId:''},
-  {id:6,e:'🌊',g:'g6',name:'Ponniyin Selvan 2',year:2023,lang:'Tamil',quality:'4K',genre:'Historical Drama',size:'5.4 GB',rating:'8.0',desc:'The epic historical saga continues as the Chola dynasty battles treachery and war.',cat:'tamil',ytId:''},
-  {id:7,e:'🔥',g:'g7',name:'Pushpa 2',year:2024,lang:'Telugu',quality:'4K HDR',genre:'Action Crime',size:'7.2 GB',rating:'8.6',desc:'The red sandalwood smuggler Pushpa Raj returns stronger and more determined.',cat:'telugu',isNew:true,ytId:''},
-  {id:8,e:'💎',g:'g8',name:'HanuMan',year:2024,lang:'Telugu',quality:'1080p',genre:'Superhero',size:'3.5 GB',rating:'8.1',desc:'A common man gets superpowers when he finds a gem related to Lord Hanuman.',cat:'telugu',isNew:true,ytId:''},
-  {id:9,e:'🏹',g:'g1',name:'Devara Part 1',year:2024,lang:'Telugu',quality:'BluRay',genre:'Action Drama',size:'4.8 GB',rating:'7.4',desc:'A fearless man of the sea terrorizes the coasts of a small island nation.',cat:'telugu',ytId:''},
-  {id:10,e:'🌙',g:'g2',name:'Adipurush Dub',year:2023,lang:'Hindi',quality:'1080p',genre:'Mythology',size:'3.2 GB',rating:'6.8',desc:'A legendary warrior rescues his wife from a demon king — a mythological retelling.',cat:'hindi',ytId:''},
-  {id:11,e:'🎭',g:'g3',name:'KGF 2 Tamil',year:2022,lang:'Tamil Dub',quality:'4K',genre:'Action',size:'5.9 GB',rating:'8.2',desc:'Rocky consolidates his hold on the Kolar Gold Fields and prepares for battle.',cat:'hindi',ytId:''},
-  {id:12,e:'🌺',g:'g4',name:'RRR Dubbed',year:2022,lang:'Hindi Dub',quality:'4K HDR',genre:'Action Drama',size:'6.1 GB',rating:'8.9',desc:'Two legendary Indian revolutionaries and their journey far from home.',cat:'hindi',ytId:''},
-];
+<!-- CHEMISTRY -->
+<div class="panel" id="p-chem">
+  <div class="sec-head">🧪 Chemistry — All Chapters</div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f5f3ff">⚛️</div><div><h3>Ch 2 — Quantum Mechanical Model</h3><p>Atomic structure, Orbitals, Electronic config</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-p">Bohr: Eₙ = -13.6/n² eV<br>Rydberg: 1/λ = R(1/n₁²-1/n₂²) | R=1.097×10⁷ m⁻¹<br><br>Quantum Numbers:<br>n (principal): 1,2,3... (shell)<br>l (azimuthal): 0 to n-1 (s=0,p=1,d=2,f=3)<br>m (magnetic): -l to +l<br>s (spin): +½ or -½<br><br>Aufbau order: 1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p...<br>Hund's rule: fill singly before pairing<br>Pauli: max 2e per orbital, opposite spins</div>
+      <span class="tag tag-y">⭐ 5 Mark</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f5f3ff">📋</div><div><h3>Ch 3 — Periodic Table & Properties</h3><p>Trends, Periodicity</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-p">118 elements | 7 periods | 18 groups | s,p,d,f blocks<br><br>Periodic Trends (→=across period, ↓=down group):<br>Atomic radius: decreases→ increases↓<br>Ionization energy: increases→ decreases↓<br>Electron affinity: increases→<br>Electronegativity: increases→ (F highest=4.0)<br>Metallic character: decreases→ increases↓</div>
+      <span class="tag tag-r">⭐ 5 Mark trends diagram</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f5f3ff">⚗️</div><div><h3>Ch 7 — Thermodynamics</h3><p>Laws, Enthalpy, Entropy, Gibbs energy</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-p">1st Law: ΔU = q + w | w = -PΔV<br>Enthalpy: ΔH = ΔU + ΔnRT<br>Hess's Law: ΔH = sum of ΔH of steps<br>Bond enthalpy: ΔH = Σ(bonds broken) - Σ(bonds formed)<br><br>Entropy: ΔS&gt;0 → disorder increases<br>Gibbs energy: ΔG = ΔH - TΔS<br>ΔG&lt;0 → spontaneous | ΔG&gt;0 → non-spontaneous<br>ΔG=0 → equilibrium</div>
+      <span class="tag tag-r">⭐ 10 Mark</span>
+    </div>
+  </div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f5f3ff">⚖️</div><div><h3>Ch 8 — Equilibrium & pH</h3><p>Le Chatelier, Kc, Kp, Acids & Bases</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-p">Kc = [C]ᶜ[D]ᵈ / [A]ᵃ[B]ᵇ<br>Kp = Kc(RT)^Δn<br><br>Le Chatelier: System shifts to oppose change<br><br>pH = -log[H⁺] | pOH = -log[OH⁻]<br>pH + pOH = 14 (25°C)<br>Acids: pH&lt;7 | Neutral: pH=7 | Base: pH&gt;7<br><br>Strong acid: HCl, HNO₃, H₂SO₄<br>Strong base: NaOH, KOH, Ca(OH)₂<br>Buffer: resists pH change</div>
+      <span class="tag tag-r">⭐ 5 Mark calculations</span>
+    </div>
+  </div>
+</div>
 
-let currentMovie = null;
-// store per-movie: youtube IDs and scenes
-const movieData = JSON.parse(localStorage.getItem('md_data') || '{}');
+<!-- TAMIL -->
+<div class="panel" id="p-tamil">
+  <div class="sec-head">📜 Tamil — முக்கிய பாடங்கள்</div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#fff5f5">📖</div><div><h3>உரைநடை & கவிதை — Key Answers</h3><p>முக்கிய கேள்வி பதில்கள்</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="ans"><b>கேள்வி: தமிழின் சிறப்பு யாது?</b>தமிழ் உலகின் தொன்மையான செம்மொழிகளில் ஒன்று. 2000 ஆண்டுகளுக்கு மேலான இலக்கிய வரலாற்றை உடையது. திருக்குறள், சங்க இலக்கியம், தொல்காப்பியம் என பல சிறந்த நூல்களைக் கொண்டது.</div>
+      <div class="ans"><b>கேள்வி: திருக்குறளின் சிறப்பு</b>திருவள்ளுவர் இயற்றிய திருக்குறள் 1330 குறட்பாக்களைக் கொண்டது. அறம்(380), பொருள்(700), இன்பம்(250) என முப்பால் பகுப்பில் உள்ளது. உலகின் பல மொழிகளில் மொழிபெயர்க்கப்பட்டுள்ளது.</div>
+      <div class="topic"><div class="tnum tn-r">★</div><div class="topic-body"><b>இலக்கணம் — எழுத்துகள்</b><p>உயிர்: 12 (அ,ஆ,இ,ஈ,உ,ஊ,எ,ஏ,ஐ,ஒ,ஓ,ஔ)<br>மெய்: 18 | உயிர்மெய்: 216 | ஆய்தம்: 1 | மொத்தம்: 247</p><span class="tag tag-y">⭐ 2 மதிப்பெண்</span></div></div>
+      <div class="topic"><div class="tnum tn-r">★</div><div class="topic-body"><b>திணை & பால்</b><p>உயர்திணை (மக்கள்+கடவுள்) | அஃறிணை (மற்றவை)<br>ஆண்பால், பெண்பால், பலர்பால், ஒன்றன்பால், பலவின்பால்</p><span class="tag tag-y">⭐ 3 மதிப்பெண்</span></div></div>
+    </div>
+  </div>
+</div>
 
-// ── BUILD GRIDS ──
-function buildGrid(arr, id) {
-  const grid = document.getElementById(id);
-  arr.forEach(m => {
-    const div = document.createElement('div');
-    div.className = 'movie-card';
-    div.onclick = () => openPlayer(m);
-    div.innerHTML = `
-      <div class="movie-thumb ${m.g}">
-        ${m.isNew ? '<div class="ntag">NEW</div>' : ''}
-        <div class="qtag">${m.quality}</div>
-        <span>${m.e}</span>
-      </div>
-      <div class="movie-info">
-        <div class="movie-name">${m.name}</div>
-        <div class="movie-meta"><span class="lang">${m.lang}</span> · ${m.year} · ★${m.rating}</div>
-      </div>`;
-    grid.appendChild(div);
-  });
+<!-- ENGLISH -->
+<div class="panel" id="p-english">
+  <div class="sec-head">🔤 English — Grammar & Writing</div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#f0fdf4">📝</div><div><h3>Grammar — Complete Reference</h3><p>Tenses, Voice, Speech, Conditionals</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="fbox fb-g">12 Tenses:<br>Present: Simple|Continuous|Perfect|Perfect Continuous<br>Past: Simple|Continuous|Perfect|Perfect Continuous<br>Future: Simple|Continuous|Perfect|Perfect Continuous<br><br>Key forms:<br>Simple Present: V1/V1+s<br>Present Continuous: is/am/are + V-ing<br>Simple Past: V2<br>Future: will/shall + V1<br><br>Active → Passive:<br>Simple Present: is/am/are + V3<br>Simple Past: was/were + V3<br>Future: will be + V3<br><br>Direct → Indirect Speech:<br>say/says → said/told<br>Present tense → Past tense<br>today→that day | now→then | here→there<br>tomorrow→next day | yesterday→previous day<br><br>Conditionals:<br>Type 0: If+present, present (general truth)<br>Type 1: If+present, will+V1 (real future)<br>Type 2: If+past, would+V1 (imaginary)<br>Type 3: If+past perfect, would have+V3 (impossible past)</div>
+      <div class="ans"><b>Active→Passive: "She writes a letter"</b>"A letter is written by her."</div>
+      <div class="ans"><b>Formal Letter Format</b>Sender's Address | Date | Receiver's Address | Subject | Salutation (Dear Sir/Madam) | Body (3 paragraphs) | Closing (Yours faithfully) | Signature</div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMETABLE -->
+<div class="panel" id="p-tt">
+  <div class="sec-head">🗓 Weekly Study Plan</div>
+  <div class="chap">
+    <div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">📅</div><div><h3>Full Week Schedule</h3><p>Morning + Evening sessions</p></div><span class="chev">▼</span></div>
+    <div class="chap-bd">
+      <div class="tt-day">Monday</div>
+      <div class="tt-slot"><b>💻 CS Theory (Ch 1–5)</b><small>6:00–7:30 AM</small></div>
+      <div class="tt-slot g"><b>📐 Maths — Trigonometry</b><small>7:00–8:30 PM</small></div>
+      <div class="tt-day">Tuesday</div>
+      <div class="tt-slot o"><b>⚡ Physics — Kinematics + Newton</b><small>6:00–7:30 AM</small></div>
+      <div class="tt-slot"><b>💻 CS — C++ Programs practice</b><small>7:30–9:00 PM</small></div>
+      <div class="tt-day">Wednesday</div>
+      <div class="tt-slot g"><b>📐 Maths — Calculus (Diff + Int)</b><small>6:00–7:30 AM</small></div>
+      <div class="tt-slot p"><b>🧪 Chemistry — Thermo + Equilibrium</b><small>7:30–9:00 PM</small></div>
+      <div class="tt-day">Thursday</div>
+      <div class="tt-slot"><b>💻 CS — OOP + Arrays + Functions</b><small>6:00–8:00 AM</small></div>
+      <div class="tt-slot g"><b>📐 Maths — Algebra + Prob</b><small>7:30–9:00 PM</small></div>
+      <div class="tt-day">Friday</div>
+      <div class="tt-slot o"><b>⚡ Physics — Gravitation + Waves</b><small>6:00–7:30 AM</small></div>
+      <div class="tt-slot"><b>📜 Tamil + 🔤 English Grammar</b><small>7:30–9:00 PM</small></div>
+      <div class="tt-day">Saturday</div>
+      <div class="tt-slot"><b>💻 CS Full Revision</b><small>9 AM–12 PM</small></div>
+      <div class="tt-slot g"><b>📐 Maths Full Revision</b><small>4–7 PM</small></div>
+      <div class="tt-day">Sunday</div>
+      <div class="tt-slot r"><b>📝 Self Test — All Subjects</b><small>10 AM–1 PM</small></div>
+      <div class="tt-slot g"><b>✅ Previous Year Papers</b><small>4–6 PM</small></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end studyApp -->
+
+<!-- SECRET DOT -->
+<button class="sdot" id="sdot"></button>
+<button class="del-bar" id="delBar" onclick="deleteSelected()">🗑 Delete Message</button>
+
+<!-- PIN SCREEN -->
+<div id="pinScr">
+  <div class="plock">🔒</div>
+  <div class="ptitle">Enter PIN</div>
+  <p style="font-size:11px;color:rgba(240,230,255,.3);margin-top:-10px">Default: 1234</p>
+  <div class="pdots">
+    <div class="pdot" id="pd1"></div><div class="pdot" id="pd2"></div>
+    <div class="pdot" id="pd3"></div><div class="pdot" id="pd4"></div>
+  </div>
+  <p class="perr" id="perr">❌ Wrong PIN!</p>
+  <div class="ppad">
+    <button class="pkey" onclick="kp('1')">1</button><button class="pkey" onclick="kp('2')">2</button><button class="pkey" onclick="kp('3')">3</button>
+    <button class="pkey" onclick="kp('4')">4</button><button class="pkey" onclick="kp('5')">5</button><button class="pkey" onclick="kp('6')">6</button>
+    <button class="pkey" onclick="kp('7')">7</button><button class="pkey" onclick="kp('8')">8</button><button class="pkey" onclick="kp('9')">9</button>
+    <button class="pkey" onclick="kp('*')">✳</button><button class="pkey" onclick="kp('0')">0</button><button class="pkey" onclick="kp('del')">⌫</button>
+  </div>
+</div>
+
+<!-- MESSENGER -->
+<div id="msg">
+  <div class="mhd">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="mav">💕</div>
+      <div><div class="mname">My Love <span class="online"></span></div><div class="mstat">Always in my heart ✨</div></div>
+    </div>
+    <button class="backbtn" onclick="closeM()">📚 Notes</button>
+  </div>
+  <div class="db-status" id="dbStatus">
+    <div class="db-dot" id="dbDot"></div>
+    <span id="dbText">Connecting to database...</span>
+  </div>
+  <div class="msgs" id="msgs">
+    <div class="loading" id="loadingMsg">Loading messages... 💕</div>
+  </div>
+  <div class="minp-wrap">
+    <button class="ibtn rbtn" onclick="sendReel()">🎬</button>
+    <textarea class="minp" id="minp" placeholder="Type a message..." rows="1" onkeydown="hk(event)" oninput="ah(this)"></textarea>
+    <button class="ibtn sbtn" onclick="sendMsg()">➤</button>
+  </div>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, push, onValue, remove, query, limitToLast } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+// ═══════════════════════════════════════
+// 🔥 YOUR FIREBASE CONFIG — from your project
+// ═══════════════════════════════════════
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "moviesda-a9268.firebaseapp.com",
+  databaseURL: "https://moviesda-a9268-default-rtdb.firebaseio.com",
+  projectId: "moviesda-a9268",
+  storageBucket: "moviesda-a9268.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const msgsRef = ref(db, 'lovemsgs');
+
+// Update DB status
+function setStatus(ok, text) {
+  document.getElementById('dbDot').className = 'db-dot' + (ok ? '' : ' err');
+  document.getElementById('dbText').textContent = text;
 }
-buildGrid(MOVIES.filter(m=>m.cat==='tamil'),'tamil-grid');
-buildGrid(MOVIES.filter(m=>m.cat==='telugu'),'telugu-grid');
-buildGrid(MOVIES.filter(m=>m.cat==='hindi'),'hindi-grid');
 
-const ts = document.getElementById('trend-side');
-MOVIES.slice(0,5).forEach(m => {
-  const d = document.createElement('div');
-  d.className = 'sidebar-item'; d.onclick = () => openPlayer(m);
-  d.innerHTML = `<div class="si-thumb ${m.g}">${m.e}</div><div><div class="si-name">${m.name}</div><div class="si-meta">${m.lang} · ★${m.rating}</div></div>`;
-  ts.appendChild(d);
-});
-
-// ── OPEN PLAYER ──
-function openPlayer(m) {
-  currentMovie = m;
-  document.getElementById('home-page').style.display = 'none';
-  document.getElementById('player-page').style.display = 'block';
-  window.scrollTo(0, 0);
-
-  document.getElementById('player-title').textContent = `${m.name} (${m.year})`;
-
-  // YouTube
-  const saved = movieData[m.id] || {};
-  const ytId = saved.ytId || '';
-  setYTFrame(ytId);
-  document.getElementById('yt-input').value = ytId;
-
-  // Scenes
-  renderScenes(saved.scenes || []);
-
-  // Download table
-  const rows = [
-    {label:`${m.name} 480p`,size:'900 MB',host:'GDrive',secret:false},
-    {label:`${m.name} 720p`,size:'1.8 GB',host:'Mega',secret:false},
-    {label:`${m.name} 1080p`,size:'3.4 GB',host:'1Drive',secret:false},
-    {label:`${m.name} 4K HEVC`,size:m.size,host:'Mediafire',secret:false},
-    {label:`★ ${m.name} PRIVATE HD`,size:'Full Quality',host:'Secret Server',secret:true},
-  ];
-  const tbody = rows.map(r=>`<tr><td>${r.label}</td><td><span class="size-badge">${r.size}</span></td><td>${r.host}</td><td><button class="dl-link ${r.secret?'secret-dl':''}" onclick="${r.secret?'openPin()':'fakeClick(this)'}">${r.secret?'🔒 Download':'⬇ Download'}</button></td></tr>`).join('');
-  document.getElementById('dl-table').innerHTML = `<thead><tr><th>File</th><th>Size</th><th>Server</th><th>Link</th></tr></thead><tbody>${tbody}</tbody>`;
-
-  // Related
-  const rel = document.getElementById('rel-side'); rel.innerHTML = '';
-  MOVIES.filter(x=>x.id!==m.id).slice(0,5).forEach(x=>{
-    const d=document.createElement('div'); d.className='sidebar-item'; d.onclick=()=>openPlayer(x);
-    d.innerHTML=`<div class="si-thumb ${x.g}">${x.e}</div><div><div class="si-name">${x.name}</div><div class="si-meta">${x.lang} · ★${x.rating}</div></div>`;
-    rel.appendChild(d);
-  });
-}
-
-function goHome() {
-  document.getElementById('player-page').style.display='none';
-  document.getElementById('home-page').style.display='block';
-  window.scrollTo(0,0);
-  // stop YT
-  document.getElementById('yt-frame').src='';
-}
-
-// ── YOUTUBE ──
-function extractYTId(val) {
-  val = val.trim();
-  // full URL
-  const m = val.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
-  if (m) return m[1];
-  // raw ID
-  if (/^[A-Za-z0-9_-]{11}$/.test(val)) return val;
-  return '';
-}
-function setYTFrame(ytId) {
-  const frame = document.getElementById('yt-frame');
-  if (ytId) {
-    frame.src = `https://www.youtube.com/embed/${ytId}?autoplay=0&rel=0`;
-  } else {
-    frame.src = '';
-    document.getElementById('yt-wrap').style.background = '#111';
-  }
-}
-function setYT() {
-  if (!currentMovie) return;
-  const val = document.getElementById('yt-input').value;
-  const ytId = extractYTId(val);
-  if (!ytId) { alert('Invalid YouTube link!'); return; }
-  if (!movieData[currentMovie.id]) movieData[currentMovie.id] = {};
-  movieData[currentMovie.id].ytId = ytId;
-  saveMovieData();
-  setYTFrame(ytId);
-}
-
-// ── SCENES ──
-function uploadScene(e) {
-  const files = Array.from(e.target.files);
-  if (!files.length || !currentMovie) return;
-  const saved = movieData[currentMovie.id] || {};
-  if (!saved.scenes) saved.scenes = [];
-  let done = 0;
-  files.forEach(f => {
-    const reader = new FileReader();
-    reader.onload = ev => {
-      saved.scenes.push({ d: ev.target.result, name: f.name });
-      done++;
-      if (done === files.length) {
-        movieData[currentMovie.id] = saved;
-        saveMovieData();
-        renderScenes(saved.scenes);
-      }
-    };
-    reader.readAsDataURL(f);
-  });
-}
-function renderScenes(scenes) {
-  const list = document.getElementById('scene-list');
-  list.innerHTML = '';
-  if (!scenes || !scenes.length) {
-    list.innerHTML = '<div class="no-scenes" id="no-scenes-msg">No scenes uploaded yet. Upload below 👇</div>';
+// Listen for messages in real-time
+const q = query(msgsRef, limitToLast(100));
+onValue(q, (snapshot) => {
+  const box = document.getElementById('msgs');
+  box.innerHTML = '<div class="div">Messages 💕</div>';
+  if (!snapshot.exists()) {
+    box.innerHTML += '<div class="loading">No messages yet... say hi! 💕</div>';
+    setStatus(true, '🟢 Connected — Firebase Database');
     return;
   }
-  scenes.forEach((s, i) => {
-    const div = document.createElement('div');
-    div.className = 'scene-item';
-    div.innerHTML = `<video src="${s.d}" controls playsinline preload="metadata"></video><div class="scene-label">Scene ${i+1} — ${esc(s.name)}</div>`;
-    list.appendChild(div);
+  setStatus(true, '🟢 Connected — Firebase Database');
+  document.getElementById('loadingMsg')?.remove();
+
+  snapshot.forEach((child) => {
+    const d = child.val();
+    const key = child.key;
+    if (d.type === 'reel') {
+      const el = document.createElement('div');
+      el.className = 'rbub';
+      el.dataset.key = key;
+      el.innerHTML = `<div class="rtop"><div class="rico2">🎬</div><div><div class="rlbl">Reel Share</div><div class="rsrc">Instagram · ${d.time}</div></div></div><div class="rcap">${d.text}</div>`;
+      addLongPress(el, key);
+      box.appendChild(el);
+    } else {
+      const el = document.createElement('div');
+      el.className = 'bub ' + (d.dir || 'out');
+      el.dataset.key = key;
+      el.innerHTML = `${d.text}<div class="bt">${d.time}</div>`;
+      addLongPress(el, key);
+      box.appendChild(el);
+    }
   });
+  box.scrollTop = box.scrollHeight;
+}, (error) => {
+  setStatus(false, '❌ DB Error — Check API key in code');
+  console.error(error);
+});
+
+// Send message to Firebase
+window.firebaseSend = function(data) {
+  push(msgsRef, data).catch(e => {
+    setStatus(false, '❌ Send failed');
+  });
+};
+
+// Delete message from Firebase
+window.firebaseDelete = function(key) {
+  const mRef = ref(db, 'lovemsgs/' + key);
+  remove(mRef);
+};
+
+// Long press to select & delete
+let selectedKey = null;
+function addLongPress(el, key) {
+  let timer;
+  el.addEventListener('touchstart', () => {
+    timer = setTimeout(() => {
+      if (selectedKey && selectedKey !== key) {
+        document.querySelector(`[data-key="${selectedKey}"]`)?.classList.remove('selected');
+      }
+      el.classList.toggle('selected');
+      selectedKey = el.classList.contains('selected') ? key : null;
+      document.getElementById('delBar').style.display = selectedKey ? 'block' : 'none';
+    }, 600);
+  });
+  el.addEventListener('touchend', () => clearTimeout(timer));
+  el.addEventListener('touchmove', () => clearTimeout(timer));
 }
 
-function saveMovieData() {
-  try { localStorage.setItem('md_data', JSON.stringify(movieData)); } catch(e) {}
+window.deleteSelected = function() {
+  if (selectedKey) {
+    window.firebaseDelete(selectedKey);
+    selectedKey = null;
+    document.getElementById('delBar').style.display = 'none';
+  }
+};
+</script>
+
+<script>
+// Tab switch
+function sw(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('p-'+id).classList.add('on');
+  el.classList.add('on');
+  window.scrollTo(0,0);
 }
 
-function fakeClick(btn) {
-  const orig = btn.textContent; btn.textContent = '⏳ Connecting...'; btn.disabled = true;
-  setTimeout(()=>{ btn.textContent='⚠️ Server Busy'; setTimeout(()=>{btn.textContent=orig;btn.disabled=false;},2000); },1500);
+// Chapter accordion
+function tog(hd){
+  hd.classList.toggle('open');
+  hd.nextElementSibling.classList.toggle('open');
 }
 
-// ── PIN ──
-const PIN = "2027"; // 👈 CHANGE THIS
-let pv = "";
-function openPin(){document.getElementById('pin-ov').classList.add('open');pv="";updD();}
-function closePin(){document.getElementById('pin-ov').classList.remove('open');pv="";updD();}
-function pp(n){if(pv.length>=4)return;pv+=n;updD();if(pv.length===4)setTimeout(chkPin,200);}
-function pd(){pv=pv.slice(0,-1);updD();}
-function updD(){for(let i=0;i<4;i++)document.getElementById('d'+i).classList.toggle('on',i<pv.length);}
-function chkPin(){
-  if(pv===PIN){closePin();openLove();}
-  else{
-    const b=document.getElementById('pin-bx'),e=document.getElementById('perr');
-    b.classList.add('shake');e.classList.add('show');
-    setTimeout(()=>{b.classList.remove('shake');e.classList.remove('show');},1500);
-    pv="";updD();
+// PIN
+const MYPIN='1234'; // ← Change your PIN!
+let pin='';
+document.getElementById('sdot').onclick=()=>{
+  pin='';upd();
+  document.getElementById('perr').style.display='none';
+  document.getElementById('pinScr').style.display='flex';
+};
+function kp(k){
+  if(k==='del'){pin=pin.slice(0,-1);upd();return;}
+  if(pin.length>=4)return;
+  pin+=k;upd();
+  if(pin.length===4)setTimeout(chk,300);
+}
+function upd(){for(let i=1;i<=4;i++)document.getElementById('pd'+i).classList.toggle('on',i<=pin.length);}
+function chk(){
+  if(pin===MYPIN){
+    document.getElementById('pinScr').style.display='none';
+    document.getElementById('msg').style.display='flex';
+    setTimeout(()=>{const m=document.getElementById('msgs');m.scrollTop=m.scrollHeight;},500);
+  } else {
+    const e=document.getElementById('perr');e.style.display='block';
+    setTimeout(()=>{e.style.display='none';pin='';upd();},1200);
   }
 }
+function closeM(){document.getElementById('msg').style.display='none';}
 
-// ── LOVE PANEL ──
-function openLove(){document.getElementById('love-panel').classList.add('open');scrollM();}
-function lockLove(){document.getElementById('love-panel').classList.remove('open');}
-function lsw(tab){
-  document.querySelectorAll('.lpt').forEach(t=>t.classList.remove('active'));
-  document.getElementById('lp-chat').classList.remove('show');
-  document.getElementById('lp-reels').classList.remove('show');
-  document.getElementById('lt-'+tab).classList.add('active');
-  document.getElementById('lp-'+tab).classList.add('show');
-}
-const savedMsgs=JSON.parse(localStorage.getItem('lv_msgs')||'[]');
-savedMsgs.forEach(m=>appendMsg(m));
-function scrollM(){const c=document.getElementById('msgs');c.scrollTop=c.scrollHeight;}
-function appendMsg(m){
-  const c=document.getElementById('msgs');
-  const d=document.createElement('div');d.className='msg sent';
-  d.innerHTML=esc(m.t)+`<span class="mt">${m.ts}</span>`;
-  c.appendChild(d);scrollM();
-}
+// Messenger
+function gt(){const d=new Date(),h=d.getHours(),m=d.getMinutes(),ap=h>=12?'PM':'AM';return`${h%12||12}:${String(m).padStart(2,'0')} ${ap}`;}
+
 function sendMsg(){
-  const inp=document.getElementById('cinp');const txt=inp.value.trim();if(!txt)return;
-  const now=new Date();const ts=now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
-  const msg={t:txt,ts};savedMsgs.push(msg);
-  try{localStorage.setItem('lv_msgs',JSON.stringify(savedMsgs));}catch(e){}
-  appendMsg(msg);inp.value='';inp.style.height='auto';spawnHeart();
+  const i=document.getElementById('minp'),t=i.value.trim();
+  if(!t)return;
+  window.firebaseSend({type:'text',text:t,dir:'out',time:gt(),ts:Date.now()});
+  i.value='';i.style.height='auto';heart();
 }
-function ck(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
-function cr(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,80)+'px';}
 
-const savedReels=JSON.parse(localStorage.getItem('lv_reels')||'[]');
-let pFile=null,pType=null;
-savedReels.forEach(r=>appendReel(r));
-if(savedReels.length)document.getElementById('reels-mt').style.display='none';
-function handleUp(e){
-  const f=e.target.files[0];if(!f)return;
-  pFile=f;pType=f.type.startsWith('video')?'video':'image';
-  const url=URL.createObjectURL(f);
-  document.getElementById('pend-wrap').style.display='block';
-  const pi=document.getElementById('pv-img'),pv2=document.getElementById('pv-vid');
-  if(pType==='image'){pi.src=url;pi.style.display='block';pv2.style.display='none';}
-  else{pv2.src=url;pv2.style.display='block';pi.style.display='none';}
+function sendReel(){
+  const caps=['😂 Un kooda feel da!','🥺 Itha pathuttu un kanava...','💜 Accurate ah iruku!','😭 Un maela than!','🎵 Un kooda kaekanum!','🥰 Un kooda irukanum!'];
+  const c=caps[Math.floor(Math.random()*caps.length)];
+  window.firebaseSend({type:'reel',text:c,time:gt(),ts:Date.now()});
 }
-function postReel(){
-  if(!pFile)return;
-  const cap=document.getElementById('cap-in').value.trim();
-  const now=new Date();
-  const ts=now.toLocaleDateString('en-IN',{day:'numeric',month:'short'})+' · '+now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
-  const reader=new FileReader();
-  reader.onload=ev=>{
-    const reel={d:ev.target.result,type:pType,cap,ts};
-    savedReels.push(reel);
-    try{localStorage.setItem('lv_reels',JSON.stringify(savedReels));}catch(e){}
-    appendReel(reel);
-    document.getElementById('reels-mt').style.display='none';
-    document.getElementById('pend-wrap').style.display='none';
-    document.getElementById('cap-in').value='';pFile=null;
-  };
-  reader.readAsDataURL(pFile);
-}
-function appendReel(r){
-  const feed=document.getElementById('reel-feed');
-  const div=document.createElement('div');div.className='reel-item';
-  const media=r.type==='video'?`<video src="${r.d}" controls playsinline></video>`:`<img src="${r.d}" loading="lazy">`;
-  div.innerHTML=media+(r.cap?`<div class="reel-cap">${esc(r.cap)}</div>`:'')+`<div class="reel-ts">${r.ts}</div>`;
-  feed.insertBefore(div,feed.firstChild);
-}
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');}
-function spawnHeart(){
-  const h=document.createElement('div');h.className='hrt';
-  h.textContent=['💕','💖','🌹','✨','💗'][Math.floor(Math.random()*5)];
-  h.style.left=(40+Math.random()*20)+'vw';h.style.bottom='90px';
-  document.body.appendChild(h);setTimeout(()=>h.remove(),1500);
+
+function hk(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
+function ah(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,88)+'px';}
+function heart(){
+  const e=['💗','💕','💖','✨','💜','🌸','😘'],el=document.createElement('div');
+  el.className='hf';el.textContent=e[Math.floor(Math.random()*e.length)];
+  el.style.cssText=`left:${Math.random()*60+20}%;bottom:65px;`;
+  document.body.appendChild(el);setTimeout(()=>el.remove(),1300);
 }
 </script>
 </body>
