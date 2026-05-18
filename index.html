@@ -35,21 +35,10 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 .auth-inp::placeholder{color:rgba(240,230,255,.2)}
 .auth-btn{width:100%;padding:13px;background:linear-gradient(135deg,#9333ea,#e91e8c);color:#fff;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;cursor:pointer;margin-top:4px;box-shadow:0 4px 20px rgba(233,30,140,.3);transition:.15s}
 .auth-btn:active{transform:scale(.97)}
-.auth-tip{background:rgba(255,77,166,.08);border:1px solid rgba(255,77,166,.15);border-radius:10px;padding:9px 12px;margin-top:12px;font-size:11px;color:rgba(240,230,255,.4);line-height:1.6;display:none}
-.auth-tip.show{display:block}
+.auth-tip{background:rgba(255,77,166,.08);border:1px solid rgba(255,77,166,.15);border-radius:10px;padding:9px 12px;margin-top:12px;font-size:11px;color:rgba(240,230,255,.4);line-height:1.6}
 .auth-err{color:#f87171;font-size:11px;font-weight:800;text-align:center;margin-top:8px;min-height:16px;display:none}
 .auth-err.show{display:block}
 .auth-divider{text-align:center;font-size:10px;color:rgba(240,230,255,.2);margin:10px 0;font-weight:700}
-#registerTip{display:none}
-#registerTip.show{display:block}
-
-/* ━━━━━━━━━━ USER PILL (topbar) ━━━━━━━━━━ */
-.user-pill{background:rgba(255,255,255,.2);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:800;display:flex;align-items:center;gap:5px;cursor:pointer}
-.user-dot{width:7px;height:7px;border-radius:50%;background:#4ade80}
-.user-menu{position:absolute;top:54px;right:10px;background:#1e293b;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:6px;z-index:100;min-width:150px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
-.um-item{padding:9px 12px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;color:#f1f5f9;display:flex;align-items:center;gap:8px}
-.um-item:active{background:rgba(255,255,255,.1)}
-.um-item.danger{color:#f87171}
 
 /* ━━━━━━━━━━ LANDING ━━━━━━━━━━ */
 #landing{display:none;flex-direction:column;min-height:100vh;background:linear-gradient(160deg,#0f172a 0%,#1e1b4b 40%,#0f172a 100%);position:relative;overflow:hidden}
@@ -314,13 +303,15 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 .pkey{height:58px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,77,166,.12);color:var(--st);font-size:20px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .pkey:active{transform:scale(.88);background:rgba(255,77,166,.2)}
 
-/* ━━━━━━━━━━ MESSENGER ━━━━━━━━━━ */
+/* ━━━━━━━━━━ MESSENGER — UPGRADED ━━━━━━━━━━ */
 #msg{display:none;position:fixed;inset:0;z-index:900;background:var(--sp);flex-direction:column;overflow:hidden}
 .msg-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .stars{position:absolute;inset:0;pointer-events:none}
 .star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d,3s) ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:var(--o1,.2)}50%{opacity:var(--o2,.8)}}
-.mhd{background:rgba(18,18,42,.95);backdrop-filter:blur(20px);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,77,166,.12);position:relative;z-index:2;flex-shrink:0}
+
+/* Header */
+.mhd{background:rgba(18,18,42,.97);backdrop-filter:blur(20px);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,77,166,.12);position:relative;z-index:2;flex-shrink:0}
 .mhd-left{display:flex;align-items:center;gap:10px}
 .mav-wrap{position:relative}
 .mav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--pk),var(--pu));display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 0 14px rgba(255,77,166,.35)}
@@ -334,10 +325,25 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 .mstat{font-size:10px;color:rgba(240,230,255,.38)}
 .backbtn{background:rgba(255,255,255,.07);border:1px solid rgba(255,77,166,.15);border-radius:20px;color:var(--st);font-family:'Nunito',sans-serif;padding:5px 13px;font-size:11px;cursor:pointer}
 .clrbtn{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);border-radius:20px;color:#f87171;font-family:'Nunito',sans-serif;padding:5px 11px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:4px}
+
+/* Room info bar — upgraded */
+.room-info-bar{padding:6px 14px;background:rgba(255,77,166,.06);border-bottom:1px solid rgba(255,77,166,.08);position:relative;z-index:2;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.room-code-pill{font-size:10px;color:rgba(240,230,255,.4);font-weight:700;display:flex;align-items:center;gap:5px}
+.room-code-pill strong{color:rgba(255,77,166,.8);font-size:11px;cursor:pointer;border:1px solid rgba(255,77,166,.25);border-radius:6px;padding:1px 6px}
+.room-members-row{display:flex;align-items:center;gap:4px}
+.rmember{display:flex;align-items:center;gap:3px;background:rgba(255,255,255,.05);border-radius:20px;padding:2px 7px;font-size:10px;color:rgba(240,230,255,.5);font-weight:700}
+.rmember .rdot{width:5px;height:5px;border-radius:50%;background:#94a3b8;flex-shrink:0}
+.rmember.online-member .rdot{background:#4ade80}
+
+/* No partner banner */
+.no-partner-banner{background:rgba(245,158,11,.08);border-bottom:1px solid rgba(245,158,11,.15);padding:8px 14px;font-size:11px;color:rgba(245,158,11,.85);flex-shrink:0;position:relative;z-index:2;font-weight:700;line-height:1.5;display:flex;align-items:center;gap:8px}
+.copy-room-btn{background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.4);border-radius:8px;padding:3px 9px;font-size:10px;color:rgba(245,158,11,.9);cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800;flex-shrink:0}
+
+/* Messages */
 .msgs{flex:1;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:4px;position:relative;z-index:1}
 .msgs::-webkit-scrollbar{width:3px}
 .msgs::-webkit-scrollbar-thumb{background:rgba(255,77,166,.2);border-radius:2px}
-.mdiv{text-align:center;font-size:10px;color:rgba(240,230,255,.2);margin:6px 0}
+.mdiv{text-align:center;font-size:10px;color:rgba(240,230,255,.2);margin:6px 0;background:rgba(255,255,255,.04);border-radius:10px;padding:4px 10px;align-self:center}
 .msg-wrap{display:flex;flex-direction:column;max-width:78%;animation:popIn .25s cubic-bezier(.34,1.56,.64,1)}
 .msg-wrap.out{align-self:flex-end;align-items:flex-end}
 .msg-wrap.in{align-self:flex-start;align-items:flex-start}
@@ -351,11 +357,21 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 .bub-meta{display:flex;align-items:center;gap:4px;margin-top:4px;justify-content:flex-end}
 .btime{font-size:10px;opacity:.45}
 .ticks{font-size:11px;color:rgba(255,255,255,.5)}
-.typing-ind{align-self:flex-start;background:var(--sc);border:1px solid rgba(255,77,166,.1);border-radius:18px;border-bottom-left-radius:4px;padding:10px 14px;display:none;animation:popIn .25s ease}
+
+/* Reaction bubble */
+.bub-reactions{display:flex;gap:3px;flex-wrap:wrap;margin-top:4px}
+.react-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,77,166,.15);border-radius:12px;padding:2px 6px;font-size:12px;cursor:pointer;transition:.15s}
+.react-btn:active{transform:scale(1.3)}
+.add-react{background:transparent;border:1px dashed rgba(255,77,166,.2);border-radius:12px;padding:2px 7px;font-size:10px;color:rgba(255,77,166,.4);cursor:pointer}
+
+/* Typing */
+.typing-ind{align-self:flex-start;background:var(--sc);border:1px solid rgba(255,77,166,.1);border-radius:18px;border-bottom-left-radius:4px;padding:10px 14px;display:none;animation:popIn .25s ease;margin:4px 12px;flex-shrink:0;position:relative;z-index:1}
 .typing-ind.show{display:flex}
 .td{display:inline-block;width:7px;height:7px;border-radius:50%;background:rgba(255,77,166,.5);animation:tdot 1.4s infinite;margin:0 2px}
 .td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
 @keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-8px);opacity:1}}
+
+/* Input */
 .inp-area{padding:9px 12px;background:rgba(10,10,24,.97);border-top:1px solid rgba(255,77,166,.08);display:flex;gap:7px;align-items:flex-end;position:relative;z-index:2;flex-shrink:0}
 .inp-actions{display:flex;gap:6px;align-items:flex-end}
 .minp{flex:1;background:var(--sc);border:1px solid rgba(255,77,166,.18);border-radius:22px;padding:9px 16px;color:var(--st);font-family:'Nunito',sans-serif;font-size:13px;outline:none;resize:none;max-height:100px;min-height:40px;line-height:1.4}
@@ -365,12 +381,16 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 .ibtn:active{transform:scale(.85)}
 .sbtn{background:linear-gradient(135deg,var(--pk2),var(--pu));color:#fff;box-shadow:0 3px 12px rgba(233,30,140,.3)}
 .ebtn{background:rgba(255,255,255,.06);border:1px solid rgba(255,77,166,.14);color:var(--st)}
+
+/* Emoji picker */
 #emojiPicker{display:none;position:fixed;bottom:65px;left:12px;right:12px;background:rgba(18,18,42,.98);border:1px solid rgba(255,77,166,.15);border-radius:16px;padding:12px;z-index:10;backdrop-filter:blur(20px);max-height:200px;overflow-y:auto}
 #emojiPicker.show{display:block}
 .emoji-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
 .ej{font-size:24px;text-align:center;cursor:pointer;border-radius:8px;padding:4px}
 .ej:active{background:rgba(255,77,166,.2);transform:scale(1.3)}
 .emoji-cat{font-size:10px;color:rgba(240,230,255,.3);font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin:8px 0 4px;grid-column:1/-1}
+
+/* Context menu */
 #ctxMenu{display:none;position:fixed;z-index:1200;background:rgba(18,18,42,.98);border:1px solid rgba(255,77,166,.18);border-radius:14px;padding:6px;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);min-width:155px}
 #ctxMenu.show{display:block}
 .ctx-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;font-size:13px;color:var(--st)}
@@ -378,6 +398,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 .ctx-item.danger{color:#f87171}
 .ctx-sep{height:1px;background:rgba(255,77,166,.1);margin:4px 6px}
 .ctx-ico{font-size:16px;width:20px;text-align:center}
+
+/* Delete modal */
 #delModal{display:none;position:fixed;inset:0;z-index:1300;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:20px}
 #delModal.show{display:flex}
 .del-box{background:#1e293b;border:1px solid rgba(239,68,68,.3);border-radius:20px;padding:24px;width:100%;max-width:300px;text-align:center}
@@ -387,11 +409,15 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 .del-btns{display:flex;gap:10px}
 .del-cancel{flex:1;padding:10px;border-radius:12px;border:1px solid #334155;background:transparent;color:#94a3b8;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer}
 .del-confirm{flex:1;padding:10px;border-radius:12px;border:none;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:900;cursor:pointer}
+
+/* Float hearts */
 .hf{position:fixed;pointer-events:none;z-index:9999;animation:rise 1.3s ease forwards}
 @keyframes rise{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(.3)}}
-/* Room ID banner in messenger */
-.room-banner{padding:5px 14px;font-size:10px;background:rgba(255,77,166,.06);border-bottom:1px solid rgba(255,77,166,.08);color:rgba(240,230,255,.3);text-align:center;flex-shrink:0;position:relative;z-index:2;font-weight:700}
-.no-partner-banner{background:rgba(245,158,11,.08);border-bottom:1px solid rgba(245,158,11,.15);padding:8px 14px;font-size:11px;color:rgba(245,158,11,.8);text-align:center;flex-shrink:0;position:relative;z-index:2;font-weight:700;line-height:1.5}
+
+/* Toast notification */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(18,18,42,.97);border:1px solid rgba(255,77,166,.25);border-radius:12px;padding:8px 16px;font-size:12px;color:var(--st);font-family:'Nunito',sans-serif;font-weight:700;z-index:9999;animation:toastIn .3s ease,toastOut .3s ease 1.7s forwards;white-space:nowrap}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes toastOut{to{opacity:0;transform:translateX(-50%) translateY(10px)}}
 </style>
 </head>
 <body>
@@ -408,40 +434,24 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
       <button class="auth-tab on" id="tabLogin" onclick="setAuthTab('login')">🔑 Login</button>
       <button class="auth-tab" id="tabRegister" onclick="setAuthTab('register')">✨ Register</button>
     </div>
-    <!-- Login Form -->
     <div id="loginForm">
-      <div class="auth-field">
-        <label>Username</label>
-        <input class="auth-inp" id="lUsername" placeholder="Enter your username" autocomplete="off" autocapitalize="off">
-      </div>
-      <div class="auth-field">
-        <label>Password</label>
-        <input class="auth-inp" id="lPassword" type="password" placeholder="Enter password" autocomplete="off">
-      </div>
-      <button class="auth-btn" onclick="doLogin()">🚀 Login & Study!</button>
+      <div class="auth-field"><label>Username</label><input class="auth-inp" id="lUsername" placeholder="Enter your username" autocomplete="off" autocapitalize="off"></div>
+      <div class="auth-field"><label>Password</label><input class="auth-inp" id="lPassword" type="password" placeholder="Enter password" autocomplete="off"></div>
+      <button class="auth-btn" onclick="doLogin()">🚀 Login &amp; Study!</button>
       <div class="auth-err" id="loginErr">Wrong username or password</div>
       <div class="auth-divider">— OR —</div>
       <div style="text-align:center;font-size:11px;color:rgba(240,230,255,.3);font-weight:700">First time? Click Register above 👆</div>
     </div>
-    <!-- Register Form -->
     <div id="registerForm" style="display:none">
-      <div class="auth-field">
-        <label>Username</label>
-        <input class="auth-inp" id="rUsername" placeholder="Choose a username" autocomplete="off" autocapitalize="off">
-      </div>
-      <div class="auth-field">
-        <label>Password</label>
-        <input class="auth-inp" id="rPassword" type="password" placeholder="Create password">
-      </div>
+      <div class="auth-field"><label>Username</label><input class="auth-inp" id="rUsername" placeholder="Choose a username" autocomplete="off" autocapitalize="off"></div>
+      <div class="auth-field"><label>Password</label><input class="auth-inp" id="rPassword" type="password" placeholder="Create password"></div>
       <div class="auth-field">
         <label>Room ID <span style="color:rgba(255,77,166,.6)">💕 (for secret chat)</span></label>
         <input class="auth-inp" id="rRoomId" placeholder="e.g. stars2025 (share with partner)">
       </div>
       <button class="auth-btn" onclick="doRegister()">✨ Create Account</button>
       <div class="auth-err" id="registerErr">Username already taken</div>
-      <div class="auth-tip show">
-        💡 <b>Room ID:</b> You and your chat partner must use the <b>same Room ID</b> to connect in the secret messenger! Share it privately.
-      </div>
+      <div class="auth-tip">💡 <b>Room ID:</b> You and your chat partner must use the <b>same Room ID</b> to connect! Share it privately.</div>
     </div>
   </div>
 </div>
@@ -450,11 +460,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 <div id="landing">
   <div class="stars" id="landStars"></div>
   <div class="land-top">
-    <div class="land-logo">
-      <div class="land-logo-ico">📚</div>
-      <div class="land-logo-text">TN <span>StudyHub</span></div>
-    </div>
-    <div class="land-badge" id="userPillLand" onclick="showUserMenu()">👤 Me</div>
+    <div class="land-logo"><div class="land-logo-ico">📚</div><div class="land-logo-text">TN <span>StudyHub</span></div></div>
+    <div class="land-badge" onclick="logout()">👤 Logout</div>
   </div>
   <div id="landUserCard" class="land-user-card">
     <div class="luc-av">👤</div>
@@ -463,7 +470,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
   </div>
   <div class="land-hero">
     <div class="land-title">ஒரே App-ல<br><span>5th to 12th</span> படிப்பு</div>
-    <div class="land-sub">Tamil Nadu State Board · Q&A · Notes · Flash Cards · Formulas</div>
+    <div class="land-sub">Tamil Nadu State Board · Q&amp;A · Notes · Flash Cards · Formulas</div>
   </div>
   <div class="land-grid-label">📌 Select Your Class</div>
   <div class="land-grid">
@@ -477,13 +484,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
     <div class="cls-card board" onclick="selectClass(12)"><div class="cls-ico">🚀</div><div class="cls-num">12th</div><div class="cls-label">HSC II Yr</div></div>
   </div>
   <div class="land-feat">
-    <div class="feat-chip">📝 Smart Notes</div>
-    <div class="feat-chip">🃏 Flash Cards</div>
-    <div class="feat-chip">🔣 Formula Sheet</div>
-    <div class="feat-chip">🎯 Daily Goals</div>
-    <div class="feat-chip">🔥 Study Streak</div>
-    <div class="feat-chip">📌 Sticky Notes</div>
-    <div class="feat-chip">💬 Secret Chat</div>
+    <div class="feat-chip">📝 Smart Notes</div><div class="feat-chip">🃏 Flash Cards</div><div class="feat-chip">🔣 Formula Sheet</div>
+    <div class="feat-chip">🎯 Daily Goals</div><div class="feat-chip">🔥 Study Streak</div><div class="feat-chip">📌 Sticky Notes</div><div class="feat-chip">💬 Secret Chat</div>
   </div>
   <div class="land-footer">Tamil Nadu State Board · Made with ❤️ for TN Students</div>
 </div>
@@ -508,7 +510,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 <div id="pinScr">
   <div class="plock">🔐</div>
   <div class="ptitle">Secret Vault</div>
-  <p style="font-size:11px;color:rgba(240,230,255,.25);margin-top:-8px;position:relative;z-index:1" id="pinSubtitle">Enter PIN to open chat</p>
+  <p style="font-size:11px;color:rgba(240,230,255,.25);margin-top:-8px;position:relative;z-index:1">Enter PIN to open chat</p>
   <div class="pdots"><div class="pdot" id="pd1"></div><div class="pdot" id="pd2"></div><div class="pdot" id="pd3"></div><div class="pdot" id="pd4"></div></div>
   <p class="perr" id="perr">❌ Wrong PIN</p>
   <div class="ppad">
@@ -532,16 +534,26 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
       </div>
     </div>
     <div style="display:flex;gap:8px">
-      <button class="clrbtn" onclick="askClearChat()">🗑 Clear</button>
+      <button class="clrbtn" onclick="askClearChat()">🗑</button>
       <button class="backbtn" onclick="closeM()">📚 Back</button>
     </div>
   </div>
-  <div class="room-banner" id="roomBanner">Room: —</div>
-  <div id="noPartnerBanner" class="no-partner-banner" style="display:none">
-    ⚠️ No partner found for this Room ID yet.<br>Share your Room ID: <b id="myRoomDisplay"></b>
+  <!-- Room info bar -->
+  <div class="room-info-bar">
+    <div class="room-code-pill">💌 Room: <strong id="roomCodeDisplay" onclick="copyRoomCode()">—</strong></div>
+    <div class="room-members-row" id="roomMembersRow"></div>
   </div>
-  <div class="msgs" id="msgs"><div style="text-align:center;color:rgba(240,230,255,.2);font-size:12px;padding:30px">Loading chat... 💕</div></div>
-  <div style="padding:0 12px;position:relative;z-index:1;flex-shrink:0"><div class="typing-ind" id="typingInd"><span class="td"></span><span class="td"></span><span class="td"></span></div></div>
+  <!-- No partner banner -->
+  <div id="noPartnerBanner" class="no-partner-banner" style="display:none">
+    ⚠️ Waiting for partner to join Room: <b id="myRoomDisplay"></b>
+    <button class="copy-room-btn" onclick="copyRoomCode()">📋 Copy</button>
+  </div>
+  <div class="msgs" id="msgs">
+    <div style="text-align:center;color:rgba(240,230,255,.2);font-size:12px;padding:30px">Loading... 💕</div>
+  </div>
+  <div style="position:relative;z-index:1;flex-shrink:0">
+    <div class="typing-ind" id="typingInd"><span class="td"></span><span class="td"></span><span class="td"></span></div>
+  </div>
   <div class="inp-area">
     <div class="inp-actions"><button class="ibtn ebtn" onclick="toggleEmoji()">😊</button></div>
     <textarea class="minp" id="minp" placeholder="Message..." rows="1" onkeydown="hk(event)" oninput="ah(this);sendTyping()"></textarea>
@@ -552,6 +564,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
     <div class="ej" onclick="addEmoji('💕')">💕</div><div class="ej" onclick="addEmoji('❤️')">❤️</div><div class="ej" onclick="addEmoji('💗')">💗</div><div class="ej" onclick="addEmoji('🥰')">🥰</div><div class="ej" onclick="addEmoji('😘')">😘</div><div class="ej" onclick="addEmoji('💑')">💑</div><div class="ej" onclick="addEmoji('✨')">✨</div><div class="ej" onclick="addEmoji('🌸')">🌸</div>
     <div class="emoji-cat">Feel</div>
     <div class="ej" onclick="addEmoji('😭')">😭</div><div class="ej" onclick="addEmoji('🥺')">🥺</div><div class="ej" onclick="addEmoji('😂')">😂</div><div class="ej" onclick="addEmoji('🤭')">🤭</div><div class="ej" onclick="addEmoji('😌')">😌</div><div class="ej" onclick="addEmoji('🫶')">🫶</div><div class="ej" onclick="addEmoji('💜')">💜</div><div class="ej" onclick="addEmoji('🌙')">🌙</div>
+    <div class="emoji-cat">Study</div>
+    <div class="ej" onclick="addEmoji('📚')">📚</div><div class="ej" onclick="addEmoji('✏️')">✏️</div><div class="ej" onclick="addEmoji('🎯')">🎯</div><div class="ej" onclick="addEmoji('🔥')">🔥</div><div class="ej" onclick="addEmoji('⭐')">⭐</div><div class="ej" onclick="addEmoji('💪')">💪</div><div class="ej" onclick="addEmoji('🥳')">🥳</div><div class="ej" onclick="addEmoji('😴')">😴</div>
   </div></div>
 </div>
 
@@ -613,104 +627,136 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════
-// STORAGE ABSTRACTION — window.storage + localStorage fallback
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════
+// ✅ FIX 1: STORAGE ABSTRACTION
+// Bug was: window.storage failure → fell back to localStorage
+//          but data was in window.storage → partner not found!
+// Fix: If window.storage exists, use ONLY it (no localStorage fallback).
+//      On error → return safe empty value, don't cross storage systems.
+// ═══════════════════════════════════════════════════════════════════════
 const S = {
-  async get(key, shared=false) {
-    try {
-      if(window.storage) {
+  // Detect once at startup — never mix storage systems
+  _ws: (typeof window !== 'undefined' && typeof window.storage !== 'undefined' && window.storage !== null),
+
+  async get(key, shared = false) {
+    if (this._ws) {
+      try {
         const r = await window.storage.get(key, shared);
-        return r ? r.value : null;
-      }
-    } catch(e){}
-    return localStorage.getItem((shared?'SH_':'LC_')+key);
+        return (r && r.value !== undefined) ? r.value : null;
+      } catch (e) { return null; }        // key not found → null, not an error
+    }
+    return localStorage.getItem((shared ? 'SH_' : 'LC_') + key);
   },
-  async set(key, val, shared=false) {
-    try {
-      if(window.storage) { await window.storage.set(key, val, shared); return; }
-    } catch(e){}
-    localStorage.setItem((shared?'SH_':'LC_')+key, val);
+
+  async set(key, val, shared = false) {
+    if (this._ws) {
+      try { await window.storage.set(key, val, shared); return true; }
+      catch (e) { console.warn('[S.set]', key, e); return false; }
+    }
+    try { localStorage.setItem((shared ? 'SH_' : 'LC_') + key, val); return true; }
+    catch (e) { return false; }
   },
-  async delete(key, shared=false) {
-    try {
-      if(window.storage) { await window.storage.delete(key, shared); return; }
-    } catch(e){}
-    localStorage.removeItem((shared?'SH_':'LC_')+key);
+
+  async delete(key, shared = false) {
+    if (this._ws) {
+      try { await window.storage.delete(key, shared); } catch (e) {}
+      return;
+    }
+    localStorage.removeItem((shared ? 'SH_' : 'LC_') + key);
   },
-  async list(prefix='', shared=false) {
-    try {
-      if(window.storage) {
+
+  // ✅ FIX 2: S.list() — was throwing on empty prefix → catch returned nothing
+  // Fix: Always return [] on any error. Never fall back to other storage.
+  async list(prefix = '', shared = false) {
+    if (this._ws) {
+      try {
         const r = await window.storage.list(prefix, shared);
-        return r ? r.keys : [];
+        // r = { keys: [...], prefix, shared }  or null
+        if (r && Array.isArray(r.keys)) return r.keys;
+        return [];
+      } catch (e) {
+        // window.storage.list() throws when NO keys match prefix — this is normal!
+        return [];
       }
-    } catch(e){}
-    const pfx = (shared?'SH_':'LC_')+prefix;
+    }
+    // localStorage fallback
+    const pfx = (shared ? 'SH_' : 'LC_') + prefix;
     const keys = [];
-    for(let i=0;i<localStorage.length;i++){
+    for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
-      if(k.startsWith(pfx)) keys.push(k.slice((shared?'SH_':'LC_').length));
+      if (k && k.startsWith(pfx)) keys.push(k.slice((shared ? 'SH_' : 'LC_').length));
     }
     return keys;
   }
 };
 
-// ═══════════════════════════════════════════════════
-// SIMPLE HASH (djb2) for passwords
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════
+// SIMPLE HASH (djb2)
+// ═══════════════════════════════════════════════════════════════════════
 function hash(s) {
   let h = 5381;
-  for(let i=0;i<s.length;i++) h = ((h<<5)+h)^s.charCodeAt(i);
-  return (h>>>0).toString(36);
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h) ^ s.charCodeAt(i);
+  return (h >>> 0).toString(36);
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════
+// KEY HELPERS
+// ✅ FIX 3: Keys use underscore separators only (no colons, no slashes)
+//           window.storage disallows: whitespace, / \ ' "
+//           Using pattern: table_roomid_userid
+// ═══════════════════════════════════════════════════════════════════════
+// User profile key (shared): usr_USERNAME
+// Auth key (private):        auth_USERNAME
+// Room member key (shared):  rm_ROOMID_USERNAME   ← NEW: room-scoped prefix!
+// Chat key (shared):         chat_ROOMID
+// Heartbeat (shared):        hb_ROOMID_USERNAME
+// Typing (shared):           typ_ROOMID_USERNAME
+
+function usrKey(u)  { return 'usr_' + u; }
+function authKey(u) { return 'auth_' + u; }
+function rmKey(r,u) { return 'rm_' + r + '_' + u; }    // room member
+function rmPfx(r)   { return 'rm_' + r + '_'; }         // prefix to list all members
+function chatKey(r) { return 'chat_' + r; }
+function hbKey(r,u) { return 'hb_' + r + '_' + u; }
+function typKey(r,u){ return 'typ_' + r + '_' + u; }
+
+// ═══════════════════════════════════════════════════════════════════════
 // AUTH STATE
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════
 let currentUser = null; // {username, roomId}
 
 function setAuthTab(tab) {
-  document.getElementById('tabLogin').classList.toggle('on', tab==='login');
-  document.getElementById('tabRegister').classList.toggle('on', tab==='register');
-  document.getElementById('loginForm').style.display = tab==='login'?'block':'none';
-  document.getElementById('registerForm').style.display = tab==='register'?'block':'none';
+  document.getElementById('tabLogin').classList.toggle('on', tab === 'login');
+  document.getElementById('tabRegister').classList.toggle('on', tab === 'register');
+  document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
+  document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
   document.getElementById('loginErr').classList.remove('show');
   document.getElementById('registerErr').classList.remove('show');
 }
 
 async function doRegister() {
-  const username = document.getElementById('rUsername').value.trim().toLowerCase();
+  const username = document.getElementById('rUsername').value.trim().toLowerCase().replace(/[^a-z0-9_]/g,'');
   const password = document.getElementById('rPassword').value.trim();
-  const roomId = document.getElementById('rRoomId').value.trim().toLowerCase();
-  const errEl = document.getElementById('registerErr');
+  const roomId   = document.getElementById('rRoomId').value.trim().toLowerCase().replace(/[^a-z0-9_]/g,'');
+  const errEl    = document.getElementById('registerErr');
   errEl.classList.remove('show');
 
-  if(!username || !password || !roomId) {
-    errEl.textContent = '⚠️ All fields are required!';
-    errEl.classList.add('show'); return;
-  }
-  if(username.length < 2) {
-    errEl.textContent = '⚠️ Username too short (min 2 chars)';
-    errEl.classList.add('show'); return;
-  }
+  if (!username || !password || !roomId) { showErr(errEl, '⚠️ All fields required!'); return; }
+  if (username.length < 2)              { showErr(errEl, '⚠️ Username min 2 chars'); return; }
+  if (roomId.length < 3)               { showErr(errEl, '⚠️ Room ID min 3 chars'); return; }
 
-  // Check if username exists in shared registry
-  const existing = await S.get('user:'+username, true);
-  if(existing) {
-    errEl.textContent = '❌ Username already taken!';
-    errEl.classList.add('show'); return;
-  }
+  // Check username taken
+  const existing = await S.get(usrKey(username), true);
+  if (existing) { showErr(errEl, '❌ Username already taken!'); return; }
 
-  const userData = JSON.stringify({roomId, createdAt: Date.now()});
-  const authData = JSON.stringify({passwordHash: hash(password), roomId});
+  // ✅ Store user profile in shared (discoverable by room prefix)
+  await S.set(usrKey(username), JSON.stringify({ roomId, createdAt: Date.now() }), true);
+  // ✅ Store auth in private storage
+  await S.set(authKey(username), JSON.stringify({ passwordHash: hash(password), roomId }), false);
+  // ✅ Register as room member (shared, room-scoped) — THIS is what list() will search!
+  await S.set(rmKey(roomId, username), JSON.stringify({ username, joinedAt: Date.now() }), true);
 
-  // Store public profile in shared storage (discoverable by roomId)
-  await S.set('user:'+username, userData, true);
-  // Store private auth in personal storage
-  await S.set('auth:'+username, authData, false);
-
-  // Auto-login after register
-  currentUser = {username, roomId};
+  currentUser = { username, roomId };
   localStorage.setItem('tn_session', JSON.stringify(currentUser));
   afterLogin();
 }
@@ -718,74 +764,55 @@ async function doRegister() {
 async function doLogin() {
   const username = document.getElementById('lUsername').value.trim().toLowerCase();
   const password = document.getElementById('lPassword').value.trim();
-  const errEl = document.getElementById('loginErr');
+  const errEl    = document.getElementById('loginErr');
   errEl.classList.remove('show');
 
-  if(!username || !password) {
-    errEl.textContent = '⚠️ Please fill all fields!';
-    errEl.classList.add('show'); return;
-  }
+  if (!username || !password) { showErr(errEl, '⚠️ Please fill all fields!'); return; }
 
-  // Try personal storage first
-  let authRaw = await S.get('auth:'+username, false);
-  if(!authRaw) {
-    // Fallback: check shared (for backward compat or cross-device if using window.storage)
-    authRaw = await S.get('auth_shared:'+username, true);
-  }
-  if(!authRaw) {
-    errEl.textContent = '❌ Username not found. Register first!';
-    errEl.classList.add('show'); return;
-  }
+  const authRaw = await S.get(authKey(username), false);
+  if (!authRaw) { showErr(errEl, '❌ Username not found. Register first!'); return; }
 
   let authData;
-  try { authData = JSON.parse(authRaw); } catch(e) {
-    errEl.textContent = '❌ Login error. Try again.';
-    errEl.classList.add('show'); return;
-  }
+  try { authData = JSON.parse(authRaw); }
+  catch (e) { showErr(errEl, '❌ Login error. Try again.'); return; }
 
-  if(authData.passwordHash !== hash(password)) {
-    errEl.textContent = '❌ Wrong password!';
-    errEl.classList.add('show'); return;
-  }
+  if (authData.passwordHash !== hash(password)) { showErr(errEl, '❌ Wrong password!'); return; }
 
-  currentUser = {username, roomId: authData.roomId};
+  currentUser = { username, roomId: authData.roomId };
   localStorage.setItem('tn_session', JSON.stringify(currentUser));
+
+  // ✅ Re-register room member on every login (keeps presence fresh)
+  await S.set(rmKey(authData.roomId, username), JSON.stringify({ username, joinedAt: Date.now() }), true);
+
   afterLogin();
 }
 
+function showErr(el, msg) { el.textContent = msg; el.classList.add('show'); }
+
 function afterLogin() {
   document.getElementById('authScr').style.display = 'none';
-  // Update landing UI
   document.getElementById('lucName').textContent = '👤 ' + currentUser.username;
   document.getElementById('lucRoom').textContent = 'Room: ' + currentUser.roomId;
-  document.getElementById('userPillLand').textContent = '👤 ' + currentUser.username;
   document.getElementById('landing').style.display = 'flex';
   document.getElementById('landing').style.flexDirection = 'column';
 }
 
 function logout() {
-  if(!confirm('Logout?')) return;
+  if (!confirm('Logout?')) return;
   localStorage.removeItem('tn_session');
   currentUser = null;
-  // Stop any polls
-  if(window._chatPoll) clearInterval(window._chatPoll);
-  if(window._heartbeat) clearInterval(window._heartbeat);
-  document.getElementById('landing').style.display = 'none';
-  document.getElementById('mainApp').style.display = 'none';
-  document.getElementById('msg').style.display = 'none';
-  document.getElementById('pinScr').style.display = 'none';
+  if (chatPollInterval) clearInterval(chatPollInterval);
+  if (heartbeatInterval) clearInterval(heartbeatInterval);
+  ['landing','mainApp','msg','pinScr'].forEach(id => document.getElementById(id).style.display = 'none');
   document.getElementById('authScr').style.display = 'flex';
   setAuthTab('login');
 }
 
-// Key helpers — namespaced by username
-function uKey(key) {
-  return currentUser ? `${currentUser.username}_${key}` : key;
-}
+function uKey(key) { return currentUser ? currentUser.username + '_' + key : key; }
 
-// ═══════════════════════════════════════════════════
-// CLASS DATA
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════
+// CLASS DATA (unchanged — keeping all original content)
+// ═══════════════════════════════════════════════════════════════════════
 const CLASS_DATA = {
 5:{name:"5th Standard",emoji:"🌱",subjects:["Tamil","English","Maths","Science","Social"],subjectEmojis:["📜","🔤","📐","🔬","🌏"],subjectColors:["#fff5f5","#f0fdf4","#eff6ff","#fff7ed","#f5f3ff"],subjectTextColors:["#ef4444","#16a34a","#2563eb","#f97316","#7c3aed"],chapters:{Tamil:[{title:"செய்யுள் — திருக்குறள்",sub:"அன்பு, கல்வி, ஒழுக்கம்",ico:"📖",m1:[{q:"திருக்குறளை இயற்றியவர் யார்?",a:"திருவள்ளுவர்"},{q:"திருக்குறளில் மொத்த குறட்பாக்கள் எத்தனை?",a:"1330"},{q:"திருக்குறளில் மொத்த அதிகாரங்கள்?",a:"133"}],m2:[{q:"திருக்குறளின் மூன்று பகுதிகள் யாவை?",a:"அறத்துப்பால், பொருட்பால், காமத்துப்பால்"}],m5:[{q:"கல்வியின் சிறப்பை விளக்குக.",a:"கல்வியால் மட்டுமே உண்மையான செல்வம் பெறலாம். கற்றோருக்கு எல்லா இடமும் தாய்நாடே."}]}],English:[{title:"The Little Ant",sub:"Story, vocabulary, grammar",ico:"📝",m1:[{q:"Opposite of 'big'?",a:"small"},{q:"Plural of 'leaf'?",a:"leaves"},{q:"'___ is a good boy.' Fill: He/She",a:"He (for boy)"}],m2:[{q:"Write 3 naming words (nouns).",a:"Dog, Book, School"}],m5:[{q:"Write 5 sentences about your school.",a:"My school is ABC School. It has a big playground. We have kind teachers. I love going to school. My favourite subject is Maths."}]}],Maths:[{title:"Numbers & Operations",sub:"Place value, Addition, Multiplication",ico:"🔢",m1:[{q:"10 × 0 = ?",a:"0"},{q:"Place value of 5 in 357?",a:"50 (Tens)"},{q:"Predecessor of 1000?",a:"999"},{q:"15 × 3 = ?",a:"45"}],m2:[{q:"Write 3257 in words.",a:"Three thousand two hundred and fifty seven"},{q:"Find LCM of 4 and 6.",a:"LCM = 12"}],m5:[{q:"Explain multiplication as repeated addition.",a:"Multiplication is adding same number again: 3×4=4+4+4=12"}]}],Science:[{title:"Plants Around Us",sub:"Parts, functions, types",ico:"🌿",m1:[{q:"Which part makes food?",a:"Leaf"},{q:"Plant's food making?",a:"Photosynthesis"},{q:"Root absorbs?",a:"Water and minerals"}],m2:[{q:"Tap root vs Fibrous root.",a:"Tap root: one main root (Mango)\nFibrous: many thin roots (Grass)"}],m5:[{q:"Parts of a plant and functions.",a:"Root—absorbs water\nStem—carries water\nLeaf—photosynthesis\nFlower—reproduction\nFruit—seeds"}]}],Social:[{title:"Our Earth",sub:"Maps, Directions, Globe",ico:"🌍",m1:[{q:"Earth shape?",a:"Geoid"},{q:"Imaginary dividing line?",a:"Equator"},{q:"Compass directions?",a:"N, S, E, W"}],m2:[{q:"Map vs Globe.",a:"Globe:3D model\nMap:Flat drawing"}],m5:[{q:"Layers of Earth.",a:"Crust→Mantle→Outer Core→Inner Core"}]}]},flashCards:{Tamil:[{q:"திருக்குறளை எழுதியவர்?",a:"திருவள்ளுவர்"},{q:"குறட்பாக்கள்?",a:"1330"},{q:"3 பகுதிகள்?",a:"அறம், பொருள், காமம்"}],English:[{q:"Plural of leaf?",a:"Leaves"},{q:"Noun = ?",a:"Name of person/place/thing"},{q:"Opposite of big?",a:"Small"}],Maths:[{q:"10×0=?",a:"0"},{q:"LCM of 4,6?",a:"12"},{q:"5 in 357?",a:"50 (tens)"}],Science:[{q:"Which part makes food?",a:"Leaf"},{q:"Root function?",a:"Absorbs water/minerals"}],Social:[{q:"Earth shape?",a:"Geoid"},{q:"Equator?",a:"Divides Earth equally"},{q:"Compass?",a:"N,S,E,W"}]},formulas:{Maths:[{n:"Perimeter of Rectangle",f:"P = 2(l + b)"},{n:"Area of Rectangle",f:"A = l × b"},{n:"Perimeter of Square",f:"P = 4 × side"},{n:"Area of Square",f:"A = side × side"}]}},
 6:{name:"6th Standard",emoji:"📗",subjects:["Tamil","English","Maths","Science","Social"],subjectEmojis:["📜","🔤","📐","🔬","🌏"],subjectColors:["#fff5f5","#f0fdf4","#eff6ff","#fff7ed","#f5f3ff"],subjectTextColors:["#ef4444","#16a34a","#2563eb","#f97316","#7c3aed"],chapters:{Tamil:[{title:"இலக்கணம் — எழுத்து வகைகள்",sub:"உயிர், மெய், உயிர்மெய்",ico:"📖",m1:[{q:"உயிர் எழுத்துக்கள்?",a:"12"},{q:"மெய் எழுத்துக்கள்?",a:"18"},{q:"மொத்த எழுத்துக்கள்?",a:"247"}],m2:[{q:"வல்லினம், மெல்லினம், இடையினம்?",a:"வல்லினம்: க,ச,ட,த,ப,ற\nமெல்லினம்: ங,ஞ,ண,ந,ம,ன\nஇடையினம்: ய,ர,ல,வ,ழ,ள"}],m5:[{q:"தொல்காப்பியம் பற்றி விளக்குக.",a:"மிகவும் பழமையான இலக்கண நூல். 3 அதிகாரம்: எழுத்து, சொல், பொருள்."}]}],English:[{title:"Grammar — Nouns & Pronouns",sub:"Types, usage",ico:"📝",m1:[{q:"Proper noun?",a:"India, Ravi, Chennai"},{q:"Common noun?",a:"city, boy, river"},{q:"'She' pronoun type?",a:"Personal pronoun"}],m2:[{q:"Common vs Proper noun.",a:"Common: general (city)\nProper: specific (Chennai)"}],m5:[{q:"Types of nouns.",a:"1.Common-city\n2.Proper-Chennai\n3.Collective-flock\n4.Abstract-love\n5.Material-gold"}]}],Maths:[{title:"Integers & Fractions",sub:"Number line, operations",ico:"🔢",m1:[{q:"|−5|=?",a:"5"},{q:"Additive inverse of 7?",a:"−7"},{q:"½+¼=?",a:"¾"},{q:"(−3)×(−4)=?",a:"12"}],m2:[{q:"Absolute value.",a:"|5|=5, |−5|=5, always positive"}],m5:[{q:"Integer multiplication rules.",a:"(+)×(+)=+\n(−)×(−)=+\n(+)×(−)=−"}]}],Science:[{title:"Food — Where Does It Come From?",sub:"Plants, animals, food chain",ico:"🌿",m1:[{q:"Plants are?",a:"Autotrophs"},{q:"Herbivore eats?",a:"Plants only"},{q:"Omnivore eats?",a:"Plants and animals"}],m2:[{q:"Photosynthesis vs Respiration.",a:"Photo: CO₂+H₂O→Glucose+O₂\nResp: Glucose+O₂→CO₂+H₂O"}],m5:[{q:"Food chain example.",a:"Grass→Grasshopper→Frog→Snake→Eagle"}]}],Social:[{title:"The Solar System",sub:"Planets, Sun, Moon",ico:"🌍",m1:[{q:"Nearest to Sun?",a:"Mercury"},{q:"Largest planet?",a:"Jupiter"},{q:"Earth is ___ from Sun?",a:"3rd"}],m2:[{q:"Rotation vs Revolution.",a:"Rotation: spin on axis→day/night\nRevolution: around Sun→seasons"}],m5:[{q:"8 planets in order.",a:"Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune"}]}]},flashCards:{Tamil:[{q:"உயிர் எழுத்துக்கள்?",a:"12"},{q:"மெய்?",a:"18"},{q:"மொத்தம்?",a:"247"}],English:[{q:"Proper noun?",a:"Chennai, Ravi"},{q:"Collective (birds)?",a:"Flock"},{q:"Abstract noun?",a:"Love"}],Maths:[{q:"|−5|=?",a:"5"},{q:"Additive inverse 7?",a:"−7"},{q:"(−3)×(−4)?",a:"12"}],Science:[{q:"Herbivore?",a:"Plants only"},{q:"Autotroph?",a:"Makes own food"}],Social:[{q:"Nearest Sun?",a:"Mercury"},{q:"Largest?",a:"Jupiter"},{q:"Earth?",a:"3rd planet"}]},formulas:{Maths:[{n:"Area of Triangle",f:"A = ½ × base × height"},{n:"Perimeter Triangle",f:"P = a+b+c"},{n:"Integers (+)×(−)",f:"= Negative"}]}},
@@ -801,96 +828,91 @@ const CLASS_DATA = {
 // APP STATE
 // ═══════════════════════════════════════════════════
 let currentClass = null;
-let notes = {};
-let stickies = {};
-let goals = {};
-let xpData = {};
-let selectedColor = 'nc-blue';
-let editingNoteId = null;
-let currentViewId = null;
+let notes = {}, stickies = {}, goals = {}, xpData = {};
+let selectedColor = 'nc-blue', editingNoteId = null, currentViewId = null;
 let flashIdx = 0, flashKnew = 0, flashForgot = 0;
 
-// ── Generate stars ──
-function makeStars(containerId, count=50) {
-  const s = document.getElementById(containerId);
-  if(!s) return;
-  for(let i=0;i<count;i++){
-    const el=document.createElement('div');el.className='star';
-    const sz=Math.random()*2+1;
-    el.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${Math.random()*4+2}s;--o1:${Math.random()*.3};--o2:${Math.random()*.7+.3}`;
+function makeStars(id, n = 50) {
+  const s = document.getElementById(id); if (!s) return;
+  for (let i = 0; i < n; i++) {
+    const el = document.createElement('div'); el.className = 'star';
+    const sz = Math.random() * 2 + 1;
+    el.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${Math.random()*4+2}s;--o1:${Math.random()*.3};--o2:${Math.random()*.7+.3}`;
     s.appendChild(el);
   }
 }
-makeStars('authStars', 60);
-makeStars('landStars', 50);
-makeStars('stars2', 30);
+makeStars('authStars', 60); makeStars('landStars', 50); makeStars('stars2', 30);
 
-// ── Check session ──
-(function(){
+// ── Session restore ──
+(function () {
   const sess = localStorage.getItem('tn_session');
-  if(sess) {
-    try {
-      currentUser = JSON.parse(sess);
-      afterLogin();
-    } catch(e) {
-      document.getElementById('authScr').style.display = 'flex';
-    }
+  if (sess) {
+    try { currentUser = JSON.parse(sess); afterLogin(); }
+    catch (e) { document.getElementById('authScr').style.display = 'flex'; }
   } else {
     document.getElementById('authScr').style.display = 'flex';
   }
 })();
 
+// ── Toast ──
+function showToast(msg) {
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2100);
+}
+
+// ── Copy room code ──
+function copyRoomCode() {
+  if (!currentUser) return;
+  navigator.clipboard?.writeText(currentUser.roomId).catch(() => {});
+  showToast('📋 Room ID copied: ' + currentUser.roomId);
+}
+
 // ── Class functions ──
-function selectClass(cls){
-  currentClass=cls;
-  const d=CLASS_DATA[cls];
-  if(!d)return;
-  document.getElementById('appTitle').textContent='📚 Study Hub';
-  document.getElementById('appSub').textContent=`TN Board — ${d.name}`;
-  document.getElementById('classBadge').textContent=`Class ${cls}`;
-  // Load user data (namespaced)
-  notes[cls]=JSON.parse(localStorage.getItem(uKey(`notes_${cls}`))||'[]');
-  stickies[cls]=JSON.parse(localStorage.getItem(uKey(`stickies_${cls}`))||'[]');
-  xpData[cls]=parseInt(localStorage.getItem(uKey(`xp_${cls}`))||'0');
-  goals[cls]=JSON.parse(localStorage.getItem(uKey(`goals_${cls}`))||'null')||getDefaultGoals(cls);
-  buildTabs(cls,d);
-  buildPanels(cls,d);
-  loadFlash(cls);
-  renderNotes(cls);
-  initDash(cls);
-  document.getElementById('landing').style.display='none';
-  document.getElementById('mainApp').style.display='flex';
-  document.getElementById('mainApp').style.flexDirection='column';
+function selectClass(cls) {
+  currentClass = cls;
+  const d = CLASS_DATA[cls]; if (!d) return;
+  document.getElementById('appTitle').textContent = '📚 Study Hub';
+  document.getElementById('appSub').textContent = `TN Board — ${d.name}`;
+  document.getElementById('classBadge').textContent = `Class ${cls}`;
+  notes[cls]   = JSON.parse(localStorage.getItem(uKey(`notes_${cls}`)) || '[]');
+  stickies[cls]= JSON.parse(localStorage.getItem(uKey(`stickies_${cls}`)) || '[]');
+  xpData[cls]  = parseInt(localStorage.getItem(uKey(`xp_${cls}`)) || '0');
+  goals[cls]   = JSON.parse(localStorage.getItem(uKey(`goals_${cls}`)) || 'null') || getDefaultGoals(cls);
+  buildTabs(cls, d); buildPanels(cls, d);
+  loadFlash(cls); renderNotes(cls); initDash(cls);
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('mainApp').style.display = 'flex';
+  document.getElementById('mainApp').style.flexDirection = 'column';
 }
 
-function goBack(){
-  document.getElementById('mainApp').style.display='none';
-  document.getElementById('landing').style.display='flex';
-  document.getElementById('landing').style.flexDirection='column';
+function goBack() {
+  document.getElementById('mainApp').style.display = 'none';
+  document.getElementById('landing').style.display = 'flex';
+  document.getElementById('landing').style.flexDirection = 'column';
 }
 
-function getDefaultGoals(cls){
-  const d=CLASS_DATA[cls];
-  return d.subjects.slice(0,3).map((s,i)=>({id:i+1,text:`Revise ${s} chapter`,subj:s,done:i===0}));
+function getDefaultGoals(cls) {
+  const d = CLASS_DATA[cls];
+  return d.subjects.slice(0, 3).map((s, i) => ({ id: i + 1, text: `Revise ${s} chapter`, subj: s, done: i === 0 }));
 }
 
-function buildTabs(cls,d){
-  const bar=document.getElementById('tabsBar');
-  const tabs=['🏠 Dashboard','📝 Notes',...d.subjects.map((s,i)=>d.subjectEmojis[i]+' '+s),'🃏 Flash','🔣 Formulas','🗓 Plan'];
-  bar.innerHTML=tabs.map((t,i)=>`<div class="stab ${i===0?'on':''}" onclick="sw('${getPanelId(cls,i)}',this)">${t}</div>`).join('');
+function buildTabs(cls, d) {
+  const tabs = ['🏠 Dashboard','📝 Notes', ...d.subjects.map((s, i) => d.subjectEmojis[i] + ' ' + s), '🃏 Flash', '🔣 Formulas', '🗓 Plan'];
+  document.getElementById('tabsBar').innerHTML = tabs.map((t, i) =>
+    `<div class="stab ${i===0?'on':''}" onclick="sw('${getPanelId(cls,i)}',this)">${t}</div>`).join('');
 }
 
-function getPanelId(cls,idx){
-  const d=CLASS_DATA[cls];
-  const ids=['dash','notes',...d.subjects.map(s=>s.toLowerCase()),'flash','formula','plan'];
+function getPanelId(cls, idx) {
+  const d = CLASS_DATA[cls];
+  const ids = ['dash','notes',...d.subjects.map(s=>s.toLowerCase()),'flash','formula','plan'];
   return `${cls}_${ids[idx]}`;
 }
 
-function buildPanels(cls,d){
-  const area=document.getElementById('panelsArea');
-  let html='';
+function buildPanels(cls, d) {
+  const area = document.getElementById('panelsArea');
+  let html = '';
   // DASHBOARD
-  html+=`<div class="panel on" id="p-${cls}_dash">
+  html += `<div class="panel on" id="p-${cls}_dash">
     <div class="dash-hero">
       <div class="dash-greeting">👋 நல்வரவு,</div>
       <div class="dash-name">${currentUser?currentUser.username:''} ${d.emoji}</div>
@@ -926,7 +948,7 @@ function buildPanels(cls,d){
     </div>
   </div>`;
   // NOTES
-  html+=`<div class="panel" id="p-${cls}_notes">
+  html += `<div class="panel" id="p-${cls}_notes">
     <div class="notes-subtabs">
       <div class="nstab on" id="nt-notes-${cls}" onclick="setNoteTab(${cls},'notes')">📝 My Notes</div>
       <div class="nstab" id="nt-sticky-${cls}" onclick="setNoteTab(${cls},'sticky')">📌 Sticky</div>
@@ -935,8 +957,7 @@ function buildPanels(cls,d){
       <div class="notes-toolbar">
         <input class="search-note" id="noteSearch-${cls}" placeholder="🔍 Search notes..." oninput="renderNotes(${cls})">
         <select id="noteSubjFilter-${cls}" onchange="renderNotes(${cls})">
-          <option value="">All</option>
-          ${d.subjects.map(s=>`<option>${s}</option>`).join('')}
+          <option value="">All</option>${d.subjects.map(s=>`<option>${s}</option>`).join('')}
         </select>
         <button class="ntb-btn btn-add" onclick="openNoteEditor(${cls})">✏️ New</button>
       </div>
@@ -948,11 +969,11 @@ function buildPanels(cls,d){
     </div>
   </div>`;
   // SUBJECT PANELS
-  d.subjects.forEach((subj,si)=>{
-    const chaps=d.chapters[subj]||[];
-    html+=`<div class="panel" id="p-${cls}_${subj.toLowerCase()}">
+  d.subjects.forEach((subj, si) => {
+    const chaps = d.chapters[subj] || [];
+    html += `<div class="panel" id="p-${cls}_${subj.toLowerCase()}">
       <div class="sec-head">${d.subjectEmojis[si]} ${subj} — Class ${cls}</div>
-      ${chaps.map((ch,ci)=>`
+      ${chaps.map((ch, ci) => `
       <div class="chap">
         <div class="chap-hd" onclick="tog(this)">
           <div class="chap-ico" style="background:${d.subjectColors[si]}">${ch.ico}</div>
@@ -975,7 +996,7 @@ function buildPanels(cls,d){
     </div>`;
   });
   // FLASH CARDS
-  html+=`<div class="panel" id="p-${cls}_flash">
+  html += `<div class="panel" id="p-${cls}_flash">
     <div class="sec-head">🃏 Flash Cards</div>
     <div class="flash-section">
       <div class="flash-controls">
@@ -1002,14 +1023,14 @@ function buildPanels(cls,d){
     </div>
   </div>`;
   // FORMULA
-  const fdata=d.formulas||{};const fkeys=Object.keys(fdata);
-  html+=`<div class="panel" id="p-${cls}_formula">
+  const fdata = d.formulas || {}; const fkeys = Object.keys(fdata);
+  html += `<div class="panel" id="p-${cls}_formula">
     <div class="sec-head">🔣 Formula Sheet</div>
-    ${fkeys.length?`<div class="formula-tabs">${fkeys.map((k,i)=>`<div class="ftab ${i===0?'on':''}" onclick="setFTab(this,'f-${cls}-${k}')">${k}</div>`).join('')}</div>
-    ${fkeys.map((k,i)=>`<div class="formula-list ${i===0?'on':''}" id="f-${cls}-${k}">${(fdata[k]||[]).map((f,fi)=>`<div class="formula-item"><div class="fi-num">${fi+1}</div><div class="fi-body"><div class="fi-name">${f.n}</div><div class="fi-formula">${f.f}</div></div></div>`).join('')}</div>`).join('')}`:'<p style="color:var(--muted);font-size:13px;padding:20px;text-align:center">Formulas coming soon!</p>'}
+    ${fkeys.length ? `<div class="formula-tabs">${fkeys.map((k,i)=>`<div class="ftab ${i===0?'on':''}" onclick="setFTab(this,'f-${cls}-${k}')">${k}</div>`).join('')}</div>
+    ${fkeys.map((k,i)=>`<div class="formula-list ${i===0?'on':''}" id="f-${cls}-${k}">${(fdata[k]||[]).map((f,fi)=>`<div class="formula-item"><div class="fi-num">${fi+1}</div><div class="fi-body"><div class="fi-name">${f.n}</div><div class="fi-formula">${f.f}</div></div></div>`).join('')}</div>`).join('')}` : '<p style="color:var(--muted);font-size:13px;padding:20px;text-align:center">Formulas coming soon!</p>'}
   </div>`;
   // PLAN
-  html+=`<div class="panel" id="p-${cls}_plan">
+  html += `<div class="panel" id="p-${cls}_plan">
     <div class="sec-head">🗓 Study Plan</div>
     <div class="chap"><div class="chap-hd" onclick="tog(this)"><div class="chap-ico" style="background:#eff6ff">📅</div><div><h3>Weekly Schedule</h3><p>Class ${cls} — TN Board</p></div><span class="chev">▼</span></div>
     <div class="chap-bd">
@@ -1026,462 +1047,472 @@ function buildPanels(cls,d){
     <div class="tip-card"><div class="tip-title">💡 Visual Memory</div><div class="tip-body">Write formulas on sticky notes and paste on your study desk!</div></div>
     <div class="tip-card"><div class="tip-title">💡 Language Tip</div><div class="tip-body">For Tamil/English — read aloud! Improves memory and pronunciation.</div></div>
   </div>`;
-  area.innerHTML=html;
+  area.innerHTML = html;
 }
 
-function sw(id,el){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('on'));
-  const p=document.getElementById('p-'+id);if(p)p.classList.add('on');
-  if(el)el.classList.add('on');
-  window.scrollTo(0,0);
+function sw(id, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.stab').forEach(t => t.classList.remove('on'));
+  const p = document.getElementById('p-' + id); if (p) p.classList.add('on');
+  if (el) el.classList.add('on');
+  window.scrollTo(0, 0);
 }
-function tog(hd){hd.classList.toggle('open');hd.nextElementSibling.classList.toggle('open');}
-function togQ(hd){hd.classList.toggle('open');hd.nextElementSibling.classList.toggle('open');}
-function filterMark(btn,chapId,mark){
-  const parent=btn.closest('.mark-filter');
-  parent.querySelectorAll('.mf-btn').forEach(b=>b.classList.remove('on'));
+function tog(hd) { hd.classList.toggle('open'); hd.nextElementSibling.classList.toggle('open'); }
+function togQ(hd) { hd.classList.toggle('open'); hd.nextElementSibling.classList.toggle('open'); }
+function filterMark(btn, chapId, mark) {
+  const parent = btn.closest('.mark-filter');
+  parent.querySelectorAll('.mf-btn').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
-  const bd=btn.closest('.chap-bd');
-  bd.querySelectorAll('.q-section').forEach(sec=>{
-    sec.style.display=(parseInt(sec.dataset.mark)===mark)?'block':'none';
+  btn.closest('.chap-bd').querySelectorAll('.q-section').forEach(sec => {
+    sec.style.display = (parseInt(sec.dataset.mark) === mark) ? 'block' : 'none';
   });
 }
-function initDash(cls){
-  const days=['M','T','W','T','F','S','S'],studied=[1,1,1,0,1,1,0];
-  const wd=document.getElementById('wd-'+cls);
-  if(wd)wd.innerHTML=days.map((d,i)=>`<div class="wdot ${studied[i]?'done':''}">${d}</div>`).join('');
-  renderGoals(cls);updateNoteCount(cls);
+
+function initDash(cls) {
+  const days = ['M','T','W','T','F','S','S'], studied = [1,1,1,0,1,1,0];
+  const wd = document.getElementById('wd-' + cls);
+  if (wd) wd.innerHTML = days.map((d,i) => `<div class="wdot ${studied[i]?'done':''}">${d}</div>`).join('');
+  renderGoals(cls); updateNoteCount(cls);
 }
-function saveGoals(cls){localStorage.setItem(uKey(`goals_${cls}`),JSON.stringify(goals[cls]));}
-function renderGoals(cls){
-  const list=document.getElementById('goalsList-'+cls);if(!list)return;
-  const g=goals[cls]||[];
-  const done=g.filter(x=>x.done).length;
-  const el=document.getElementById('st-done-'+cls);if(el)el.textContent=done;
-  if(!g.length){list.innerHTML='<div style="font-size:12px;color:var(--muted);text-align:center;padding:10px">No goals yet!</div>';return;}
-  list.innerHTML=g.map(x=>`<div class="goal-item ${x.done?'done':''}" onclick="toggleGoal(${cls},${x.id})"><div class="goal-check">${x.done?'✓':''}</div><div class="goal-text">${x.text}</div><span class="goal-subj" style="background:#eff6ff;color:var(--blue)">${x.subj}</span></div>`).join('');
+
+function saveGoals(cls) { localStorage.setItem(uKey(`goals_${cls}`), JSON.stringify(goals[cls])); }
+function renderGoals(cls) {
+  const list = document.getElementById('goalsList-' + cls); if (!list) return;
+  const g = goals[cls] || [];
+  const done = g.filter(x => x.done).length;
+  const el = document.getElementById('st-done-' + cls); if (el) el.textContent = done;
+  if (!g.length) { list.innerHTML = '<div style="font-size:12px;color:var(--muted);text-align:center;padding:10px">No goals yet!</div>'; return; }
+  list.innerHTML = g.map(x => `<div class="goal-item ${x.done?'done':''}" onclick="toggleGoal(${cls},${x.id})"><div class="goal-check">${x.done?'✓':''}</div><div class="goal-text">${x.text}</div><span class="goal-subj" style="background:#eff6ff;color:var(--blue)">${x.subj}</span></div>`).join('');
 }
-function toggleGoal(cls,id){
-  const g=goals[cls].find(x=>x.id===id);
-  if(g){g.done=!g.done;saveGoals(cls);renderGoals(cls);if(g.done)gainXP(cls,10);}
+function toggleGoal(cls, id) {
+  const g = goals[cls].find(x => x.id === id);
+  if (g) { g.done = !g.done; saveGoals(cls); renderGoals(cls); if (g.done) gainXP(cls, 10); }
 }
-function addGoal(cls){
-  const t=prompt('Goal text:');if(!t)return;
-  const d=CLASS_DATA[cls];
-  const s=prompt('Subject ('+d.subjects.join('/')+'):',d.subjects[0]);
-  goals[cls].push({id:Date.now(),text:t,subj:s||d.subjects[0],done:false});
-  saveGoals(cls);renderGoals(cls);
+function addGoal(cls) {
+  const t = prompt('Goal text:'); if (!t) return;
+  const d = CLASS_DATA[cls];
+  const s = prompt('Subject (' + d.subjects.join('/') + '):', d.subjects[0]);
+  goals[cls].push({ id: Date.now(), text: t, subj: s || d.subjects[0], done: false });
+  saveGoals(cls); renderGoals(cls);
 }
-function gainXP(cls,n){
-  xpData[cls]=(xpData[cls]||0)+n;
-  localStorage.setItem(uKey(`xp_${cls}`),xpData[cls]);
-  const v=document.getElementById('xpv-'+cls);if(v)v.textContent=xpData[cls];
-  const x=document.getElementById('st-xp-'+cls);if(x)x.textContent=xpData[cls];
-  const pct=((xpData[cls]||0)%300)/3;
-  const f=document.getElementById('xpf-'+cls);if(f)f.style.width=pct+'%';
+function gainXP(cls, n) {
+  xpData[cls] = (xpData[cls] || 0) + n;
+  localStorage.setItem(uKey(`xp_${cls}`), xpData[cls]);
+  const v = document.getElementById('xpv-' + cls); if (v) v.textContent = xpData[cls];
+  const x = document.getElementById('st-xp-' + cls); if (x) x.textContent = xpData[cls];
+  const pct = ((xpData[cls] || 0) % 300) / 3;
+  const f = document.getElementById('xpf-' + cls); if (f) f.style.width = pct + '%';
   heartFloat();
 }
-function heartFloat(){
-  const emojis=['⭐','🎉','🔥','💪','✅','📚'];
-  const el=document.createElement('div');el.className='hf';
-  el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-  el.style.cssText=`left:${Math.random()*60+20}%;bottom:80px;font-size:20px`;
-  document.body.appendChild(el);setTimeout(()=>el.remove(),1400);
+function heartFloat() {
+  const emojis = ['⭐','🎉','🔥','💪','✅','📚'];
+  const el = document.createElement('div'); el.className = 'hf';
+  el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  el.style.cssText = `left:${Math.random()*60+20}%;bottom:80px;font-size:20px`;
+  document.body.appendChild(el); setTimeout(() => el.remove(), 1400);
 }
 
 // ── Notes ──
-function saveNoteData(cls){localStorage.setItem(uKey(`notes_${cls}`),JSON.stringify(notes[cls]||[]));updateNoteCount(cls);}
-function updateNoteCount(cls){const el=document.getElementById('st-notes-'+cls);if(el)el.textContent=(notes[cls]||[]).length;}
-function setNoteTab(cls,tab){
-  document.getElementById('nt-notes-'+cls).classList.toggle('on',tab==='notes');
-  document.getElementById('nt-sticky-'+cls).classList.toggle('on',tab==='sticky');
-  document.getElementById('notes-tab-main-'+cls).style.display=tab==='notes'?'block':'none';
-  document.getElementById('notes-tab-sticky-'+cls).style.display=tab==='sticky'?'block':'none';
-  if(tab==='sticky')renderStickies(cls);else renderNotes(cls);
+function saveNoteData(cls) { localStorage.setItem(uKey(`notes_${cls}`), JSON.stringify(notes[cls] || [])); updateNoteCount(cls); }
+function updateNoteCount(cls) { const el = document.getElementById('st-notes-' + cls); if (el) el.textContent = (notes[cls] || []).length; }
+function setNoteTab(cls, tab) {
+  document.getElementById('nt-notes-' + cls).classList.toggle('on', tab === 'notes');
+  document.getElementById('nt-sticky-' + cls).classList.toggle('on', tab === 'sticky');
+  document.getElementById('notes-tab-main-' + cls).style.display = tab === 'notes' ? 'block' : 'none';
+  document.getElementById('notes-tab-sticky-' + cls).style.display = tab === 'sticky' ? 'block' : 'none';
+  if (tab === 'sticky') renderStickies(cls); else renderNotes(cls);
 }
-function openNoteEditor(cls,noteId){
-  editingNoteId=noteId||null;currentClass=cls||currentClass;
-  const d=CLASS_DATA[currentClass];
-  const sel=document.getElementById('neSubject');
-  sel.innerHTML=d.subjects.map(s=>`<option>${s}</option>`).join('')+'<option>General</option>';
-  if(noteId){
-    const n=(notes[currentClass]||[]).find(x=>x.id===noteId);if(!n)return;
-    document.getElementById('neTitle').textContent='✏️ Edit Note';
-    document.getElementById('neInputTitle').value=n.title;
-    document.getElementById('neContent').value=n.content;
-    sel.value=n.subject;document.getElementById('neTag').value=n.tag;
-    selectedColor=n.color||'nc-blue';
-    document.querySelectorAll('.ne-color-btn').forEach(b=>b.classList.toggle('on',b.dataset.color===selectedColor));
+function openNoteEditor(cls, noteId) {
+  editingNoteId = noteId || null; currentClass = cls || currentClass;
+  const d = CLASS_DATA[currentClass];
+  const sel = document.getElementById('neSubject');
+  sel.innerHTML = d.subjects.map(s => `<option>${s}</option>`).join('') + '<option>General</option>';
+  if (noteId) {
+    const n = (notes[currentClass] || []).find(x => x.id === noteId); if (!n) return;
+    document.getElementById('neTitle').textContent = '✏️ Edit Note';
+    document.getElementById('neInputTitle').value = n.title;
+    document.getElementById('neContent').value = n.content;
+    sel.value = n.subject; document.getElementById('neTag').value = n.tag;
+    selectedColor = n.color || 'nc-blue';
+    document.querySelectorAll('.ne-color-btn').forEach(b => b.classList.toggle('on', b.dataset.color === selectedColor));
   } else {
-    document.getElementById('neTitle').textContent='✏️ New Note';
-    document.getElementById('neInputTitle').value='';document.getElementById('neContent').value='';
-    selectedColor='nc-blue';document.querySelectorAll('.ne-color-btn').forEach((b,i)=>b.classList.toggle('on',i===0));
+    document.getElementById('neTitle').textContent = '✏️ New Note';
+    document.getElementById('neInputTitle').value = ''; document.getElementById('neContent').value = '';
+    selectedColor = 'nc-blue'; document.querySelectorAll('.ne-color-btn').forEach((b, i) => b.classList.toggle('on', i === 0));
   }
   document.getElementById('noteModal').classList.add('show');
 }
-function closeNoteEditor(){document.getElementById('noteModal').classList.remove('show');}
-function pickColor(btn){selectedColor=btn.dataset.color;document.querySelectorAll('.ne-color-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
-function insertFmt(b,a){const ta=document.getElementById('neContent');const s=ta.selectionStart,e=ta.selectionEnd;const sel=ta.value.substring(s,e);ta.value=ta.value.substring(0,s)+b+sel+a+ta.value.substring(e);ta.focus();}
-function saveNote(){
-  const cls=currentClass;
-  const title=document.getElementById('neInputTitle').value.trim();
-  const content=document.getElementById('neContent').value.trim();
-  if(!title&&!content){alert('Write something!');return;}
-  if(!notes[cls])notes[cls]=[];
-  const n={id:editingNoteId||Date.now(),title:title||'Untitled',content,subject:document.getElementById('neSubject').value,tag:document.getElementById('neTag').value,color:selectedColor,date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})};
-  if(editingNoteId){const idx=notes[cls].findIndex(x=>x.id===editingNoteId);if(idx>-1)notes[cls][idx]=n;}
-  else{notes[cls].unshift(n);gainXP(cls,5);}
-  saveNoteData(cls);renderNotes(cls);closeNoteEditor();
+function closeNoteEditor() { document.getElementById('noteModal').classList.remove('show'); }
+function pickColor(btn) { selectedColor = btn.dataset.color; document.querySelectorAll('.ne-color-btn').forEach(b => b.classList.remove('on')); btn.classList.add('on'); }
+function insertFmt(b, a) {
+  const ta = document.getElementById('neContent');
+  const s = ta.selectionStart, e = ta.selectionEnd, sel = ta.value.substring(s, e);
+  ta.value = ta.value.substring(0, s) + b + sel + a + ta.value.substring(e); ta.focus();
 }
-function renderNotes(cls){
-  cls=cls||currentClass;if(!cls)return;
-  const grid=document.getElementById('notesGrid-'+cls);if(!grid)return;
-  const search=(document.getElementById('noteSearch-'+cls)||{}).value?.toLowerCase()||'';
-  const subj=(document.getElementById('noteSubjFilter-'+cls)||{}).value||'';
-  let filtered=(notes[cls]||[]).filter(n=>(!search||(n.title.toLowerCase().includes(search)||n.content.toLowerCase().includes(search)))&&(!subj||n.subject===subj));
-  if(!filtered.length){grid.innerHTML='<div class="empty-notes"><div class="eni">📝</div><p>No notes yet.<br>Tap "+ New" to start!</p></div>';return;}
-  grid.innerHTML=filtered.map(n=>`<div class="note-card ${n.color||'nc-blue'}" onclick="viewNote(${cls},${n.id})"><div class="nc-subj">${n.subject}</div><div class="nc-title">${n.title}</div><div class="nc-preview">${n.content}</div><div class="nc-footer"><span class="nc-date">${n.date||''}</span><span class="nc-tag">${n.tag||''}</span></div></div>`).join('');
+function saveNote() {
+  const cls = currentClass;
+  const title = document.getElementById('neInputTitle').value.trim();
+  const content = document.getElementById('neContent').value.trim();
+  if (!title && !content) { alert('Write something!'); return; }
+  if (!notes[cls]) notes[cls] = [];
+  const n = { id: editingNoteId || Date.now(), title: title || 'Untitled', content, subject: document.getElementById('neSubject').value, tag: document.getElementById('neTag').value, color: selectedColor, date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) };
+  if (editingNoteId) { const idx = notes[cls].findIndex(x => x.id === editingNoteId); if (idx > -1) notes[cls][idx] = n; }
+  else { notes[cls].unshift(n); gainXP(cls, 5); }
+  saveNoteData(cls); renderNotes(cls); closeNoteEditor();
 }
-function viewNote(cls,id){
-  const n=(notes[cls]||[]).find(x=>x.id===id);if(!n)return;
-  currentViewId={cls,id};
-  document.getElementById('nvSubj').textContent=n.subject;
-  document.getElementById('nvTitle').textContent=n.title;
-  document.getElementById('nvTag').textContent=n.tag||'';
-  document.getElementById('nvDate').textContent=n.date||'';
-  document.getElementById('nvContent').textContent=n.content;
+function renderNotes(cls) {
+  cls = cls || currentClass; if (!cls) return;
+  const grid = document.getElementById('notesGrid-' + cls); if (!grid) return;
+  const search = (document.getElementById('noteSearch-' + cls) || {}).value?.toLowerCase() || '';
+  const subj = (document.getElementById('noteSubjFilter-' + cls) || {}).value || '';
+  let filtered = (notes[cls] || []).filter(n => (!search || (n.title.toLowerCase().includes(search) || n.content.toLowerCase().includes(search))) && (!subj || n.subject === subj));
+  if (!filtered.length) { grid.innerHTML = '<div class="empty-notes"><div class="eni">📝</div><p>No notes yet.<br>Tap "+ New" to start!</p></div>'; return; }
+  grid.innerHTML = filtered.map(n => `<div class="note-card ${n.color||'nc-blue'}" onclick="viewNote(${cls},${n.id})"><div class="nc-subj">${n.subject}</div><div class="nc-title">${n.title}</div><div class="nc-preview">${n.content}</div><div class="nc-footer"><span class="nc-date">${n.date||''}</span><span class="nc-tag">${n.tag||''}</span></div></div>`).join('');
+}
+function viewNote(cls, id) {
+  const n = (notes[cls] || []).find(x => x.id === id); if (!n) return;
+  currentViewId = { cls, id };
+  document.getElementById('nvSubj').textContent = n.subject;
+  document.getElementById('nvTitle').textContent = n.title;
+  document.getElementById('nvTag').textContent = n.tag || '';
+  document.getElementById('nvDate').textContent = n.date || '';
+  document.getElementById('nvContent').textContent = n.content;
   document.getElementById('noteView').classList.add('show');
 }
-function closeNoteView(){document.getElementById('noteView').classList.remove('show');currentViewId=null;}
-function editCurrentNote(){if(!currentViewId)return;closeNoteView();openNoteEditor(currentViewId.cls,currentViewId.id);}
-function deleteCurrentNote(){
-  if(!currentViewId)return;if(!confirm('Delete this note?'))return;
-  const{cls,id}=currentViewId;
-  notes[cls]=(notes[cls]||[]).filter(x=>x.id!==id);
-  saveNoteData(cls);renderNotes(cls);closeNoteView();
+function closeNoteView() { document.getElementById('noteView').classList.remove('show'); currentViewId = null; }
+function editCurrentNote() { if (!currentViewId) return; closeNoteView(); openNoteEditor(currentViewId.cls, currentViewId.id); }
+function deleteCurrentNote() {
+  if (!currentViewId) return; if (!confirm('Delete this note?')) return;
+  const { cls, id } = currentViewId;
+  notes[cls] = (notes[cls] || []).filter(x => x.id !== id);
+  saveNoteData(cls); renderNotes(cls); closeNoteView();
 }
-function renderStickies(cls){
-  const area=document.getElementById('stickyArea-'+cls);if(!area)return;
-  if(!stickies[cls])stickies[cls]=JSON.parse(localStorage.getItem(uKey(`stickies_${cls}`))||'[]');
-  const cols=['#fef9c3','#dbeafe','#dcfce7','#f3e8ff','#fce7f3'];
-  area.innerHTML=(stickies[cls]).map(s=>`<div class="sticky" style="background:${s.bg||'#fef9c3'}">${s.text}<button class="sticky-del" onclick="delSticky(${cls},${s.id})">✕</button></div>`).join('');
+function renderStickies(cls) {
+  const area = document.getElementById('stickyArea-' + cls); if (!area) return;
+  if (!stickies[cls]) stickies[cls] = JSON.parse(localStorage.getItem(uKey(`stickies_${cls}`)) || '[]');
+  area.innerHTML = stickies[cls].map(s => `<div class="sticky" style="background:${s.bg||'#fef9c3'}">${s.text}<button class="sticky-del" onclick="delSticky(${cls},${s.id})">✕</button></div>`).join('');
 }
-function addSticky(cls){
-  const t=prompt('Sticky note:');if(!t)return;
-  if(!stickies[cls])stickies[cls]=[];
-  const cols=['#fef9c3','#dbeafe','#dcfce7','#f3e8ff','#fce7f3'];
-  stickies[cls].push({id:Date.now(),text:t,bg:cols[Math.floor(Math.random()*cols.length)]});
-  localStorage.setItem(uKey(`stickies_${cls}`),JSON.stringify(stickies[cls]));
-  renderStickies(cls);
+function addSticky(cls) {
+  const t = prompt('Sticky note:'); if (!t) return;
+  if (!stickies[cls]) stickies[cls] = [];
+  const cols = ['#fef9c3','#dbeafe','#dcfce7','#f3e8ff','#fce7f3'];
+  stickies[cls].push({ id: Date.now(), text: t, bg: cols[Math.floor(Math.random() * cols.length)] });
+  localStorage.setItem(uKey(`stickies_${cls}`), JSON.stringify(stickies[cls])); renderStickies(cls);
 }
-function delSticky(cls,id){
-  stickies[cls]=(stickies[cls]||[]).filter(x=>x.id!==id);
-  localStorage.setItem(uKey(`stickies_${cls}`),JSON.stringify(stickies[cls]));
-  renderStickies(cls);
+function delSticky(cls, id) {
+  stickies[cls] = (stickies[cls] || []).filter(x => x.id !== id);
+  localStorage.setItem(uKey(`stickies_${cls}`), JSON.stringify(stickies[cls])); renderStickies(cls);
 }
 
 // ── Flash Cards ──
-function loadFlash(cls){
-  cls=cls||currentClass;if(!cls)return;
-  flashIdx=0;flashKnew=0;flashForgot=0;
-  const card=document.getElementById('flashCard-'+cls);if(card)card.classList.remove('flipped');
+function loadFlash(cls) {
+  cls = cls || currentClass; if (!cls) return;
+  flashIdx = 0; flashKnew = 0; flashForgot = 0;
+  const card = document.getElementById('flashCard-' + cls); if (card) card.classList.remove('flipped');
   showFlash(cls);
 }
-function showFlash(cls){
-  const d=CLASS_DATA[cls];
-  const subj=(document.getElementById('flashSubj-'+cls)||{}).value||(d.subjects[0]);
-  const deck=(d.flashCards||{})[subj]||[];
-  if(!deck.length)return;
-  const card=deck[flashIdx%deck.length];
-  const q=document.getElementById('flashQ-'+cls);
-  const a=document.getElementById('flashA-'+cls);
-  const cnt=document.getElementById('flashCount-'+cls);
-  const sc=document.getElementById('flashScore-'+cls);
-  if(q)q.textContent=card.q;if(a)a.textContent=card.a;
-  if(cnt)cnt.textContent=`Card ${flashIdx+1}/${deck.length}`;
-  if(sc)sc.textContent=`✅ ${flashKnew} ❌ ${flashForgot}`;
-  const fc=document.getElementById('flashCard-'+cls);if(fc)fc.classList.remove('flipped');
+function showFlash(cls) {
+  const d = CLASS_DATA[cls];
+  const subj = (document.getElementById('flashSubj-' + cls) || {}).value || (d.subjects[0]);
+  const deck = (d.flashCards || {})[subj] || [];
+  if (!deck.length) return;
+  const card = deck[flashIdx % deck.length];
+  const q = document.getElementById('flashQ-' + cls), a = document.getElementById('flashA-' + cls);
+  const cnt = document.getElementById('flashCount-' + cls), sc = document.getElementById('flashScore-' + cls);
+  if (q) q.textContent = card.q; if (a) a.textContent = card.a;
+  if (cnt) cnt.textContent = `Card ${flashIdx+1}/${deck.length}`;
+  if (sc) sc.textContent = `✅ ${flashKnew} ❌ ${flashForgot}`;
+  const fc = document.getElementById('flashCard-' + cls); if (fc) fc.classList.remove('flipped');
 }
-function flipCard(cls){const c=document.getElementById('flashCard-'+cls);if(c)c.classList.toggle('flipped');}
-function nextCard(cls){
-  const d=CLASS_DATA[cls];
-  const subj=(document.getElementById('flashSubj-'+cls)||{}).value||(d.subjects[0]);
-  const deck=(d.flashCards||{})[subj]||[];
-  flashIdx=(flashIdx+1)%deck.length;showFlash(cls);
-}
-function prevCard(cls){
-  const d=CLASS_DATA[cls];
-  const subj=(document.getElementById('flashSubj-'+cls)||{}).value||(d.subjects[0]);
-  const deck=(d.flashCards||{})[subj]||[];
-  flashIdx=(flashIdx-1+deck.length)%deck.length;showFlash(cls);
-}
-function markKnew(cls){flashKnew++;gainXP(cls,2);nextCard(cls);}
-function markForgot(cls){flashForgot++;nextCard(cls);}
-function setFTab(el,id){
-  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('on'));
-  document.querySelectorAll('.formula-list').forEach(l=>l.classList.remove('on'));
-  el.classList.add('on');const f=document.getElementById(id);if(f)f.classList.add('on');
+function flipCard(cls) { const c = document.getElementById('flashCard-' + cls); if (c) c.classList.toggle('flipped'); }
+function nextCard(cls) { const d = CLASS_DATA[cls]; const subj = (document.getElementById('flashSubj-'+cls)||{}).value||(d.subjects[0]); const deck = (d.flashCards||{})[subj]||[]; flashIdx = (flashIdx+1)%deck.length; showFlash(cls); }
+function prevCard(cls) { const d = CLASS_DATA[cls]; const subj = (document.getElementById('flashSubj-'+cls)||{}).value||(d.subjects[0]); const deck = (d.flashCards||{})[subj]||[]; flashIdx = (flashIdx-1+deck.length)%deck.length; showFlash(cls); }
+function markKnew(cls) { flashKnew++; gainXP(cls, 2); nextCard(cls); }
+function markForgot(cls) { flashForgot++; nextCard(cls); }
+function setFTab(el, id) {
+  document.querySelectorAll('.ftab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.formula-list').forEach(l => l.classList.remove('on'));
+  el.classList.add('on'); const f = document.getElementById(id); if (f) f.classList.add('on');
 }
 
-// ═══════════════════════════════════════════════════
-// PIN + MESSENGER — REAL-TIME via shared storage
-// ═══════════════════════════════════════════════════
-const MYPIN='1234';let pin='';
-document.getElementById('sdot').onclick=()=>{
-  if(!currentUser){alert('Please login first!');return;}
-  pin='';upd();
-  document.getElementById('perr').style.display='none';
-  document.getElementById('pinScr').style.display='flex';
+// ═══════════════════════════════════════════════════════════════════════
+// ✅ FIXED MESSENGER — Room-scoped prefix for partner detection
+// ═══════════════════════════════════════════════════════════════════════
+const MYPIN = '1234'; let pin = '';
+document.getElementById('sdot').onclick = () => {
+  if (!currentUser) { alert('Please login first!'); return; }
+  pin = ''; upd();
+  document.getElementById('perr').style.display = 'none';
+  document.getElementById('pinScr').style.display = 'flex';
 };
-function kp(k){if(k==='del'){pin=pin.slice(0,-1);upd();return;}if(pin.length>=4)return;pin+=k;upd();if(pin.length===4)setTimeout(chk,300);}
-function upd(){for(let i=1;i<=4;i++)document.getElementById('pd'+i).classList.toggle('on',i<=pin.length);}
-function chk(){
-  if(pin===MYPIN){
-    document.getElementById('pinScr').style.display='none';
-    openMessenger();
-  } else {
-    const e=document.getElementById('perr');e.style.display='block';
-    setTimeout(()=>{e.style.display='none';pin='';upd();},1200);
+function kp(k) { if (k === 'del') { pin = pin.slice(0, -1); upd(); return; } if (pin.length >= 4) return; pin += k; upd(); if (pin.length === 4) setTimeout(chk, 300); }
+function upd() { for (let i = 1; i <= 4; i++) document.getElementById('pd' + i).classList.toggle('on', i <= pin.length); }
+function chk() {
+  if (pin === MYPIN) { document.getElementById('pinScr').style.display = 'none'; openMessenger(); }
+  else { const e = document.getElementById('perr'); e.style.display = 'block'; setTimeout(() => { e.style.display = 'none'; pin = ''; upd(); }, 1200); }
+}
+
+// Messenger state
+let chatMessages = [], lastMsgId = 0, partnerUsername = null;
+let chatPollInterval = null, heartbeatInterval = null;
+let emojiOpen = false, roomMembers = [];
+
+async function openMessenger() {
+  if (!currentUser) return;
+  document.getElementById('msg').style.display = 'flex';
+  // Update room code display
+  document.getElementById('roomCodeDisplay').textContent = currentUser.roomId;
+  document.getElementById('myRoomDisplay').textContent = currentUser.roomId;
+
+  // ✅ FIXED: findPartner now uses room-scoped prefix list
+  await findPartner();
+  await loadMessages();
+
+  // Poll every 2s
+  if (chatPollInterval) clearInterval(chatPollInterval);
+  chatPollInterval = setInterval(pollMessages, 2000);
+
+  // Heartbeat every 8s
+  if (heartbeatInterval) clearInterval(heartbeatInterval);
+  await S.set(hbKey(currentUser.roomId, currentUser.username), Date.now().toString(), true);
+  heartbeatInterval = setInterval(async () => {
+    await S.set(hbKey(currentUser.roomId, currentUser.username), Date.now().toString(), true);
+    await refreshRoomMembers();
+  }, 8000);
+}
+
+// ✅ FIX: findPartner — list by room-scoped prefix, not all users
+async function findPartner() {
+  if (!currentUser) return;
+  try {
+    // List all keys matching "rm_ROOMID_" — only users in this exact room
+    const keys = await S.list(rmPfx(currentUser.roomId), true);
+    // keys example: ['rm_stars2025_alice', 'rm_stars2025_bob']
+
+    roomMembers = keys
+      .map(k => k.replace(rmPfx(currentUser.roomId), ''))  // extract username
+      .filter(u => u && u !== currentUser.username && !u.includes('_')); // exclude self & malformed
+
+    partnerUsername = roomMembers[0] || null;
+    updatePartnerUI();
+  } catch (e) {
+    console.log('[findPartner] error:', e);
+    partnerUsername = null; roomMembers = [];
+    updatePartnerUI();
   }
 }
 
-// ── Messenger state ──
-let chatMessages = [];
-let lastMsgId = 0;
-let partnerUsername = null;
-let chatPollInterval = null;
-let heartbeatInterval = null;
-let typingTimeout = null;
-let emojiOpen = false;
-
-async function openMessenger(){
-  if(!currentUser) return;
-  document.getElementById('msg').style.display='flex';
-  // Update UI
-  document.getElementById('roomBanner').textContent = 'Room: ' + currentUser.roomId;
-  document.getElementById('myRoomDisplay').textContent = currentUser.roomId;
-  // Find partner
+// ✅ NEW: Refresh room members + online status
+async function refreshRoomMembers() {
   await findPartner();
-  // Load messages
-  await loadMessages();
-  // Start polling
-  if(chatPollInterval) clearInterval(chatPollInterval);
-  chatPollInterval = setInterval(pollMessages, 2000);
-  // Start heartbeat
-  if(heartbeatInterval) clearInterval(heartbeatInterval);
-  await S.set('hb:'+currentUser.roomId+':'+currentUser.username, Date.now().toString(), true);
-  heartbeatInterval = setInterval(async()=>{
-    await S.set('hb:'+currentUser.roomId+':'+currentUser.username, Date.now().toString(), true);
-    checkPartnerOnline();
-  }, 5000);
+  await checkAllMembersOnline();
 }
 
-async function findPartner(){
-  try {
-    // List all users with same roomId from shared storage
-    const allKeys = await S.list('user:', true);
-    const roomUsers = [];
-    for(const key of allKeys){
-      if(key === 'user:'+currentUser.username) continue;
-      const raw = await S.get(key, true);
-      if(raw){
-        try {
-          const u = JSON.parse(raw);
-          if(u.roomId === currentUser.roomId){
-            roomUsers.push(key.replace('user:',''));
-          }
-        } catch(e){}
-      }
-    }
-    partnerUsername = roomUsers[0] || null;
-    const banner = document.getElementById('noPartnerBanner');
-    if(partnerUsername){
-      document.getElementById('partnerName').textContent = partnerUsername + ' 💖';
-      banner.style.display='none';
-    } else {
-      document.getElementById('partnerName').textContent = 'Waiting... 💕';
-      banner.style.display='block';
-    }
-  } catch(e){ console.log('findPartner err',e); }
+async function checkAllMembersOnline() {
+  const now = Date.now();
+  const onlineUsers = [];
+
+  for (const u of roomMembers) {
+    try {
+      const ts = await S.get(hbKey(currentUser.roomId, u), true);
+      if (ts && (now - parseInt(ts)) < 30000) onlineUsers.push(u);
+    } catch (e) {}
+  }
+
+  // Update partner status
+  const isOnline = onlineUsers.includes(partnerUsername);
+  const dot = document.getElementById('partnerOnlineDot');
+  const stat = document.getElementById('mstatText');
+  if (dot) dot.className = isOnline ? 'online' : 'offline-dot';
+  if (stat) stat.textContent = isOnline ? 'Online now ✨' : 'Offline';
+
+  // Update members row
+  renderMembersRow(onlineUsers);
 }
 
-async function checkPartnerOnline(){
-  if(!partnerUsername) return;
-  try {
-    const ts = await S.get('hb:'+currentUser.roomId+':'+partnerUsername, true);
-    const online = ts && (Date.now() - parseInt(ts)) < 30000;
-    const dot = document.getElementById('partnerOnlineDot');
-    const stat = document.getElementById('mstatText');
-    if(online){
-      dot.className='online';stat.textContent='Online';
-    } else {
-      dot.className='offline-dot';stat.textContent='Offline';
-    }
-  } catch(e){}
+function renderMembersRow(onlineUsers) {
+  const row = document.getElementById('roomMembersRow'); if (!row) return;
+  const allUsers = [currentUser.username, ...roomMembers];
+  row.innerHTML = allUsers.map(u => {
+    const isMe = u === currentUser.username;
+    const isOn = isMe || onlineUsers.includes(u);
+    return `<div class="rmember ${isOn?'online-member':''}">
+      <div class="rdot"></div>${isMe ? u + ' (me)' : u}
+    </div>`;
+  }).join('');
 }
 
-async function loadMessages(){
+function updatePartnerUI() {
+  const banner = document.getElementById('noPartnerBanner');
+  if (partnerUsername) {
+    document.getElementById('partnerName').textContent = partnerUsername + ' 💖';
+    banner.style.display = 'none';
+  } else {
+    document.getElementById('partnerName').textContent = 'Waiting... 💕';
+    banner.style.display = 'flex';
+  }
+  // Initial members row (all offline until heartbeat check)
+  renderMembersRow([]);
+}
+
+async function loadMessages() {
   try {
-    const raw = await S.get('chat:'+currentUser.roomId, true);
+    const raw = await S.get(chatKey(currentUser.roomId), true);
     chatMessages = raw ? JSON.parse(raw) : [];
     renderAllMessages();
-    if(chatMessages.length) lastMsgId = chatMessages[chatMessages.length-1].id;
-  } catch(e){
-    chatMessages=[];
-    document.getElementById('msgs').innerHTML='<div style="text-align:center;color:rgba(240,230,255,.2);font-size:12px;padding:30px">No messages yet... Say hi! 💕</div>';
+    if (chatMessages.length) lastMsgId = chatMessages[chatMessages.length - 1].id;
+  } catch (e) {
+    chatMessages = [];
+    document.getElementById('msgs').innerHTML = '<div style="text-align:center;color:rgba(240,230,255,.2);font-size:12px;padding:30px">No messages yet... Say hi! 💕</div>';
   }
 }
 
-async function pollMessages(){
+async function pollMessages() {
   try {
-    const raw = await S.get('chat:'+currentUser.roomId, true);
+    const raw = await S.get(chatKey(currentUser.roomId), true);
     const msgs = raw ? JSON.parse(raw) : [];
-    if(msgs.length > chatMessages.length){
+    if (msgs.length > chatMessages.length) {
       const newMsgs = msgs.filter(m => m.id > lastMsgId);
-      if(newMsgs.length){
-        const box=document.getElementById('msgs');
-        const wasEmpty = chatMessages.length===0;
+      if (newMsgs.length) {
+        const box = document.getElementById('msgs');
+        if (chatMessages.length === 0) box.innerHTML = '';
         chatMessages = msgs;
-        lastMsgId = msgs[msgs.length-1].id;
-        if(wasEmpty) box.innerHTML='';
-        newMsgs.forEach(m=>{
-          box.appendChild(buildBubble(m));
-        });
-        box.scrollTop=box.scrollHeight;
+        lastMsgId = msgs[msgs.length - 1].id;
+        newMsgs.forEach(m => box.appendChild(buildBubble(m)));
+        box.scrollTop = box.scrollHeight;
       }
     }
     // Check typing
-    checkPartnerTyping();
-  } catch(e){}
+    if (partnerUsername) {
+      try {
+        const ts = await S.get(typKey(currentUser.roomId, partnerUsername), true);
+        const typing = ts && (Date.now() - parseInt(ts)) < 4000;
+        document.getElementById('typingInd').classList.toggle('show', typing);
+      } catch (e) {}
+    }
+  } catch (e) {}
 }
 
-async function checkPartnerTyping(){
-  if(!partnerUsername) return;
-  try {
-    const ts = await S.get('typing:'+currentUser.roomId+':'+partnerUsername, true);
-    const typing = ts && (Date.now()-parseInt(ts)) < 4000;
-    document.getElementById('typingInd').classList.toggle('show', typing);
-  } catch(e){}
-}
-
-function renderAllMessages(){
-  const box=document.getElementById('msgs');
-  box.innerHTML='';
-  if(!chatMessages.length){
-    box.innerHTML='<div style="text-align:center;color:rgba(240,230,255,.2);font-size:12px;padding:30px">No messages yet... Say hi! 💕</div>';
+function renderAllMessages() {
+  const box = document.getElementById('msgs');
+  box.innerHTML = '';
+  if (!chatMessages.length) {
+    box.innerHTML = '<div style="text-align:center;color:rgba(240,230,255,.2);font-size:12px;padding:30px">No messages yet... Say hi! 💕</div>';
     return;
   }
-  chatMessages.forEach(m=>box.appendChild(buildBubble(m)));
-  box.scrollTop=box.scrollHeight;
+  chatMessages.forEach(m => box.appendChild(buildBubble(m)));
+  box.scrollTop = box.scrollHeight;
 }
 
-function buildBubble(m){
-  const dir = (m.sender===currentUser.username)?'out':'in';
-  const wrap=document.createElement('div');wrap.className=`msg-wrap ${dir}`;
-  const nameEl=document.createElement('div');nameEl.className='sender-name';
-  nameEl.textContent=dir==='out'?('💕 '+m.sender):(m.sender+' 💜');
+function buildBubble(m) {
+  const dir = (m.sender === currentUser.username) ? 'out' : 'in';
+  const wrap = document.createElement('div'); wrap.className = `msg-wrap ${dir}`;
+  const nameEl = document.createElement('div'); nameEl.className = 'sender-name';
+  nameEl.textContent = dir === 'out' ? ('You 💕') : (m.sender + ' 💜');
   wrap.appendChild(nameEl);
-  const bub=document.createElement('div');bub.className=`bub ${dir}`;bub.dataset.id=m.id;
-  let inner=m.text||'';
-  inner+=`<div class="bub-meta"><span class="btime">${m.time||''}</span>${dir==='out'?'<span class="ticks">✓✓</span>':''}</div>`;
-  bub.innerHTML=inner;
-  bub.addEventListener('contextmenu',ev=>{ev.preventDefault();showCtx(ev,m.id,m.text);});
-  bub.addEventListener('touchstart',()=>{window._ctxTimer=setTimeout(()=>showCtx(null,m.id,m.text),600);},{passive:true});
-  bub.addEventListener('touchend',()=>clearTimeout(window._ctxTimer));
+  const bub = document.createElement('div'); bub.className = `bub ${dir}`; bub.dataset.id = m.id;
+  bub.innerHTML = (m.text || '') + `<div class="bub-meta"><span class="btime">${m.time||''}</span>${dir==='out'?'<span class="ticks">✓✓</span>':''}</div>`;
+  bub.addEventListener('contextmenu', ev => { ev.preventDefault(); showCtx(ev, m.id, m.text); });
+  bub.addEventListener('touchstart', () => { window._ctxTimer = setTimeout(() => showCtx(null, m.id, m.text), 600); }, { passive: true });
+  bub.addEventListener('touchend', () => clearTimeout(window._ctxTimer));
   wrap.appendChild(bub);
   return wrap;
 }
 
-function gt(){const d=new Date(),h=d.getHours(),m=d.getMinutes(),ap=h>=12?'PM':'AM';return`${h%12||12}:${String(m).padStart(2,'0')} ${ap}`;}
+function gt() { const d = new Date(), h = d.getHours(), m = d.getMinutes(), ap = h >= 12 ? 'PM' : 'AM'; return `${h%12||12}:${String(m).padStart(2,'0')} ${ap}`; }
 
-async function sendMsg(){
-  const i=document.getElementById('minp'),t=i.value.trim();if(!t)return;
-  const msg={id:Date.now(),sender:currentUser.username,text:t,time:gt()};
-  // Add to local
-  chatMessages.push(msg);
-  lastMsgId=msg.id;
-  // Save to shared
-  try {
-    await S.set('chat:'+currentUser.roomId, JSON.stringify(chatMessages), true);
-  } catch(e){}
-  // Render
-  const box=document.getElementById('msgs');
-  if(box.querySelector('div[style]'))box.innerHTML='';
-  box.appendChild(buildBubble(msg));
-  box.scrollTop=box.scrollHeight;
-  i.value='';i.style.height='auto';
+async function sendMsg() {
+  const i = document.getElementById('minp'), t = i.value.trim(); if (!t) return;
+  const msg = { id: Date.now(), sender: currentUser.username, text: t, time: gt() };
+  chatMessages.push(msg); lastMsgId = msg.id;
+  try { await S.set(chatKey(currentUser.roomId), JSON.stringify(chatMessages), true); } catch (e) {}
+  const box = document.getElementById('msgs');
+  const emptyDiv = box.querySelector('div[style]');
+  if (emptyDiv) box.innerHTML = '';
+  box.appendChild(buildBubble(msg)); box.scrollTop = box.scrollHeight;
+  i.value = ''; i.style.height = 'auto';
   heart();
-  // Clear typing indicator
-  try { await S.set('typing:'+currentUser.roomId+':'+currentUser.username,'0',true); } catch(e){}
+  // Clear typing
+  try { await S.set(typKey(currentUser.roomId, currentUser.username), '0', true); } catch (e) {}
 }
 
-async function sendTyping(){
-  try {
-    await S.set('typing:'+currentUser.roomId+':'+currentUser.username, Date.now().toString(), true);
-  } catch(e){}
+async function sendTyping() {
+  try { await S.set(typKey(currentUser.roomId, currentUser.username), Date.now().toString(), true); } catch (e) {}
 }
 
-function closeM(){
-  document.getElementById('msg').style.display='none';
-  if(chatPollInterval){clearInterval(chatPollInterval);chatPollInterval=null;}
-  if(heartbeatInterval){clearInterval(heartbeatInterval);heartbeatInterval=null;}
+function closeM() {
+  document.getElementById('msg').style.display = 'none';
+  if (chatPollInterval) { clearInterval(chatPollInterval); chatPollInterval = null; }
+  if (heartbeatInterval) { clearInterval(heartbeatInterval); heartbeatInterval = null; }
 }
 
-function toggleEmoji(){emojiOpen=!emojiOpen;document.getElementById('emojiPicker').classList.toggle('show',emojiOpen);}
-function addEmoji(e){const i=document.getElementById('minp');i.value+=e;i.focus();}
+function toggleEmoji() { emojiOpen = !emojiOpen; document.getElementById('emojiPicker').classList.toggle('show', emojiOpen); }
+function addEmoji(e) { const i = document.getElementById('minp'); i.value += e; i.focus(); }
 
-let ctxKey=null,ctxText='';
-function showCtx(e,key,text){
-  ctxKey=key;ctxText=text;
-  const menu=document.getElementById('ctxMenu');menu.classList.add('show');
-  if(e){let x=e.clientX,y=e.clientY;if(x+170>window.innerWidth)x=window.innerWidth-175;if(y+120>window.innerHeight)y=window.innerHeight-130;menu.style.left=x+'px';menu.style.top=y+'px';}
-  else{menu.style.left='50%';menu.style.top='50%';menu.style.transform='translate(-50%,-50%)';}
+let ctxKey = null, ctxText = '';
+function showCtx(e, key, text) {
+  ctxKey = key; ctxText = text;
+  const menu = document.getElementById('ctxMenu'); menu.classList.add('show');
+  if (e) {
+    let x = e.clientX, y = e.clientY;
+    if (x + 170 > window.innerWidth) x = window.innerWidth - 175;
+    if (y + 120 > window.innerHeight) y = window.innerHeight - 130;
+    menu.style.left = x + 'px'; menu.style.top = y + 'px'; menu.style.transform = '';
+  } else {
+    menu.style.left = '50%'; menu.style.top = '50%'; menu.style.transform = 'translate(-50%,-50%)';
+  }
 }
-function closeCtx(){document.getElementById('ctxMenu').classList.remove('show');document.getElementById('ctxMenu').style.transform='';}
-function ctxCopy(){if(ctxText)navigator.clipboard?.writeText(ctxText).catch(()=>{});closeCtx();}
+function closeCtx() { document.getElementById('ctxMenu').classList.remove('show'); document.getElementById('ctxMenu').style.transform = ''; }
+function ctxCopy() { if (ctxText) navigator.clipboard?.writeText(ctxText).catch(() => {}); closeCtx(); showToast('📋 Copied!'); }
 
-let deleteMode=null;
-function ctxDeleteOne(){
-  deleteMode='one';
-  document.getElementById('delIco').textContent='🗑️';
-  document.getElementById('delTitle').textContent='Delete locally?';
-  document.getElementById('delDesc').textContent='Removes from your view only.';
+let deleteMode = null;
+function ctxDeleteOne() {
+  deleteMode = 'one';
+  document.getElementById('delIco').textContent = '🗑️';
+  document.getElementById('delTitle').textContent = 'Delete locally?';
+  document.getElementById('delDesc').textContent = 'Removes from your view only.';
+  document.getElementById('delModal').classList.add('show'); closeCtx();
+}
+function askClearChat() {
+  deleteMode = 'all';
+  document.getElementById('delIco').textContent = '💣';
+  document.getElementById('delTitle').textContent = 'Clear all messages?';
+  document.getElementById('delDesc').textContent = 'Clears for BOTH users permanently!';
   document.getElementById('delModal').classList.add('show');
-  closeCtx();
 }
-function askClearChat(){
-  deleteMode='all';
-  document.getElementById('delIco').textContent='💣';
-  document.getElementById('delTitle').textContent='Clear all messages?';
-  document.getElementById('delDesc').textContent='Clears for BOTH users permanently!';
-  document.getElementById('delModal').classList.add('show');
-}
-function closeDelModal(){document.getElementById('delModal').classList.remove('show');deleteMode=null;}
-async function doDelete(){
-  if(deleteMode==='one'&&ctxKey){
-    chatMessages=chatMessages.filter(x=>x.id!==ctxKey);
-    try { await S.set('chat:'+currentUser.roomId,JSON.stringify(chatMessages),true); } catch(e){}
+function closeDelModal() { document.getElementById('delModal').classList.remove('show'); deleteMode = null; }
+async function doDelete() {
+  if (deleteMode === 'one' && ctxKey) {
+    chatMessages = chatMessages.filter(x => x.id !== ctxKey);
+    try { await S.set(chatKey(currentUser.roomId), JSON.stringify(chatMessages), true); } catch (e) {}
     renderAllMessages();
-  } else if(deleteMode==='all'){
-    chatMessages=[];
-    try { await S.set('chat:'+currentUser.roomId,'[]',true); } catch(e){}
+  } else if (deleteMode === 'all') {
+    chatMessages = [];
+    try { await S.set(chatKey(currentUser.roomId), '[]', true); } catch (e) {}
     renderAllMessages();
   }
   closeDelModal();
 }
 
-function heart(){
-  const emojis=['💗','💕','💖','✨','💜','🌸','😘'];
-  for(let i=0;i<3;i++){setTimeout(()=>{const el=document.createElement('div');el.className='hf';el.textContent=emojis[Math.floor(Math.random()*emojis.length)];el.style.cssText=`left:${Math.random()*60+20}%;bottom:65px;font-size:${Math.random()*10+14}px`;document.body.appendChild(el);setTimeout(()=>el.remove(),1300);},i*200);}
+function heart() {
+  const emojis = ['💗','💕','💖','✨','💜','🌸','😘'];
+  for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div'); el.className = 'hf';
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.cssText = `left:${Math.random()*60+20}%;bottom:65px;font-size:${Math.random()*10+14}px`;
+      document.body.appendChild(el); setTimeout(() => el.remove(), 1300);
+    }, i * 200);
+  }
 }
-function hk(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
-function ah(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
+function hk(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); } }
+function ah(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 100) + 'px'; }
 
-document.addEventListener('click',e=>{
-  if(emojiOpen&&!e.target.closest('#emojiPicker')&&!e.target.closest('.ebtn')){emojiOpen=false;document.getElementById('emojiPicker').classList.remove('show');}
-  if(!e.target.closest('#ctxMenu')&&!e.target.closest('#delModal'))closeCtx();
+document.addEventListener('click', e => {
+  if (emojiOpen && !e.target.closest('#emojiPicker') && !e.target.closest('.ebtn')) { emojiOpen = false; document.getElementById('emojiPicker').classList.remove('show'); }
+  if (!e.target.closest('#ctxMenu') && !e.target.closest('#delModal')) closeCtx();
 });
 </script>
 </body>
 </html>
+  
