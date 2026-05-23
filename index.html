@@ -1,3 +1,7 @@
+
+bash
+
+cat > /mnt/user-data/outputs/tn_study_hub.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,8 +49,6 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .cls-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
 .cls-c{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 6px 12px;text-align:center;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
 .cls-c:active{transform:scale(.92)}
-.cls-c::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.06);opacity:0;transition:.15s}
-.cls-c:active::after{opacity:1}
 .cls-c span:first-child{font-size:22px;display:block;margin-bottom:5px}
 .cls-c span:nth-child(2){font-size:17px;font-weight:800;color:#fff;display:block}
 .cls-c span:last-child{font-size:9px;color:rgba(255,255,255,.3);font-weight:600}
@@ -66,6 +68,12 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .lo-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--c3),var(--c1));border-radius:2px;transition:width .1s}
 .lo-txt{font-size:11px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase}
 
+/* STORAGE STATUS */
+#storBadge{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:9998;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;display:none;animation:fadeInDown .4s ease}
+@keyframes fadeInDown{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+#storBadge.ok{background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);color:var(--green)}
+#storBadge.warn{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);color:var(--yellow)}
+
 /* ── CLASS SCREEN ── */
 #classScr{background:var(--bg);z-index:12}
 .cls-header{display:flex;align-items:center;gap:11px;padding:14px 16px;background:rgba(11,11,20,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);flex-shrink:0}
@@ -78,7 +86,6 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .cls-body::-webkit-scrollbar{width:3px}
 .cls-body::-webkit-scrollbar-thumb{background:rgba(99,102,241,.2);border-radius:2px}
 
-/* subject cards */
 .subj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .subj-card{border-radius:18px;padding:18px 14px;cursor:pointer;border:1px solid var(--border);transition:.2s;position:relative;overflow:hidden}
 .subj-card:active{transform:scale(.93)}
@@ -87,7 +94,6 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .subj-chapters{font-size:10px;color:var(--t3)}
 .subj-tag{font-size:9px;font-weight:700;padding:3px 9px;border-radius:8px;display:inline-block;margin-top:7px}
 
-/* subject variants */
 .sj-tamil{background:linear-gradient(135deg,rgba(239,68,68,.14),rgba(239,68,68,.05));border-color:rgba(239,68,68,.22)}.sj-tamil .subj-tag{background:rgba(239,68,68,.14);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
 .sj-english{background:linear-gradient(135deg,rgba(6,182,212,.13),rgba(6,182,212,.04));border-color:rgba(6,182,212,.22)}.sj-english .subj-tag{background:rgba(6,182,212,.14);color:#06b6d4;border:1px solid rgba(6,182,212,.2)}
 .sj-maths{background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(99,102,241,.05));border-color:rgba(99,102,241,.22)}.sj-maths .subj-tag{background:rgba(99,102,241,.14);color:var(--c1);border:1px solid rgba(99,102,241,.2)}
@@ -100,7 +106,6 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .sj-commerce{background:linear-gradient(135deg,rgba(236,72,153,.13),rgba(236,72,153,.04));border-color:rgba(236,72,153,.22)}.sj-commerce .subj-tag{background:rgba(236,72,153,.14);color:var(--g1);border:1px solid rgba(236,72,153,.2)}
 .sj-accountancy{background:linear-gradient(135deg,rgba(16,185,129,.14),rgba(16,185,129,.05));border-color:rgba(16,185,129,.22)}.sj-accountancy .subj-tag{background:rgba(16,185,129,.14);color:var(--green);border:1px solid rgba(16,185,129,.2)}
 
-/* quick stats banner */
 .cls-banner{background:linear-gradient(135deg,rgba(99,102,241,.16),rgba(139,92,246,.1));border:1px solid rgba(99,102,241,.22);border-radius:18px;padding:16px 18px;margin-bottom:16px;display:flex;gap:14px;align-items:center}
 .cls-banner-icon{font-size:36px;flex-shrink:0}
 .cls-banner-txt .btitle{font-size:16px;font-weight:800;color:var(--t1);margin-bottom:3px}
@@ -110,11 +115,9 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .stat-pill .sp-num{font-size:20px;font-weight:800;color:var(--t1)}
 .stat-pill .sp-lbl{font-size:9px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
 
-/* sec heading */
 .sec-hd{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);margin:16px 0 10px;display:flex;align-items:center;gap:8px}
 .sec-hd::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(99,102,241,.2),transparent)}
 
-/* tip cards */
 .tip-row{display:flex;gap:9px;margin-bottom:9px;overflow-x:auto;padding-bottom:4px}
 .tip-row::-webkit-scrollbar{display:none}
 .tip-card{flex-shrink:0;background:rgba(17,17,32,.8);border:1px solid var(--border);border-radius:14px;padding:12px 14px;width:160px}
@@ -129,7 +132,6 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .subj-body::-webkit-scrollbar{width:3px}
 .subj-body::-webkit-scrollbar-thumb{background:rgba(99,102,241,.15);border-radius:2px}
 
-/* chapter list */
 .chapter-item{background:rgba(17,17,32,.7);border:1px solid var(--border);border-radius:16px;padding:14px 16px;margin-bottom:9px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:.2s}
 .chapter-item:active{transform:scale(.97);border-color:rgba(99,102,241,.3)}
 .ch-num{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.15));color:var(--c1)}
@@ -138,7 +140,6 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .ch-meta{font-size:10px;color:var(--t3)}
 .ch-arrow{font-size:14px;color:var(--t3)}
 
-/* study tools */
 .tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .tool-btn{border-radius:16px;padding:16px 12px;text-align:center;cursor:pointer;border:1px solid var(--border);transition:.2s;background:rgba(17,17,32,.7)}
 .tool-btn:active{transform:scale(.93)}
@@ -157,7 +158,6 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .chtab{padding:8px 16px;border-radius:18px;font-size:11px;font-weight:700;cursor:pointer;color:var(--t3);white-space:nowrap;border:1px solid transparent;transition:.2s}
 .chtab.on{background:rgba(99,102,241,.14);color:var(--c1);border-color:rgba(99,102,241,.25)}
 
-/* notes content */
 .notes-block{background:rgba(17,17,32,.7);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:12px}
 .nb-title{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:8px;display:flex;align-items:center;gap:7px}
 .nb-body{font-size:13px;color:var(--t2);line-height:1.75}
@@ -165,44 +165,34 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .nb-body .highlight{background:rgba(99,102,241,.1);border-left:3px solid var(--c1);padding:8px 12px;border-radius:0 10px 10px 0;margin:8px 0;font-size:12px;color:var(--t1);display:block}
 .formula-box{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:12px;padding:12px 16px;margin:8px 0;font-family:var(--fc);font-size:13px;color:var(--c1);text-align:center}
 
-/* Q&A */
 .qa-item{background:rgba(17,17,32,.7);border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:10px;cursor:pointer;transition:.2s}
-.qa-item:active{border-color:rgba(99,102,241,.3)}
 .qa-q{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:6px;display:flex;gap:8px}
 .qa-q-num{font-size:11px;font-weight:800;color:var(--c1);background:rgba(99,102,241,.12);padding:2px 8px;border-radius:6px;white-space:nowrap;height:fit-content;flex-shrink:0}
 .qa-a{font-size:12px;color:var(--t2);line-height:1.7;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);display:none}
 .qa-a.show{display:block}
 .qa-toggle{font-size:10px;font-weight:700;color:var(--c1);margin-top:4px}
 
-/* flashcard */
-.flashcard-wrap{perspective:1000px;width:100%;margin:10px 0;cursor:pointer}
 .flashcard{background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.1));border:1px solid rgba(99,102,241,.25);border-radius:20px;padding:28px 20px;text-align:center;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:transform .6s;transform-style:preserve-3d;position:relative}
-.flashcard.flipped{transform:rotateY(180deg)}
 .fc-front,.fc-back{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;backface-visibility:hidden;border-radius:20px}
 .fc-back{transform:rotateY(180deg);background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(16,185,129,.06));border:1px solid rgba(16,185,129,.25)}
 .fc-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:10px}
 .fc-front .fc-label{color:rgba(99,102,241,.7)}
 .fc-back .fc-label{color:rgba(16,185,129,.7)}
 .fc-content{font-size:15px;font-weight:600;color:var(--t1);line-height:1.6;text-align:center}
-.fc-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin:8px 0}
 .fc-btn{padding:9px 20px;border-radius:20px;border:1px solid var(--border);background:rgba(17,17,32,.8);color:var(--t2);font-family:var(--f);font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
 .fc-btn:active{transform:scale(.9)}
-.fc-count{font-size:12px;color:var(--t3)}
 
-/* mcq quiz */
 .mcq-card{background:rgba(17,17,32,.7);border:1px solid var(--border);border-radius:18px;padding:18px;margin-bottom:12px}
 .mcq-q{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:14px;line-height:1.6}
 .mcq-opt{display:block;width:100%;padding:11px 14px;border-radius:11px;border:1.5px solid var(--border);background:rgba(22,22,42,.5);font-size:12px;font-weight:500;color:var(--t1);cursor:pointer;text-align:left;font-family:var(--f);transition:.2s;margin-bottom:7px}
-.mcq-opt:active{transform:scale(.98)}
 .mcq-opt.correct{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.5);color:var(--green)}
 .mcq-opt.wrong{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.35);color:var(--red)}
 .mcq-exp{font-size:12px;color:var(--t2);padding:10px 12px;background:rgba(99,102,241,.07);border-radius:10px;margin-top:6px;line-height:1.6;display:none}
 .mcq-exp.show{display:block}
 .score-banner{background:linear-gradient(135deg,rgba(16,185,129,.18),rgba(16,185,129,.08));border:1px solid rgba(16,185,129,.3);border-radius:16px;padding:16px;text-align:center;margin-bottom:14px}
 .sb-score{font-size:32px;font-weight:900;color:var(--green);margin-bottom:4px}
-.sb-lbl{font-size:13px;color:var(--t2)}
 
-/* ── VAULT SCREENS (carried from original) ── */
+/* ── VAULT ── */
 #pinScr{background:var(--bg);z-index:20;align-items:center;justify-content:center;gap:20px}
 #pinScr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(99,102,241,.18),transparent 65%);pointer-events:none;z-index:0}
 .pin-icon{font-size:50px;animation:floatIcon 2.5s ease-in-out infinite alternate;position:relative;z-index:1}
@@ -236,12 +226,11 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .auth-inp:focus{border-color:var(--c1);background:rgba(99,102,241,.05)}
 .auth-inp::placeholder{color:var(--t3)}
 .auth-btn{width:100%;padding:13px;background:linear-gradient(135deg,var(--c3),var(--c1));color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;transition:.15s}
-.auth-btn:active{transform:scale(.97)}
 .auth-err-msg{font-size:11px;color:var(--red);text-align:center;margin-top:8px;display:none}
 .auth-tip-box{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.15);border-radius:10px;padding:10px 13px;margin-top:12px;font-size:11px;color:rgba(129,140,248,.8);line-height:1.7}
 
 #vaultScr{background:var(--bg);z-index:15}
-.vault-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(11,11,20,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);flex-shrink:0;position:relative;z-index:2}
+.vault-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(11,11,20,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);flex-shrink:0}
 .vn-brand{display:flex;align-items:center;gap:9px}
 .vn-icon{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--c3),var(--c1));display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 14px rgba(99,102,241,.4)}
 .vn-name{font-size:15px;font-weight:800;color:var(--t1)}
@@ -250,22 +239,31 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .vn-av{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--c3),var(--g1));display:flex;align-items:center;justify-content:center;font-size:12px}
 .vn-uname{font-size:12px;font-weight:600;color:var(--t1);max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .lock-btn{padding:6px 13px;border-radius:20px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.18);color:var(--red);font-size:11px;font-weight:700;cursor:pointer}
-.vault-tabs{display:flex;gap:4px;padding:10px 14px;background:rgba(11,11,20,.9);border-bottom:1px solid var(--border);flex-shrink:0;position:relative;z-index:2}
+.vault-tabs{display:flex;gap:4px;padding:10px 14px;background:rgba(11,11,20,.9);border-bottom:1px solid var(--border);flex-shrink:0}
 .vtab{padding:9px 18px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;color:var(--t3);white-space:nowrap;transition:.2s;border:1px solid transparent}
 .vtab.on{background:rgba(99,102,241,.14);color:var(--c1);border-color:rgba(99,102,241,.25)}
-.vault-body{flex:1;overflow:hidden;position:relative;z-index:1}
+.vault-body{flex:1;overflow:hidden}
 .vpanel{position:absolute;inset:0;overflow-y:auto;padding:14px;display:none}
 .vpanel.on{display:block}
 .vpanel::-webkit-scrollbar{width:3px}
 .vpanel::-webkit-scrollbar-thumb{background:rgba(99,102,241,.2);border-radius:2px}
+#vpRooms,#vpGames,#vpAccount{position:absolute;inset:0;overflow-y:auto;padding:14px}
+
+/* Hero card with room ID - IMPROVED */
 .hero-card{background:linear-gradient(135deg,rgba(99,102,241,.16),rgba(139,92,246,.1));border:1px solid rgba(99,102,241,.22);border-radius:20px;padding:20px;margin-bottom:16px;position:relative;overflow:hidden}
 .hero-glow{position:absolute;top:-50px;right:-50px;width:160px;height:160px;border-radius:50%;background:radial-gradient(rgba(99,102,241,.18),transparent);pointer-events:none}
 .hero-title{font-size:20px;font-weight:800;color:var(--t1);margin-bottom:4px}
 .hero-sub{font-size:12px;color:var(--t2);line-height:1.6;margin-bottom:14px}
-.hero-room-info{display:none;flex-align:center;gap:8px;background:rgba(0,0,0,.25);border-radius:12px;padding:10px 14px;align-items:center}
-.hri-label{font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.8px}
-.hri-id{font-family:var(--fc);font-size:13px;font-weight:600;color:var(--c1);flex:1;word-break:break-all}
-.copy-btn{padding:5px 12px;border-radius:8px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);color:var(--c1);font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap}
+
+/* ROOM ID DISPLAY - big & prominent */
+.room-id-box{background:rgba(0,0,0,.3);border:1px solid rgba(99,102,241,.25);border-radius:14px;padding:14px 16px;margin-bottom:16px}
+.room-id-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--t3);margin-bottom:6px}
+.room-id-val{font-family:var(--fc);font-size:14px;font-weight:600;color:var(--c1);word-break:break-all;margin-bottom:10px;letter-spacing:.5px}
+.room-id-actions{display:flex;gap:8px}
+.rid-copy-btn{flex:1;padding:9px;border-radius:10px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);color:var(--c1);font-family:var(--f);font-size:12px;font-weight:700;cursor:pointer;text-align:center}
+.rid-share-btn{flex:1;padding:9px;border-radius:10px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);color:var(--green);font-family:var(--f);font-size:12px;font-weight:700;cursor:pointer;text-align:center}
+.rid-copy-btn:active,.rid-share-btn:active{transform:scale(.95)}
+
 .room-actions-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .ra-btn{padding:18px 12px;border-radius:18px;text-align:center;cursor:pointer;border:1px solid var(--border);background:rgba(17,17,32,.7);transition:.2s}
 .ra-btn:active{transform:scale(.94)}
@@ -278,7 +276,8 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .room-item:active{transform:scale(.97);border-color:rgba(99,102,241,.3)}
 .ri-icon{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.15))}
 .ri-info{flex:1;min-width:0}
-.ri-name{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ri-name{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ri-id-small{font-size:9px;color:var(--t3);font-family:var(--fc);margin-bottom:2px}
 .ri-meta{font-size:11px;color:var(--t3)}
 .ri-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.18);white-space:nowrap}
 .empty-rooms{text-align:center;padding:36px 20px;color:var(--t3);font-size:13px;line-height:1.7}
@@ -295,17 +294,18 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .gc4{background:linear-gradient(135deg,rgba(16,185,129,.14),rgba(16,185,129,.05));border-color:rgba(16,185,129,.22)}.gc4 .gc-players{background:rgba(16,185,129,.14);color:var(--green);border:1px solid rgba(16,185,129,.2)}
 .gc5{background:linear-gradient(135deg,rgba(6,182,212,.14),rgba(6,182,212,.05));border-color:rgba(6,182,212,.22)}.gc5 .gc-players{background:rgba(6,182,212,.14);color:#06b6d4;border:1px solid rgba(6,182,212,.2)}
 .gc6{background:linear-gradient(135deg,rgba(249,115,22,.14),rgba(249,115,22,.05));border-color:rgba(249,115,22,.22)}.gc6 .gc-players{background:rgba(249,115,22,.14);color:var(--orange);border:1px solid rgba(249,115,22,.2)}
-.games-tip{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.14);border-radius:14px;padding:13px 15px;margin-top:14px;font-size:12px;color:rgba(129,140,248,.75);line-height:1.7}
+
+/* ── ROOM/CHAT ── */
 #roomScr{background:var(--bg);z-index:25}
-.room-header{display:flex;align-items:center;gap:11px;padding:11px 15px;background:rgba(11,11,20,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);flex-shrink:0;position:relative;z-index:2}
+.room-header{display:flex;align-items:center;gap:11px;padding:11px 15px;background:rgba(11,11,20,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);flex-shrink:0}
 .rh-back{width:36px;height:36px;border-radius:11px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--t1);flex-shrink:0;transition:.15s}
 .rh-back:active{transform:scale(.88)}
 .rh-info{flex:1;min-width:0}
 .rh-name{font-size:15px;font-weight:800;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rh-members{font-size:10px;color:var(--t3);margin-top:1px}
-.rh-online{font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.18);white-space:nowrap}
+.rh-online{font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.18);white-space:nowrap;cursor:pointer}
 .rh-menu-btn{padding:7px 13px;border-radius:20px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);color:var(--yellow);font-size:11px;font-weight:700;cursor:pointer}
-.room-tabs{display:flex;background:rgba(11,11,20,.9);border-bottom:1px solid var(--border);flex-shrink:0;position:relative;z-index:2}
+.room-tabs{display:flex;background:rgba(11,11,20,.9);border-bottom:1px solid var(--border);flex-shrink:0}
 .rtab{flex:1;padding:11px;font-size:11px;font-weight:700;text-align:center;cursor:pointer;color:var(--t3);border-bottom:2px solid transparent;transition:.2s}
 .rtab.on{color:var(--c1);border-bottom-color:var(--c1)}
 .chat-area{flex:1;display:flex;flex-direction:column;overflow:hidden}
@@ -325,14 +325,13 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .msg-bub.in{background:rgba(22,22,42,.92);border:1px solid rgba(255,255,255,.07);color:var(--t1);border-bottom-left-radius:4px;padding:10px 14px}
 .msg-meta{display:flex;align-items:center;gap:4px;margin-top:4px;justify-content:flex-end}
 .msg-time{font-size:10px;opacity:.4;font-family:var(--fc)}
-.msg-ticks{font-size:10px;color:rgba(255,255,255,.45)}
 .typing-row{padding:0 14px;flex-shrink:0}
 .typing-ind{display:none;align-items:center;gap:3px;background:rgba(22,22,42,.9);border:1px solid rgba(255,255,255,.07);border-radius:16px;border-bottom-left-radius:4px;padding:10px 14px;width:fit-content;margin-bottom:6px}
 .typing-ind.show{display:flex}
 .td{width:6px;height:6px;border-radius:50%;background:rgba(99,102,241,.55);animation:tdot 1.4s infinite;display:inline-block;margin:0 1.5px}
 .td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
 @keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-7px);opacity:1}}
-.chat-input-row{padding:10px 14px;background:rgba(11,11,20,.97);border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end;flex-shrink:0;position:relative;z-index:2}
+.chat-input-row{padding:10px 14px;background:rgba(11,11,20,.97);border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end;flex-shrink:0}
 .chat-inp{flex:1;background:rgba(22,22,42,.9);border:1px solid rgba(99,102,241,.18);border-radius:22px;padding:10px 16px;color:var(--t1);font-size:13px;outline:none;resize:none;max-height:100px;min-height:42px;line-height:1.4;transition:.2s}
 .chat-inp::placeholder{color:var(--t3)}
 .chat-inp:focus{border-color:rgba(99,102,241,.4)}
@@ -353,14 +352,16 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .mi-online.on{background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.18)}
 .mi-online.off{background:rgba(255,255,255,.04);color:var(--t3);border:1px solid var(--border)}
 .mi-you{font-size:10px;font-weight:700;padding:2px 9px;border-radius:10px;background:rgba(99,102,241,.12);color:var(--c1);border:1px solid rgba(99,102,241,.2)}
-.game-header{display:flex;align-items:center;gap:11px;padding:11px 15px;background:rgba(11,11,20,.95);border-bottom:1px solid var(--border);flex-shrink:0}
-.game-back-btn{width:36px;height:36px;border-radius:11px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--t1);flex-shrink:0}
-.game-title-text{font-size:14px;font-weight:800;color:var(--t1);flex:1}
-.game-status-badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
-.gstatus-wait{background:rgba(245,158,11,.12);color:var(--yellow);border:1px solid rgba(245,158,11,.2)}
-.gstatus-play{background:rgba(16,185,129,.12);color:var(--green);border:1px solid rgba(16,185,129,.2)}
-.game-body-wrap{flex:1;overflow-y:auto;display:flex;flex-direction:column}
-.ttt-board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:290px}
+
+/* CONNECTION STATUS BAR */
+.conn-bar{display:flex;align-items:center;justify-content:center;gap:6px;padding:6px;background:rgba(16,185,129,.08);border-bottom:1px solid rgba(16,185,129,.15);font-size:11px;font-weight:600;color:var(--green);flex-shrink:0}
+.conn-bar.offline{background:rgba(239,68,68,.07);border-bottom-color:rgba(239,68,68,.14);color:var(--red)}
+.conn-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.8s infinite}
+.conn-bar.offline .conn-dot{background:var(--red);animation:none}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* Games */
+.ttt-board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:280px}
 .ttt-cell{aspect-ratio:1;background:rgba(22,22,42,.8);border:2px solid rgba(99,102,241,.2);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:40px;cursor:pointer;transition:.2s}
 .ttt-cell:active{transform:scale(.9)}
 .ttt-cell.x-mark{border-color:rgba(99,102,241,.5);background:rgba(99,102,241,.1)}
@@ -368,7 +369,6 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .ttt-cell.win-cell{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.5);animation:winPulse .4s ease}
 @keyframes winPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 .quiz-opt{display:block;width:100%;padding:13px 16px;border-radius:13px;border:1.5px solid var(--border);background:rgba(22,22,42,.6);font-size:13px;font-weight:500;color:var(--t1);cursor:pointer;text-align:left;font-family:var(--f);line-height:1.4;transition:.2s;margin-bottom:9px}
-.quiz-opt:active{transform:scale(.98)}
 .quiz-opt.correct{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.5);color:var(--green)}
 .quiz-opt.wrong{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.35);color:var(--red)}
 .wletter{width:38px;height:46px;border-bottom:3px solid rgba(99,102,241,.4);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:var(--t1);transition:.3s}
@@ -381,6 +381,8 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .tod-text{font-size:15px;font-weight:600;color:var(--t1);line-height:1.65}
 .draw-canvas-container{flex:1;background:#fff;margin:8px;border-radius:12px;overflow:hidden;position:relative;min-height:180px}
 #drawCanvas{width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}
+
+/* MODALS */
 .modal-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);align-items:flex-end;justify-content:center;padding-bottom:0}
 .modal-overlay.show{display:flex}
 .modal-sheet{background:rgba(17,17,32,.98);border:1px solid rgba(99,102,241,.15);border-bottom:none;border-radius:24px 24px 0 0;padding:24px;width:100%;max-width:480px;animation:slideUp .3s cubic-bezier(.16,1,.3,1)}
@@ -395,14 +397,17 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .modal-btn{width:100%;padding:13px;background:linear-gradient(135deg,var(--c3),var(--c1));color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;transition:.15s}
 .modal-btn:active{transform:scale(.97)}
 .modal-err{font-size:11px;color:var(--red);text-align:center;margin-top:8px;display:none}
+
 .toast-msg{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:rgba(17,17,32,.97);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:10px 20px;font-size:13px;color:var(--t1);z-index:9999;font-weight:600;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:toastIn .3s ease;pointer-events:none}
 @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
 #ctxMenu{display:none;position:fixed;z-index:200;background:rgba(17,17,32,.99);border:1px solid rgba(99,102,241,.18);border-radius:14px;padding:6px;backdrop-filter:blur(24px);box-shadow:0 12px 40px rgba(0,0,0,.7);min-width:160px}
 #ctxMenu.show{display:block}
 .ctx-item{display:flex;align-items:center;gap:10px;padding:10px 13px;border-radius:11px;cursor:pointer;font-size:13px;color:var(--t1);transition:.15s}
 .ctx-item:active{background:rgba(99,102,241,.1)}
 .ctx-item.danger{color:var(--red)}
 .ctx-sep{height:1px;background:var(--border);margin:4px 8px}
+
 .del-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
 .del-overlay.show{display:flex}
 .del-box{background:rgba(17,17,32,.99);border:1px solid rgba(239,68,68,.22);border-radius:22px;padding:28px 24px;width:100%;max-width:300px;text-align:center;animation:slideUp .25s ease}
@@ -412,6 +417,7 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 .del-btns{display:flex;gap:10px}
 .del-cancel{flex:1;padding:11px;border-radius:12px;border:1px solid var(--border);background:transparent;color:var(--t2);font-family:var(--f);font-size:13px;font-weight:600;cursor:pointer}
 .del-ok{flex:1;padding:11px;border-radius:12px;border:none;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-family:var(--f);font-size:13px;font-weight:700;cursor:pointer}
+
 .hfloat{position:fixed;pointer-events:none;z-index:9998;animation:hfRise 1.4s ease forwards}
 @keyframes hfRise{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-90px) scale(.3)}}
 .gpick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -419,6 +425,7 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 </head>
 <body>
 <div id="meshBg"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grid-bg"></div></div>
+<div id="storBadge"></div>
 
 <div id="loadScr">
   <div class="lo-title">TN <span>Study Hub</span></div>
@@ -454,7 +461,6 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
   <div class="d-footer">Tamil Nadu State Board · Made for TN Students</div>
 </div>
 
-<!-- SECRET DOT -->
 <button id="sDot" title=""></button>
 
 <!-- CLASS SCREEN -->
@@ -472,7 +478,7 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
       <div class="cls-banner-icon" id="clsBannerIcon">📚</div>
       <div class="cls-banner-txt">
         <div class="btitle" id="clsBannerTitle">Class Overview</div>
-        <div class="bsub" id="clsBannerSub">Tap a subject to explore chapters, notes and practice tests.</div>
+        <div class="bsub" id="clsBannerSub">Tap a subject to explore chapters.</div>
       </div>
     </div>
     <div class="cls-stats-row" id="clsStatsRow"></div>
@@ -523,7 +529,7 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 <div class="screen" id="pinScr">
   <div class="pin-icon">🔐</div>
   <div class="pin-title">Secret Vault</div>
-  <div class="pin-hint">Enter PIN to unlock your private space</div>
+  <div class="pin-hint">Enter PIN to unlock<br>Default: <b style="color:var(--c1)">1234</b></div>
   <div class="pin-dots"><div class="p-dot" id="pd1"></div><div class="p-dot" id="pd2"></div><div class="p-dot" id="pd3"></div><div class="p-dot" id="pd4"></div></div>
   <div class="pin-err" id="pinErr">❌ Wrong PIN. Try again.</div>
   <div class="pin-pad">
@@ -547,7 +553,7 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
 <div class="screen" id="authScr">
   <div class="auth-wrap">
     <div class="auth-card">
-      <div class="auth-top"><span class="auth-icon">🔒</span><div class="auth-heading">Secret Vault</div><div class="auth-sub-text">Your private space — visible only to you</div></div>
+      <div class="auth-top"><span class="auth-icon">🔒</span><div class="auth-heading">Secret Vault</div><div class="auth-sub-text">உன் private space — only for you</div></div>
       <div class="auth-tabs"><button class="auth-tab on" id="aTab1" onclick="setAuthTab('login')">🔑 Login</button><button class="auth-tab" id="aTab2" onclick="setAuthTab('register')">✨ Register</button></div>
       <div id="loginFormEl">
         <div class="auth-field"><label class="auth-lbl">Username</label><input class="auth-inp" id="lUser" placeholder="Your username" autocomplete="off" autocapitalize="off" onkeydown="if(event.key==='Enter')doLogin()"></div>
@@ -560,7 +566,7 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
         <div class="auth-field"><label class="auth-lbl">Password</label><input class="auth-inp" id="rPass" type="password" placeholder="Create password (min 4 chars)"></div>
         <button class="auth-btn" onclick="doRegister()">✨ Create Account</button>
         <div class="auth-err-msg" id="regErr"></div>
-        <div class="auth-tip-box">💡 Register → Login → Create Room → Share ID with partner!</div>
+        <div class="auth-tip-box">💡 Register → Login → Create Room → Room ID share பண்ணு → Friend join பண்ணுவாங்க!</div>
       </div>
     </div>
   </div>
@@ -576,19 +582,35 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
     </div>
   </div>
   <div class="vault-tabs">
-    <div class="vtab on" onclick="setVTab('rooms',this)">💬 Rooms</div>
-    <div class="vtab" onclick="setVTab('games',this)">🎮 Games</div>
-    <div class="vtab" onclick="setVTab('account',this)">👤 Account</div>
+    <div class="vtab on" onclick="setVTab('Rooms',this)">💬 Rooms</div>
+    <div class="vtab" onclick="setVTab('Games',this)">🎮 Games</div>
+    <div class="vtab" onclick="setVTab('Account',this)">👤 Account</div>
   </div>
-  <div class="vault-body">
-    <div class="vpanel on" id="vpRooms">
-      <div class="hero-card"><div class="hero-glow"></div><div class="hero-title" id="heroTitle">Welcome! 👋</div><div class="hero-sub" id="heroSub">Create a room and share the Room ID with friends!</div><div class="hero-room-info" id="heroRoomInfo"><div><div class="hri-label">Latest Room ID</div><div class="hri-id" id="heroRoomId">—</div></div><button class="copy-btn" onclick="copyLastRoomId()">📋 Copy</button></div></div>
-      <div class="room-actions-row"><div class="ra-btn create" onclick="openCreateModal()"><span class="ra-ico">➕</span><div class="ra-title">Create Room</div><div class="ra-sub">Start a private space</div></div><div class="ra-btn join" onclick="openJoinModal()"><span class="ra-ico">🔗</span><div class="ra-title">Join Room</div><div class="ra-sub">Enter room ID from friend</div></div></div>
+  <div class="vault-body" style="position:relative">
+    <div id="vpRooms" style="display:block">
+      <div class="hero-card">
+        <div class="hero-glow"></div>
+        <div class="hero-title" id="heroTitle">Welcome! 👋</div>
+        <div class="hero-sub">Create a room → Share Room ID → Friend joins!</div>
+      </div>
+      <!-- Last room ID box - shown after creating -->
+      <div class="room-id-box" id="lastRoomBox" style="display:none">
+        <div class="room-id-label">📋 Latest Room ID — Share this!</div>
+        <div class="room-id-val" id="lastRoomIdVal">—</div>
+        <div class="room-id-actions">
+          <button class="rid-copy-btn" onclick="copyLastRoomId()">📋 Copy ID</button>
+          <button class="rid-share-btn" onclick="shareLastRoomId()">📤 Share</button>
+        </div>
+      </div>
+      <div class="room-actions-row">
+        <div class="ra-btn create" onclick="openCreateModal()"><span class="ra-ico">➕</span><div class="ra-title">Create Room</div><div class="ra-sub">Start a private space</div></div>
+        <div class="ra-btn join" onclick="openJoinModal()"><span class="ra-ico">🔗</span><div class="ra-title">Join Room</div><div class="ra-sub">Enter Room ID</div></div>
+      </div>
       <div class="sec-hd">My Rooms</div>
       <div id="roomsListEl"><div class="empty-rooms">No rooms yet.<br>Create one or join a friend's room! 💬</div></div>
     </div>
-    <div class="vpanel" id="vpGames">
-      <div style="margin-bottom:16px"><div style="font-size:21px;font-weight:800;color:var(--t1);margin-bottom:5px">🎮 Games</div><div style="font-size:13px;color:var(--t2)">Multiplayer fun with friends!</div></div>
+    <div id="vpGames" style="display:none;padding:14px">
+      <div style="margin-bottom:16px"><div style="font-size:21px;font-weight:800;color:var(--t1);margin-bottom:5px">🎮 Games</div><div style="font-size:13px;color:var(--t2)">Room-ல open பண்ணி 🎮 button tap பண்ணு!</div></div>
       <div class="games-grid">
         <div class="game-card gc1" onclick="quickGame('ttt')"><span class="gc-ico">⭕</span><div class="gc-name">Tic Tac Toe</div><div class="gc-sub">Classic 3×3</div><span class="gc-players">2 Players</span></div>
         <div class="game-card gc2" onclick="quickGame('wordguess')"><span class="gc-ico">🔤</span><div class="gc-name">Word Guess</div><div class="gc-sub">Hangman style</div><span class="gc-players">Any</span></div>
@@ -597,20 +619,22 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
         <div class="game-card gc5" onclick="quickGame('nhie')"><span class="gc-ico">🙋</span><div class="gc-name">Never Have I</div><div class="gc-sub">Vote & reveal</div><span class="gc-players">Any</span></div>
         <div class="game-card gc6" onclick="quickGame('draw')"><span class="gc-ico">🎨</span><div class="gc-name">Draw & Guess</div><div class="gc-sub">Sketch it!</div><span class="gc-players">2+</span></div>
       </div>
-      <div class="games-tip">💡 Open a room → tap 🎮 button → choose game. Both players see it live!</div>
+      <div style="background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.14);border-radius:14px;padding:13px 15px;margin-top:14px;font-size:12px;color:rgba(129,140,248,.75);line-height:1.7">💡 Room open பண்ணி → 🎮 button → game choose பண்ணு. Both players live-ல பார்க்கலாம்!</div>
     </div>
-    <div class="vpanel" id="vpAccount"><div id="accountEl"></div></div>
+    <div id="vpAccount" style="display:none;padding:14px"><div id="accountEl"></div></div>
   </div>
 </div>
 
-<!-- ROOM/CHAT SCREEN -->
+<!-- ROOM SCREEN -->
 <div class="screen" id="roomScr">
   <div class="room-header">
     <div class="rh-back" onclick="leaveRoomScreen()">←</div>
     <div class="rh-info"><div class="rh-name" id="rhName">Room</div><div class="rh-members" id="rhMembers">—</div></div>
-    <div class="rh-online" id="rhOnline">0 online</div>
+    <div class="rh-online" id="rhOnline" onclick="showRoomId()">● 0</div>
     <button class="rh-menu-btn" onclick="openGamePicker()">🎮</button>
   </div>
+  <!-- Connection indicator -->
+  <div class="conn-bar" id="connBar"><div class="conn-dot"></div><span id="connTxt">Connected · Polling live</span></div>
   <div class="room-tabs">
     <div class="rtab on" id="rt-chat" onclick="setRoomTab('chat')">💬 Chat</div>
     <div class="rtab" id="rt-game" onclick="setRoomTab('game')">🎮 Game</div>
@@ -648,23 +672,103 @@ body{font-family:var(--f);color:var(--t1);-webkit-font-smoothing:antialiased}
   <div class="ctx-item" onclick="ctxCopy()">📋 Copy</div><div class="ctx-sep"></div><div class="ctx-item danger" onclick="ctxDeleteMsg()">🗑️ Delete</div>
 </div>
 <div class="del-overlay" id="delOverlay">
-  <div class="del-box"><span class="del-ico" id="delIco">🗑️</span><div class="del-h" id="delH">Delete?</div><div class="del-p" id="delP">Cannot be undone.</div><div class="del-btns"><button class="del-cancel" onclick="closeDelModal()">Cancel</button><button class="del-ok" onclick="confirmDelete()">Delete</button></div></div>
+  <div class="del-box"><span class="del-ico">🗑️</span><div class="del-h">Delete message?</div><div class="del-p">Removes for everyone.</div><div class="del-btns"><button class="del-cancel" onclick="closeDelModal()">Cancel</button><button class="del-ok" onclick="confirmDelete()">Delete</button></div></div>
 </div>
 <div class="modal-overlay" id="createModal">
-  <div class="modal-sheet"><div class="modal-hd"><div class="modal-title">➕ Create Room</div><button class="modal-x" onclick="closeModal('createModal')">✕</button></div><label class="modal-lbl">Room Name</label><input class="modal-inp" id="crName" placeholder="e.g. Study Squad 📚" maxlength="30"><label class="modal-lbl">Room PIN (optional)</label><input class="modal-inp" id="crPin" placeholder="Leave empty for no PIN" maxlength="6" type="password"><button class="modal-btn" onclick="createRoom()">✨ Create Room</button></div>
+  <div class="modal-sheet">
+    <div class="modal-hd"><div class="modal-title">➕ Create Room</div><button class="modal-x" onclick="closeModal('createModal')">✕</button></div>
+    <label class="modal-lbl">Room Name</label>
+    <input class="modal-inp" id="crName" placeholder="e.g. Study Squad 📚" maxlength="30">
+    <label class="modal-lbl">Room PIN (optional)</label>
+    <input class="modal-inp" id="crPin" placeholder="Leave empty = no PIN" maxlength="6" type="password">
+    <button class="modal-btn" onclick="createRoom()">✨ Create Room</button>
+  </div>
 </div>
 <div class="modal-overlay" id="joinModal">
-  <div class="modal-sheet"><div class="modal-hd"><div class="modal-title">🔗 Join Room</div><button class="modal-x" onclick="closeModal('joinModal')">✕</button></div><label class="modal-lbl">Room ID</label><input class="modal-inp" id="jrId" placeholder="Paste Room ID here..." autocomplete="off" autocapitalize="off"><label class="modal-lbl">Room PIN (if any)</label><input class="modal-inp" id="jrPin" placeholder="Leave empty if none" type="password"><button class="modal-btn" onclick="joinRoom()">🚀 Join Room</button><div class="modal-err" id="joinErr">❌ Error</div></div>
+  <div class="modal-sheet">
+    <div class="modal-hd"><div class="modal-title">🔗 Join Room</div><button class="modal-x" onclick="closeModal('joinModal')">✕</button></div>
+    <label class="modal-lbl">Room ID (friend-கிட்ட கேளு)</label>
+    <input class="modal-inp" id="jrId" placeholder="rm_xxxxxx_xxxxxxx" autocomplete="off" autocapitalize="off">
+    <label class="modal-lbl">Room PIN (if any)</label>
+    <input class="modal-inp" id="jrPin" placeholder="Leave empty if none" type="password">
+    <button class="modal-btn" onclick="joinRoom()">🚀 Join Room</button>
+    <div class="modal-err" id="joinErr">❌ Error</div>
+  </div>
 </div>
 <div class="modal-overlay" id="gamePickModal">
-  <div class="modal-sheet"><div class="modal-hd"><div class="modal-title">🎮 Pick a Game</div><button class="modal-x" onclick="closeModal('gamePickModal')">✕</button></div><div class="gpick-grid"><div class="game-card gc1" onclick="launchRoomGame('ttt')"><span class="gc-ico" style="font-size:26px">⭕</span><div class="gc-name">Tic Tac Toe</div><span class="gc-players">2P</span></div><div class="game-card gc2" onclick="launchRoomGame('wordguess')"><span class="gc-ico" style="font-size:26px">🔤</span><div class="gc-name">Word Guess</div><span class="gc-players">Any</span></div><div class="game-card gc3" onclick="launchRoomGame('quiz')"><span class="gc-ico" style="font-size:26px">🧠</span><div class="gc-name">TN Quiz</div><span class="gc-players">Any</span></div><div class="game-card gc4" onclick="launchRoomGame('tod')"><span class="gc-ico" style="font-size:26px">🎭</span><div class="gc-name">Truth/Dare</div><span class="gc-players">Any</span></div><div class="game-card gc5" onclick="launchRoomGame('nhie')"><span class="gc-ico" style="font-size:26px">🙋</span><div class="gc-name">Never Have I</div><span class="gc-players">Any</span></div><div class="game-card gc6" onclick="launchRoomGame('draw')"><span class="gc-ico" style="font-size:26px">🎨</span><div class="gc-name">Draw & Guess</div><span class="gc-players">2+</span></div></div></div>
+  <div class="modal-sheet">
+    <div class="modal-hd"><div class="modal-title">🎮 Pick a Game</div><button class="modal-x" onclick="closeModal('gamePickModal')">✕</button></div>
+    <div class="gpick-grid">
+      <div class="game-card gc1" onclick="launchRoomGame('ttt')"><span class="gc-ico" style="font-size:26px">⭕</span><div class="gc-name">Tic Tac Toe</div><span class="gc-players">2P</span></div>
+      <div class="game-card gc2" onclick="launchRoomGame('wordguess')"><span class="gc-ico" style="font-size:26px">🔤</span><div class="gc-name">Word Guess</div><span class="gc-players">Any</span></div>
+      <div class="game-card gc3" onclick="launchRoomGame('quiz')"><span class="gc-ico" style="font-size:26px">🧠</span><div class="gc-name">TN Quiz</div><span class="gc-players">Any</span></div>
+      <div class="game-card gc4" onclick="launchRoomGame('tod')"><span class="gc-ico" style="font-size:26px">🎭</span><div class="gc-name">Truth/Dare</div><span class="gc-players">Any</span></div>
+      <div class="game-card gc5" onclick="launchRoomGame('nhie')"><span class="gc-ico" style="font-size:26px">🙋</span><div class="gc-name">Never Have I</div><span class="gc-players">Any</span></div>
+      <div class="game-card gc6" onclick="launchRoomGame('draw')"><span class="gc-ico" style="font-size:26px">🎨</span><div class="gc-name">Draw & Guess</div><span class="gc-players">2+</span></div>
+    </div>
+  </div>
+</div>
+<!-- Room ID Modal -->
+<div class="modal-overlay" id="roomIdModal">
+  <div class="modal-sheet">
+    <div class="modal-hd"><div class="modal-title">📋 Room ID</div><button class="modal-x" onclick="closeModal('roomIdModal')">✕</button></div>
+    <div style="font-size:12px;color:var(--t2);margin-bottom:12px">இந்த ID-ஐ friend-கிட்ட share பண்ணு — அவங்க Join Room-ல paste பண்ணணும்!</div>
+    <div style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:14px;padding:14px;font-family:var(--fc);font-size:13px;color:var(--c1);word-break:break-all;margin-bottom:14px;text-align:center" id="modalRoomIdVal">—</div>
+    <div style="display:flex;gap:8px">
+      <button class="modal-btn" style="background:linear-gradient(135deg,var(--c3),var(--c1))" onclick="copyModalRoomId()">📋 Copy</button>
+      <button class="modal-btn" style="background:rgba(16,185,129,.8)" onclick="shareModalRoomId()">📤 Share</button>
+    </div>
+  </div>
 </div>
 
 <script>
 // ══════════════════════════════════════════
-// STORAGE
+// FIXED STORAGE — THE KEY FIX!
+// window.storage available = use it (shared or not)
+// window.storage NOT available = fallback to localStorage (won't work for cross-user shared, but at least local works)
 // ══════════════════════════════════════════
-const S={async get(k,sh=false){try{if(window.storage)return(await window.storage.get(k,sh))?.value??null;}catch(e){}return localStorage.getItem((sh?'SH_':'LS_')+k);},async set(k,v,sh=false){try{if(window.storage){await window.storage.set(k,v,sh);return;}}catch(e){}localStorage.setItem((sh?'SH_':'LS_')+k,v);},async del(k,sh=false){try{if(window.storage){await window.storage.delete(k,sh);return;}}catch(e){}localStorage.removeItem((sh?'SH_':'LS_')+k);},async list(p='',sh=false){try{if(window.storage){const r=await window.storage.list(p,sh);return r?.keys??[];}}catch(e){}const pre=(sh?'SH_':'LS_')+p,keys=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.startsWith(pre))keys.push(k.slice((sh?'SH_':'LS_').length));}return keys;}};
+const STORAGE_AVAILABLE = typeof window.storage !== 'undefined';
+
+const S = {
+  async get(k, sh=false) {
+    if (STORAGE_AVAILABLE) {
+      try {
+        const r = await window.storage.get(k, sh);
+        return r?.value ?? null;
+      } catch(e) {
+        // Key not found or error — return null, do NOT fall back to localStorage for shared keys
+        return null;
+      }
+    }
+    // No window.storage — localStorage fallback (only works same browser)
+    try { return localStorage.getItem((sh?'SH_':'LS_')+k); } catch(e) { return null; }
+  },
+  async set(k, v, sh=false) {
+    if (STORAGE_AVAILABLE) {
+      try {
+        await window.storage.set(k, v, sh);
+        return true;
+      } catch(e) { return false; }
+    }
+    try { localStorage.setItem((sh?'SH_':'LS_')+k, v); return true; } catch(e) { return false; }
+  },
+  async del(k, sh=false) {
+    if (STORAGE_AVAILABLE) {
+      try { await window.storage.delete(k, sh); } catch(e) {}
+      return;
+    }
+    try { localStorage.removeItem((sh?'SH_':'LS_')+k); } catch(e) {}
+  },
+  async list(p='', sh=false) {
+    if (STORAGE_AVAILABLE) {
+      try { const r = await window.storage.list(p, sh); return r?.keys ?? []; } catch(e) { return []; }
+    }
+    const pre=(sh?'SH_':'LS_')+p, keys=[];
+    try { for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(pre))keys.push(k.slice((sh?'SH_':'LS_').length));} } catch(e) {}
+    return keys;
+  }
+};
+
 const h32=s=>{let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h)^s.charCodeAt(i);return(h>>>0).toString(36);};
 const escHtml=t=>String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
 const $=id=>document.getElementById(id);
@@ -675,58 +779,69 @@ const genId=()=>'rm_'+Math.random().toString(36).slice(2,8)+'_'+Date.now().toStr
 function goScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('show'));$(id).classList.add('show');}
 function goDecoy(){goScreen('decoyScr');}
 function toast(msg,dur=2500){document.querySelectorAll('.toast-msg').forEach(t=>t.remove());const t=document.createElement('div');t.className='toast-msg';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),dur);}
-function showErr(id,msg){const e=$(id);if(!e)return;e.textContent=msg;e.style.display='block';setTimeout(()=>e.style.display='none',4000);}
+function showErr(id,msg){const e=$(id);if(!e)return;e.textContent=msg;e.style.display='block';setTimeout(()=>e.style.display='none',5000);}
 
 let loInterval=null;
-function startLoading(txt){$('loTxt').textContent=txt||'Loading...';$('loadScr').classList.remove('fade');$('loadScr').style.display='flex';let w=0;clearInterval(loInterval);loInterval=setInterval(()=>{w=Math.min(w+4,90);$('loFill').style.width=w+'%';},60);}
+function startLoading(txt){$('loTxt').textContent=txt||'Loading...';$('loadScr').classList.remove('fade');$('loadScr').style.display='flex';let w=0;clearInterval(loInterval);loInterval=setInterval(()=>{w=Math.min(w+5,90);$('loFill').style.width=w+'%';},60);}
 function stopLoading(){clearInterval(loInterval);$('loFill').style.width='100%';setTimeout(()=>{$('loadScr').classList.add('fade');setTimeout(()=>{$('loadScr').style.display='none';$('loFill').style.width='0';},500);},300);}
+
+function showStorBadge(){
+  const b=$('storBadge');
+  if(STORAGE_AVAILABLE){
+    b.textContent='✅ Shared storage ON — rooms will sync!';b.className='ok';
+  } else {
+    b.textContent='⚠️ Storage unavailable — rooms may not sync cross-device';b.className='warn';
+  }
+  b.style.display='block';
+  setTimeout(()=>b.style.display='none',4000);
+}
 
 // ══════════════════════════════════════════
 // CURRICULUM DATA
 // ══════════════════════════════════════════
 const CURRICULUM = {
-  5:{emoji:'🌱',label:'5th Standard',board:'Primary',color:'rgba(16,185,129,.14)',subjects:[
+  5:{emoji:'🌱',label:'5th Standard',board:'Primary',subjects:[
     {id:'tamil',name:'Tamil',emoji:'📕',cls:'sj-tamil',chapters:6,tag:'மொழி'},
     {id:'english',name:'English',emoji:'📗',cls:'sj-english',chapters:6,tag:'Language'},
     {id:'maths',name:'Mathematics',emoji:'📐',cls:'sj-maths',chapters:8,tag:'Numbers'},
     {id:'evs',name:'EVS',emoji:'🌿',cls:'sj-science',chapters:7,tag:'Environment'}
   ]},
-  6:{emoji:'📗',label:'6th Standard',board:'Middle School',color:'rgba(6,182,212,.1)',subjects:[
+  6:{emoji:'📗',label:'6th Standard',board:'Middle School',subjects:[
     {id:'tamil',name:'Tamil',emoji:'📕',cls:'sj-tamil',chapters:7,tag:'மொழி'},
     {id:'english',name:'English',emoji:'📗',cls:'sj-english',chapters:7,tag:'Language'},
     {id:'maths',name:'Mathematics',emoji:'📐',cls:'sj-maths',chapters:9,tag:'Numbers'},
     {id:'science',name:'Science',emoji:'🔬',cls:'sj-science',chapters:8,tag:'Concepts'},
     {id:'social',name:'Social Science',emoji:'🌍',cls:'sj-social',chapters:10,tag:'History & Geo'}
   ]},
-  7:{emoji:'📘',label:'7th Standard',board:'Middle School',color:'rgba(99,102,241,.1)',subjects:[
+  7:{emoji:'📘',label:'7th Standard',board:'Middle School',subjects:[
     {id:'tamil',name:'Tamil',emoji:'📕',cls:'sj-tamil',chapters:7,tag:'மொழி'},
     {id:'english',name:'English',emoji:'📗',cls:'sj-english',chapters:7,tag:'Language'},
     {id:'maths',name:'Mathematics',emoji:'📐',cls:'sj-maths',chapters:10,tag:'Algebra'},
     {id:'science',name:'Science',emoji:'🔬',cls:'sj-science',chapters:9,tag:'Concepts'},
     {id:'social',name:'Social Science',emoji:'🌍',cls:'sj-social',chapters:11,tag:'History & Geo'}
   ]},
-  8:{emoji:'📙',label:'8th Standard',board:'Middle School',color:'rgba(245,158,11,.1)',subjects:[
+  8:{emoji:'📙',label:'8th Standard',board:'Middle School',subjects:[
     {id:'tamil',name:'Tamil',emoji:'📕',cls:'sj-tamil',chapters:7,tag:'மொழி'},
     {id:'english',name:'English',emoji:'📗',cls:'sj-english',chapters:8,tag:'Language'},
     {id:'maths',name:'Mathematics',emoji:'📐',cls:'sj-maths',chapters:11,tag:'Algebra'},
     {id:'science',name:'Science',emoji:'🔬',cls:'sj-science',chapters:10,tag:'Physics+Chem'},
     {id:'social',name:'Social Science',emoji:'🌍',cls:'sj-social',chapters:12,tag:'History & Geo'}
   ]},
-  9:{emoji:'⭐',label:'9th Standard',board:'High School',color:'rgba(139,92,246,.12)',subjects:[
+  9:{emoji:'⭐',label:'9th Standard',board:'High School',subjects:[
     {id:'tamil',name:'Tamil',emoji:'📕',cls:'sj-tamil',chapters:8,tag:'மொழி'},
     {id:'english',name:'English',emoji:'📗',cls:'sj-english',chapters:8,tag:'Language'},
     {id:'maths',name:'Mathematics',emoji:'📐',cls:'sj-maths',chapters:9,tag:'Algebra & Geo'},
     {id:'science',name:'Science',emoji:'🔬',cls:'sj-science',chapters:14,tag:'Phy+Chem+Bio'},
     {id:'social',name:'Social Science',emoji:'🌍',cls:'sj-social',chapters:14,tag:'History & Geo'}
   ]},
-  10:{emoji:'🏆',label:'10th Standard (SSLC)',board:'Board Exam Year',color:'rgba(236,72,153,.1)',subjects:[
+  10:{emoji:'🏆',label:'10th Standard (SSLC)',board:'Board Exam Year',subjects:[
     {id:'tamil',name:'Tamil',emoji:'📕',cls:'sj-tamil',chapters:8,tag:'மொழி'},
     {id:'english',name:'English',emoji:'📗',cls:'sj-english',chapters:7,tag:'Language'},
     {id:'maths',name:'Mathematics',emoji:'📐',cls:'sj-maths',chapters:8,tag:'Algebra & Geo'},
     {id:'science',name:'Science',emoji:'🔬',cls:'sj-science',chapters:14,tag:'Phy+Chem+Bio'},
     {id:'social',name:'Social Science',emoji:'🌍',cls:'sj-social',chapters:13,tag:'History & Geo'}
   ]},
-  11:{emoji:'🎯',label:'11th Standard (HSC I)',board:'Higher Secondary',color:'rgba(239,68,68,.1)',subjects:[
+  11:{emoji:'🎯',label:'11th Standard (HSC I)',board:'Higher Secondary',subjects:[
     {id:'tamil',name:'Tamil',emoji:'📕',cls:'sj-tamil',chapters:7,tag:'மொழி'},
     {id:'english',name:'English',emoji:'📗',cls:'sj-english',chapters:7,tag:'Language'},
     {id:'maths',name:'Mathematics',emoji:'📐',cls:'sj-maths',chapters:12,tag:'Calculus'},
@@ -737,7 +852,7 @@ const CURRICULUM = {
     {id:'commerce',name:'Commerce',emoji:'💼',cls:'sj-commerce',chapters:12,tag:'Business'},
     {id:'accountancy',name:'Accountancy',emoji:'📊',cls:'sj-accountancy',chapters:11,tag:'Accounts'}
   ]},
-  12:{emoji:'🚀',label:'12th Standard (HSC II)',board:'Board Exam Year',color:'rgba(239,68,68,.12)',subjects:[
+  12:{emoji:'🚀',label:'12th Standard (HSC II)',board:'Board Exam Year',subjects:[
     {id:'tamil',name:'Tamil',emoji:'📕',cls:'sj-tamil',chapters:7,tag:'மொழி'},
     {id:'english',name:'English',emoji:'📗',cls:'sj-english',chapters:8,tag:'Language'},
     {id:'maths',name:'Mathematics',emoji:'📐',cls:'sj-maths',chapters:13,tag:'Calculus++'},
@@ -755,298 +870,216 @@ const STUDY_TIPS=[
   {ico:'✍️',title:'Write It Down',txt:'Writing notes improves memory 40% better than just reading.'},
   {ico:'🔁',title:'Spaced Repetition',txt:'Revise after 1 day, 3 days, 7 days, then monthly.'},
   {ico:'🎯',title:'Active Recall',txt:'Close the book and try to recall — better than re-reading.'},
-  {ico:'🧠',title:'Mind Maps',txt:'Connect topics visually to understand big picture better.'},
-  {ico:'💤',title:'Sleep Matters',txt:'8 hours sleep helps consolidate memory. Study before sleep!'}
+  {ico:'🧠',title:'Mind Maps',txt:'Connect topics visually to understand big picture.'},
+  {ico:'💤',title:'Sleep Matters',txt:'8 hours sleep consolidates memory. Study before sleep!'}
 ];
 
-// Chapter content database (sample rich content for demo)
+// Chapter content (same as before)
 const CHAPTER_DB = {
-  // MATHS Chapter 1 (any class)
-  maths_ch1: {
-    notes: `<div class="notes-block"><div class="nb-title">📖 Numbers & Number Systems</div><div class="nb-body">Numbers are the foundation of all mathematics. In Tamil Nadu Board, we study various types of numbers.<br><br><b>Types of Numbers:</b><br>• <b>Natural Numbers (N)</b> — 1, 2, 3, 4, 5... (counting numbers)<br>• <b>Whole Numbers (W)</b> — 0, 1, 2, 3, 4, 5...<br>• <b>Integers (Z)</b> — ...-3, -2, -1, 0, 1, 2, 3...<br>• <b>Rational Numbers (Q)</b> — Numbers of form p/q (q≠0)<br>• <b>Irrational Numbers</b> — Cannot be expressed as p/q (e.g., √2, π)<span class="highlight">💡 Key Point: Every natural number is a whole number, every whole number is an integer, every integer is a rational number!</span></div></div>
-    <div class="notes-block"><div class="nb-title">📐 Properties of Numbers</div><div class="nb-body"><b>Commutative Property:</b><br>• Addition: a + b = b + a<br>• Multiplication: a × b = b × a<br><br><b>Associative Property:</b><br>• Addition: (a+b)+c = a+(b+c)<br>• Multiplication: (a×b)×c = a×(b×c)<div class="formula-box">Distributive: a(b+c) = ab + ac</div><b>Remember:</b> Division and Subtraction are <b>NOT commutative!</b><br>12 ÷ 4 ≠ 4 ÷ 12</div></div>`,
-    qa:[{q:'What is the difference between rational and irrational numbers?',a:'Rational numbers can be expressed as p/q where p and q are integers and q≠0. Examples: 1/2, 3/4, 5. Irrational numbers cannot be expressed this way. Examples: √2, √3, π (pi). Their decimal expansion is non-terminating and non-repeating.'},{q:'Is zero a natural number?',a:'No! Zero is NOT a natural number. Natural numbers start from 1. However, zero IS a whole number. Whole numbers include 0, 1, 2, 3... This is a common exam question!'},{q:'What is the HCF and LCM relationship?',a:'HCF × LCM = Product of two numbers (a × b). This is very important for solving problems. For example, if HCF of two numbers is 4 and their product is 48, then LCM = 48 ÷ 4 = 12.'}],
-    flash:[{q:'Natural Numbers start from?',a:'1 (one). N = {1, 2, 3, 4, ...}'},{q:'What is π (pi) approximately equal to?',a:'π ≈ 3.14159... (irrational number)'},{q:'What is an integer?',a:'All whole numbers + negative numbers. Z = {...-3,-2,-1,0,1,2,3...}'},{q:'HCF × LCM = ?',a:'Product of the two numbers (a × b)'}],
-    mcq:[{q:'Which of these is an irrational number?',opts:['3/4','√9','√2','0.5'],a:2,exp:'√2 = 1.41421356... (non-terminating, non-repeating). √9 = 3 which is rational.'},{q:'0 is a _____ number.',opts:['Natural','Whole','Neither','Prime'],a:1,exp:'Zero is a Whole number but NOT a Natural number. Whole numbers = {0,1,2,3...}'},{q:'Which property does a+b = b+a represent?',opts:['Associative','Distributive','Commutative','Identity'],a:2,exp:'Commutative property means the order of operation does not change the result for addition and multiplication.'}]
+  maths_ch1:{
+    notes:`<div class="notes-block"><div class="nb-title">📖 Numbers & Number Systems</div><div class="nb-body">Numbers are the foundation of mathematics.<br><br><b>Types of Numbers:</b><br>• <b>Natural Numbers (N)</b> — 1,2,3... (counting numbers)<br>• <b>Whole Numbers (W)</b> — 0,1,2,3...<br>• <b>Integers (Z)</b> — ...-2,-1,0,1,2...<br>• <b>Rational Numbers (Q)</b> — p/q form (q≠0)<br>• <b>Irrational</b> — Cannot be p/q (√2, π)<span class="highlight">💡 Every natural ⊂ whole ⊂ integer ⊂ rational!</span></div></div><div class="notes-block"><div class="nb-title">📐 Properties</div><div class="nb-body"><b>Commutative:</b> a+b=b+a, a×b=b×a<br><b>Associative:</b> (a+b)+c=a+(b+c)<div class="formula-box">Distributive: a(b+c) = ab + ac</div><b>Remember:</b> Subtraction & Division are NOT commutative!</div></div>`,
+    qa:[{q:'Rational vs irrational numbers difference?',a:'Rational: expressed as p/q (q≠0). E.g.: 1/2, 5. Irrational: cannot be p/q, decimal is non-terminating non-repeating. E.g.: √2, π.'},{q:'Is 0 a natural number?',a:'No! 0 is a whole number but NOT natural. Natural numbers start from 1.'},{q:'HCF × LCM = ?',a:'Product of the two numbers. If HCF=4, product=48, then LCM=48÷4=12.'}],
+    flash:[{q:'Natural Numbers start from?',a:'1. N = {1,2,3,4,...}'},{q:'π ≈ ?',a:'3.14159... (irrational)'},{q:'Integers?',a:'Z = {...-2,-1,0,1,2...}'},{q:'HCF × LCM = ?',a:'Product of the two numbers'}],
+    mcq:[{q:'Which is irrational?',opts:['3/4','√9','√2','0.5'],a:2,exp:'√2=1.41421... non-terminating. √9=3 is rational.'},{q:'0 is a ___ number.',opts:['Natural','Whole','Neither','Prime'],a:1,exp:'Zero is Whole but NOT Natural.'},{q:'a+b=b+a is?',opts:['Associative','Distributive','Commutative','Identity'],a:2,exp:'Commutative — order doesnt change result.'}]
   },
-  // SCIENCE Chapter 1
   science_ch1:{
-    notes:`<div class="notes-block"><div class="nb-title">🔬 Matter and Its Properties</div><div class="nb-body">Matter is anything that has <b>mass</b> and occupies <b>space</b>. Everything around us — air, water, food, rocks — is matter.<br><br><b>States of Matter:</b><br>• <b>Solid</b> — Fixed shape, fixed volume. Particles are tightly packed.<br>• <b>Liquid</b> — No fixed shape but fixed volume. Particles can flow.<br>• <b>Gas</b> — No fixed shape, no fixed volume. Particles move freely.<span class="highlight">🧊 Example: Water exists in all 3 states! Ice (solid) → Water (liquid) → Steam (gas)</span></div></div>
-    <div class="notes-block"><div class="nb-title">⚗️ Changes in Matter</div><div class="nb-body"><b>Physical Change:</b> Only form changes, no new substance formed. Example: Cutting paper, melting ice.<br><br><b>Chemical Change:</b> New substance is formed with different properties. Example: Burning wood, rusting iron.<div class="formula-box">Melting Point of Ice = 0°C | Boiling Point of Water = 100°C</div><b>Remember:</b> Chemical changes are usually <b>irreversible!</b></div></div>`,
-    qa:[{q:'What is the difference between physical and chemical change?',a:'Physical change: Only the form or state changes, no new substance is formed. It is reversible. Examples: melting, cutting, dissolving. Chemical change: A new substance with different properties is formed. Usually irreversible. Examples: rusting, burning, cooking.'},{q:'Why do solids have fixed shape?',a:'Solids have fixed shape because the particles (atoms/molecules) in a solid are very closely packed and held together by strong intermolecular forces. They can only vibrate in their fixed positions but cannot move freely.'}],
-    flash:[{q:'What is matter?',a:'Anything with mass and volume (occupies space)'},{q:'Which state has no fixed shape or volume?',a:'Gas'},{q:'Boiling point of water?',a:'100°C (at normal atmospheric pressure)'},{q:'Physical change example?',a:'Melting ice, cutting paper, dissolving sugar'}],
-    mcq:[{q:'Which is a chemical change?',opts:['Melting wax','Cutting wood','Burning paper','Dissolving salt'],a:2,exp:'Burning paper produces new substances (ash, CO2) — irreversible. Other options are physical changes.'},{q:'Particles are most loosely packed in?',opts:['Solid','Liquid','Gas','All same'],a:2,exp:'In gases, particles are very far apart and move randomly at high speeds with large empty spaces between them.'}]
+    notes:`<div class="notes-block"><div class="nb-title">🔬 Matter & Its Properties</div><div class="nb-body">Matter = anything with mass + occupies space.<br><br>• <b>Solid</b> — Fixed shape, fixed volume<br>• <b>Liquid</b> — No fixed shape, fixed volume<br>• <b>Gas</b> — No fixed shape, no fixed volume<span class="highlight">🧊 Water: Ice→Water→Steam (all 3 states!)</span></div></div><div class="notes-block"><div class="nb-title">⚗️ Changes</div><div class="nb-body"><b>Physical Change:</b> Form changes, no new substance. Reversible. E.g.: Cutting, melting.<br><b>Chemical Change:</b> New substance formed. Usually irreversible. E.g.: Burning, rusting.<div class="formula-box">Ice melts at 0°C | Water boils at 100°C</div></div></div>`,
+    qa:[{q:'Physical vs Chemical change?',a:'Physical: only form changes, reversible (melting, cutting). Chemical: new substance formed, usually irreversible (burning, rusting).'},{q:'Why do solids have fixed shape?',a:'Particles are tightly packed with strong intermolecular forces. They can only vibrate, not move freely.'}],
+    flash:[{q:'What is matter?',a:'Anything with mass and volume'},{q:'Which state has no fixed shape/volume?',a:'Gas'},{q:'Boiling point of water?',a:'100°C at normal pressure'},{q:'Physical change example?',a:'Melting ice, cutting paper'}],
+    mcq:[{q:'Which is a chemical change?',opts:['Melting wax','Cutting wood','Burning paper','Dissolving salt'],a:2,exp:'Burning produces new substances (ash, CO2) — irreversible.'},{q:'Particles most loosely packed in?',opts:['Solid','Liquid','Gas','All same'],a:2,exp:'Gas particles are far apart and move randomly.'}]
   },
-  // TAMIL Chapter 1
   tamil_ch1:{
-    notes:`<div class="notes-block"><div class="nb-title">📕 தமிழ் இலக்கணம் — எழுத்துகள்</div><div class="nb-body">தமிழ் மொழியில் <b>எழுத்துகள்</b> இரண்டு வகைப்படும்:<br><br><b>உயிர் எழுத்துகள் — 12</b><br>அ, ஆ, இ, ஈ, உ, ஊ, எ, ஏ, ஐ, ஒ, ஓ, ஔ<br><br><b>மெய் எழுத்துகள் — 18</b><br>க், ங், ச், ஞ், ட், ண், த், ந், ப், ம், ய், ர், ல், வ், ழ், ள், ற், ன்<span class="highlight">💡 உயிர்மெய் எழுத்துகள் = 12 × 18 = 216 எழுத்துகள்!</span></div></div>
-    <div class="notes-block"><div class="nb-title">📖 சொல் வகைகள்</div><div class="nb-body"><b>சொல் வகைகள்:</b><br>• <b>பெயர்ச்சொல்</b> — மனிதர்கள், பொருள்கள் பெயர். எ.கா: மரம், குழந்தை<br>• <b>வினைச்சொல்</b> — செயலை குறிக்கும். எ.கா: ஓடு, படி, எழுது<br>• <b>இடைச்சொல்</b> — சொற்களை இணைக்கும். எ.கா: -ஐ, -ஆல், -இல்<br>• <b>உரிச்சொல்</b> — பெயர் அல்லது வினையை திட்டமிடும்<div class="formula-box">மொத்த தமிழ் எழுத்துகள் = 12 + 18 + 216 = 247</div></div></div>`,
-    qa:[{q:'உயிர் எழுத்துகள் எத்தனை? அவை எவை?',a:'உயிர் எழுத்துகள் 12 ஆகும். அவை: அ, ஆ, இ, ஈ, உ, ஊ, எ, ஏ, ஐ, ஒ, ஓ, ஔ. இவை தனியாக ஒலிக்கும் எழுத்துகள்.'},{q:'மெய் எழுத்துகள் எத்தனை? அவை ஏன் "மெய்" என்று அழைக்கப்படுகின்றன?',a:'மெய் எழுத்துகள் 18 ஆகும். இவை உயிர் எழுத்தின் துணையின்றி தனியாக ஒலிக்காது என்பதால் "மெய்" (உடல்) என்று அழைக்கப்படுகின்றன. இவை புள்ளி இட்டு எழுதப்படும்.'}],
-    flash:[{q:'உயிர் எழுத்துகள் எத்தனை?',a:'12 எழுத்துகள்'},{q:'மெய் எழுத்துகள் எத்தனை?',a:'18 எழுத்துகள்'},{q:'மொத்த தமிழ் எழுத்துகள்?',a:'247 எழுத்துகள் (12+18+216+1)'},{q:'ஆய்த எழுத்து என்றால் என்ன?',a:'ஃ — இது தனி வகை எழுத்து (1 எழுத்து)'}],
-    mcq:[{q:'உயிர் எழுத்துகள் எத்தனை?',opts:['10','12','18','247'],a:1,exp:'உயிர் எழுத்துகள் 12 ஆகும்: அ ஆ இ ஈ உ ஊ எ ஏ ஐ ஒ ஓ ஔ'},{q:'மொத்த தமிழ் எழுத்துகள்?',opts:['216','230','247','256'],a:2,exp:'12 உயிர் + 18 மெய் + 216 உயிர்மெய் + 1 ஆய்தம் = 247 எழுத்துகள்'}]
+    notes:`<div class="notes-block"><div class="nb-title">📕 தமிழ் எழுத்துகள்</div><div class="nb-body"><b>உயிர் எழுத்துகள் — 12</b><br>அ ஆ இ ஈ உ ஊ எ ஏ ஐ ஒ ஓ ஔ<br><br><b>மெய் எழுத்துகள் — 18</b><br>க் ங் ச் ஞ் ட் ண் த் ந் ப் ம் ய் ர் ல் வ் ழ் ள் ற் ன்<span class="highlight">💡 உயிர்மெய் = 12×18 = 216 | மொத்தம் = 247</span></div></div><div class="notes-block"><div class="nb-title">📖 சொல் வகைகள்</div><div class="nb-body">• <b>பெயர்ச்சொல்</b> — மரம், குழந்தை<br>• <b>வினைச்சொல்</b> — ஓடு, படி, எழுது<br>• <b>இடைச்சொல்</b> — -ஐ, -ஆல், -இல்<div class="formula-box">12 + 18 + 216 + 1(ஆய்தம்) = 247</div></div></div>`,
+    qa:[{q:'உயிர் எழுத்துகள் எத்தனை?',a:'12 — அ ஆ இ ஈ உ ஊ எ ஏ ஐ ஒ ஓ ஔ. தனியாக ஒலிக்கும் எழுத்துகள்.'},{q:'மெய் எழுத்துகள் ஏன் "மெய்"?',a:'உயிர் துணையின்றி தனியாக ஒலிக்காது — உடல் போல் (மெய்). 18 எழுத்துகள். புள்ளி இட்டு எழுதப்படும்.'}],
+    flash:[{q:'உயிர் எழுத்துகள்?',a:'12'},{q:'மெய் எழுத்துகள்?',a:'18'},{q:'மொத்த தமிழ் எழுத்துகள்?',a:'247'},{q:'ஆய்த எழுத்து?',a:'ஃ — 1 எழுத்து'}],
+    mcq:[{q:'உயிர் எழுத்துகள் எத்தனை?',opts:['10','12','18','247'],a:1,exp:'12 உயிர் எழுத்துகள்: அ ஆ இ ஈ உ ஊ எ ஏ ஐ ஒ ஓ ஔ'},{q:'மொத்த தமிழ் எழுத்துகள்?',opts:['216','230','247','256'],a:2,exp:'12+18+216+1=247'}]
   },
-  // ENGLISH Chapter 1
   english_ch1:{
-    notes:`<div class="notes-block"><div class="nb-title">📗 Parts of Speech</div><div class="nb-body">Every word in English belongs to one of 8 Parts of Speech:<br><br><b>1. Noun</b> — Name of person, place, thing. <i>Ram, Chennai, table</i><br><b>2. Pronoun</b> — Replaces a noun. <i>he, she, they, it</i><br><b>3. Adjective</b> — Describes a noun. <i>big, red, beautiful</i><br><b>4. Verb</b> — Action or state. <i>run, eat, is, was</i><br><b>5. Adverb</b> — Modifies verb/adjective. <i>quickly, very, well</i><br><b>6. Preposition</b> — Shows relationship. <i>in, on, at, by</i><br><b>7. Conjunction</b> — Joins words/sentences. <i>and, but, or, because</i><br><b>8. Interjection</b> — Expresses emotion. <i>Oh! Wow! Hurray!</i><span class="highlight">💡 Memory tip: "Never Perform Any Violent Actions After Playing Cards" = Noun, Pronoun, Adjective, Verb, Adverb, Adposition, Preposition, Conjunction!</span></div></div>`,
-    qa:[{q:'What is a noun? Give examples.',a:'A noun is the name of a person, place, animal, thing, or idea. Examples: Person - Ravi, Teacher | Place - Chennai, School | Animal - Dog, Tiger | Thing - Book, Pen | Idea - Love, Freedom. Nouns can be Common (book), Proper (Ravi), Abstract (love), or Collective (team).'},{q:'Difference between adjective and adverb?',a:'Adjective describes or modifies a NOUN. Example: "The tall boy ran." (tall describes boy). Adverb modifies a VERB, ADJECTIVE, or another ADVERB. Example: "The boy ran quickly." (quickly modifies ran). Quick tip: Many adverbs end in -ly!'}],
-    flash:[{q:'What does an adjective modify?',a:'A Noun (or pronoun). E.g.: "beautiful flower" — beautiful is adjective'},{q:'What does an adverb modify?',a:'A Verb, Adjective or another Adverb'},{q:'Give 3 conjunctions',a:'and, but, or, because, although, however'},{q:'What is an interjection?',a:'A word expressing strong emotion: Oh! Wow! Alas! Hurray!'}],
-    mcq:[{q:'"The dog ran quickly." What is "quickly"?',opts:['Adjective','Noun','Adverb','Verb'],a:2,exp:'"Quickly" modifies the verb "ran" — therefore it is an Adverb. Adverbs often end in -ly.'},{q:'Which is a proper noun?',opts:['city','book','Chennai','teacher'],a:2,exp:'Chennai is a Proper Noun — the specific name of a place. Proper nouns are always capitalized.'}]
+    notes:`<div class="notes-block"><div class="nb-title">📗 Parts of Speech</div><div class="nb-body">8 Parts of Speech:<br><br><b>1. Noun</b> — Name: Ram, Chennai<br><b>2. Pronoun</b> — he, she, they<br><b>3. Adjective</b> — big, red, beautiful<br><b>4. Verb</b> — run, eat, is<br><b>5. Adverb</b> — quickly, very<br><b>6. Preposition</b> — in, on, at<br><b>7. Conjunction</b> — and, but, or<br><b>8. Interjection</b> — Oh! Wow!<span class="highlight">💡 Tip: "Never Perform Any Violent Actions After Playing Cards" = Noun Pronoun Adjective Verb Adverb Adposition Preposition Conjunction!</span></div></div>`,
+    qa:[{q:'What is a noun? Examples?',a:'Name of person, place, animal, thing or idea. Person: Ravi. Place: Chennai. Animal: Dog. Thing: Book. Idea: Love. Types: Common, Proper, Abstract, Collective.'},{q:'Adjective vs Adverb difference?',a:'Adjective modifies a NOUN: "tall boy". Adverb modifies a VERB/adjective: "ran quickly". Most adverbs end in -ly!'}],
+    flash:[{q:'Adjective modifies?',a:'A Noun. "beautiful flower"'},{q:'Adverb modifies?',a:'Verb/Adjective/Another adverb'},{q:'3 conjunctions?',a:'and, but, or, because'},{q:'Interjection example?',a:'Oh! Wow! Alas! Hurray!'}],
+    mcq:[{q:'"The dog ran quickly." What is "quickly"?',opts:['Adjective','Noun','Adverb','Verb'],a:2,exp:'"Quickly" modifies verb "ran" — it is an Adverb. Most adverbs end in -ly.'},{q:'Which is a proper noun?',opts:['city','book','Chennai','teacher'],a:2,exp:'Chennai is a Proper Noun — specific name, always capitalized.'}]
   },
-  // SOCIAL SCIENCE Chapter 1
   social_ch1:{
-    notes:`<div class="notes-block"><div class="nb-title">🌍 Early Civilizations — The Ancient World</div><div class="nb-body">Civilization began when humans settled near <b>river valleys</b> and started farming instead of moving around.<br><br><b>Major River Valley Civilizations:</b><br>• <b>Mesopotamia</b> — Between Tigris and Euphrates rivers (modern Iraq)<br>• <b>Egyptian Civilization</b> — Along the Nile River<br>• <b>Indus Valley Civilization</b> — Along Indus River (now Pakistan/India)<br>• <b>Chinese Civilization</b> — Along Yellow River (Huang He)<span class="highlight">💡 Indus Valley: Harappa and Mohenjo-daro were the two main cities. Known for excellent town planning, drainage systems!</span></div></div>
-    <div class="notes-block"><div class="nb-title">🏛️ Tamil History</div><div class="nb-body"><b>Sangam Period</b> (300 BCE – 300 CE):<br>• Three major kingdoms: <b>Chera, Chola, Pandya</b><br>• Sangam literature — 18 major works<br>• Capital cities: Vanji (Chera), Uraiyur/Puhar (Chola), Madurai (Pandya)<div class="formula-box">Thiruvalluvar's Thirukkural = 1330 couplets (133 chapters × 10 verses)</div><b>Key Kings:</b> Karikala Chola (built the Grand Anicut), Cheran Senguttuvan</div></div>`,
-    qa:[{q:'What were the features of Indus Valley Civilization?',a:'1. Excellent town planning with straight roads in a grid pattern. 2. Advanced drainage and sewage system. 3. Houses made of baked bricks. 4. Use of standard weights and measures. 5. No temple or palace found — suggests possible democracy. 6. Seals with script (undeciphered). Major cities: Harappa, Mohenjo-daro, Lothal (Gujarat).'},{q:'Name the three Tamil Sangam kingdoms and their capitals.',a:'1. Chera Kingdom — Capital: Vanji (Karur area). 2. Chola Kingdom — Capital: Uraiyur, later Puhar (Kaveri estuary). 3. Pandya Kingdom — Capital: Madurai. These three kingdoms were called the "Muvendhar" (Three Crowned Kings).'}],
-    flash:[{q:'Indus Valley main cities?',a:'Harappa and Mohenjo-daro (also Lothal, Dholavira)'},{q:'Three Sangam kingdoms?',a:'Chera, Chola, Pandya (Muvendhar)'},{q:'Pandya capital?',a:'Madurai'},{q:'Thirukkural total couplets?',a:'1330 (133 chapters × 10 verses)'}],
-    mcq:[{q:'The Indus Valley Civilization was located near which river?',opts:['Ganga','Nile','Indus','Tigris'],a:2,exp:'The Indus Valley Civilization (Harappan Civilization) was located along the Indus River in present-day Pakistan and northwest India.'},{q:'Thiruvalluvar wrote?',opts:['Silappatikaram','Thirukkural','Manimekalai','Purananuru'],a:1,exp:'Thiruvalluvar wrote Thirukkural — 1330 couplets on virtue, wealth, and love. It is considered the "Bible of Tamil literature".'}]
+    notes:`<div class="notes-block"><div class="nb-title">🌍 Ancient Civilizations</div><div class="nb-body">Civilization began near river valleys.<br><br>• <b>Mesopotamia</b> — Tigris & Euphrates (Iraq)<br>• <b>Egypt</b> — Nile River<br>• <b>Indus Valley</b> — Indus River (Harappa, Mohenjo-daro)<br>• <b>China</b> — Yellow River<span class="highlight">💡 Indus Valley: Harappa & Mohenjo-daro — excellent town planning, drainage!</span></div></div><div class="notes-block"><div class="nb-title">🏛️ Tamil Sangam Period</div><div class="nb-body">Three kingdoms: <b>Chera, Chola, Pandya</b><br><br>• Chera — Capital: Vanji<br>• Chola — Capital: Uraiyur/Puhar<br>• Pandya — Capital: Madurai<div class="formula-box">Thirukkural = 133 chapters × 10 = 1330 couplets</div></div></div>`,
+    qa:[{q:'Indus Valley features?',a:'1. Grid pattern roads. 2. Advanced drainage. 3. Baked brick houses. 4. Standard weights & measures. 5. Seals with undeciphered script. Cities: Harappa, Mohenjo-daro, Lothal.'},{q:'Three Sangam kingdoms & capitals?',a:'1. Chera — Vanji. 2. Chola — Uraiyur/Puhar. 3. Pandya — Madurai. Called "Muvendhar" (Three Crowned Kings).'}],
+    flash:[{q:'Indus Valley cities?',a:'Harappa & Mohenjo-daro'},{q:'Three Sangam kingdoms?',a:'Chera, Chola, Pandya'},{q:'Pandya capital?',a:'Madurai'},{q:'Thirukkural couplets?',a:'1330 (133×10)'}],
+    mcq:[{q:'Indus Valley was near which river?',opts:['Ganga','Nile','Indus','Tigris'],a:2,exp:'Harappan Civilization along Indus River in present-day Pakistan/India.'},{q:'Thiruvalluvar wrote?',opts:['Silappatikaram','Thirukkural','Manimekalai','Purananuru'],a:1,exp:'Thirukkural — 1330 couplets on virtue, wealth, love. "Bible of Tamil literature".'}]
   },
-  // PHYSICS Chapter 1 (for 11th/12th)
   physics_ch1:{
-    notes:`<div class="notes-block"><div class="nb-title">⚡ Nature of Physical World and Measurement</div><div class="nb-body">Physics is the study of matter, energy, and their interactions. It forms the foundation of all natural sciences.<br><br><b>Physical Quantities:</b><br>• <b>Fundamental Quantities</b> — Cannot be derived from others. (Length, Mass, Time, Temperature, Current, Luminous Intensity, Amount of substance)<br>• <b>Derived Quantities</b> — Derived from fundamental quantities. (Speed, Force, Pressure, Energy)<span class="highlight">💡 SI Unit System: Système International d'Unités — used worldwide in science!</span></div></div>
-    <div class="notes-block"><div class="nb-title">📏 SI Units Table</div><div class="nb-body"><b>Fundamental SI Units (Must memorize!):</b><br>• Length — <b>metre (m)</b><br>• Mass — <b>kilogram (kg)</b><br>• Time — <b>second (s)</b><br>• Temperature — <b>kelvin (K)</b><br>• Electric Current — <b>ampere (A)</b><br>• Luminous Intensity — <b>candela (cd)</b><br>• Amount of Substance — <b>mole (mol)</b><div class="formula-box">Speed = Distance / Time → m/s (derived unit)</div></div></div>`,
-    qa:[{q:'What is the difference between fundamental and derived units?',a:'Fundamental units are independent units that cannot be derived from other units. There are 7 fundamental quantities: length (m), mass (kg), time (s), temperature (K), current (A), luminous intensity (cd), amount of substance (mol). Derived units are combinations of fundamental units. Example: Speed = m/s, Force = kg·m/s² (Newton), Pressure = N/m² (Pascal).'},{q:'What is dimensional analysis and its uses?',a:'Dimensional analysis is the study of the dimensions of physical quantities. Uses: 1) To check correctness of equations (dimensional consistency). 2) To derive relationships between physical quantities. 3) To convert units from one system to another. Limitation: Cannot determine dimensionless constants like 2π.'}],
-    flash:[{q:'SI unit of Force?',a:'Newton (N) = kg·m/s²'},{q:'SI unit of Pressure?',a:'Pascal (Pa) = N/m² = kg/(m·s²)'},{q:'SI unit of Temperature?',a:'Kelvin (K) — 0°C = 273 K'},{q:'How many fundamental quantities?',a:'7 fundamental quantities in SI system'}],
-    mcq:[{q:'Which of these is a fundamental quantity?',opts:['Speed','Force','Mass','Pressure'],a:2,exp:'Mass is a fundamental quantity with SI unit kilogram (kg). Speed, Force, and Pressure are all derived quantities.'},{q:'SI unit of electric current?',opts:['Volt','Ohm','Ampere','Coulomb'],a:2,exp:'Ampere (A) is the SI unit of electric current. It is one of the 7 fundamental SI units.'}]
+    notes:`<div class="notes-block"><div class="nb-title">⚡ Physical World & Measurement</div><div class="nb-body"><b>Fundamental Quantities (7):</b><br>• Length — metre (m)<br>• Mass — kilogram (kg)<br>• Time — second (s)<br>• Temperature — kelvin (K)<br>• Current — ampere (A)<br>• Luminous Intensity — candela (cd)<br>• Amount — mole (mol)<span class="highlight">💡 SI = Système International — worldwide science standard!</span></div></div><div class="notes-block"><div class="nb-title">📏 Derived Units</div><div class="nb-body">Derived from fundamental units:<div class="formula-box">Speed = m/s | Force = kg·m/s² (N) | Pressure = N/m² (Pa)</div><b>Dimensional Analysis:</b> Check equation correctness, derive relations, convert units.</div></div>`,
+    qa:[{q:'Fundamental vs derived units?',a:'Fundamental: 7 independent units (m, kg, s, K, A, cd, mol). Derived: combinations — Speed (m/s), Force (N=kg·m/s²), Pressure (Pa=N/m²).'},{q:'Uses of dimensional analysis?',a:'1. Check equation correctness. 2. Derive relationships. 3. Convert units. Limitation: cannot find dimensionless constants like 2π.'}],
+    flash:[{q:'SI unit of Force?',a:'Newton (N) = kg·m/s²'},{q:'SI unit of Pressure?',a:'Pascal (Pa) = N/m²'},{q:'SI unit of Temperature?',a:'Kelvin (K). 0°C = 273K'},{q:'Fundamental quantities count?',a:'7 in SI system'}],
+    mcq:[{q:'Which is a fundamental quantity?',opts:['Speed','Force','Mass','Pressure'],a:2,exp:'Mass (kg) is fundamental. Others are derived.'},{q:'SI unit of electric current?',opts:['Volt','Ohm','Ampere','Coulomb'],a:2,exp:'Ampere (A) — one of 7 fundamental SI units.'}]
   }
 };
 
-// Generic chapter content generator
-function getChapterContent(subjId, chNum, className) {
-  const key = subjId + '_ch' + chNum;
-  if (CHAPTER_DB[key]) return CHAPTER_DB[key];
-  // Generate generic content
+function getChapterContent(subjId, chNum) {
+  const key = subjId+'_ch'+chNum;
+  if(CHAPTER_DB[key]) return CHAPTER_DB[key];
   return {
-    notes: `<div class="notes-block"><div class="nb-title">📖 Chapter ${chNum} — Key Concepts</div><div class="nb-body">This chapter covers important topics for <b>${className}</b>.<br><br><b>Main Topics:</b><br>• Core concept 1 with detailed explanation<br>• Core concept 2 with examples<br>• Important formulas and rules<br>• Applications in real life<span class="highlight">💡 Key Point: Focus on understanding concepts, not just memorizing. Relate topics to your daily life!</span></div></div>
-    <div class="notes-block"><div class="nb-title">📌 Important Points</div><div class="nb-body">• Remember the fundamental definitions<br>• Practice all example problems<br>• Note down key terms and their meanings<br>• Draw diagrams wherever applicable<div class="formula-box">Key Formula: Study consistently = Good marks! 📚</div><b>Exam Tip:</b> Always show your working steps clearly. Partial marks are awarded even for partially correct answers!</div></div>`,
-    qa:[{q:`What is the main topic of this chapter in ${className}?`,a:`This chapter introduces fundamental concepts that build the foundation for advanced topics. Focus on understanding the core principles, key definitions, and their applications. Practice the textbook exercises thoroughly as TN Board exam questions often come directly from them.`},{q:'How to score full marks in this chapter?',a:'1. Read the textbook thoroughly at least 3 times. 2. Note down all definitions and formulas. 3. Practice all example problems. 4. Do the exercise questions at the end of the chapter. 5. Review previous year question papers. 6. Make flash cards for key terms.'},{q:'What are the important keywords in this chapter?',a:'Focus on all bold and highlighted terms in the textbook. Tamil Nadu Board exams often ask for precise definitions. Use your own words to explain concepts after understanding them. Create a glossary of important terms for quick revision.'}],
-    flash:[{q:'What is the best revision strategy?',a:'Spaced repetition: Revise after 1 day, 3 days, 1 week, 1 month'},{q:'How many times to read before exam?',a:'Minimum 3 complete readings + targeted revision of weak areas'},{q:'Important for TN Board?',a:'Definitions, formulas, diagrams and previous year questions'},{q:'Quick tip for exams?',a:'Write clearly, use points/steps, draw neat diagrams with labels'}],
-    mcq:[{q:'What is the best way to study this chapter?',opts:['Only read','Only memorize','Understand + Practice','Copy notes'],a:2,exp:'Understanding concepts and practicing problems is the most effective way to master any chapter. Rote memorization alone will not help in application-based questions.'},{q:'TN Board exams focus on?',opts:['Creativity only','Textbook content','External content','Random topics'],a:1,exp:'Tamil Nadu Board exams are primarily based on the state board textbooks. Master your textbook thoroughly and you will score well!'}]
+    notes:`<div class="notes-block"><div class="nb-title">📖 Chapter ${chNum} — Key Concepts</div><div class="nb-body">Important topics for this chapter:<br><br>• Core concept 1 with detailed explanation<br>• Core concept 2 with examples<br>• Important formulas and rules<br>• Real-life applications<span class="highlight">💡 Focus on understanding, not just memorizing. Relate to daily life!</span></div></div><div class="notes-block"><div class="nb-title">📌 Exam Tips</div><div class="nb-body">• Read textbook 3 times minimum<br>• Note all definitions & formulas<br>• Practice all exercise problems<br>• Solve previous year questions<div class="formula-box">Consistency × Practice = Excellent Marks! 📚</div></div></div>`,
+    qa:[{q:'What is the main focus of this chapter?',a:'This chapter covers fundamental concepts. Focus on core principles, key definitions, and their applications. Practice all textbook exercises — TN Board questions come directly from them.'},{q:'How to score full marks?',a:'1. Read textbook thoroughly 3 times. 2. Note definitions & formulas. 3. Practice examples. 4. Do exercise questions. 5. Solve previous papers. 6. Make flash cards.'},{q:'Important keywords?',a:'Focus on all bold and highlighted terms. TN Board asks for precise definitions. Create a glossary for quick revision.'}],
+    flash:[{q:'Best revision strategy?',a:'Spaced repetition: 1 day → 3 days → 1 week → 1 month'},{q:'Readings before exam?',a:'Minimum 3 complete readings + targeted weak area revision'},{q:'TN Board focus?',a:'Definitions, formulas, diagrams, previous year questions'},{q:'Exam writing tip?',a:'Write clearly, use steps/points, draw neat labelled diagrams'}],
+    mcq:[{q:'Best way to study this chapter?',opts:['Only read','Only memorize','Understand + Practice','Copy notes'],a:2,exp:'Understanding + Practice is most effective. Rote memorization alone fails in application questions.'},{q:'TN Board exams are based on?',opts:['Creativity','Textbook content','External content','Random topics'],a:1,exp:'TN Board exams are primarily textbook-based. Master your textbook!'}]
   };
 }
 
-// ══════════════════════════════════════════
-// STATE
-// ══════════════════════════════════════════
-let currentClass = null;
-let currentSubject = null;
-let currentChapter = null;
-let currentChTab = 'notes';
-let currentFlashIdx = 0;
-let flashFlipped = false;
-let mcqAnswered = {};
+// State
+let currentClass=null,currentSubject=null,currentChapter=null,currentChTab='notes';
+let currentFlashIdx=0,flashFlipped=false,mcqAnswered={};
 
-// ══════════════════════════════════════════
 // CLASS SCREEN
-// ══════════════════════════════════════════
-function openClass(cls) {
-  currentClass = cls;
-  const data = CURRICULUM[cls];
-  $('clsTitle').textContent = data.label;
-  $('clsSub').textContent = data.board + ' · Tamil Nadu Board';
-  $('clsEmoji').textContent = data.emoji;
-  $('clsBannerIcon').textContent = data.emoji;
-  $('clsBannerTitle').textContent = data.label;
-  $('clsBannerSub').textContent = data.board + ' — ' + data.subjects.length + ' subjects available. Tap to explore!';
-  // stats
-  const totalChapters = data.subjects.reduce((a,s)=>a+s.chapters,0);
-  $('clsStatsRow').innerHTML = `
-    <div class="stat-pill"><div class="sp-num">${data.subjects.length}</div><div class="sp-lbl">Subjects</div></div>
-    <div class="stat-pill"><div class="sp-num">${totalChapters}</div><div class="sp-lbl">Chapters</div></div>
-    <div class="stat-pill"><div class="sp-num">${totalChapters * 4}</div><div class="sp-lbl">Q&As</div></div>`;
-  // subjects grid
-  $('subjGrid').innerHTML = data.subjects.map(s => `
-    <div class="subj-card ${s.cls}" onclick="openSubject('${s.id}')">
-      <span class="subj-ico">${s.emoji}</span>
-      <div class="subj-name">${s.name}</div>
-      <div class="subj-chapters">${s.chapters} chapters</div>
-      <span class="subj-tag">${s.tag}</span>
-    </div>`).join('');
-  // tips
-  $('tipRow').innerHTML = STUDY_TIPS.map(t => `
-    <div class="tip-card">
-      <div class="tc-ico">${t.ico}</div>
-      <div class="tc-title">${t.title}</div>
-      <div class="tc-txt">${t.txt}</div>
-    </div>`).join('');
+function openClass(cls){
+  currentClass=cls;
+  const data=CURRICULUM[cls];
+  $('clsTitle').textContent=data.label;
+  $('clsSub').textContent=data.board+' · Tamil Nadu Board';
+  $('clsEmoji').textContent=data.emoji;
+  $('clsBannerIcon').textContent=data.emoji;
+  $('clsBannerTitle').textContent=data.label;
+  $('clsBannerSub').textContent=data.board+' — '+data.subjects.length+' subjects. Tap to explore!';
+  const totalCh=data.subjects.reduce((a,s)=>a+s.chapters,0);
+  $('clsStatsRow').innerHTML=`<div class="stat-pill"><div class="sp-num">${data.subjects.length}</div><div class="sp-lbl">Subjects</div></div><div class="stat-pill"><div class="sp-num">${totalCh}</div><div class="sp-lbl">Chapters</div></div><div class="stat-pill"><div class="sp-num">${totalCh*4}</div><div class="sp-lbl">Q&As</div></div>`;
+  $('subjGrid').innerHTML=data.subjects.map(s=>`<div class="subj-card ${s.cls}" onclick="openSubject('${s.id}')"><span class="subj-ico">${s.emoji}</span><div class="subj-name">${s.name}</div><div class="subj-chapters">${s.chapters} chapters</div><span class="subj-tag">${s.tag}</span></div>`).join('');
+  $('tipRow').innerHTML=STUDY_TIPS.map(t=>`<div class="tip-card"><div class="tc-ico">${t.ico}</div><div class="tc-title">${t.title}</div><div class="tc-txt">${t.txt}</div></div>`).join('');
   goScreen('classScr');
 }
 
-// ══════════════════════════════════════════
-// SUBJECT SCREEN
-// ══════════════════════════════════════════
-function openSubject(subjId) {
-  currentSubject = subjId;
-  const clsData = CURRICULUM[currentClass];
-  const subj = clsData.subjects.find(s => s.id === subjId);
-  if (!subj) return;
-  $('subjTitle').textContent = subj.name;
-  $('subjSub').textContent = currentClass + 'th Std · ' + subj.chapters + ' chapters';
-  $('subjEmoji').textContent = subj.emoji;
-  // tools
-  $('toolsGrid').innerHTML = `
+function openSubject(subjId){
+  currentSubject=subjId;
+  const clsData=CURRICULUM[currentClass];
+  const subj=clsData.subjects.find(s=>s.id===subjId);
+  if(!subj)return;
+  $('subjTitle').textContent=subj.name;
+  $('subjSub').textContent=currentClass+'th Std · '+subj.chapters+' chapters';
+  $('subjEmoji').textContent=subj.emoji;
+  $('toolsGrid').innerHTML=`
     <div class="tool-btn" onclick="openChapter(1,'Flash Cards')"><span class="tb-ico">🃏</span><div class="tb-name">Flash Cards</div><div class="tb-sub">Quick revision</div></div>
     <div class="tool-btn" onclick="openChapter(1,'Practice')"><span class="tb-ico">🎯</span><div class="tb-name">Practice MCQ</div><div class="tb-sub">Test yourself</div></div>
     <div class="tool-btn" onclick="openChapter(1,'Notes')"><span class="tb-ico">📝</span><div class="tb-name">Quick Notes</div><div class="tb-sub">Key concepts</div></div>
     <div class="tool-btn" onclick="openChapter(1,'Q&A')"><span class="tb-ico">❓</span><div class="tb-name">Q & A</div><div class="tb-sub">Exam questions</div></div>`;
-  // chapters
-  const chNames = getChapterNames(subjId, currentClass);
-  $('chaptersList').innerHTML = Array.from({length: subj.chapters}, (_, i) => {
-    const chName = chNames[i] || 'Chapter ' + (i+1);
-    return `<div class="chapter-item" onclick="openChapter(${i+1},'${chName.replace(/'/g,"\\'")}')">
-      <div class="ch-num">${i+1}</div>
-      <div class="ch-info"><div class="ch-name">${chName}</div><div class="ch-meta">Tap to study · Notes, Q&A, Flash Cards, MCQ</div></div>
-      <div class="ch-arrow">›</div>
-    </div>`;
+  const chNames=getChapterNames(subjId,currentClass);
+  $('chaptersList').innerHTML=Array.from({length:subj.chapters},(_,i)=>{
+    const chName=chNames[i]||'Chapter '+(i+1);
+    return`<div class="chapter-item" onclick="openChapter(${i+1},'${chName.replace(/'/g,"\\'")}')"><div class="ch-num">${i+1}</div><div class="ch-info"><div class="ch-name">${chName}</div><div class="ch-meta">Notes · Q&A · Flash Cards · MCQ</div></div><div class="ch-arrow">›</div></div>`;
   }).join('');
   goScreen('subjScr');
 }
 
-function getChapterNames(subjId, cls) {
-  const chapters = {
-    maths:{5:['Numbers','Shapes & Angles','Fractions','Decimals','Data Handling','Patterns','Measurement','Time & Money'],6:['Knowing Numbers','Whole Numbers','Playing with Numbers','Basic Geometrical Ideas','Understanding Elementary Shapes','Integers','Fractions','Decimals','Data Handling'],7:['Integers','Fractions & Decimals','Data Handling','Simple Equations','Lines & Angles','Triangles','Comparing Quantities','Rational Numbers','Perimeter & Area','Algebraic Expressions'],8:['Rational Numbers','Linear Equations','Understanding Quadrilaterals','Data Handling','Squares & Square Roots','Cubes & Cube Roots','Comparing Quantities','Algebraic Expressions','Mensuration','Exponents & Powers','Direct & Inverse Proportions'],9:['Number Systems','Polynomials','Coordinate Geometry','Linear Equations','Euclid\'s Geometry','Lines & Angles','Triangles','Quadrilaterals','Areas of Parallelograms'],10:['Real Numbers','Polynomials','Pair of Linear Equations','Quadratic Equations','Arithmetic Progressions','Triangles','Coordinate Geometry','Introduction to Trigonometry'],11:['Sets, Relations & Functions','Basic Algebra','Trigonometry','Combinatorics','Binomial Theorem','Sequences & Series','Matrices','Vector Algebra','Differential Calculus','Integral Calculus','Probability','Discrete Mathematics'],12:['Applications of Matrices','Complex Numbers','Theory of Equations','Inverse Trigonometry','Two Dimensional Geometry','Applications of Vector Algebra','Differential Calculus Applications','Integral Calculus Applications','Ordinary Differential Equations','Probability Distributions','Statistics','Discrete Mathematics','Numerical Methods']},
-    science:{6:['Food: Where Does It Come From','Components of Food','Fibre to Fabric','Sorting Materials','Separation of Substances','Getting to Know Plants','Body Movements','Light Shadows & Reflections'],7:['Nutrition in Plants','Nutrition in Animals','Fibre to Fabric','Heat','Acids Bases & Salts','Physical & Chemical Changes','Weather Climate & Adaptations','Winds Storms & Cyclones','Soil'],8:['Crop Production','Microorganisms','Synthetic Fibres & Plastics','Materials: Metals & Non-metals','Coal & Petroleum','Combustion','Conservation of Plants & Animals','Cell Structure','Reproduction','Reaching the Age of Adolescence'],9:['Matter in Our Surroundings','Is Matter Around Us Pure','Atoms & Molecules','Structure of Atom','The Fundamental Unit of Life','Tissues','Motion','Force & Laws of Motion','Gravitation','Work & Energy','Sound','Why Do We Fall Ill','Natural Resources'],10:['Chemical Reactions','Acids Bases Salts','Metals & Non-metals','Carbon & its Compounds','Life Processes','Control & Coordination','How Do Organisms Reproduce','Heredity & Evolution','Light Reflection & Refraction','Human Eye','Electricity','Magnetic Effects','Our Environment']},
-    social:{6:['What Where How & When','From Gathering to Growing Food','In the Earliest Cities','What Books & Burials Tell Us','Kingdoms Kings & Early Republic','New Questions & Ideas','Ashoka The Emperor','Vital Villages Thriving Towns','Traders Kings & Pilgrims','New Empires & Kingdoms'],7:['Tracing Changes','New Kings & Kingdoms','The Delhi Sultans','The Mughal Empire','Rulers & Buildings','Towns Traders & Craftspersons','Tribes Nomads & Settled Communities','Devotional Paths to the Divine','The Making of Regional Cultures','Eighteenth-Century Political Formations','Our Changing Earth'],8:['How When & Where','From Trade to Territory','Ruling the Countryside','Tribals Dikus & Vision','When People Rebel','Weavers Iron Smelters & Factory Owners','Civilising the Native','Women Caste & Reform','The Making of National Movement','India After Independence'],9:['The French Revolution','Socialism in Europe','Nazism & the Rise of Hitler','Forest Society & Colonialism','Pastoralists in the Modern World','Peasants & Farmers','History & Sport','Clothing: A Social History','What is Democracy','Constitutional Design','Electoral Politics','Working of Institutions','Democratic Rights'],10:['The Rise of Nationalism in Europe','Nationalism in India','The Making of a Global World','The Age of Industrialisation','Print Culture & The Modern World','Work Life & Leisure','Novels Society & History']},
-    physics:{11:['Nature of Physical World','Kinematics','Laws of Motion','Work Energy & Power','Motion of System of Particles','Gravitation','Properties of Matter','Heat & Thermodynamics','Behavior of Perfect Gas','Oscillations','Waves'],12:['Electrostatics','Current Electricity','Magnetism & Magnetic Effects','Electromagnetic Induction','Electromagnetic Waves','Ray Optics','Wave Optics','Dual Nature','Atomic & Nuclear Physics','Electronics & Communication']},
-    chemistry:{11:['Some Basic Concepts','Quantum Mechanical Model','Periodic Classification','Hydrogen','Alkali & Alkaline Earth Metals','Gaseous State','Thermodynamics','Physical & Chemical Equilibrium','Solutions','Purification of Organic Compounds','Basic Concepts of Organic Chemistry','Fundamentals of Organic Chemistry','Hydrocarbons','Haloalkanes & Haloarenes'],12:['Metallurgy','p-Block Elements','d & f Block Elements','Transition & Inner Transition Elements','Coordination Chemistry','Solid State','Chemical Kinetics','Electrochemistry','Surface Chemistry','Organic Nitrogen Compounds','Biomolecules','Chemistry in Everyday Life','Pharmaceuticals','Polymers','Environmental Chemistry','Chemistry of Carbon Compounds']},
-    biology:{11:['Diversity of Living World','Plant Kingdom','Animal Kingdom','Cell: The Unit of Life','Cell Division','Photosynthesis','Respiration','Plant Growth','Digestion & Absorption','Breathing & Gas Exchange','Body Fluids','Excretory Products','Locomotion & Movement','Neural Control','Chemical Coordination','Reproduction in Plants','Reproduction in Animals','Genetics','Principles of Inheritance','Biodiversity']},
-    tamil:{5:['எழுத்துகளும் சொற்களும்','வாக்கியங்கள்','கதைகள்','கவிதைகள்','நாட்டுப்புறப் பாடல்கள்','இலக்கணம் — அடிப்படை'],6:['தமிழ் மொழியின் சிறப்பு','பழமொழிகள்','கவிதைகள் — சங்க இலக்கியம்','நாட்டார் கதைகள்','இலக்கணம் — எழுத்துகள்','கும்மி பாட்டுகள்','சிறுகதைகள்'],10:['இலக்கணம்','கவிதைகள்','சங்க இலக்கியம்','நாடகம்','சிறுகதைகள்','கட்டுரைகள்','ஆய்வுக் கட்டுரை','உரைநடை']},
-    english:{5:['Reading & Comprehension','Vocabulary Building','Grammar — Nouns','Grammar — Verbs','Creative Writing','Poetry'],10:['Literature','Grammar','Writing Skills','Comprehension','Poetry Appreciation','Letter Writing','Essay Writing']},
-    cs:{11:['Introduction to Computers','Computer Organization','Number Systems','Principles of Programming','Flow Charts & Algorithms','Python Basics','Python Control Structures','Python Functions','Python Lists & Tuples','Web Fundamentals'],12:['OOP with Python','Python — Exception Handling','Data Structures','Database Concepts','SQL','Data Communication','Internet & HTML','Cyber Security','Python GUI','Data Science Basics','Emerging Technologies']}
+function getChapterNames(subjId,cls){
+  const C={
+    maths:{5:['Numbers','Shapes & Angles','Fractions','Decimals','Data Handling','Patterns','Measurement','Time & Money'],6:['Knowing Numbers','Whole Numbers','Playing with Numbers','Basic Geometrical Ideas','Elementary Shapes','Integers','Fractions','Decimals','Data Handling'],7:['Integers','Fractions & Decimals','Data Handling','Simple Equations','Lines & Angles','Triangles','Comparing Quantities','Rational Numbers','Perimeter & Area','Algebraic Expressions'],8:['Rational Numbers','Linear Equations','Quadrilaterals','Data Handling','Squares & Roots','Cubes & Roots','Comparing Quantities','Algebraic Expressions','Mensuration','Exponents','Proportions'],9:['Number Systems','Polynomials','Coordinate Geometry','Linear Equations','Euclid Geometry','Lines & Angles','Triangles','Quadrilaterals','Areas'],10:['Real Numbers','Polynomials','Linear Equations','Quadratic Equations','Arithmetic Progressions','Triangles','Coordinate Geometry','Trigonometry'],11:['Sets Relations Functions','Basic Algebra','Trigonometry','Combinatorics','Binomial Theorem','Sequences & Series','Matrices','Vector Algebra','Differential Calculus','Integral Calculus','Probability','Discrete Maths'],12:['Matrices','Complex Numbers','Theory of Equations','Inverse Trigonometry','2D Geometry','Vector Algebra Applications','Differential Calculus','Integral Calculus','Differential Equations','Probability','Statistics','Discrete Maths','Numerical Methods']},
+    science:{6:['Food Sources','Components of Food','Fibre to Fabric','Sorting Materials','Separation','Plants','Body Movements','Light & Shadows'],7:['Plant Nutrition','Animal Nutrition','Fibre','Heat','Acids & Bases','Physical Chemical Changes','Weather & Climate','Winds & Cyclones','Soil'],8:['Crop Production','Microorganisms','Fibres & Plastics','Metals & Non-metals','Coal & Petroleum','Combustion','Plants & Animals','Cell','Reproduction','Adolescence'],9:['Matter','Pure Substances','Atoms & Molecules','Atomic Structure','Fundamental Unit of Life','Tissues','Motion','Laws of Motion','Gravitation','Work & Energy'],10:['Chemical Reactions','Acids Bases Salts','Metals & Non-metals','Carbon Compounds','Life Processes','Control & Coordination','Reproduction','Heredity','Light','Human Eye','Electricity','Magnetism','Environment']},
+    social:{9:['French Revolution','Socialism in Europe','Nazism','Forest Society','Pastoralists','Peasants & Farmers','History & Sport','Clothing','Democracy','Constitution','Electoral Politics','Working of Institutions','Democratic Rights'],10:['Nationalism in Europe','Nationalism in India','Global World','Industrialisation','Print Culture','Work Life & Leisure','Novels Society']},
+    physics:{11:['Physical World','Kinematics','Laws of Motion','Work Energy Power','System of Particles','Gravitation','Properties of Matter','Thermodynamics','Kinetic Theory','Oscillations','Waves'],12:['Electrostatics','Current Electricity','Magnetism','Electromagnetic Induction','EM Waves','Ray Optics','Wave Optics','Dual Nature','Atomic Physics','Electronics']},
+    chemistry:{11:['Basic Concepts','Quantum Model','Periodic Classification','Hydrogen','Alkali Metals','Gaseous State','Thermodynamics','Equilibrium','Solutions','Purification','Organic Basics','Functional Groups','Hydrocarbons','Haloalkanes'],12:['Metallurgy','p-Block Elements','d & f Block','Coordination Chemistry','Solid State','Chemical Kinetics','Electrochemistry','Surface Chemistry','Organic Nitrogen','Biomolecules','Everyday Chemistry','Pharmaceuticals','Polymers','Environment']},
+    biology:{11:['Diversity','Plant Kingdom','Animal Kingdom','Cell','Cell Division','Photosynthesis','Respiration','Plant Growth','Digestion','Breathing','Body Fluids','Excretion','Locomotion','Neural Control','Hormones','Plant Reproduction','Animal Reproduction','Genetics','Inheritance','Biodiversity']},
+    tamil:{5:['எழுத்துகள்','வாக்கியங்கள்','கதைகள்','கவிதைகள்','நாட்டுப்புற பாடல்','இலக்கணம்'],6:['தமிழ் மொழி சிறப்பு','பழமொழிகள்','சங்க இலக்கியம்','நாட்டார் கதைகள்','எழுத்துகள்','கும்மி','சிறுகதைகள்'],10:['இலக்கணம்','கவிதைகள்','சங்க இலக்கியம்','நாடகம்','சிறுகதைகள்','கட்டுரைகள்','ஆய்வுக் கட்டுரை','உரைநடை']},
+    english:{5:['Reading','Vocabulary','Nouns','Verbs','Writing','Poetry'],10:['Literature','Grammar','Writing','Comprehension','Poetry','Letter Writing','Essay']},
+    cs:{11:['Introduction','Computer Organization','Number Systems','Programming Principles','Algorithms','Python Basics','Control Structures','Functions','Lists & Tuples','Web Fundamentals'],12:['OOP Python','Exception Handling','Data Structures','Database','SQL','Data Communication','Internet & HTML','Cyber Security','GUI','Data Science','Emerging Tech']}
   };
-  const clsNum = parseInt(cls);
-  return (chapters[subjId]||{})[clsNum] || (chapters[subjId]||{})['default'] || [];
+  return (C[subjId]||{})[parseInt(cls)]||(C[subjId]||{})||[];
 }
 
-// ══════════════════════════════════════════
-// CHAPTER SCREEN
-// ══════════════════════════════════════════
-function openChapter(chNum, chName) {
-  currentChapter = chNum;
-  $('chTitle').textContent = typeof chName === 'string' ? chName : 'Chapter ' + chNum;
-  const subj = CURRICULUM[currentClass].subjects.find(s=>s.id===currentSubject);
-  $('chSub').textContent = (subj?.name || '') + ' · ' + currentClass + 'th Std';
-  currentChTab = 'notes';
-  currentFlashIdx = 0;
-  flashFlipped = false;
-  mcqAnswered = {};
-  document.querySelectorAll('.chtab').forEach((t,i)=>{t.classList.toggle('on',i===0);});
+function openChapter(chNum,chName){
+  currentChapter=chNum;
+  $('chTitle').textContent=typeof chName==='string'?chName:'Chapter '+chNum;
+  const subj=CURRICULUM[currentClass].subjects.find(s=>s.id===currentSubject);
+  $('chSub').textContent=(subj?.name||'')+' · '+currentClass+'th Std';
+  currentChTab='notes';currentFlashIdx=0;flashFlipped=false;mcqAnswered={};
+  document.querySelectorAll('.chtab').forEach((t,i)=>t.classList.toggle('on',i===0));
   renderChTab('notes');
   goScreen('chScr');
 }
 
-function setChTab(tab, el) {
-  currentChTab = tab;
+function setChTab(tab,el){
+  currentChTab=tab;
   document.querySelectorAll('.chtab').forEach(t=>t.classList.remove('on'));
   el.classList.add('on');
-  currentFlashIdx = 0; flashFlipped = false; mcqAnswered = {};
+  currentFlashIdx=0;flashFlipped=false;mcqAnswered={};
   renderChTab(tab);
 }
 
-function renderChTab(tab) {
-  const data = getChapterContent(currentSubject, currentChapter, currentClass + 'th Std');
-  const body = $('chBody');
-  if (tab === 'notes') {
-    body.innerHTML = data.notes + `<div style="height:20px"></div>`;
-  } else if (tab === 'qa') {
-    body.innerHTML = data.qa.map((q,i)=>`
-      <div class="qa-item" onclick="toggleQA(${i})">
-        <div class="qa-q"><span class="qa-q-num">Q${i+1}</span>${q.q}</div>
-        <div class="qa-toggle" id="qatog-${i}">▼ Show Answer</div>
-        <div class="qa-a" id="qa-${i}">${q.a}</div>
-      </div>`).join('') + '<div style="height:20px"></div>';
-  } else if (tab === 'flash') {
-    renderFlashCard(data);
-  } else if (tab === 'mcq') {
-    renderMCQ(data);
-  }
+function renderChTab(tab){
+  const data=getChapterContent(currentSubject,currentChapter);
+  const body=$('chBody');
+  if(tab==='notes'){body.innerHTML=data.notes+'<div style="height:20px"></div>';}
+  else if(tab==='qa'){body.innerHTML=data.qa.map((q,i)=>`<div class="qa-item" onclick="toggleQA(${i})"><div class="qa-q"><span class="qa-q-num">Q${i+1}</span>${q.q}</div><div class="qa-toggle" id="qatog-${i}">▼ Show Answer</div><div class="qa-a" id="qa-${i}">${q.a}</div></div>`).join('')+'<div style="height:20px"></div>';}
+  else if(tab==='flash'){renderFlashCard(data);}
+  else if(tab==='mcq'){renderMCQ(data);}
 }
 
-function toggleQA(i) {
-  const a = $('qa-'+i), t = $('qatog-'+i);
-  const show = !a.classList.contains('show');
-  a.classList.toggle('show', show);
-  if (t) t.textContent = show ? '▲ Hide Answer' : '▼ Show Answer';
+function toggleQA(i){const a=$('qa-'+i),t=$('qatog-'+i);const show=!a.classList.contains('show');a.classList.toggle('show',show);if(t)t.textContent=show?'▲ Hide Answer':'▼ Show Answer';}
+
+function renderFlashCard(data){
+  const cards=data.flash;const card=cards[currentFlashIdx];
+  $('chBody').innerHTML=`<div style="padding:10px 0"><div style="text-align:center;font-size:11px;color:var(--t3);margin-bottom:8px;font-weight:600">Card ${currentFlashIdx+1} of ${cards.length}</div><div style="height:180px;perspective:1000px;cursor:pointer" onclick="flipFlash()"><div class="flashcard" id="flashcardEl"><div class="fc-front"><div class="fc-label">Question</div><div class="fc-content">${card.q}</div></div><div class="fc-back"><div class="fc-label">Answer</div><div class="fc-content">${card.a}</div></div></div></div><div style="text-align:center;font-size:11px;color:var(--t3);margin:8px 0">Tap card to flip 👆</div><div style="display:flex;align-items:center;justify-content:center;gap:16px;margin:8px 0"><button class="fc-btn" onclick="prevFlash()" ${currentFlashIdx===0?'disabled style="opacity:.4"':''}>← Prev</button><span style="font-size:12px;color:var(--t3)">${currentFlashIdx+1}/${cards.length}</span><button class="fc-btn" onclick="nextFlash()" ${currentFlashIdx===cards.length-1?'disabled style="opacity:.4"':''}>Next →</button></div></div><div style="height:20px"></div>`;
 }
 
-function renderFlashCard(data) {
-  const cards = data.flash;
-  const card = cards[currentFlashIdx];
-  $('chBody').innerHTML = `
-    <div style="padding:10px 0">
-      <div style="text-align:center;font-size:11px;color:var(--t3);margin-bottom:8px;font-weight:600">Card ${currentFlashIdx+1} of ${cards.length}</div>
-      <div style="height:180px;perspective:1000px;cursor:pointer" onclick="flipFlash()">
-        <div class="flashcard" id="flashcardEl">
-          <div class="fc-front">
-            <div class="fc-label">Question</div>
-            <div class="fc-content">${card.q}</div>
-          </div>
-          <div class="fc-back">
-            <div class="fc-label">Answer</div>
-            <div class="fc-content">${card.a}</div>
-          </div>
-        </div>
-      </div>
-      <div style="text-align:center;font-size:11px;color:var(--t3);margin:8px 0">Tap card to flip 👆</div>
-      <div class="fc-nav">
-        <button class="fc-btn" onclick="prevFlash()" ${currentFlashIdx===0?'disabled style="opacity:.4"':''}>← Prev</button>
-        <span class="fc-count">${currentFlashIdx+1}/${cards.length}</span>
-        <button class="fc-btn" onclick="nextFlash()" ${currentFlashIdx===cards.length-1?'disabled style="opacity:.4"':''}>Next →</button>
-      </div>
-      <div style="margin-top:12px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.14);border-radius:14px;padding:12px 14px;font-size:12px;color:rgba(129,140,248,.8);line-height:1.7">
-        💡 Flash cards help with <b>active recall</b> — the best study method! Try to answer before flipping.
-      </div>
-    </div>
-    <div style="height:20px"></div>`;
+function flipFlash(){flashFlipped=!flashFlipped;const el=$('flashcardEl');if(el)el.style.transform=flashFlipped?'rotateY(180deg)':'';}
+function nextFlash(){const d=getChapterContent(currentSubject,currentChapter);if(currentFlashIdx<d.flash.length-1){currentFlashIdx++;flashFlipped=false;renderFlashCard(d);}}
+function prevFlash(){const d=getChapterContent(currentSubject,currentChapter);if(currentFlashIdx>0){currentFlashIdx--;flashFlipped=false;renderFlashCard(d);}}
+
+function renderMCQ(data){
+  const questions=data.mcq;
+  const score=Object.values(mcqAnswered).filter(v=>v===true).length;
+  const done=Object.keys(mcqAnswered).filter(k=>!k.includes('_')).length;
+  $('chBody').innerHTML=`${done===questions.length?`<div class="score-banner"><div class="sb-score">${score}/${questions.length}</div><div style="font-size:13px;color:var(--t2)">Score · ${Math.round(score/questions.length*100)}%</div><button onclick="mcqAnswered={};renderMCQ(getChapterContent(currentSubject,currentChapter))" style="margin-top:10px;padding:8px 20px;border-radius:10px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);color:var(--c1);font-family:var(--f);font-size:12px;font-weight:700;cursor:pointer">🔄 Retry</button></div>`:''}${questions.map((q,qi)=>`<div class="mcq-card"><div style="font-size:10px;font-weight:700;color:var(--c1);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Question ${qi+1}</div><div class="mcq-q">${q.q}</div>${q.opts.map((opt,oi)=>`<button class="mcq-opt ${mcqAnswered[qi]!==undefined?(oi===q.a?'correct':oi===mcqAnswered[qi+'_c']?'wrong':''):''}" onclick="answerMCQ(${qi},${oi},${q.a})" ${mcqAnswered[qi]!==undefined?'disabled':''}>${String.fromCharCode(65+oi)}. ${opt}</button>`).join('')}<div class="mcq-exp ${mcqAnswered[qi]!==undefined?'show':''}">${q.exp||''}</div></div>`).join('')}<div style="height:20px"></div>`;
 }
 
-function flipFlash() {
-  flashFlipped = !flashFlipped;
-  const el = $('flashcardEl');
-  if (el) el.style.transform = flashFlipped ? 'rotateY(180deg)' : '';
-}
-function nextFlash() {
-  const data = getChapterContent(currentSubject, currentChapter, currentClass+'th Std');
-  if (currentFlashIdx < data.flash.length-1) { currentFlashIdx++; flashFlipped=false; renderFlashCard(data); }
-}
-function prevFlash() {
-  const data = getChapterContent(currentSubject, currentChapter, currentClass+'th Std');
-  if (currentFlashIdx > 0) { currentFlashIdx--; flashFlipped=false; renderFlashCard(data); }
-}
-
-function renderMCQ(data) {
-  const questions = data.mcq;
-  const score = Object.values(mcqAnswered).filter(v=>v===true).length;
-  const done = Object.keys(mcqAnswered).length;
-  $('chBody').innerHTML = `
-    ${done===questions.length ? `<div class="score-banner"><div class="sb-score">${score}/${questions.length}</div><div class="sb-lbl">Your Score · ${Math.round(score/questions.length*100)}%</div><button onclick="mcqAnswered={};renderMCQ(getChapterContent(currentSubject,currentChapter,currentClass+'th Std'))" style="margin-top:10px;padding:8px 20px;border-radius:10px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);color:var(--c1);font-family:var(--f);font-size:12px;font-weight:700;cursor:pointer">🔄 Retry</button></div>` : ''}
-    ${questions.map((q,qi)=>`
-      <div class="mcq-card">
-        <div style="font-size:10px;font-weight:700;color:var(--c1);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Question ${qi+1}</div>
-        <div class="mcq-q">${q.q}</div>
-        ${q.opts.map((opt,oi)=>`<button class="mcq-opt ${mcqAnswered[qi]!==undefined?(oi===q.a?'correct':oi===mcqAnswered[qi+'_choice']?'wrong':''):''}" onclick="answerMCQ(${qi},${oi},${q.a})" ${mcqAnswered[qi]!==undefined?'disabled':''}>${String.fromCharCode(65+oi)}. ${opt}</button>`).join('')}
-        <div class="mcq-exp ${mcqAnswered[qi]!==undefined?'show':''}" id="mcqexp-${qi}">${q.exp||''}</div>
-      </div>`).join('')}
-    <div style="height:20px"></div>`;
-}
-
-function answerMCQ(qi, choice, correct) {
-  mcqAnswered[qi] = choice === correct;
-  mcqAnswered[qi+'_choice'] = choice;
-  renderMCQ(getChapterContent(currentSubject, currentChapter, currentClass+'th Std'));
-}
-
-function backToClass() { goScreen('classScr'); }
-function backToSubject() { goScreen('subjScr'); }
+function answerMCQ(qi,choice,correct){mcqAnswered[qi]=choice===correct;mcqAnswered[qi+'_c']=choice;renderMCQ(getChapterContent(currentSubject,currentChapter));}
+function backToClass(){goScreen('classScr');}
+function backToSubject(){goScreen('subjScr');}
 
 // ══════════════════════════════════════════
-// VAULT / AUTH (from original)
+// VAULT AUTH
 // ══════════════════════════════════════════
 let CU=null;
 function setAuthTab(t){$('aTab1').classList.toggle('on',t==='login');$('aTab2').classList.toggle('on',t==='register');$('loginFormEl').style.display=t==='login'?'block':'none';$('regFormEl').style.display=t==='register'?'block':'none';}
-async function doRegister(){const u=$('rUser').value.trim().toLowerCase(),p=$('rPass').value.trim();if(!u||!p){showErr('regErr','⚠️ Fill all fields!');return;}if(u.length<2){showErr('regErr','⚠️ Username min 2 chars');return;}if(p.length<4){showErr('regErr','⚠️ Password min 4 chars');return;}startLoading('Creating account...');try{const exists=await S.get('vu:'+u,true);if(exists){stopLoading();showErr('regErr','❌ Username already taken!');return;}await S.set('vu:'+u,JSON.stringify({at:Date.now()}),true);await S.set('vauth:'+u,JSON.stringify({ph:h32(p)}),false);CU={username:u};localStorage.setItem('vault_sess',JSON.stringify(CU));stopLoading();afterLogin();}catch(e){stopLoading();showErr('regErr','❌ '+e.message);}}
-async function doLogin(){const u=$('lUser').value.trim().toLowerCase(),p=$('lPass').value.trim();if(!u||!p){showErr('loginErr','⚠️ Fill all fields!');return;}startLoading('Logging in...');try{const raw=await S.get('vauth:'+u,false);if(!raw){stopLoading();showErr('loginErr','❌ Account not found! Register first.');return;}const auth=JSON.parse(raw);if(auth.ph!==h32(p)){stopLoading();showErr('loginErr','❌ Wrong password!');return;}CU={username:u};localStorage.setItem('vault_sess',JSON.stringify(CU));stopLoading();afterLogin();}catch(e){stopLoading();showErr('loginErr','❌ '+e.message);}}
-function afterLogin(){$('vnUname').textContent=CU.username;$('heroTitle').textContent='Hey '+CU.username+'! 👋';loadMyRooms();renderAccountPanel();goScreen('vaultScr');}
-function lockVault(){CU=null;localStorage.removeItem('vault_sess');stopAllPolls();myRooms=[];currentRoomId=null;goScreen('pinScr');resetPin();}
+
+async function doRegister(){
+  const u=$('rUser').value.trim().toLowerCase(),p=$('rPass').value.trim();
+  if(!u||!p){showErr('regErr','⚠️ Fill all fields!');return;}
+  if(u.length<2){showErr('regErr','⚠️ Username min 2 chars');return;}
+  if(p.length<4){showErr('regErr','⚠️ Password min 4 chars');return;}
+  startLoading('Creating account...');
+  try{
+    const exists=await S.get('vu:'+u,true);
+    if(exists){stopLoading();showErr('regErr','❌ Username taken!');return;}
+    const ok1=await S.set('vu:'+u,JSON.stringify({at:Date.now()}),true);
+    const ok2=await S.set('vauth:'+u,JSON.stringify({ph:h32(p)}),false);
+    if(!ok1&&!STORAGE_AVAILABLE){stopLoading();showErr('regErr','⚠️ Storage limited. Try again!');return;}
+    CU={username:u};
+    try{localStorage.setItem('vault_sess',JSON.stringify(CU));}catch(e){}
+    stopLoading();afterLogin();
+  }catch(e){stopLoading();showErr('regErr','❌ '+e.message);}
+}
+
+async function doLogin(){
+  const u=$('lUser').value.trim().toLowerCase(),p=$('lPass').value.trim();
+  if(!u||!p){showErr('loginErr','⚠️ Fill all fields!');return;}
+  startLoading('Logging in...');
+  try{
+    const raw=await S.get('vauth:'+u,false);
+    if(!raw){stopLoading();showErr('loginErr','❌ Account not found! Register first.');return;}
+    const auth=JSON.parse(raw);
+    if(auth.ph!==h32(p)){stopLoading();showErr('loginErr','❌ Wrong password!');return;}
+    CU={username:u};
+    try{localStorage.setItem('vault_sess',JSON.stringify(CU));}catch(e){}
+    stopLoading();afterLogin();
+  }catch(e){stopLoading();showErr('loginErr','❌ '+e.message);}
+}
+
+function afterLogin(){
+  $('vnUname').textContent=CU.username;
+  $('heroTitle').textContent='Hey '+CU.username+'! 👋';
+  loadMyRooms();renderAccountPanel();
+  setVTab('Rooms',document.querySelector('.vtab'));
+  goScreen('vaultScr');
+}
+
+function lockVault(){CU=null;try{localStorage.removeItem('vault_sess');}catch(e){}stopAllPolls();myRooms=[];currentRoomId=null;goScreen('pinScr');resetPin();}
 
 const VAULT_PIN='1234';
 let pin='';
@@ -1056,107 +1089,540 @@ function kp(k){if(k==='del'){pin=pin.slice(0,-1);updatePinDots();return;}if(pin.
 function updatePinDots(){for(let i=1;i<=4;i++)$('pd'+i).classList.toggle('on',i<=pin.length);}
 function checkPin(){if(pin===VAULT_PIN){const sess=localStorage.getItem('vault_sess');if(sess){try{CU=JSON.parse(sess);afterLogin();return;}catch(e){}}goScreen('authScr');setAuthTab('login');}else{$('pinErr').style.display='block';setTimeout(()=>{$('pinErr').style.display='none';pin='';updatePinDots();},1500);}}
 
-function setVTab(tab,el){document.querySelectorAll('.vtab').forEach(t=>t.classList.remove('on'));el.classList.add('on');document.querySelectorAll('.vpanel').forEach(p=>p.classList.remove('on'));$('vp'+tab.charAt(0).toUpperCase()+tab.slice(1)).classList.add('on');if(tab==='account')renderAccountPanel();}
+function setVTab(tab, el){
+  document.querySelectorAll('.vtab').forEach(t=>t.classList.remove('on'));
+  if(el)el.classList.add('on');
+  $('vpRooms').style.display=tab==='Rooms'?'block':'none';
+  $('vpGames').style.display=tab==='Games'?'block':'none';
+  $('vpAccount').style.display=tab==='Account'?'block':'none';
+  if(tab==='Account')renderAccountPanel();
+}
 
+// ══════════════════════════════════════════
+// ROOMS — FIXED LOGIC
+// ══════════════════════════════════════════
 let myRooms=[],currentRoomId=null,chatMsgs=[],pollTimer=null,hbTimer=null,emojiOpen=false,sendLock=false;
+let lastPollMsgCount=-1;
+
 function myRoomsKey(){return'mrooms_'+(CU?.username||'x');}
-function saveMyRooms(){localStorage.setItem(myRoomsKey(),JSON.stringify(myRooms));}
-async function loadMyRooms(){const raw=localStorage.getItem(myRoomsKey());myRooms=raw?JSON.parse(raw):[];renderRooms();for(const r of myRooms){try{const d=await S.get('vroom:'+r.id,true);if(d){const rd=JSON.parse(d);r.name=rd.name;r.emoji=rd.emoji||'💬';}}catch(e){}}saveMyRooms();renderRooms();if(myRooms.length){$('heroRoomInfo').style.display='flex';$('heroRoomId').textContent=myRooms[0].id;}}
-function renderRooms(){const c=$('roomsListEl');if(!myRooms.length){c.innerHTML='<div class="empty-rooms">No rooms yet!<br>Create or join a room. 💬</div>';return;}c.innerHTML=myRooms.map(r=>`<div class="room-item" onclick="openRoom('${r.id}')"><div class="ri-icon">${r.emoji||'💬'}</div><div class="ri-info"><div class="ri-name">${escHtml(r.name)}</div><div class="ri-meta" id="ri-meta-${r.id}">ID: ${r.id.slice(0,14)}...</div></div><div class="ri-badge" id="ri-badge-${r.id}">—</div></div>`).join('');myRooms.forEach(async r=>{try{const raw=await S.get('vroom:'+r.id,true);if(raw){const d=JSON.parse(raw);const mb=$('ri-meta-'+r.id);if(mb)mb.textContent=(d.members?.length||0)+' member(s)';const bb=$('ri-badge-'+r.id);if(bb)bb.textContent=(d.members?.length||0)+' online';}}catch(e){}});}
+function saveMyRooms(){try{localStorage.setItem(myRoomsKey(),JSON.stringify(myRooms));}catch(e){}}
+
+async function loadMyRooms(){
+  try{const raw=localStorage.getItem(myRoomsKey());myRooms=raw?JSON.parse(raw):[];}catch(e){myRooms=[];}
+  renderRooms();
+  // Update room names from shared storage
+  for(const r of myRooms){
+    try{
+      const d=await S.get('vroom:'+r.id,true);
+      if(d){const rd=JSON.parse(d);r.name=rd.name;r.emoji=rd.emoji||'💬';}
+    }catch(e){}
+  }
+  saveMyRooms();renderRooms();
+  // Show latest room ID box
+  if(myRooms.length){
+    showLastRoomId(myRooms[0].id);
+  }
+}
+
+function showLastRoomId(rid){
+  $('lastRoomBox').style.display='block';
+  $('lastRoomIdVal').textContent=rid;
+}
+
+function renderRooms(){
+  const c=$('roomsListEl');
+  if(!myRooms.length){c.innerHTML='<div class="empty-rooms">No rooms yet!<br>Create one or join a friend\'s room. 💬</div>';return;}
+  c.innerHTML=myRooms.map(r=>`
+    <div class="room-item" onclick="openRoom('${r.id}')">
+      <div class="ri-icon">${r.emoji||'💬'}</div>
+      <div class="ri-info">
+        <div class="ri-name">${escHtml(r.name)}</div>
+        <div class="ri-id-small">ID: ${r.id}</div>
+        <div class="ri-meta" id="ri-meta-${r.id}">Loading...</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="ri-badge" id="ri-badge-${r.id}">—</div>
+        <button onclick="event.stopPropagation();copyRid('${r.id}')" style="font-size:9px;padding:3px 8px;border-radius:8px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);color:var(--c1);cursor:pointer;font-family:var(--f)">📋 Copy ID</button>
+      </div>
+    </div>`).join('');
+  myRooms.forEach(async r=>{
+    try{
+      const raw=await S.get('vroom:'+r.id,true);
+      if(raw){
+        const d=JSON.parse(raw);
+        const mb=$('ri-meta-'+r.id);if(mb)mb.textContent=(d.members?.length||0)+' member(s) · '+d.msgs?.length+' msgs';
+        const bb=$('ri-badge-'+r.id);if(bb)bb.textContent=(d.members?.length||0)+' joined';
+      }else{
+        const mb=$('ri-meta-'+r.id);if(mb)mb.textContent='⚠️ Room data unavailable';
+      }
+    }catch(e){}
+  });
+}
+
+function copyRid(rid){
+  try{navigator.clipboard?.writeText(rid);}catch(e){}
+  toast('📋 Room ID copied: '+rid);
+}
+
+function copyLastRoomId(){
+  const rid=$('lastRoomIdVal').textContent;
+  try{navigator.clipboard?.writeText(rid);}catch(e){}
+  toast('📋 Copied: '+rid);
+}
+
+function shareLastRoomId(){
+  const rid=$('lastRoomIdVal').textContent;
+  if(navigator.share){navigator.share({title:'Join my room!',text:'Room ID: '+rid}).catch(()=>{});}
+  else{copyLastRoomId();}
+}
+
 function openCreateModal(){$('crName').value='';$('crPin').value='';openModal('createModal');}
 function openJoinModal(){$('jrId').value='';$('jrPin').value='';$('joinErr').style.display='none';openModal('joinModal');}
-async function createRoom(){const name=$('crName').value.trim();const pin=$('crPin').value.trim();if(!name){toast('⚠️ Room name required!');return;}const emojis=['💬','🎮','🔥','⭐','💜','🎯','🚀','✨','🌙','💎'];const emoji=emojis[Math.floor(Math.random()*emojis.length)];const roomId=genId();const roomData={id:roomId,name,emoji,pinHash:pin?h32(pin):'',createdBy:CU.username,members:[CU.username],msgs:[],createdAt:Date.now(),game:null,gameState:null};startLoading('Creating room...');try{await S.set('vroom:'+roomId,JSON.stringify(roomData),true);myRooms.unshift({id:roomId,name,emoji});saveMyRooms();$('heroRoomInfo').style.display='flex';$('heroRoomId').textContent=roomId;stopLoading();closeModal('createModal');renderRooms();toast('✅ Room created! Share ID: '+roomId);openRoom(roomId);}catch(e){stopLoading();toast('❌ '+e.message);}}
-async function joinRoom(){const rid=$('jrId').value.trim().replace(/\s/g,'');const pin=$('jrPin').value.trim();if(!rid){toast('⚠️ Enter Room ID!');return;}startLoading('Joining room...');try{const raw=await S.get('vroom:'+rid,true);if(!raw){stopLoading();showErr('joinErr','❌ Room not found!');return;}const d=JSON.parse(raw);if(d.pinHash&&d.pinHash!==h32(pin)&&d.pinHash!==pin){stopLoading();showErr('joinErr','❌ Wrong room PIN!');return;}if(!d.members)d.members=[];if(!d.members.includes(CU.username))d.members.push(CU.username);if(!d.msgs)d.msgs=[];await S.set('vroom:'+rid,JSON.stringify(d),true);if(!myRooms.find(r=>r.id===rid)){myRooms.unshift({id:rid,name:d.name,emoji:d.emoji||'💬'});saveMyRooms();}stopLoading();closeModal('joinModal');renderRooms();toast('✅ Joined: '+d.name);openRoom(rid);}catch(e){stopLoading();showErr('joinErr','❌ '+e.message);}}
-async function openRoom(roomId){startLoading('Opening...');try{const raw=await S.get('vroom:'+roomId,true);if(!raw){stopLoading();toast('❌ Room not found!');return;}const d=JSON.parse(raw);currentRoomId=roomId;chatMsgs=d.msgs||[];if(!d.members)d.members=[];if(!d.members.includes(CU.username)){d.members.push(CU.username);await S.set('vroom:'+roomId,JSON.stringify(d),true);}$('rhName').textContent=(d.emoji||'💬')+' '+(d.name||roomId);$('rhMembers').textContent=(d.members||[]).join(', ');stopLoading();goScreen('roomScr');setRoomTab('chat');renderChatMsgs();await S.set('vhb:'+roomId+':'+CU.username,Date.now().toString(),true);updateOnline(d.members,roomId);startPolling(roomId);if(d.game&&d.gameState){syncGameFromServer(d.game,d.gameState);}}catch(e){stopLoading();toast('❌ '+e.message);}}
-function stopAllPolls(){if(pollTimer){clearInterval(pollTimer);pollTimer=null;}if(hbTimer){clearInterval(hbTimer);hbTimer=null;}}
-function startPolling(roomId){stopAllPolls();pollTimer=setInterval(()=>pollRoom(roomId),2500);hbTimer=setInterval(async()=>{try{await S.set('vhb:'+roomId+':'+CU.username,Date.now().toString(),true);}catch(e){}updateOnline(null,roomId);},8000);}
-let lastMsgCount=0;
-async function pollRoom(roomId){try{const raw=await S.get('vroom:'+roomId,true);if(!raw)return;const d=JSON.parse(raw);const msgs=d.msgs||[];const atBot=isAtBottom($('msgsEl'));if(msgs.length!==lastMsgCount){const newMsgs=msgs.slice(lastMsgCount);lastMsgCount=msgs.length;chatMsgs=msgs;if(newMsgs.length){const box=$('msgsEl');if(box.innerHTML.includes('No messages'))box.innerHTML='';newMsgs.forEach(m=>box.appendChild(buildMsgBubble(m)));if(atBot)box.scrollTop=box.scrollHeight;}}const typing=d.typing||{};const others=Object.entries(typing).filter(([u,ts])=>u!==CU.username&&Date.now()-parseInt(ts)<4000);$('typingEl').classList.toggle('show',others.length>0);$('rhMembers').textContent=(d.members||[]).join(', ');updateOnline(d.members,roomId);if(d.game&&d.gameState)syncGameFromServer(d.game,d.gameState);}catch(e){}}
-function isAtBottom(el){return el.scrollHeight-el.scrollTop-el.clientHeight<90;}
-async function updateOnline(members,roomId){if(!members){try{const raw=await S.get('vroom:'+roomId,true);if(raw)members=JSON.parse(raw).members||[];}catch(e){return;}}let count=0;for(const m of members){try{const ts=await S.get('vhb:'+roomId+':'+m,true);if(ts&&Date.now()-parseInt(ts)<30000)count++;}catch(e){}}$('rhOnline').textContent=count+' online';}
-function leaveRoomScreen(){stopAllPolls();currentRoomId=null;chatMsgs=[];lastMsgCount=0;goScreen('vaultScr');renderRooms();}
-function copyLastRoomId(){if(myRooms.length){navigator.clipboard?.writeText(myRooms[0].id).catch(()=>{});toast('📋 Room ID copied!');}}
-function renderChatMsgs(){const box=$('msgsEl');box.innerHTML='';lastMsgCount=chatMsgs.length;if(!chatMsgs.length){box.innerHTML='<div style="text-align:center;color:var(--t3);font-size:13px;padding:40px 20px">No messages yet.<br>Say hi! 👋</div>';return;}let lastDate='';chatMsgs.forEach(m=>{if(m.date&&m.date!==lastDate){const d=document.createElement('div');d.className='msg-divider';d.textContent=m.date;box.appendChild(d);lastDate=m.date;}box.appendChild(buildMsgBubble(m));});box.scrollTop=box.scrollHeight;}
-function buildMsgBubble(m){const out=m.sender===CU.username;const wrap=document.createElement('div');wrap.className='msg-row '+(out?'out':'in');const sn=document.createElement('div');sn.className='msg-sender';sn.textContent=out?('👤 '+m.sender):m.sender;wrap.appendChild(sn);const bub=document.createElement('div');bub.className='msg-bub '+(out?'out':'in');bub.dataset.id=m.id;bub.dataset.txt=m.text;bub.innerHTML=escHtml(m.text||'')+`<div class="msg-meta"><span class="msg-time">${m.time||''}</span>${out?'<span class="msg-ticks">✓✓</span>':''}</div>`;bub.addEventListener('contextmenu',ev=>{ev.preventDefault();showCtx(ev,m.id,m.text);});bub.addEventListener('touchstart',()=>{window._ctTimer=setTimeout(()=>showCtx(null,m.id,m.text),600);},{passive:true});bub.addEventListener('touchend',()=>clearTimeout(window._ctTimer));wrap.appendChild(bub);return wrap;}
-async function sendMessage(){if(sendLock||!currentRoomId)return;const inp=$('chatInpEl');const t=inp.value.trim();if(!t)return;sendLock=true;inp.value='';inp.style.height='auto';const msg={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),sender:CU.username,text:t,time:gTime(),date:gDate()};try{const raw=await S.get('vroom:'+currentRoomId,true);if(raw){const d=JSON.parse(raw);if(!d.msgs)d.msgs=[];d.msgs.push(msg);if(d.msgs.length>500)d.msgs=d.msgs.slice(-500);await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);chatMsgs=d.msgs;lastMsgCount=chatMsgs.length;}}catch(e){}const box=$('msgsEl');if(box.innerHTML.includes('No messages'))box.innerHTML='';box.appendChild(buildMsgBubble(msg));box.scrollTop=box.scrollHeight;heartFloat();try{await clearTyping();}catch(e){}sendLock=false;}
+
+async function createRoom(){
+  const name=$('crName').value.trim();
+  const pin=$('crPin').value.trim();
+  if(!name){toast('⚠️ Room name required!');return;}
+  const emojis=['💬','🎮','🔥','⭐','💜','🎯','🚀','✨','🌙','💎'];
+  const emoji=emojis[Math.floor(Math.random()*emojis.length)];
+  const roomId=genId();
+  const roomData={id:roomId,name,emoji,pinHash:pin?h32(pin):'',createdBy:CU.username,members:[CU.username],msgs:[],createdAt:Date.now(),game:null,gameState:null,typing:{}};
+  startLoading('Creating room...');
+  try{
+    const ok=await S.set('vroom:'+roomId,JSON.stringify(roomData),true);
+    if(!ok&&!STORAGE_AVAILABLE){
+      stopLoading();
+      toast('⚠️ Shared storage not available. Room may not sync cross-device.');
+    }
+    // Verify it was saved
+    const verify=await S.get('vroom:'+roomId,true);
+    if(!verify&&STORAGE_AVAILABLE){
+      stopLoading();toast('❌ Could not save room. Please try again.');return;
+    }
+    myRooms.unshift({id:roomId,name,emoji});
+    saveMyRooms();
+    showLastRoomId(roomId);
+    stopLoading();closeModal('createModal');renderRooms();
+    toast('✅ Room created! Share ID: '+roomId);
+    // Auto-open the room
+    setTimeout(()=>openRoom(roomId),500);
+  }catch(e){stopLoading();toast('❌ '+e.message);}
+}
+
+async function joinRoom(){
+  const rid=$('jrId').value.trim().replace(/\s/g,'');
+  const pin=$('jrPin').value.trim();
+  if(!rid){toast('⚠️ Enter Room ID!');return;}
+  startLoading('Finding room...');
+  try{
+    const raw=await S.get('vroom:'+rid,true);
+    if(!raw){
+      stopLoading();
+      if(!STORAGE_AVAILABLE){
+        showErr('joinErr','❌ Shared storage not available on this device. Both users must use the same Claude artifact session.');
+      } else {
+        showErr('joinErr','❌ Room not found! Check the Room ID. Make sure friend created the room first.');
+      }
+      return;
+    }
+    const d=JSON.parse(raw);
+    if(d.pinHash&&pin&&d.pinHash!==h32(pin)){stopLoading();showErr('joinErr','❌ Wrong room PIN!');return;}
+    if(d.pinHash&&!pin&&d.pinHash!==''){stopLoading();showErr('joinErr','❌ This room has a PIN! Enter it.');return;}
+    if(!d.members)d.members=[];
+    if(!d.members.includes(CU.username))d.members.push(CU.username);
+    if(!d.msgs)d.msgs=[];
+    await S.set('vroom:'+rid,JSON.stringify(d),true);
+    if(!myRooms.find(r=>r.id===rid)){myRooms.unshift({id:rid,name:d.name,emoji:d.emoji||'💬'});saveMyRooms();}
+    showLastRoomId(rid);
+    stopLoading();closeModal('joinModal');renderRooms();
+    toast('✅ Joined: '+d.name+'!');
+    setTimeout(()=>openRoom(rid),500);
+  }catch(e){stopLoading();showErr('joinErr','❌ Error: '+e.message);}
+}
+
+async function openRoom(roomId){
+  startLoading('Opening room...');
+  try{
+    const raw=await S.get('vroom:'+roomId,true);
+    if(!raw){stopLoading();toast('❌ Room not found!');return;}
+    const d=JSON.parse(raw);
+    currentRoomId=roomId;chatMsgs=d.msgs||[];lastPollMsgCount=chatMsgs.length;
+    if(!d.members)d.members=[];
+    if(!d.members.includes(CU.username)){d.members.push(CU.username);await S.set('vroom:'+roomId,JSON.stringify(d),true);}
+    $('rhName').textContent=(d.emoji||'💬')+' '+(d.name||roomId);
+    $('rhMembers').textContent=d.members.join(', ');
+    $('modalRoomIdVal').textContent=roomId;
+    stopLoading();
+    goScreen('roomScr');
+    setRoomTab('chat');
+    renderChatMsgs();
+    // Heartbeat
+    try{await S.set('vhb:'+roomId+':'+CU.username,Date.now().toString(),true);}catch(e){}
+    updateOnline(d.members,roomId);
+    startPolling(roomId);
+    if(d.game&&d.gameState){currentGame={type:d.game,state:d.gameState};renderGameUI(d.game,d.gameState);}
+  }catch(e){stopLoading();toast('❌ '+e.message);}
+}
+
+function showRoomId(){if(currentRoomId){openModal('roomIdModal');}}
+function copyModalRoomId(){const rid=$('modalRoomIdVal').textContent;try{navigator.clipboard?.writeText(rid);}catch(e){}toast('📋 Copied: '+rid);closeModal('roomIdModal');}
+function shareModalRoomId(){const rid=$('modalRoomIdVal').textContent;if(navigator.share){navigator.share({title:'Join my room!',text:'Room ID: '+rid}).catch(()=>{});}else{copyModalRoomId();}}
+
+function stopAllPolls(){clearInterval(pollTimer);clearInterval(hbTimer);pollTimer=null;hbTimer=null;}
+
+function startPolling(roomId){
+  stopAllPolls();
+  // Poll every 1.5 seconds for fast sync
+  pollTimer=setInterval(()=>pollRoom(roomId),1500);
+  // Heartbeat every 8 seconds
+  hbTimer=setInterval(async()=>{
+    try{await S.set('vhb:'+roomId+':'+CU.username,Date.now().toString(),true);}catch(e){}
+    updateOnline(null,roomId);
+  },8000);
+  setConnStatus(true);
+}
+
+function setConnStatus(connected){
+  const bar=$('connBar'),txt=$('connTxt');
+  if(!bar)return;
+  if(connected){bar.className='conn-bar';txt.textContent='Connected · Live sync every 1.5s';}
+  else{bar.className='conn-bar offline';txt.textContent='Connection lost. Retrying...';}
+}
+
+async function pollRoom(roomId){
+  if(!currentRoomId)return;
+  try{
+    const raw=await S.get('vroom:'+roomId,true);
+    if(!raw){setConnStatus(false);return;}
+    setConnStatus(true);
+    const d=JSON.parse(raw);
+    const msgs=d.msgs||[];
+    const atBot=isAtBottom($('msgsEl'));
+    // New messages arrived
+    if(msgs.length>lastPollMsgCount){
+      const newMsgs=msgs.slice(lastPollMsgCount);
+      lastPollMsgCount=msgs.length;
+      chatMsgs=msgs;
+      const box=$('msgsEl');
+      if(box.innerHTML.includes('No messages yet')||box.innerHTML.includes('No messages'))box.innerHTML='';
+      newMsgs.forEach(m=>{
+        // Don't re-render own messages (already shown optimistically)
+        if(m.sender!==CU.username){box.appendChild(buildMsgBubble(m));}
+      });
+      if(atBot)box.scrollTop=box.scrollHeight;
+    }
+    // Typing indicator
+    const typing=d.typing||{};
+    const others=Object.entries(typing).filter(([u,ts])=>u!==CU.username&&Date.now()-parseInt(ts)<4000);
+    $('typingEl').classList.toggle('show',others.length>0);
+    // Members
+    $('rhMembers').textContent=(d.members||[]).join(', ');
+    updateOnline(d.members,roomId);
+    // Game sync
+    if(d.game&&d.gameState){syncGameFromServer(d.game,d.gameState);}
+  }catch(e){setConnStatus(false);}
+}
+
+function isAtBottom(el){if(!el)return true;return el.scrollHeight-el.scrollTop-el.clientHeight<90;}
+
+async function updateOnline(members,roomId){
+  if(!members){
+    try{const raw=await S.get('vroom:'+roomId,true);if(raw)members=JSON.parse(raw).members||[];}catch(e){return;}
+  }
+  let count=0;
+  for(const m of(members||[])){
+    try{const ts=await S.get('vhb:'+roomId+':'+m,true);if(ts&&Date.now()-parseInt(ts)<25000)count++;}catch(e){}
+  }
+  $('rhOnline').textContent='● '+count+' online';
+}
+
+function leaveRoomScreen(){stopAllPolls();currentRoomId=null;chatMsgs=[];lastPollMsgCount=-1;goScreen('vaultScr');renderRooms();}
+
+function renderChatMsgs(){
+  const box=$('msgsEl');
+  box.innerHTML='';
+  lastPollMsgCount=chatMsgs.length;
+  if(!chatMsgs.length){box.innerHTML='<div style="text-align:center;color:var(--t3);font-size:13px;padding:40px 20px">No messages yet!<br>Say hi! 👋</div>';return;}
+  let lastDate='';
+  chatMsgs.forEach(m=>{
+    if(m.date&&m.date!==lastDate){const d=document.createElement('div');d.className='msg-divider';d.textContent=m.date;box.appendChild(d);lastDate=m.date;}
+    box.appendChild(buildMsgBubble(m));
+  });
+  box.scrollTop=box.scrollHeight;
+}
+
+function buildMsgBubble(m){
+  const out=m.sender===CU.username;
+  const wrap=document.createElement('div');wrap.className='msg-row '+(out?'out':'in');
+  const sn=document.createElement('div');sn.className='msg-sender';sn.textContent=out?('👤 '+m.sender):('💚 '+m.sender);wrap.appendChild(sn);
+  const bub=document.createElement('div');bub.className='msg-bub '+(out?'out':'in');
+  bub.dataset.id=m.id;bub.dataset.txt=m.text;
+  bub.innerHTML=escHtml(m.text||'')+`<div class="msg-meta"><span class="msg-time">${m.time||''}</span>${out?'<span style="font-size:10px;opacity:.5">✓✓</span>':''}</div>`;
+  bub.addEventListener('contextmenu',ev=>{ev.preventDefault();showCtx(ev,m.id,m.text);});
+  bub.addEventListener('touchstart',()=>{window._ctTimer=setTimeout(()=>showCtx(null,m.id,m.text),600);},{passive:true});
+  bub.addEventListener('touchend',()=>clearTimeout(window._ctTimer));
+  wrap.appendChild(bub);return wrap;
+}
+
+async function sendMessage(){
+  if(sendLock||!currentRoomId)return;
+  const inp=$('chatInpEl');const t=inp.value.trim();if(!t)return;
+  sendLock=true;inp.value='';inp.style.height='auto';
+  const msg={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),sender:CU.username,text:t,time:gTime(),date:gDate()};
+  // Optimistic render
+  const box=$('msgsEl');
+  if(box.innerHTML.includes('No messages'))box.innerHTML='';
+  box.appendChild(buildMsgBubble(msg));box.scrollTop=box.scrollHeight;
+  heartFloat();
+  try{
+    const raw=await S.get('vroom:'+currentRoomId,true);
+    if(raw){
+      const d=JSON.parse(raw);
+      if(!d.msgs)d.msgs=[];
+      d.msgs.push(msg);
+      if(d.msgs.length>500)d.msgs=d.msgs.slice(-500);
+      await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);
+      chatMsgs=d.msgs;lastPollMsgCount=chatMsgs.length;
+    }
+  }catch(e){toast('⚠️ Message may not have sent');}
+  try{await clearTyping();}catch(e){}
+  sendLock=false;
+}
+
 function sendEnter(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
 function autoHeight(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
+
 let typTimer=null;
-async function sendTyping(){if(!currentRoomId)return;clearTimeout(typTimer);try{const raw=await S.get('vroom:'+currentRoomId,true);if(raw){const d=JSON.parse(raw);if(!d.typing)d.typing={};d.typing[CU.username]=Date.now();await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);}}catch(e){}typTimer=setTimeout(clearTyping,3000);}
-async function clearTyping(){if(!currentRoomId)return;try{const raw=await S.get('vroom:'+currentRoomId,true);if(raw){const d=JSON.parse(raw);if(d.typing){delete d.typing[CU.username];await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);}}}catch(e){}}
+async function sendTyping(){
+  if(!currentRoomId)return;
+  clearTimeout(typTimer);
+  try{
+    const raw=await S.get('vroom:'+currentRoomId,true);
+    if(raw){const d=JSON.parse(raw);if(!d.typing)d.typing={};d.typing[CU.username]=Date.now();await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);}
+  }catch(e){}
+  typTimer=setTimeout(clearTyping,3000);
+}
+async function clearTyping(){
+  if(!currentRoomId)return;
+  try{const raw=await S.get('vroom:'+currentRoomId,true);if(raw){const d=JSON.parse(raw);if(d.typing){delete d.typing[CU.username];await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);}}}catch(e){}
+}
+
 function toggleEmoji(){emojiOpen=!emojiOpen;$('emojiPick').classList.toggle('show',emojiOpen);}
 function addEmoji(e){const i=$('chatInpEl');i.value+=e;i.focus();emojiOpen=false;$('emojiPick').classList.remove('show');}
+
 let ctxId=null,ctxTxt='';
 function showCtx(ev,id,txt){ctxId=id;ctxTxt=txt;const m=$('ctxMenu');m.classList.add('show');if(ev){let x=ev.clientX,y=ev.clientY;if(x+170>window.innerWidth)x=window.innerWidth-175;if(y+110>window.innerHeight)y=window.innerHeight-120;m.style.left=x+'px';m.style.top=y+'px';m.style.transform='';}else{m.style.left='50%';m.style.top='50%';m.style.transform='translate(-50%,-50%)';}}
 function closeCtxMenu(){$('ctxMenu').classList.remove('show');$('ctxMenu').style.transform='';}
-function ctxCopy(){if(ctxTxt)navigator.clipboard?.writeText(ctxTxt).catch(()=>{});closeCtxMenu();toast('📋 Copied!');}
-function ctxDeleteMsg(){$('delIco').textContent='🗑️';$('delH').textContent='Delete message?';$('delP').textContent='Removes from room for everyone.';$('delOverlay').classList.add('show');closeCtxMenu();}
-async function confirmDelete(){if(!ctxId||!currentRoomId){closeDelModal();return;}chatMsgs=chatMsgs.filter(m=>m.id!==ctxId);lastMsgCount=chatMsgs.length;try{const raw=await S.get('vroom:'+currentRoomId,true);if(raw){const d=JSON.parse(raw);d.msgs=chatMsgs;await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);}}catch(e){}renderChatMsgs();closeDelModal();}
+function ctxCopy(){if(ctxTxt)try{navigator.clipboard?.writeText(ctxTxt);}catch(e){}closeCtxMenu();toast('📋 Copied!');}
+function ctxDeleteMsg(){$('delOverlay').classList.add('show');closeCtxMenu();}
+async function confirmDelete(){
+  if(!ctxId||!currentRoomId){closeDelModal();return;}
+  chatMsgs=chatMsgs.filter(m=>m.id!==ctxId);lastPollMsgCount=chatMsgs.length;
+  try{const raw=await S.get('vroom:'+currentRoomId,true);if(raw){const d=JSON.parse(raw);d.msgs=chatMsgs;await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);}}catch(e){}
+  renderChatMsgs();closeDelModal();
+}
 function closeDelModal(){$('delOverlay').classList.remove('show');}
-function setRoomTab(tab){['chat','game','members'].forEach(t=>{$('rt-'+t).classList.toggle('on',t===tab);const el=$('tab'+t.charAt(0).toUpperCase()+t.slice(1));if(!el)return;el.style.display=t===tab?(t==='chat'?'flex':'block'):'none';if(t==='chat')el.style.flexDirection='column';});if(tab==='members')renderMembers();}
-async function renderMembers(){const el=$('membersEl');if(!el)return;try{const raw=await S.get('vroom:'+currentRoomId,true);if(!raw)return;const d=JSON.parse(raw);const members=d.members||[];el.innerHTML=members.map(m=>`<div class="member-item"><div class="mi-av">👤</div><div class="mi-name">${escHtml(m)}</div>${m===CU.username?'<span class="mi-you">You</span>':''}<span class="mi-online off" id="mionl-${m.replace(/\W/g,'_')}">—</span></div>`).join('');for(const m of members){try{const ts=await S.get('vhb:'+currentRoomId+':'+m,true);const online=ts&&Date.now()-parseInt(ts)<30000;const el2=$('mionl-'+m.replace(/\W/g,'_'));if(el2){el2.textContent=online?'● Online':'○ Offline';el2.className='mi-online '+(online?'on':'off');}}catch(e){}}}catch(e){}}
 
-// Games
+function setRoomTab(tab){
+  ['chat','game','members'].forEach(t=>{
+    $('rt-'+t).classList.toggle('on',t===tab);
+    const el=$('tab'+t.charAt(0).toUpperCase()+t.slice(1));
+    if(!el)return;
+    if(t==='chat'){el.style.display=tab===t?'flex':'none';if(tab===t)el.style.flexDirection='column';}
+    else{el.style.display=tab===t?(t==='game'?'flex':'block'):'none';}
+  });
+  if(tab==='members')renderMembers();
+}
+
+async function renderMembers(){
+  const el=$('membersEl');if(!el)return;
+  try{
+    const raw=await S.get('vroom:'+currentRoomId,true);
+    if(!raw)return;
+    const d=JSON.parse(raw);const members=d.members||[];
+    el.innerHTML=`<div style="background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.14);border-radius:14px;padding:12px 14px;margin-bottom:14px;font-size:12px;color:rgba(129,140,248,.8)">📋 Room ID: <b style="font-family:var(--fc);color:var(--c1)">${currentRoomId}</b><br><button onclick="copyRid('${currentRoomId}')" style="margin-top:8px;padding:6px 14px;border-radius:8px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);color:var(--c1);font-family:var(--f);font-size:12px;font-weight:700;cursor:pointer">📋 Copy Room ID to share</button></div>`+
+    members.map(m=>`<div class="member-item"><div class="mi-av">👤</div><div class="mi-name">${escHtml(m)}</div>${m===CU.username?'<span class="mi-you">You</span>':''}<span class="mi-online off" id="mionl-${m.replace(/\W/g,'_')}">...</span></div>`).join('');
+    for(const m of members){
+      try{const ts=await S.get('vhb:'+currentRoomId+':'+m,true);const online=ts&&Date.now()-parseInt(ts)<25000;const el2=$('mionl-'+m.replace(/\W/g,'_'));if(el2){el2.textContent=online?'● Online':'○ Offline';el2.className='mi-online '+(online?'on':'off');}}catch(e){}
+    }
+  }catch(e){}
+}
+
+// ══════════════════════════════════════════
+// GAMES
+// ══════════════════════════════════════════
 let currentGame=null,drawCtx=null,isDrawing=false,drawColor='#000',drawSize=5;
+
 function openGamePicker(){if(!currentRoomId){toast('⚠️ Open a room first!');return;}openModal('gamePickModal');}
-async function launchRoomGame(type){closeModal('gamePickModal');const initState=getInitState(type);currentGame={type,state:initState};try{const raw=await S.get('vroom:'+currentRoomId,true);if(raw){const d=JSON.parse(raw);d.game=type;d.gameState=initState;await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);}}catch(e){}setRoomTab('game');renderGameUI(type,initState);}
-function quickGame(type){toast('💡 Open a room first, then tap 🎮 to start '+type+'!');}
-function getInitState(type){if(type==='ttt')return{board:Array(9).fill(''),turn:'X',xP:CU.username,oP:null,winner:null,scores:{}};if(type==='wordguess')return{word:getRandWord(),guessed:[],misses:0};if(type==='quiz')return{qIdx:0,scores:{},answered:undefined};if(type==='tod')return{idx:0,type:null};if(type==='nhie')return{idx:0,votes:{have:[],never:[]}};if(type==='draw')return{word:getRandDrawWord(),drawer:CU.username,guesses:[],drawData:null};return{};}
-function syncGameFromServer(type,state){if(!currentGame||currentGame.type!==type){currentGame={type,state};}else{currentGame.state=state;}if($('tabGame').style.display!=='none')renderGameUI(type,state);}
-async function pushGameState(state){if(!currentRoomId)return;currentGame.state=state;try{const raw=await S.get('vroom:'+currentRoomId,true);if(raw){const d=JSON.parse(raw);d.gameState=state;await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);}}catch(e){}}
-function renderGameUI(type,state){const area=$('gameAreaEl');if(!area)return;if(type==='ttt')renderTTT(area,state);else if(type==='wordguess')renderWordGuess(area,state);else if(type==='quiz')renderQuiz(area,state);else if(type==='tod')renderTOD(area,state);else if(type==='nhie')renderNHIE(area,state);else if(type==='draw')renderDraw(area,state);}
+async function launchRoomGame(type){
+  closeModal('gamePickModal');
+  const initState=getInitState(type);
+  currentGame={type,state:initState};
+  try{const raw=await S.get('vroom:'+currentRoomId,true);if(raw){const d=JSON.parse(raw);d.game=type;d.gameState=initState;await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);}}catch(e){}
+  setRoomTab('game');renderGameUI(type,initState);
+}
+function quickGame(type){toast('💡 Room open பண்ணி → 🎮 button → '+type+' start பண்ணு!');}
+function getInitState(type){
+  if(type==='ttt')return{board:Array(9).fill(''),turn:'X',xP:CU.username,oP:null,winner:null,scores:{}};
+  if(type==='wordguess')return{word:getRandWord(),guessed:[],misses:0};
+  if(type==='quiz')return{qIdx:0,scores:{},answered:null};
+  if(type==='tod')return{idx:0,type:null};
+  if(type==='nhie')return{idx:0,votes:{have:[],never:[]},revealed:false};
+  if(type==='draw')return{word:getRandDrawWord(),drawer:CU.username,guesses:[],drawData:null};
+  return{};
+}
+function syncGameFromServer(type,state){
+  if(!currentGame||currentGame.type!==type){currentGame={type,state};}
+  else{currentGame.state=state;}
+  if($('tabGame').style.display!=='none')renderGameUI(type,state);
+}
+async function pushGameState(state){
+  if(!currentRoomId)return;currentGame.state=state;
+  try{const raw=await S.get('vroom:'+currentRoomId,true);if(raw){const d=JSON.parse(raw);d.gameState=state;await S.set('vroom:'+currentRoomId,JSON.stringify(d),true);}}catch(e){}
+}
+function renderGameUI(type,state){
+  const area=$('gameAreaEl');if(!area)return;
+  if(type==='ttt')renderTTT(area,state);
+  else if(type==='wordguess')renderWordGuess(area,state);
+  else if(type==='quiz')renderQuiz(area,state);
+  else if(type==='tod')renderTOD(area,state);
+  else if(type==='nhie')renderNHIE(area,state);
+  else if(type==='draw')renderDraw(area,state);
+}
+
 const WIN_LINES=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-function renderTTT(area,s){const myMark=s.xP===CU.username?'X':s.oP===CU.username?'O':null;const myTurn=!s.winner&&s.turn===myMark;let winCells=[];if(s.winner&&s.winner!=='Draw'){for(const l of WIN_LINES){if(l.every(i=>s.board[i]===s.winner)){winCells=l;break;}}}area.innerHTML=`<div style="padding:16px;display:flex;flex-direction:column;align-items:center;gap:14px;flex:1;overflow-y:auto"><div style="display:flex;gap:10px;width:100%;max-width:320px"><div style="flex:1;text-align:center;padding:10px;border-radius:14px;background:${s.xP===CU.username?'rgba(99,102,241,.14)':'rgba(22,22,42,.6)'};border:1.5px solid ${s.turn==='X'&&!s.winner?'var(--c1)':'var(--border)'}"><div style="font-size:20px;margin-bottom:2px">❌</div><div style="font-size:12px;font-weight:700;color:var(--t1)">${escHtml(s.xP||'Player 1')}</div><div style="font-size:10px;color:var(--t3)">${(s.scores||{})[s.xP]||0} win(s)</div></div><div style="display:flex;align-items:center;font-size:11px;color:var(--t3);font-weight:700">VS</div><div style="flex:1;text-align:center;padding:10px;border-radius:14px;background:${s.oP===CU.username?'rgba(236,72,153,.1)':'rgba(22,22,42,.6)'};border:1.5px solid ${s.turn==='O'&&!s.winner?'var(--g1)':'var(--border)'}"><div style="font-size:20px;margin-bottom:2px">⭕</div><div style="font-size:12px;font-weight:700;color:var(--t1)">${escHtml(s.oP||'Waiting...')}</div><div style="font-size:10px;color:var(--t3)">${(s.scores||{})[s.oP]||0} win(s)</div></div></div><div style="font-size:13px;font-weight:600;color:${s.winner?'var(--green)':myTurn?'var(--c1)':'var(--t3)'};padding:8px 18px;border-radius:20px;background:${s.winner?'rgba(16,185,129,.1)':myTurn?'rgba(99,102,241,.1)':'rgba(22,22,42,.6)'};border:1px solid ${s.winner?'rgba(16,185,129,.2)':myTurn?'rgba(99,102,241,.2)':'var(--border)'}"> ${s.winner==='Draw'?"🤝 It's a draw!":s.winner?'🏆 '+s.winner+' wins!':myTurn?'Your turn! ('+myMark+')':!myMark?'⏳ Waiting to be assigned...':'⏳ Partner\'s turn...'}</div><div class="ttt-board" style="width:100%;max-width:280px">${s.board.map((cell,i)=>`<div class="ttt-cell ${cell==='X'?'x-mark':cell==='O'?'o-mark':''} ${winCells.includes(i)?'win-cell':''}" onclick="tttClick(${i})">${cell==='X'?'❌':cell==='O'?'⭕':''}</div>`).join('')}</div>${s.winner?`<button onclick="tttReset()" style="padding:11px 26px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">🔄 Play Again</button>`:''}${!s.oP&&myMark!=='O'?`<div style="font-size:12px;color:var(--yellow);text-align:center;padding:9px 15px;background:rgba(245,158,11,.08);border-radius:12px;border:1px solid rgba(245,158,11,.15)">⏳ Waiting for partner...</div>`:''}</div>`; if(!s.oP&&s.xP!==CU.username&&!s.winner){s.oP=CU.username;pushGameState(s);}}
-async function tttClick(idx){if(!currentGame||currentGame.type!=='ttt')return;const s=currentGame.state;if(s.board[idx]||s.winner)return;const myMark=s.xP===CU.username?'X':s.oP===CU.username?'O':null;if(!myMark||s.turn!==myMark)return;s.board[idx]=myMark;const w=checkWinner(s.board);if(w){s.winner=w;if(!s.scores)s.scores={};if(w!=='Draw')s.scores[w==='X'?s.xP:s.oP]=((s.scores[w==='X'?s.xP:s.oP]||0)+1);}else{s.turn=s.turn==='X'?'O':'X';}await pushGameState(s);renderTTT($('gameAreaEl'),s);}
+function renderTTT(area,s){
+  const myMark=s.xP===CU.username?'X':s.oP===CU.username?'O':null;
+  const myTurn=!s.winner&&s.turn===myMark;
+  let winCells=[];
+  if(s.winner&&s.winner!=='Draw'){for(const l of WIN_LINES){if(l.every(i=>s.board[i]===s.winner)){winCells=l;break;}}}
+  area.innerHTML=`<div style="padding:16px;display:flex;flex-direction:column;align-items:center;gap:14px;flex:1;overflow-y:auto">
+    <div style="display:flex;gap:10px;width:100%;max-width:320px">
+      <div style="flex:1;text-align:center;padding:10px;border-radius:14px;background:${s.xP===CU.username?'rgba(99,102,241,.14)':'rgba(22,22,42,.6)'};border:1.5px solid ${s.turn==='X'&&!s.winner?'var(--c1)':'var(--border)'}"><div style="font-size:20px">❌</div><div style="font-size:12px;font-weight:700;color:var(--t1)">${escHtml(s.xP||'P1')}</div><div style="font-size:10px;color:var(--t3)">${(s.scores||{})[s.xP]||0} wins</div></div>
+      <div style="display:flex;align-items:center;font-size:11px;color:var(--t3);font-weight:700">VS</div>
+      <div style="flex:1;text-align:center;padding:10px;border-radius:14px;background:${s.oP===CU.username?'rgba(236,72,153,.1)':'rgba(22,22,42,.6)'};border:1.5px solid ${s.turn==='O'&&!s.winner?'var(--g1)':'var(--border)'}"><div style="font-size:20px">⭕</div><div style="font-size:12px;font-weight:700;color:var(--t1)">${escHtml(s.oP||'Waiting...')}</div><div style="font-size:10px;color:var(--t3)">${(s.scores||{})[s.oP]||0} wins</div></div>
+    </div>
+    <div style="font-size:13px;font-weight:600;color:${s.winner?'var(--green)':myTurn?'var(--c1)':'var(--t3)'};padding:8px 18px;border-radius:20px;background:${s.winner?'rgba(16,185,129,.1)':myTurn?'rgba(99,102,241,.1)':'rgba(22,22,42,.6)'};border:1px solid ${s.winner?'rgba(16,185,129,.2)':myTurn?'rgba(99,102,241,.2)':'var(--border)'}">
+      ${s.winner==='Draw'?"🤝 Draw!":s.winner?'🏆 '+s.winner+' wins!':myTurn?'Your turn ('+myMark+')':!myMark?'⏳ Waiting for mark...':'⏳ Partner\'s turn'}
+    </div>
+    <div class="ttt-board" style="width:100%;max-width:280px">${s.board.map((cell,i)=>`<div class="ttt-cell ${cell==='X'?'x-mark':cell==='O'?'o-mark':''} ${winCells.includes(i)?'win-cell':''}" onclick="tttClick(${i})">${cell==='X'?'❌':cell==='O'?'⭕':''}</div>`).join('')}</div>
+    ${s.winner?`<button onclick="tttReset()" style="padding:11px 26px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">🔄 Play Again</button>`:''}
+  </div>`;
+  if(!s.oP&&s.xP!==CU.username&&!s.winner){s.oP=CU.username;pushGameState(s);}
+}
+async function tttClick(idx){
+  if(!currentGame||currentGame.type!=='ttt')return;
+  const s=currentGame.state;if(s.board[idx]||s.winner)return;
+  const myMark=s.xP===CU.username?'X':s.oP===CU.username?'O':null;
+  if(!myMark||s.turn!==myMark)return;
+  s.board[idx]=myMark;
+  const w=checkWinner(s.board);
+  if(w){s.winner=w;if(!s.scores)s.scores={};if(w!=='Draw')s.scores[w==='X'?s.xP:s.oP]=((s.scores[w==='X'?s.xP:s.oP]||0)+1);}
+  else{s.turn=s.turn==='X'?'O':'X';}
+  await pushGameState(s);renderTTT($('gameAreaEl'),s);
+}
 function checkWinner(b){for(const[a,c,d]of WIN_LINES){if(b[a]&&b[a]===b[c]&&b[a]===b[d])return b[a];}return b.every(c=>c)?'Draw':null;}
 async function tttReset(){const s={...currentGame.state,board:Array(9).fill(''),turn:'X',winner:null};await pushGameState(s);renderTTT($('gameAreaEl'),s);}
-const WORD_LIST=[{w:'INDIA',h:'Largest democracy'},{w:'TAMIL',h:'Ancient Dravidian language'},{w:'PONGAL',h:'Tamil harvest festival'},{w:'CRICKET',h:'Most popular sport in India'},{w:'TEMPLE',h:'Hindu place of worship'},{w:'SCHOOL',h:'Place of learning'},{w:'OCEAN',h:'Largest water body'},{w:'SCIENCE',h:'Study of natural world'},{w:'HISTORY',h:'Study of past events'},{w:'DIWALI',h:'Festival of lights'}];
+
+const WORD_LIST=[{w:'INDIA',h:'Largest democracy'},{w:'TAMIL',h:'Ancient Dravidian language'},{w:'PONGAL',h:'Harvest festival'},{w:'CRICKET',h:'Popular sport'},{w:'TEMPLE',h:'Hindu worship place'},{w:'SCHOOL',h:'Place of learning'},{w:'OCEAN',h:'Largest water body'},{w:'SCIENCE',h:'Study of nature'},{w:'HISTORY',h:'Study of past'},{w:'DIWALI',h:'Festival of lights'}];
 function getRandWord(){return WORD_LIST[Math.floor(Math.random()*WORD_LIST.length)];}
-function renderWordGuess(area,s){const word=s.word?.w||'';const hint=s.word?.h||'';const guessed=s.guessed||[];const misses=s.misses||0;const max=6;const won=word.split('').every(c=>guessed.includes(c));const lost=misses>=max;const hangParts=['😵','😨','😰','😟','😐','🙂','😄'];area.innerHTML=`<div style="padding:14px;display:flex;flex-direction:column;gap:12px;flex:1;overflow-y:auto"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:28px">${hangParts[Math.max(0,6-misses)]}</div><div style="font-size:13px;font-weight:600;color:var(--t2)">Mistakes: <b style="color:${misses>=4?'var(--red)':'var(--t1)'}">${misses}/${max}</b></div></div><div style="height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden"><div style="height:100%;width:${(misses/max)*100}%;background:linear-gradient(90deg,var(--green),${misses>=4?'var(--red)':'var(--yellow)'});border-radius:3px;transition:.4s"></div></div><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">${word.split('').map(c=>`<div class="wletter ${guessed.includes(c)?'revealed':''}">${guessed.includes(c)||lost?c:'_'}</div>`).join('')}</div><div style="background:rgba(22,22,42,.6);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-size:12px;color:var(--t2);text-align:center">💡 ${hint}</div>${won?`<div style="text-align:center;font-size:15px;font-weight:700;color:var(--green);padding:14px;background:rgba(16,185,129,.1);border-radius:14px">🎉 "${word}" — Correct!</div><button onclick="wordReset()" style="padding:11px 24px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer;align-self:center">🔄 New Word</button>`:lost?`<div style="text-align:center;font-size:14px;font-weight:600;color:var(--red);padding:12px;background:rgba(239,68,68,.08);border-radius:14px">❌ Word was: <b>${word}</b></div><button onclick="wordReset()" style="padding:11px 24px;border-radius:14px;background:linear-gradient(135deg,#ef4444,#dc2626);border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer;align-self:center">🔄 Try Again</button>`:`<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px">${'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(c=>`<button class="alpha-btn ${guessed.includes(c)?(word.includes(c)?'got':'miss'):''}" onclick="guessLetter('${c}')" ${guessed.includes(c)?'disabled':''}>${c}</button>`).join('')}</div>`}</div>`;}
-async function guessLetter(c){if(!currentGame||currentGame.type!=='wordguess')return;const s=currentGame.state;if((s.guessed||[]).includes(c))return;if(!s.guessed)s.guessed=[];s.guessed.push(c);if(!s.word.w.includes(c))s.misses=(s.misses||0)+1;await pushGameState(s);renderWordGuess($('gameAreaEl'),s);}
+function renderWordGuess(area,s){
+  const word=s.word?.w||'',hint=s.word?.h||'',guessed=s.guessed||[],misses=s.misses||0,max=6;
+  const won=word.split('').every(c=>guessed.includes(c)),lost=misses>=max;
+  const hangParts=['😵','😨','😰','😟','😐','🙂','😄'];
+  area.innerHTML=`<div style="padding:14px;display:flex;flex-direction:column;gap:12px;flex:1;overflow-y:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:28px">${hangParts[Math.max(0,6-misses)]}</div><div style="font-size:13px;font-weight:600;color:var(--t2)">Mistakes: <b style="color:${misses>=4?'var(--red)':'var(--t1)'}">${misses}/${max}</b></div></div>
+    <div style="height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden"><div style="height:100%;width:${(misses/max)*100}%;background:linear-gradient(90deg,var(--green),${misses>=4?'var(--red)':'var(--yellow)'});border-radius:3px;transition:.4s"></div></div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">${word.split('').map(c=>`<div class="wletter ${guessed.includes(c)?'revealed':''}">${guessed.includes(c)||lost?c:'_'}</div>`).join('')}</div>
+    <div style="background:rgba(22,22,42,.6);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-size:12px;color:var(--t2);text-align:center">💡 ${hint}</div>
+    ${won?`<div style="text-align:center;font-size:15px;font-weight:700;color:var(--green);padding:14px;background:rgba(16,185,129,.1);border-radius:14px">🎉 "${word}" — Correct!</div><button onclick="wordReset()" style="padding:11px 24px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer;align-self:center">🔄 New Word</button>`:lost?`<div style="text-align:center;font-size:14px;font-weight:600;color:var(--red);padding:12px;background:rgba(239,68,68,.08);border-radius:14px">❌ Word: <b>${word}</b></div><button onclick="wordReset()" style="padding:11px 24px;border-radius:14px;background:linear-gradient(135deg,#ef4444,#dc2626);border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer;align-self:center">🔄 Try Again</button>`:`<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px">${'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(c=>`<button class="alpha-btn ${guessed.includes(c)?(word.includes(c)?'got':'miss'):''}" onclick="guessLetter('${c}')" ${guessed.includes(c)?'disabled':''}>${c}</button>`).join('')}</div>`}
+  </div>`;
+}
+async function guessLetter(c){if(!currentGame||currentGame.type!=='wordguess')return;const s=currentGame.state;if(!s.guessed)s.guessed=[];s.guessed.push(c);if(!s.word.w.includes(c))s.misses=(s.misses||0)+1;await pushGameState(s);renderWordGuess($('gameAreaEl'),s);}
 async function wordReset(){const s={...currentGame.state,word:getRandWord(),guessed:[],misses:0};await pushGameState(s);renderWordGuess($('gameAreaEl'),s);}
-const QUIZ=[{q:"Capital of Tamil Nadu?",opts:["Chennai","Madurai","Coimbatore","Salem"],a:0},{q:"TN State bird?",opts:["Peacock","Emerald Dove","Flamingo","Parrot"],a:1},{q:"TN State animal?",opts:["Tiger","Nilgiri Tahr","Elephant","Deer"],a:1},{q:"Who wrote Thirukkural?",opts:["Ilango","Thiruvalluvar","Kambar","Bharati"],a:1},{q:"Marina Beach is in?",opts:["Madurai","Trichy","Chennai","Coimbatore"],a:2},{q:"SSLC exam is for class?",opts:["8th","9th","10th","11th"],a:2},{q:"Pongal is in which month?",opts:["December","January","February","March"],a:1},{q:"Number of districts in TN?",opts:["32","36","38","40"],a:2},{q:"TN State flower?",opts:["Lotus","Gloriosa Lily","Rose","Jasmine"],a:1},{q:"River through Chennai?",opts:["Cauvery","Vaigai","Cooum","Palar"],a:2},{q:"Jallikattu sport involves?",opts:["Horses","Bulls","Elephants","Camels"],a:1},{q:"TN borders which ocean?",opts:["Arabian Sea","Bay of Bengal","Pacific","Indian Ocean"],a:1}];
-function renderQuiz(area,s){const qi=s.qIdx||0;const q=QUIZ[qi%QUIZ.length];const myScore=(s.scores||{})[CU.username]||0;if(qi>=QUIZ.length){renderQuizEnd(area,s);return;}const answered=s.answered!==undefined&&s.answered!==null&&s.answered!=='';area.innerHTML=`<div style="padding:14px;display:flex;flex-direction:column;gap:12px;flex:1;overflow-y:auto"><div><div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden"><div style="height:100%;width:${(qi/QUIZ.length)*100}%;background:linear-gradient(90deg,var(--c3),var(--c1));border-radius:2px;transition:.4s"></div></div><div style="display:flex;justify-content:space-between;margin-top:5px"><span style="font-size:11px;color:var(--t3)">Q${qi+1} / ${QUIZ.length}</span><span style="font-size:11px;color:var(--c1);font-weight:700">Your score: ${myScore}</span></div></div><div style="background:rgba(22,22,42,.7);border:1px solid var(--border);border-radius:16px;padding:18px;font-size:15px;font-weight:600;color:var(--t1);line-height:1.5">${q.q}</div><div>${q.opts.map((o,i)=>`<button class="quiz-opt ${answered?(i===q.a?'correct':i===parseInt(s.answered)?'wrong':''):''}" onclick="answerQuiz(${i})" ${answered?'disabled':''}>${o}</button>`).join('')}</div>${answered?`<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">${Object.entries(s.scores||{}).map(([u,sc])=>`<div style="padding:4px 12px;border-radius:20px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);font-size:12px;font-weight:700;color:var(--c1)">${escHtml(u)}: ${sc}</div>`).join('')}</div><button onclick="nextQuizQ()" style="padding:11px 24px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer;align-self:center">${qi+1>=QUIZ.length?'🏆 Results':'Next →'}</button>`:''}</div>`;}
-function renderQuizEnd(area,s){const sorted=Object.entries(s.scores||{}).sort((a,b)=>b[1]-a[1]);area.innerHTML=`<div style="padding:20px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;flex:1;justify-content:center"><div style="font-size:54px">🏆</div><div style="font-size:22px;font-weight:800;color:var(--t1)">Quiz Complete!</div><div style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:280px">${sorted.map(([u,sc],i)=>`<div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:${i===0?'rgba(245,158,11,.1)':'rgba(22,22,42,.6)'};border:1.5px solid ${i===0?'rgba(245,158,11,.3)':'var(--border)'}"><span style="font-size:18px">${['🥇','🥈','🥉'][i]||'🎯'}</span><span style="flex:1;font-size:13px;font-weight:700;color:var(--t1)">${escHtml(u)}</span><span style="font-size:15px;font-weight:800;color:${i===0?'var(--yellow)':'var(--c1)'}">${sc}pts</span></div>`).join('')}</div><button onclick="launchRoomGame('quiz')" style="padding:11px 24px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">🔄 Play Again</button></div>`;}
-async function answerQuiz(choice){if(!currentGame||currentGame.type!=='quiz')return;const s=currentGame.state;if(s.answered!==undefined&&s.answered!==null&&s.answered!=='')return;const q=QUIZ[(s.qIdx||0)%QUIZ.length];s.answered=choice;if(choice===q.a){if(!s.scores)s.scores={};s.scores[CU.username]=(s.scores[CU.username]||0)+10;}await pushGameState(s);renderQuiz($('gameAreaEl'),s);}
+
+const QUIZ=[{q:"Capital of Tamil Nadu?",opts:["Chennai","Madurai","Coimbatore","Salem"],a:0},{q:"TN State bird?",opts:["Peacock","Emerald Dove","Flamingo","Parrot"],a:1},{q:"TN State animal?",opts:["Tiger","Nilgiri Tahr","Elephant","Deer"],a:1},{q:"Who wrote Thirukkural?",opts:["Ilango","Thiruvalluvar","Kambar","Bharati"],a:1},{q:"Marina Beach is in?",opts:["Madurai","Trichy","Chennai","Coimbatore"],a:2},{q:"SSLC exam is for class?",opts:["8th","9th","10th","11th"],a:2},{q:"Pongal is in which month?",opts:["December","January","February","March"],a:1},{q:"TN districts count?",opts:["32","36","38","40"],a:2},{q:"TN State flower?",opts:["Lotus","Gloriosa Lily","Rose","Jasmine"],a:1},{q:"River through Chennai?",opts:["Cauvery","Vaigai","Cooum","Palar"],a:2}];
+function renderQuiz(area,s){const qi=s.qIdx||0;if(qi>=QUIZ.length){renderQuizEnd(area,s);return;}const q=QUIZ[qi];const myScore=(s.scores||{})[CU.username]||0;const answered=s.answered!==null&&s.answered!==undefined;area.innerHTML=`<div style="padding:14px;display:flex;flex-direction:column;gap:12px;flex:1;overflow-y:auto"><div><div style="height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden"><div style="height:100%;width:${(qi/QUIZ.length)*100}%;background:linear-gradient(90deg,var(--c3),var(--c1));transition:.4s"></div></div><div style="display:flex;justify-content:space-between;margin-top:5px"><span style="font-size:11px;color:var(--t3)">Q${qi+1}/${QUIZ.length}</span><span style="font-size:11px;color:var(--c1);font-weight:700">Score: ${myScore}</span></div></div><div style="background:rgba(22,22,42,.7);border:1px solid var(--border);border-radius:16px;padding:18px;font-size:15px;font-weight:600;color:var(--t1);line-height:1.5">${q.q}</div><div>${q.opts.map((o,i)=>`<button class="quiz-opt ${answered?(i===q.a?'correct':i===s.answered?'wrong':''):''}" onclick="answerQuiz(${i})" ${answered?'disabled':''}>${o}</button>`).join('')}</div>${answered?`<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">${Object.entries(s.scores||{}).map(([u,sc])=>`<div style="padding:4px 12px;border-radius:20px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);font-size:12px;font-weight:700;color:var(--c1)">${escHtml(u)}: ${sc}</div>`).join('')}</div><button onclick="nextQuizQ()" style="padding:11px 24px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer;align-self:center">${qi+1>=QUIZ.length?'🏆 Results':'Next →'}</button>`:''}</div>`;}
+function renderQuizEnd(area,s){const sorted=Object.entries(s.scores||{}).sort((a,b)=>b[1]-a[1]);area.innerHTML=`<div style="padding:20px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;flex:1;justify-content:center"><div style="font-size:54px">🏆</div><div style="font-size:22px;font-weight:800;color:var(--t1)">Quiz Done!</div><div style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:280px">${sorted.map(([u,sc],i)=>`<div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:${i===0?'rgba(245,158,11,.1)':'rgba(22,22,42,.6)'};border:1.5px solid ${i===0?'rgba(245,158,11,.3)':'var(--border)'}"><span>${['🥇','🥈','🥉'][i]||'🎯'}</span><span style="flex:1;font-size:13px;font-weight:700;color:var(--t1)">${escHtml(u)}</span><span style="font-size:15px;font-weight:800;color:${i===0?'var(--yellow)':'var(--c1)'}">${sc}pts</span></div>`).join('')}</div><button onclick="launchRoomGame('quiz')" style="padding:11px 24px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">🔄 Play Again</button></div>`;}
+async function answerQuiz(choice){if(!currentGame||currentGame.type!=='quiz')return;const s=currentGame.state;if(s.answered!==null&&s.answered!==undefined)return;const q=QUIZ[(s.qIdx||0)%QUIZ.length];s.answered=choice;if(choice===q.a){if(!s.scores)s.scores={};s.scores[CU.username]=(s.scores[CU.username]||0)+10;}await pushGameState(s);renderQuiz($('gameAreaEl'),s);}
 async function nextQuizQ(){const s=currentGame.state;s.qIdx=(s.qIdx||0)+1;s.answered=null;await pushGameState(s);renderQuiz($('gameAreaEl'),s);}
-const TRUTHS=['What is your biggest fear?','Who is your secret crush?','Most embarrassing moment?','A secret you\'ve never told anyone?','Your biggest regret?','Have you lied to your best friend?','What would you change about yourself?','Worst thing you\'ve ever done?','What\'s your biggest insecurity?','Describe your perfect day 😊'];
-const DARES=['Sing a Tamil song for 30 seconds!','Do 10 push-ups right now!','Text your crush something nice!','Speak only in Tamil for 5 mins!','Do a funny dance for 30 seconds!','Say something nice about everyone in this chat!','Show your last photo in camera roll!','Talk in a funny accent for 2 mins!','Explain a love story using emojis only!','Call someone and say "I have a secret!"'];
-function renderTOD(area,s){const item=s.type==='truth'?TRUTHS[s.idx%TRUTHS.length]:s.type==='dare'?DARES[s.idx%DARES.length]:null;area.innerHTML=`<div style="padding:20px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;flex:1;justify-content:center"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--t3)">Round ${(s.idx||0)+1}</div>${item?`<div class="tod-card"><div class="tod-text">${s.type==='truth'?'🎯 Truth: ':'💥 Dare: '}${item}</div></div><button onclick="nextTOD()" style="padding:12px 28px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">Next Round →</button>`:`<div style="font-size:17px;font-weight:700;color:var(--t1)">Choose your fate...</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:280px"><button onclick="pickTOD('truth')" style="padding:16px;border-radius:16px;background:rgba(6,182,212,.14);border:1px solid rgba(6,182,212,.3);color:#06b6d4;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">🎯 Truth</button><button onclick="pickTOD('dare')" style="padding:16px;border-radius:16px;background:rgba(249,115,22,.14);border:1px solid rgba(249,115,22,.3);color:var(--orange);font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">💥 Dare</button></div>`}</div>`;}
+
+const TRUTHS=['What is your biggest fear?','Who is your secret crush?','Most embarrassing moment?','A secret never told?','Biggest regret?','Have you lied to best friend?','What would you change about yourself?','Worst thing you did?','Biggest insecurity?','Describe perfect day 😊'];
+const DARES=['Sing Tamil song for 30 seconds!','Do 10 push-ups now!','Text your crush something nice!','Speak only Tamil for 5 mins!','Do funny dance for 30 seconds!','Say something nice about everyone!','Show last photo in camera roll!','Talk in funny accent for 2 mins!','Tell a love story using emojis only!','Call someone and say I have a secret!'];
+function renderTOD(area,s){const item=s.type==='truth'?TRUTHS[s.idx%TRUTHS.length]:s.type==='dare'?DARES[s.idx%DARES.length]:null;area.innerHTML=`<div style="padding:20px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;flex:1;justify-content:center"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--t3)">Round ${(s.idx||0)+1}</div>${item?`<div class="tod-card"><div class="tod-text">${s.type==='truth'?'🎯 Truth: ':'💥 Dare: '}${item}</div></div><button onclick="nextTOD()" style="padding:12px 28px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">Next →</button>`:`<div style="font-size:17px;font-weight:700;color:var(--t1)">Choose your fate...</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:280px"><button onclick="pickTOD('truth')" style="padding:16px;border-radius:16px;background:rgba(6,182,212,.14);border:1px solid rgba(6,182,212,.3);color:#06b6d4;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">🎯 Truth</button><button onclick="pickTOD('dare')" style="padding:16px;border-radius:16px;background:rgba(249,115,22,.14);border:1px solid rgba(249,115,22,.3);color:var(--orange);font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">💥 Dare</button></div>`}</div>`;}
 async function pickTOD(t){const s=currentGame.state;s.type=t;await pushGameState(s);renderTOD($('gameAreaEl'),s);}
 async function nextTOD(){const s=currentGame.state;s.idx=(s.idx||0)+1;s.type=null;await pushGameState(s);renderTOD($('gameAreaEl'),s);}
-const NHIES=['Never have I ever stayed up all night studying','Never have I ever copied in an exam','Never have I ever had a crush on a teacher','Never have I ever skipped school','Never have I ever lied to my parents about marks','Never have I ever sent a text to the wrong person','Never have I ever stalked someone on social media','Never have I ever cried watching a movie','Never have I ever eaten someone else\'s lunch','Never have I ever broken someone\'s heart'];
+
+const NHIES=['Never have I ever stayed up all night studying','Never have I ever copied in exam','Never have I ever had crush on teacher','Never have I ever skipped school','Never have I ever lied to parents about marks','Never have I ever sent text to wrong person','Never have I ever stalked someone online','Never have I ever cried watching movie','Never have I ever eaten someone elses lunch','Never have I ever broken someones heart'];
 function renderNHIE(area,s){const item=NHIES[s.idx%NHIES.length];const hC=(s.votes?.have||[]).length;const nC=(s.votes?.never||[]).length;const voted=(s.votes?.have||[]).includes(CU.username)||(s.votes?.never||[]).includes(CU.username);area.innerHTML=`<div style="padding:20px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;flex:1;justify-content:center"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--t3)">Round ${(s.idx||0)+1}</div><div style="background:linear-gradient(135deg,rgba(139,92,246,.14),rgba(99,102,241,.1));border:1px solid rgba(139,92,246,.22);border-radius:20px;padding:24px;width:100%;max-width:340px"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--g2);margin-bottom:10px">🙋 Never Have I Ever...</div><div style="font-size:15px;font-weight:600;color:var(--t1);line-height:1.65">${item}</div></div>${voted||s.revealed?`<div style="display:flex;gap:12px;justify-content:center"><div style="padding:5px 16px;border-radius:20px;background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.2);font-size:12px;font-weight:700">✅ Have: ${hC}</div><div style="padding:5px 16px;border-radius:20px;background:rgba(239,68,68,.08);color:var(--red);border:1px solid rgba(239,68,68,.18);font-size:12px;font-weight:700">❌ Never: ${nC}</div></div><button onclick="nextNHIE()" style="padding:12px 28px;border-radius:14px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer">Next →</button>`:`<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:280px"><button onclick="voteNHIE('have')" style="padding:14px;border-radius:16px;background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.3);color:var(--green);font-family:var(--f);font-size:13px;font-weight:700;cursor:pointer">✅ I Have!</button><button onclick="voteNHIE('never')" style="padding:14px;border-radius:16px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:var(--red);font-family:var(--f);font-size:13px;font-weight:700;cursor:pointer">❌ Never!</button></div>`}</div>`;}
 async function voteNHIE(v){const s=currentGame.state;if(!s.votes)s.votes={have:[],never:[]};if(!s.votes[v].includes(CU.username))s.votes[v].push(CU.username);s.revealed=true;await pushGameState(s);renderNHIE($('gameAreaEl'),s);}
 async function nextNHIE(){const s=currentGame.state;s.idx=(s.idx||0)+1;s.votes={have:[],never:[]};s.revealed=false;await pushGameState(s);renderNHIE($('gameAreaEl'),s);}
+
 const DRAW_WORDS=['Cat','Dog','House','Sun','Car','Tree','Flower','Fish','Moon','Book','Heart','School','Mountain','Beach','Rain','Elephant','Bicycle','Guitar','Pizza','Clock'];
 function getRandDrawWord(){return DRAW_WORDS[Math.floor(Math.random()*DRAW_WORDS.length)];}
-function renderDraw(area,s){const isDrawer=s.drawer===CU.username;area.innerHTML=`<div style="display:flex;flex-direction:column;flex:1;overflow:hidden"><div style="padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0"><div style="font-size:14px;font-weight:700;color:var(--t1)">${isDrawer?'🎨 Draw: <b style="color:var(--c1)">'+(s.word||'').toUpperCase()+'</b>':'🔍 Guess the drawing!'}</div>${isDrawer?`<button onclick="clearDrawCanvas()" style="padding:6px 13px;border-radius:10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:var(--red);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">🗑 Clear</button>`:''}</div>${isDrawer?`<div style="display:flex;gap:7px;padding:8px 14px;border-bottom:1px solid var(--border);flex-shrink:0;overflow-x:auto;align-items:center;scrollbar-width:none">${['#000000','#ffffff','#ef4444','#f59e0b','#10b981','#3b82f6','#8b5cf6','#ec4899'].map(c=>`<div style="width:30px;height:30px;border-radius:50%;cursor:pointer;border:${drawColor===c?'3px solid var(--c1)':'2px solid rgba(255,255,255,.2)'};background:${c};flex-shrink:0" onclick="setDrawColor('${c}')"></div>`).join('')}${[3,6,12].map(sz=>`<button onclick="setDrawSize(${sz})" style="padding:5px 10px;border-radius:20px;background:${drawSize===sz?'rgba(99,102,241,.2)':'rgba(22,22,42,.8)'};border:1px solid ${drawSize===sz?'var(--c1)':'var(--border)'};color:${drawSize===sz?'var(--c1)':'var(--t3)'};font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f);flex-shrink:0">●${sz}</button>`).join('')}</div>`:''}<div class="draw-canvas-container" id="canvasContainer" style="flex:1;background:#f8fafc;margin:8px;border-radius:12px;overflow:hidden;position:relative;min-height:${isDrawer?'180px':'200px'}"><canvas id="drawCanvas" style="width:100%;height:100%;display:block;touch-action:none;${isDrawer?'cursor:crosshair':'cursor:default'}"></canvas></div><div style="display:flex;gap:7px;padding:8px 14px;border-top:1px solid var(--border);flex-shrink:0"><input id="drawGuessInp" placeholder="${isDrawer?'Others will type guesses...':'Type your guess here!'}" ${isDrawer?'disabled':''} style="flex:1;background:rgba(22,22,42,.8);border:1px solid rgba(99,102,241,.18);border-radius:20px;padding:9px 14px;color:var(--t1);font-size:13px;outline:none;font-family:var(--f)" onkeydown="if(event.key==='Enter')submitDrawGuess()">${!isDrawer?`<button onclick="submitDrawGuess()" style="padding:9px 18px;border-radius:20px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:12px;font-weight:700;cursor:pointer">Guess</button>`:''}</div>${(s.guesses||[]).length?`<div style="padding:6px 14px 10px;max-height:70px;overflow-y:auto;border-top:1px solid var(--border)">${(s.guesses||[]).slice(-4).map(g=>`<div style="font-size:12px;color:${g.correct?'var(--green)':'var(--t3)'};margin-bottom:2px">${escHtml(g.user)}: ${escHtml(g.text)}${g.correct?' ✅':''}</div>`).join('')}</div>`:''}</div>`;setTimeout(()=>{const canvas=$('drawCanvas');if(!canvas)return;const container=$('canvasContainer');canvas.width=container.clientWidth||320;canvas.height=container.clientHeight||200;drawCtx=canvas.getContext('2d');drawCtx.fillStyle='#f8fafc';drawCtx.fillRect(0,0,canvas.width,canvas.height);if(s.drawData){const img=new Image();img.onload=()=>drawCtx.drawImage(img,0,0,canvas.width,canvas.height);img.src=s.drawData;}if(isDrawer){canvas.onmousedown=drawStart;canvas.onmousemove=drawMove;canvas.onmouseup=drawEnd;canvas.onmouseleave=drawEnd;canvas.ontouchstart=e=>{e.preventDefault();drawStart(e.touches[0])};canvas.ontouchmove=e=>{e.preventDefault();drawMove(e.touches[0])};canvas.ontouchend=drawEnd;}},80);}
+function renderDraw(area,s){
+  const isDrawer=s.drawer===CU.username;
+  area.innerHTML=`<div style="display:flex;flex-direction:column;flex:1;overflow:hidden"><div style="padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0"><div style="font-size:14px;font-weight:700;color:var(--t1)">${isDrawer?'🎨 Draw: <b style="color:var(--c1)">'+(s.word||'').toUpperCase()+'</b>':'🔍 Guess the drawing!'}</div>${isDrawer?`<button onclick="clearDrawCanvas()" style="padding:6px 13px;border-radius:10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:var(--red);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">🗑 Clear</button>`:''}</div>${isDrawer?`<div style="display:flex;gap:7px;padding:8px 14px;border-bottom:1px solid var(--border);flex-shrink:0;overflow-x:auto;align-items:center;scrollbar-width:none">${['#000000','#ffffff','#ef4444','#f59e0b','#10b981','#3b82f6','#8b5cf6','#ec4899'].map(c=>`<div style="width:30px;height:30px;border-radius:50%;cursor:pointer;border:${drawColor===c?'3px solid var(--c1)':'2px solid rgba(255,255,255,.2)'};background:${c};flex-shrink:0" onclick="setDrawColor('${c}')"></div>`).join('')}${[3,6,12].map(sz=>`<button onclick="setDrawSize(${sz})" style="padding:5px 10px;border-radius:20px;background:${drawSize===sz?'rgba(99,102,241,.2)':'rgba(22,22,42,.8)'};border:1px solid ${drawSize===sz?'var(--c1)':'var(--border)'};color:${drawSize===sz?'var(--c1)':'var(--t3)'};font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f);flex-shrink:0">●${sz}</button>`).join('')}</div>`:''}<div class="draw-canvas-container" id="canvasContainer" style="flex:1;background:#f8fafc;margin:8px;border-radius:12px;overflow:hidden;position:relative"><canvas id="drawCanvas" style="width:100%;height:100%;display:block;touch-action:none;${isDrawer?'cursor:crosshair':'cursor:default'}"></canvas></div><div style="display:flex;gap:7px;padding:8px 14px;border-top:1px solid var(--border);flex-shrink:0"><input id="drawGuessInp" placeholder="${isDrawer?'Others type guesses here...':'Type your guess!'}" ${isDrawer?'disabled':''} style="flex:1;background:rgba(22,22,42,.8);border:1px solid rgba(99,102,241,.18);border-radius:20px;padding:9px 14px;color:var(--t1);font-size:13px;outline:none;font-family:var(--f)" onkeydown="if(event.key==='Enter')submitDrawGuess()">${!isDrawer?`<button onclick="submitDrawGuess()" style="padding:9px 18px;border-radius:20px;background:linear-gradient(135deg,var(--c3),var(--c1));border:none;color:#fff;font-family:var(--f);font-size:12px;font-weight:700;cursor:pointer">Guess</button>`:''}</div>${(s.guesses||[]).length?`<div style="padding:6px 14px 10px;max-height:70px;overflow-y:auto;border-top:1px solid var(--border)">${(s.guesses||[]).slice(-4).map(g=>`<div style="font-size:12px;color:${g.correct?'var(--green)':'var(--t3)'};margin-bottom:2px">${escHtml(g.user)}: ${escHtml(g.text)}${g.correct?' ✅':''}</div>`).join('')}</div>`:''}</div>`;
+  setTimeout(()=>{
+    const canvas=$('drawCanvas');if(!canvas)return;
+    const container=$('canvasContainer');
+    canvas.width=container.clientWidth||320;canvas.height=container.clientHeight||200;
+    drawCtx=canvas.getContext('2d');drawCtx.fillStyle='#f8fafc';drawCtx.fillRect(0,0,canvas.width,canvas.height);
+    if(s.drawData){const img=new Image();img.onload=()=>drawCtx.drawImage(img,0,0,canvas.width,canvas.height);img.src=s.drawData;}
+    if(isDrawer){canvas.onmousedown=drawStart;canvas.onmousemove=drawMove;canvas.onmouseup=drawEnd;canvas.onmouseleave=drawEnd;canvas.ontouchstart=e=>{e.preventDefault();drawStart(e.touches[0])};canvas.ontouchmove=e=>{e.preventDefault();drawMove(e.touches[0])};canvas.ontouchend=drawEnd;}
+  },80);
+}
 function setDrawColor(c){drawColor=c;if(currentGame)renderDraw($('gameAreaEl'),currentGame.state);}
 function setDrawSize(s){drawSize=s;if(currentGame)renderDraw($('gameAreaEl'),currentGame.state);}
 function drawStart(e){isDrawing=true;const p=getCanvasPos(e);drawCtx.beginPath();drawCtx.moveTo(p.x,p.y);}
 function drawMove(e){if(!isDrawing||!drawCtx)return;const p=getCanvasPos(e);drawCtx.lineTo(p.x,p.y);drawCtx.strokeStyle=drawColor;drawCtx.lineWidth=drawSize;drawCtx.lineCap='round';drawCtx.lineJoin='round';drawCtx.stroke();}
-async function drawEnd(){if(!isDrawing)return;isDrawing=false;const c=$('drawCanvas');if(!c||!currentGame)return;const data=c.toDataURL('image/jpeg',.5);const s=currentGame.state;s.drawData=data;await pushGameState(s);}
+async function drawEnd(){if(!isDrawing)return;isDrawing=false;const c=$('drawCanvas');if(!c||!currentGame)return;const data=c.toDataURL('image/jpeg',.4);const s=currentGame.state;s.drawData=data;await pushGameState(s);}
 function getCanvasPos(e){const c=$('drawCanvas');if(!c)return{x:0,y:0};const r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*(c.width/r.width),y:(e.clientY-r.top)*(c.height/r.height)};}
 function clearDrawCanvas(){const c=$('drawCanvas');if(!c||!drawCtx)return;drawCtx.fillStyle='#f8fafc';drawCtx.fillRect(0,0,c.width,c.height);if(currentGame){const s=currentGame.state;s.drawData=null;pushGameState(s);}}
-async function submitDrawGuess(){const inp=$('drawGuessInp');const t=inp.value.trim();if(!t)return;inp.value='';if(!currentGame||currentGame.type!=='draw')return;const s=currentGame.state;if(!s.guesses)s.guesses=[];const correct=t.toLowerCase()===(s.word||'').toLowerCase();s.guesses.push({user:CU.username,text:t,correct});if(correct){toast('🎉 Correct!');}await pushGameState(s);renderDraw($('gameAreaEl'),s);}
+async function submitDrawGuess(){const inp=$('drawGuessInp');const t=inp.value.trim();if(!t)return;inp.value='';if(!currentGame||currentGame.type!=='draw')return;const s=currentGame.state;if(!s.guesses)s.guesses=[];const correct=t.toLowerCase()===(s.word||'').toLowerCase();s.guesses.push({user:CU.username,text:t,correct});if(correct)toast('🎉 Correct!');await pushGameState(s);renderDraw($('gameAreaEl'),s);}
 
-function renderAccountPanel(){const el=$('accountEl');if(!el||!CU)return;el.innerHTML=`<div style="background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.1));border:1px solid rgba(99,102,241,.2);border-radius:20px;padding:22px;margin-bottom:16px;text-align:center"><div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--c3),var(--g2));display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px;box-shadow:0 0 24px rgba(99,102,241,.3)">👤</div><div style="font-size:20px;font-weight:800;color:var(--t1);margin-bottom:4px">${escHtml(CU.username)}</div><div style="font-size:12px;color:var(--t2)">${myRooms.length} room(s) joined</div></div><div style="background:rgba(17,17,32,.7);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:14px"><div style="font-size:13px;font-weight:700;color:var(--t1);margin-bottom:10px">🔐 How it works</div><div style="font-size:12px;color:var(--t2);line-height:1.9">• Tap the tiny dot (bottom-right) → PIN screen<br>• Default PIN: <b style="color:var(--c1)">1234</b><br>• Create a room → Share Room ID to partner<br>• Partner: Join Room with that ID<br>• Both can chat + play games live! 🎮</div></div><button onclick="lockVault()" style="width:100%;padding:13px;border-radius:14px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:var(--red);font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">🔒 Lock Vault</button><button onclick="if(confirm('Delete account? All data removed.'))deleteAcct()" style="width:100%;padding:11px;border-radius:14px;background:transparent;border:1px solid rgba(239,68,68,.1);color:rgba(239,68,68,.4);font-family:var(--f);font-size:12px;font-weight:600;cursor:pointer">⚠️ Delete Account</button>`;}
-async function deleteAcct(){if(!CU)return;await S.del('vu:'+CU.username,true);await S.del('vauth:'+CU.username,false);localStorage.removeItem('vault_sess');localStorage.removeItem(myRoomsKey());CU=null;stopAllPolls();goDecoy();toast('Account deleted');}
+function renderAccountPanel(){
+  const el=$('accountEl');if(!el||!CU)return;
+  el.innerHTML=`<div style="background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.1));border:1px solid rgba(99,102,241,.2);border-radius:20px;padding:22px;margin-bottom:16px;text-align:center"><div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--c3),var(--g2));display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px">👤</div><div style="font-size:20px;font-weight:800;color:var(--t1);margin-bottom:4px">${escHtml(CU.username)}</div><div style="font-size:12px;color:var(--t2)">${myRooms.length} room(s)</div></div>
+  <div style="background:rgba(17,17,32,.7);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:14px">
+    <div style="font-size:13px;font-weight:700;color:var(--t1);margin-bottom:10px">🔐 How Rooms Work</div>
+    <div style="font-size:12px;color:var(--t2);line-height:2">
+      1️⃣ Secret Dot (bottom right) → PIN: <b style="color:var(--c1)">1234</b><br>
+      2️⃣ Register → Login<br>
+      3️⃣ Create Room → Note the Room ID<br>
+      4️⃣ Friend: same steps → Join Room → paste your ID<br>
+      5️⃣ Both connected! Chat + Games live! 🎮
+    </div>
+  </div>
+  <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:14px;padding:13px;margin-bottom:14px;font-size:12px;color:rgba(245,158,11,.9);line-height:1.8">
+    ⚠️ <b>Important:</b> Both users must use the <b>same Claude artifact URL</b> for rooms to sync. Share the same link!
+  </div>
+  <button onclick="lockVault()" style="width:100%;padding:13px;border-radius:14px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:var(--red);font-family:var(--f);font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">🔒 Lock Vault</button>
+  <button onclick="if(confirm('Delete account?'))deleteAcct()" style="width:100%;padding:11px;border-radius:14px;background:transparent;border:1px solid rgba(239,68,68,.1);color:rgba(239,68,68,.4);font-family:var(--f);font-size:12px;font-weight:600;cursor:pointer">⚠️ Delete Account</button>`;
+}
+async function deleteAcct(){if(!CU)return;await S.del('vu:'+CU.username,true);await S.del('vauth:'+CU.username,false);try{localStorage.removeItem('vault_sess');localStorage.removeItem(myRoomsKey());}catch(e){}CU=null;stopAllPolls();goDecoy();toast('Account deleted');}
+
 function openModal(id){$(id).classList.add('show');}
 function closeModal(id){$(id).classList.remove('show');}
 function heartFloat(){const em=['❤️','✨','🎉','🔥','💜','⭐','🫶'];const el=document.createElement('div');el.className='hfloat';el.textContent=em[Math.floor(Math.random()*em.length)];el.style.cssText=`left:${20+Math.random()*60}%;bottom:80px;font-size:${16+Math.random()*12}px`;document.body.appendChild(el);setTimeout(()=>el.remove(),1400);}
 
-document.addEventListener('click',e=>{if(emojiOpen&&!e.target.closest('#emojiPick')&&!e.target.closest('.emoji-btn')){emojiOpen=false;$('emojiPick').classList.remove('show');}if(!e.target.closest('#ctxMenu'))closeCtxMenu();['createModal','joinModal','gamePickModal'].forEach(id=>{if(e.target===$(id))closeModal(id);});});
+document.addEventListener('click',e=>{
+  if(emojiOpen&&!e.target.closest('#emojiPick')&&!e.target.closest('.emoji-btn')){emojiOpen=false;$('emojiPick').classList.remove('show');}
+  if(!e.target.closest('#ctxMenu'))closeCtxMenu();
+  ['createModal','joinModal','gamePickModal','roomIdModal'].forEach(id=>{if(e.target===$(id))closeModal(id);});
+});
 document.addEventListener('contextmenu',e=>e.preventDefault());
 
+// INIT
 (async()=>{
   startLoading('Loading TN Study Hub...');
-  await new Promise(r=>setTimeout(r,1200));
+  await new Promise(r=>setTimeout(r,1000));
   const sess=localStorage.getItem('vault_sess');
   if(sess){try{CU=JSON.parse(sess);}catch(e){}}
   stopLoading();
   goDecoy();
+  // Show storage status after a short delay
+  setTimeout(showStorBadge,1500);
 })();
 </script>
 </body>
